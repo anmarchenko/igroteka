@@ -33,6 +33,7 @@ defmodule Skaro.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # phoenix and ecto
       {:phoenix, "~> 1.4.0"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
@@ -41,8 +42,39 @@ defmodule Skaro.MixProject do
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:jason, "~> 1.1"},
+      {:plug_cowboy, "~> 2.0"},
+
+      # auth
+      {:comeonin, "~> 4.1"},
+      {:bcrypt_elixir, "~> 1.1"},
+      {:guardian, "~> 1.0"},
+
+      # utils
+      {:scrivener_ecto, "~> 2.0"},
+      {:secure_random, "~> 0.5"},
+      {:cors_plug, "~> 2.0"},
+
+      # http client
+      {:httpoison, "~> 1.4"},
+
+      # caching
+      {:con_cache, "~> 0.13.0"},
+
+      # error handling
+      {:sentry, "~> 7.0"},
+
+      # release
+      {:distillery, "~> 2.0"},
+
+      # lint
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+
+      # testing
+      {:timex, "~> 3.1"},
+      {:ex_machina, "~> 2.2"},
+      {:mox, "~> 0.4", only: :test},
+      {:bypass, "~> 1.0", only: :test}
     ]
   end
 
