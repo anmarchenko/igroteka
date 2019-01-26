@@ -15,13 +15,12 @@ defmodule Skaro.Application do
       Repo,
       # Start the endpoint when the application starts
       Endpoint,
-      supervisor(ConCache, [
-        [
-          ttl_check: :timer.minutes(30),
-          ttl: :timer.hours(6)
-        ],
-        [name: :external_api_cache]
-      ])
+      {ConCache,
+       [
+         name: :external_api_cache,
+         ttl_check_interval: :timer.minutes(30),
+         global_ttl: :timer.hours(6)
+       ]}
       # Starts a worker by calling: Skaro.Worker.start_link(arg)
       # {Skaro.Worker, arg},
     ]

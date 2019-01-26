@@ -4,8 +4,9 @@ defmodule Skaro.MixProject do
   def project do
     [
       app: :skaro,
-      version: "0.1.0",
+      version: "0.0.1",
       elixir: "~> 1.5",
+      elixirc_options: [warnings_as_errors: true],
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,

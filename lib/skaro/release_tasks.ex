@@ -2,6 +2,9 @@ defmodule Skaro.ReleaseTasks do
   @moduledoc """
   Release tasks: create and migrate DB
   """
+
+  require Logger
+
   @start_apps [
     :crypto,
     :ssl,
@@ -59,7 +62,7 @@ defmodule Skaro.ReleaseTasks do
   end
 
   defp run_create do
-    Enum.each(@repos, &run_seeds_for/1)
+    Enum.each(@repos, &run_create_for/1)
   end
 
   defp run_create_for(repo) do
