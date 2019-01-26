@@ -4,7 +4,8 @@ use Mix.Config
 # you can enable the server option below.
 config :skaro, SkaroWeb.Endpoint,
   http: [port: 4002],
-  server: false
+  server: false,
+  secret_key_base: "2cZ4DdZKTfTogyYTouT7TT5cuhErXG5lES5EKqPmGxAujTRyPfpxKc9HoydtYKoL_test_key"
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -12,7 +13,15 @@ config :logger, level: :warn
 # Configure your database
 config :skaro, Skaro.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "skaro_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# guardian secret key
+config :skaro, Skaro.Guardian,
+  secret_key: "svWE1TQ9lYke32lLUdE5jnV+EqI7nObwZ/rFYLH+s6BFRKU/prg559ADuLaohNx9_test"
+
+config :skaro, :giantbomb, api_key: "giantbomb_api_key"
+
+config :skaro, :games_backend, Skaro.Backends.GamesMock

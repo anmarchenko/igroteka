@@ -5,13 +5,23 @@ defmodule Skaro.Application do
 
   use Application
 
+  alias Skaro.Repo
+  alias SkaroWeb.Endpoint
+
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository
-      Skaro.Repo,
+      Repo,
       # Start the endpoint when the application starts
-      SkaroWeb.Endpoint
+      Endpoint,
+      supervisor(ConCache, [
+        [
+          ttl_check: :timer.minutes(30),
+          ttl: :timer.hours(6)
+        ],
+        [name: :external_api_cache]
+      ])
       # Starts a worker by calling: Skaro.Worker.start_link(arg)
       # {Skaro.Worker, arg},
     ]
@@ -25,7 +35,7 @@ defmodule Skaro.Application do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    SkaroWeb.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end

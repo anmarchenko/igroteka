@@ -8,6 +8,7 @@ use Mix.Config
 # with webpack to recompile .js and .css sources.
 config :skaro, SkaroWeb.Endpoint,
   http: [port: 4000],
+  secret_key_base: "2cZ4DdZKTfTogyYTouT7TT5cuhErXG5lES5EKqPmGxAujTRyPfpxKc9HoydtYKoL_dev_key",
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -61,7 +62,13 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :skaro, Skaro.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "skaro_dev",
   hostname: "localhost",
   pool_size: 10
+
+# guardian secret key
+config :skaro, Skaro.Guardian,
+  secret_key: "svWE1TQ9lYke32lLUdE5jnV+EqI7nObwZ/rFYLH+s6BFRKU/prg559ADuLaohNx9_dev"
+
+import_config "dev.secret.exs"
