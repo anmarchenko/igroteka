@@ -13,12 +13,8 @@ defmodule Skaro.Accounts.User do
     field(:email, :string)
     field(:encrypted_password, :string)
 
-    field(:bio, :string)
-
     field(:password, :string, virtual: true)
     field(:old_password, :string, virtual: true)
-
-    field(:reset_password_jti, :string)
 
     timestamps()
   end
@@ -39,7 +35,7 @@ defmodule Skaro.Accounts.User do
 
   def update_profile(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :bio])
+    |> cast(params, [:name])
     |> validate_required([:name])
   end
 

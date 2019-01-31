@@ -10,8 +10,7 @@ defmodule Skaro.Factory do
     %User{
       name: "Max Mustermann",
       email: "max.mustermann@hmstr.rocks",
-      encrypted_password: Comeonin.Bcrypt.hashpwsalt("12345678"),
-      bio: "bio"
+      encrypted_password: Comeonin.Bcrypt.hashpwsalt("12345678")
     }
   end
 

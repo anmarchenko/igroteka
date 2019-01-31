@@ -65,13 +65,11 @@ defmodule Skaro.UsersTest do
 
       assert {:ok, updated_user} =
                Users.update_profile(user, %{
-                 "name" => "Dart Vader",
-                 "bio" => "Dark sith, formerly Anakin Skywalker"
+                 "name" => "Dart Vader"
                })
 
       assert user.id == updated_user.id
       assert "Dart Vader" == updated_user.name
-      assert "Dark sith, formerly Anakin Skywalker" == updated_user.bio
     end
 
     test "it returns error if params are invalid" do
@@ -79,8 +77,7 @@ defmodule Skaro.UsersTest do
 
       assert {:error, _} =
                Users.update_profile(user, %{
-                 "name" => "",
-                 "bio" => "shady"
+                 "name" => ""
                })
     end
   end
