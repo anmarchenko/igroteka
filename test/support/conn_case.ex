@@ -15,6 +15,9 @@ defmodule SkaroWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+  alias Skaro.Guardian.Plug, as: GuardianPlug
+
   using do
     quote do
       # Import conveniences for testing with connections
@@ -27,12 +30,20 @@ defmodule SkaroWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Skaro.Repo)
+    :ok = Sandbox.checkout(Skaro.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Skaro.Repo, {:shared, self()})
+      Sandbox.mode(Skaro.Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    conn = Phoenix.ConnTest.build_conn()
+
+    if tags[:login] do
+      user = Skaro.Factory.insert(:user)
+      signed_conn = GuardianPlug.sign_in(conn, user)
+      {:ok, conn: signed_conn, logged_user: user}
+    else
+      {:ok, conn: conn}
+    end
   end
 end

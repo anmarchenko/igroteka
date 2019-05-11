@@ -104,7 +104,7 @@ defmodule Skaro.ReleaseTasks do
   defp db_config(repo), do: Application.get_env(@app, repo)
 
   defp db_config(repo, key) do
-    case db_config(repo) |> Keyword.fetch(key) do
+    case repo |> db_config() |> Keyword.fetch(key) do
       {:ok, val} -> val
       :error -> nil
     end

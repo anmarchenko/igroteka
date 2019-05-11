@@ -8,6 +8,7 @@ defmodule Skaro.Repo.Migrations.AddAuthTokens do
 
       timestamps()
     end
+
     create index(:auth_tokens, [:token])
   end
 end

@@ -19,7 +19,9 @@ defmodule Skaro.Repo.Migrations.CreateSkaro.Backlog.Entry do
     end
 
     create index(:backlog_entries, [:user_id])
+
     create unique_index(:backlog_entries, [:game_id, :user_id],
-                        name: :backlog_entries_unique_user_id_game_id_index)
+             name: :backlog_entries_unique_user_id_game_id_index
+           )
   end
 end

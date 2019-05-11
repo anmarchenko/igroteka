@@ -15,6 +15,8 @@ defmodule SkaroWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -26,10 +28,10 @@ defmodule SkaroWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Skaro.Repo)
+    :ok = Sandbox.checkout(Skaro.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Skaro.Repo, {:shared, self()})
+      Sandbox.mode(Skaro.Repo, {:shared, self()})
     end
 
     :ok

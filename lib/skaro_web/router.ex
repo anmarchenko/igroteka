@@ -11,6 +11,15 @@ defmodule SkaroWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug(
+      Guardian.Plug.Pipeline,
+      module: Skaro.Guardian,
+      error_handler: SkaroWerb.AuthErrorHandler
+    )
+
+    plug(Guardian.Plug.VerifyHeader, realm: :none)
+    plug(Guardian.Plug.LoadResource, allow_blank: true)
   end
 
   scope "/", SkaroWeb do
@@ -20,7 +29,23 @@ defmodule SkaroWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SkaroWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", SkaroWeb do
+    pipe_through :api
+
+    # auth flow
+    post("/sessions", SessionController, :create)
+    delete("/sessions", SessionController, :delete)
+
+    # get("/current_user", UserController, :current)
+    # resources("/users", UserController, only: [:show, :update])
+    # scope "/users" do
+    #   put("/:id/update_password", UserController, :update_password)
+    # end
+
+    # app
+    # resources("/games", GameController, only: [:index, :show])
+    # resources("/backlog_entries", BacklogEntryController)
+    resources("/available_platforms", AvailablePlatformController, only: [:index])
+    get("/available_platforms/owned", AvailablePlatformController, :owned)
+  end
 end

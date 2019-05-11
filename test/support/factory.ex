@@ -3,7 +3,7 @@ defmodule Skaro.Factory do
   use ExMachina.Ecto, repo: Skaro.Repo
 
   alias Skaro.Accounts.User
-  # alias Skaro.Backlog.{AvailablePlatform, Entry}
+  alias Skaro.Backlog.{AvailablePlatform, Entry}
   # alias Skaro.Gaming.Data.{Company, Franchise, Game, Genre, Image, Platform, Theme}
 
   def user_factory do
@@ -93,28 +93,28 @@ defmodule Skaro.Factory do
   #   }
   # end
 
-  # def available_platform_factory do
-  #   id = :rand.uniform(10000)
+  def available_platform_factory do
+    id = :rand.uniform(10_000)
 
-  #   %AvailablePlatform{
-  #     platform_id: id,
-  #     platform_name: Faker.Company.name()
-  #   }
-  # end
+    %AvailablePlatform{
+      platform_id: id,
+      platform_name: "Platform #{id}"
+    }
+  end
 
-  # def backlog_entry_factory do
-  #   id = :rand.uniform(100_000)
+  def backlog_entry_factory do
+    id = :rand.uniform(100_000)
 
-  #   %Entry{
-  #     game_id: id,
-  #     game_name: Faker.Pokemon.name(),
-  #     game_release_date: Faker.Date.between(~D[2000-01-01], ~D[2016-12-31]),
-  #     finished_at: Faker.Date.between(~D[2000-01-01], ~D[2016-12-31]),
-  #     poster_thumb_url: Faker.Internet.image_url(),
-  #     status: "wishlist",
-  #     note: "Generic note",
-  #     available_platforms: build_list(2, :available_platform),
-  #     user: build(:user)
-  #   }
-  # end
+    %Entry{
+      game_id: id,
+      game_name: "Game #{id}",
+      game_release_date: ~D[2016-12-31],
+      finished_at: ~D[2018-10-02],
+      poster_thumb_url: "http://posters/#{id}/poster",
+      status: "wishlist",
+      note: "Generic note",
+      available_platforms: build_list(2, :available_platform),
+      user: build(:user)
+    }
+  end
 end
