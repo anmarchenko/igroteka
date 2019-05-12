@@ -7,9 +7,11 @@ defmodule Skaro.Factory do
   # alias Skaro.Gaming.Data.{Company, Franchise, Game, Genre, Image, Platform, Theme}
 
   def user_factory do
+    number = :rand.uniform(10_000)
+
     %User{
       name: "Max Mustermann",
-      email: "max.mustermann@hmstr.rocks",
+      email: "max.mustermann#{number}@hmstr.rocks",
       encrypted_password: Comeonin.Bcrypt.hashpwsalt("12345678")
     }
   end

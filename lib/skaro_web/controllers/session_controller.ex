@@ -5,8 +5,6 @@ defmodule SkaroWeb.SessionController do
   use SkaroWeb, :controller
 
   alias Skaro.Accounts.Sessions
-  alias Skaro.Guardian
-  alias Skaro.Guardian.Plug, as: GuardianPlug
 
   action_fallback(SkaroWeb.FallbackController)
 
@@ -21,17 +19,6 @@ defmodule SkaroWeb.SessionController do
 
       {:error, _} ->
         {:error, :wrong_authentication}
-    end
-  end
-
-  def delete(conn, _) do
-    case GuardianPlug.current_token(conn) do
-      nil ->
-        {:error, :wrong_authentication}
-
-      {:ok, token} ->
-        Guardian.revoke(token)
-        render(conn, "delete.json")
     end
   end
 

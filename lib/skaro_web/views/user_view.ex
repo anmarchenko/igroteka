@@ -6,8 +6,7 @@ defmodule SkaroWeb.UserView do
       id: user.id,
       name: user.name,
       color: color(user),
-      initials: initials(user),
-      bio: user.bio
+      initials: initials(user)
     }
   end
 

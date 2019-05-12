@@ -1,5 +1,7 @@
 defmodule SkaroWeb.Router do
   use SkaroWeb, :router
+  use Plug.ErrorHandler
+  use Sentry.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -32,9 +34,7 @@ defmodule SkaroWeb.Router do
   scope "/api", SkaroWeb do
     pipe_through :api
 
-    # auth flow
     post("/sessions", SessionController, :create)
-    delete("/sessions", SessionController, :delete)
 
     # get("/current_user", UserController, :current)
     # resources("/users", UserController, only: [:show, :update])

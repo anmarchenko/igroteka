@@ -1,4 +1,4 @@
-defmodule SkarWeb.AvailablePlatformController do
+defmodule SkaroWeb.AvailablePlatformController do
   use SkaroWeb, :controller
 
   alias Skaro.Backlog.Entries
