@@ -36,11 +36,12 @@ defmodule SkaroWeb.Router do
 
     post("/sessions", SessionController, :create)
 
-    # get("/current_user", UserController, :current)
-    # resources("/users", UserController, only: [:show, :update])
-    # scope "/users" do
-    #   put("/:id/update_password", UserController, :update_password)
-    # end
+    get("/current_user", UserController, :current)
+    resources("/users", UserController, only: [:show, :update])
+
+    scope "/users" do
+      put("/:id/update_password", UserController, :update_password)
+    end
 
     # app
     # resources("/games", GameController, only: [:index, :show])
