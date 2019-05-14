@@ -8,9 +8,6 @@ defmodule SkaroWeb.SessionControllerTest do
   alias Skaro.Guardian
   alias Skaro.Repo
 
-  alias SkaroWeb.Endpoint
-  alias SkaroWeb.Router.Helpers, as: Routes
-
   describe "POST :create" do
     test "returns jwt token when email and password are valid", %{conn: conn} do
       user = insert(:user)
@@ -18,7 +15,7 @@ defmodule SkaroWeb.SessionControllerTest do
       conn =
         post(
           conn,
-          Routes.session_path(Endpoint, :create),
+          Routes.session_path(@endpoint, :create),
           session: %{email: user.email, password: "12345678"}
         )
 
@@ -42,7 +39,7 @@ defmodule SkaroWeb.SessionControllerTest do
       conn =
         post(
           conn,
-          Routes.session_path(Endpoint, :create),
+          Routes.session_path(@endpoint, :create),
           session: %{email: String.upcase(user.email), password: "12345678"}
         )
 
@@ -55,7 +52,7 @@ defmodule SkaroWeb.SessionControllerTest do
       conn =
         post(
           conn,
-          Routes.session_path(Endpoint, :create),
+          Routes.session_path(@endpoint, :create),
           session: %{email: user.email, password: "12345679"}
         )
 
@@ -66,7 +63,7 @@ defmodule SkaroWeb.SessionControllerTest do
       conn =
         post(
           conn,
-          Routes.session_path(Endpoint, :create),
+          Routes.session_path(@endpoint, :create),
           session: %{email: nil, password: "12345678"}
         )
 

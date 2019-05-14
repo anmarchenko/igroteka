@@ -17,7 +17,7 @@ defmodule SkaroWeb.Router do
     plug(
       Guardian.Plug.Pipeline,
       module: Skaro.Guardian,
-      error_handler: SkaroWerb.AuthErrorHandler
+      error_handler: SkaroWeb.AuthErrorHandler
     )
 
     plug(Guardian.Plug.VerifyHeader, realm: :none)
@@ -44,7 +44,7 @@ defmodule SkaroWeb.Router do
 
     # app
     # resources("/games", GameController, only: [:index, :show])
-    # resources("/backlog_entries", BacklogEntryController)
+    resources("/backlog_entries", BacklogEntryController)
     resources("/available_platforms", AvailablePlatformController, only: [:index])
     get("/available_platforms/owned", AvailablePlatformController, :owned)
   end

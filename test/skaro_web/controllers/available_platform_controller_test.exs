@@ -4,9 +4,6 @@ defmodule SkaroWeb.AvailablePlatformControllerTest do
 
   import Skaro.Factory
 
-  alias SkaroWeb.Endpoint
-  alias SkaroWeb.Router.Helpers, as: Routes
-
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
@@ -22,7 +19,7 @@ defmodule SkaroWeb.AvailablePlatformControllerTest do
       conn =
         get(
           conn,
-          Routes.available_platform_path(Endpoint, :index, status: "playing")
+          Routes.available_platform_path(@endpoint, :index, status: "playing")
         )
 
       index_json = json_response(conn, 200)
@@ -64,7 +61,7 @@ defmodule SkaroWeb.AvailablePlatformControllerTest do
       conn =
         get(
           conn,
-          Routes.available_platform_path(Endpoint, :owned, status: "backlog")
+          Routes.available_platform_path(@endpoint, :owned, status: "backlog")
         )
 
       index_json = json_response(conn, 200)
