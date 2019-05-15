@@ -100,10 +100,10 @@ defmodule Skaro.EntriesTest do
                  user
                )
 
-      assert changeset.errors()[:status] == {
+      assert {
                "is invalid",
-               [validation: :inclusion]
-             }
+               [validation: :inclusion, enum: _]
+             } = changeset.errors()[:status]
     end
 
     test "returns error if trying to insert twice the same game_id for user", %{
@@ -164,10 +164,10 @@ defmodule Skaro.EntriesTest do
                  "finished_at" => "2017-07-12"
                })
 
-      assert changeset.errors()[:status] == {
+      assert {
                "is invalid",
-               [validation: :inclusion]
-             }
+               [validation: :inclusion, enum: _]
+             } = changeset.errors()[:status]
     end
 
     test "returns changeset error if date is invalid" do

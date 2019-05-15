@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir:1.8.0 as builder
+FROM bitwalker/alpine-elixir:1.8.1 as builder
 
 ENV VERSION=2019-01-18
 ENV HOME=/opt/app/ TERM=xterm
