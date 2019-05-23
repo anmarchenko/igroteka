@@ -6,7 +6,7 @@ defmodule Skaro.Accounts.User do
 
   import Ecto.Changeset
 
-  alias Comeonin.Bcrypt
+  alias Bcrypt
 
   schema "users" do
     field(:name, :string)
@@ -53,7 +53,7 @@ defmodule Skaro.Accounts.User do
         put_change(
           current_changeset,
           :encrypted_password,
-          Bcrypt.hashpwsalt(password)
+          Bcrypt.hash_pwd_salt(password)
         )
 
       _ ->
@@ -64,7 +64,7 @@ defmodule Skaro.Accounts.User do
   defp validate_current_password(current_changeset, encrypted_password) do
     case current_changeset
          |> get_change(:old_password)
-         |> Bcrypt.checkpw(encrypted_password) do
+         |> Bcrypt.verify_pass(encrypted_password) do
       true -> current_changeset
       _ -> add_error(current_changeset, :old_password, "is invalid")
     end

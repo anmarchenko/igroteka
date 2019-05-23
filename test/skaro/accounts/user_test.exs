@@ -74,7 +74,7 @@ defmodule Skaro.UserTest do
   test "insert user" do
     changeset = User.changeset(%User{}, @valid_attrs)
     assert {:ok, user} = Repo.insert(changeset)
-    assert Comeonin.Bcrypt.checkpw("password", user.encrypted_password)
+    assert Bcrypt.verify_pass("password", user.encrypted_password)
   end
 
   test "changeset with duplicate email" do

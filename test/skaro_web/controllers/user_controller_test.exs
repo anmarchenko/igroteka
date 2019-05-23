@@ -4,7 +4,7 @@ defmodule SkaroWeb.UserControllerTest do
 
   import Skaro.Factory
 
-  alias Comeonin.Bcrypt
+  alias Bcrypt
   alias Skaro.Accounts.User
   alias Skaro.Repo
 
@@ -99,7 +99,7 @@ defmodule SkaroWeb.UserControllerTest do
 
     assert json_response(conn, 200)
     updated_user = Repo.get!(User, user.id)
-    assert Bcrypt.checkpw("new_password", updated_user.encrypted_password)
+    assert Bcrypt.verify_pass("new_password", updated_user.encrypted_password)
   end
 
   @tag :login
@@ -118,7 +118,7 @@ defmodule SkaroWeb.UserControllerTest do
     json = json_response(conn, 422)
     assert json["errors"]["old_password"] == ["is invalid"]
     updated_user = Repo.get!(User, user.id)
-    assert Bcrypt.checkpw("12345678", updated_user.encrypted_password)
+    assert Bcrypt.verify_pass("12345678", updated_user.encrypted_password)
   end
 
   @tag :login
@@ -137,7 +137,7 @@ defmodule SkaroWeb.UserControllerTest do
     json = json_response(conn, 422)
     assert json["errors"]["password_confirmation"] == ["does not match confirmation"]
     updated_user = Repo.get!(User, user.id)
-    assert Bcrypt.checkpw("12345678", updated_user.encrypted_password)
+    assert Bcrypt.verify_pass("12345678", updated_user.encrypted_password)
   end
 
   @tag :login
@@ -158,6 +158,6 @@ defmodule SkaroWeb.UserControllerTest do
     assert json_response(conn, 403)
 
     updated_user = Repo.get!(User, another_user.id)
-    assert Bcrypt.checkpw("12345678", updated_user.encrypted_password)
+    assert Bcrypt.verify_pass("12345678", updated_user.encrypted_password)
   end
 end

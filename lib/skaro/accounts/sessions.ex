@@ -4,7 +4,8 @@ defmodule Skaro.Accounts.Sessions do
   """
   @auth_failed {:error, :auth_failed}
 
-  alias Comeonin.Bcrypt
+  alias Bcrypt
+
   alias Skaro.Accounts.User
   alias Skaro.Guardian
   alias Skaro.Repo
@@ -40,5 +41,5 @@ defmodule Skaro.Accounts.Sessions do
   defp check_password(nil, _), do: false
 
   defp check_password(user, password),
-    do: Bcrypt.checkpw(password, user.encrypted_password)
+    do: Bcrypt.verify_pass(password, user.encrypted_password)
 end

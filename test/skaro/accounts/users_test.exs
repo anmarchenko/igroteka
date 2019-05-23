@@ -3,7 +3,7 @@ defmodule Skaro.UsersTest do
 
   import Skaro.Factory
 
-  alias Comeonin.Bcrypt
+  alias Bcrypt
   alias Skaro.Accounts.Users
 
   describe "Users.get!/1" do
@@ -94,7 +94,7 @@ defmodule Skaro.UsersTest do
                })
 
       assert user.id == updated_user.id
-      assert Bcrypt.checkpw("strong_password", updated_user.encrypted_password)
+      assert Bcrypt.verify_pass("strong_password", updated_user.encrypted_password)
     end
 
     test "it does not update user password if old password is not valid" do
@@ -108,7 +108,7 @@ defmodule Skaro.UsersTest do
                })
 
       updated_user = Users.get!(user.id)
-      refute Bcrypt.checkpw("strong_password", updated_user.encrypted_password)
+      refute Bcrypt.verify_pass("strong_password", updated_user.encrypted_password)
     end
 
     test "it does not update user password if confirmation does not match" do
@@ -122,7 +122,7 @@ defmodule Skaro.UsersTest do
                })
 
       updated_user = Users.get!(user.id)
-      refute Bcrypt.checkpw("strong_password", updated_user.encrypted_password)
+      refute Bcrypt.verify_pass("strong_password", updated_user.encrypted_password)
     end
   end
 end

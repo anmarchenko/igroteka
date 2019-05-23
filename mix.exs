@@ -47,8 +47,7 @@ defmodule Skaro.MixProject do
       {:plug_cowboy, "~> 2.0"},
 
       # auth
-      {:comeonin, "~> 4.1"},
-      {:bcrypt_elixir, "~> 1.1"},
+      {:bcrypt_elixir, "~> 2.0"},
       {:guardian, "~> 1.0"},
 
       # utils
