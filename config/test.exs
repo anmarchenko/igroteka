@@ -24,4 +24,4 @@ config :skaro, Skaro.Guardian,
 
 config :skaro, :giantbomb, api_key: "giantbomb_api_key"
 
-config :skaro, :games_backend, Skaro.Backends.GamesMock
+config :skaro, :games_remote, Skaro.GamesRemoteMock

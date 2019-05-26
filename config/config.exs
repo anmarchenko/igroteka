@@ -33,7 +33,7 @@ config :skaro, Skaro.Guardian,
   token_module: Guardian.Token.Jwt
 
 # Games API
-config :skaro, :games_backend, Skaro.Giantbomb.Games
+config :skaro, :games_remote, Skaro.Giantbomb
 
 config :skaro, :giantbomb,
   api_key: "${GIANTBOMB_API_KEY}",

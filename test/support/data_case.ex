@@ -30,11 +30,28 @@ defmodule Skaro.DataCase do
   setup tags do
     :ok = Sandbox.checkout(Skaro.Repo)
 
+    bypass = setup_bypass(tags[:bypass])
+
     unless tags[:async] do
       Sandbox.mode(Skaro.Repo, {:shared, self()})
     end
 
-    :ok
+    {:ok, bypass: bypass}
+  end
+
+  defp setup_bypass(nil), do: nil
+
+  defp setup_bypass(true) do
+    bypass = Bypass.open()
+
+    Application.put_env(
+      :skaro,
+      :giantbomb,
+      base_url: "http://localhost:#{bypass.port}",
+      api_key: "giantbomb_api_key"
+    )
+
+    bypass
   end
 
   @doc """

@@ -4,7 +4,7 @@ defmodule Skaro.Factory do
 
   alias Skaro.Accounts.User
   alias Skaro.Backlog.{AvailablePlatform, Entry}
-  # alias Skaro.Gaming.Data.{Company, Franchise, Game, Genre, Image, Platform, Theme}
+  alias Skaro.Core.{Company, Franchise, Game, Genre, Image, Platform, Theme}
 
   def user_factory do
     number = :rand.uniform(10_000)
@@ -16,84 +16,84 @@ defmodule Skaro.Factory do
     }
   end
 
-  # def image_factory do
-  #   id = :rand.uniform(10000)
+  def image_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Image{
-  #     id: id,
-  #     big_url: Faker.Internet.image_url(),
-  #     thumb_url: Faker.Internet.image_url()
-  #   }
-  # end
+    %Image{
+      id: id,
+      big_url: "http://images.com/#{id}/big",
+      thumb_url: "http://images.com/#{id}/thumb"
+    }
+  end
 
-  # def platform_factory do
-  #   id = :rand.uniform(10000)
+  def platform_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Platform{
-  #     id: id,
-  #     external_id: to_string(id),
-  #     name: Faker.Superhero.name()
-  #   }
-  # end
+    %Platform{
+      id: id,
+      external_id: to_string(id),
+      name: "Platform #{id}"
+    }
+  end
 
-  # def company_factory do
-  #   id = :rand.uniform(10000)
+  def company_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Company{
-  #     id: id,
-  #     external_id: to_string(id),
-  #     name: Faker.Company.name()
-  #   }
-  # end
+    %Company{
+      id: id,
+      external_id: to_string(id),
+      name: "Company #{id}"
+    }
+  end
 
-  # def genre_factory do
-  #   id = :rand.uniform(10000)
+  def genre_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Genre{
-  #     id: id,
-  #     external_id: to_string(id),
-  #     name: Faker.Company.name()
-  #   }
-  # end
+    %Genre{
+      id: id,
+      external_id: to_string(id),
+      name: "Genre #{id}"
+    }
+  end
 
-  # def theme_factory do
-  #   id = :rand.uniform(10000)
+  def theme_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Theme{
-  #     id: id,
-  #     external_id: to_string(id),
-  #     name: Faker.Company.name()
-  #   }
-  # end
+    %Theme{
+      id: id,
+      external_id: to_string(id),
+      name: "Theme #{id}"
+    }
+  end
 
-  # def franchise_factory do
-  #   id = :rand.uniform(10000)
+  def franchise_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Franchise{
-  #     id: id,
-  #     external_id: to_string(id),
-  #     name: Faker.Company.name()
-  #   }
-  # end
+    %Franchise{
+      id: id,
+      external_id: to_string(id),
+      name: "Franchise #{id}"
+    }
+  end
 
-  # def game_factory do
-  #   id = :rand.uniform(10000)
+  def game_factory do
+    id = :rand.uniform(10_000)
 
-  #   %Game{
-  #     id: id,
-  #     external_id: to_string(id),
-  #     name: Faker.Pokemon.name(),
-  #     short_description: Faker.Lorem.Shakespeare.as_you_like_it(),
-  #     release_date: "1996-12-12 00:00:00",
-  #     cover: build(:image),
-  #     platforms: [build(:platform)],
-  #     developers: [build(:company)],
-  #     publishers: [build(:company)],
-  #     franchises: [build(:franchise)],
-  #     genres: [build(:genre)],
-  #     themes: [build(:theme)]
-  #   }
-  # end
+    %Game{
+      id: id,
+      external_id: to_string(id),
+      name: "Game #{id}",
+      short_description: "Some long text",
+      release_date: "1996-12-12 00:00:00",
+      cover: build(:image),
+      platforms: [build(:platform)],
+      developers: [build(:company)],
+      publishers: [build(:company)],
+      franchises: [build(:franchise)],
+      genres: [build(:genre)],
+      themes: [build(:theme)]
+    }
+  end
 
   def available_platform_factory do
     id = :rand.uniform(10_000)
