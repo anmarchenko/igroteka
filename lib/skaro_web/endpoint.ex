@@ -31,6 +31,14 @@ defmodule SkaroWeb.Endpoint do
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
 
+  plug(
+    CORSPlug,
+    origin: [
+      "http://localhost:3000",
+      "https://ig.hmstr.rocks"
+    ]
+  )
+
   plug Plug.MethodOverride
   plug Plug.Head
 

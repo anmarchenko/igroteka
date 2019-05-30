@@ -44,7 +44,7 @@ defmodule SkaroWeb.Router do
     end
 
     # app
-    # resources("/games", GameController, only: [:index, :show])
+    resources("/games", GameController, only: [:index, :show])
     resources("/backlog_entries", BacklogEntryController)
     resources("/available_platforms", AvailablePlatformController, only: [:index])
     get("/available_platforms/owned", AvailablePlatformController, :owned)
