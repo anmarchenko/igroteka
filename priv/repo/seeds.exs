@@ -9,3 +9,21 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Skaro.Repo
+alias Skaro.Accounts.User
+
+[
+  %{
+    name: "Andrey Marchenko",
+    email: "altmer@mail.test",
+    password: "12345678"
+  },
+  %{
+    name: "John Doe",
+    email: "admin@skaro.com",
+    password: "12345678"
+  }
+]
+|> Enum.map(&User.changeset(%User{}, &1))
+|> Enum.each(&Repo.insert!(&1))
