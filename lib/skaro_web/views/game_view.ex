@@ -4,10 +4,8 @@ defmodule SkaroWeb.GameView do
   alias SkaroWeb.{
     CompanyView,
     FranchiseView,
-    GenreView,
     ImageView,
-    PlatformView,
-    ThemeView
+    PlatformView
   }
 
   def render("index.json", %{games: games}) do
@@ -40,9 +38,7 @@ defmodule SkaroWeb.GameView do
         FranchiseView.render(
           "index.json",
           franchises: game.franchises
-        ),
-      genres: GenreView.render("index.json", genres: game.genres),
-      themes: ThemeView.render("index.json", themes: game.themes)
+        )
     })
   end
 
