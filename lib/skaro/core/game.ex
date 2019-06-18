@@ -30,7 +30,7 @@ defmodule Skaro.Core.Game do
     field(:release_date, :date)
 
     field(:rating, :float)
-    field(:user_rating, :float)
+    field(:ratings_count, :integer)
 
     # main, DLC, expansion...
     field(:category, :integer)
@@ -81,7 +81,7 @@ defmodule Skaro.Core.Game do
       :description,
       :release_date,
       :rating,
-      :user_rating,
+      :ratings_count,
       :category,
       :status,
       :ttb_hastly,

@@ -39,6 +39,8 @@ config :skaro, :giantbomb,
   api_key: "${GIANTBOMB_API_KEY}",
   base_url: "https://www.giantbomb.com/api"
 
+config :skaro, :igdb, api_key: "${IGDB_API_KEY}"
+
 # Errors reporting
 config :sentry,
   filter: Skaro.SentryEventFilter,

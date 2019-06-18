@@ -22,9 +22,9 @@ defmodule Skaro.Core.GameTest do
         external_url: "http://warcraft.com",
         short_description: "warcraft short description",
         description: "warcraft very long description",
-        release_date: ~D[2002-07-03],
+        release_date: DateTime.from_unix!(1_025_654_400),
         rating: 93.0,
-        user_rating: 87.0,
+        ratings_count: 10,
         category: 1,
         status: 1,
         ttb_hastly: 38_000,
@@ -36,7 +36,8 @@ defmodule Skaro.Core.GameTest do
                |> Game.changeset(attrs)
                |> Repo.insert()
 
-      assert "Warcraft III" == game.name
+      assert "Warcraft III" = game.name
+      assert 10 = game.ratings_count
     end
 
     test "it saves game record together with new associations" do

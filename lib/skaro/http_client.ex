@@ -2,9 +2,12 @@ defmodule Skaro.HttpClient do
   @moduledoc """
   Common backend API helpers.
   """
+
+  @retries 5
+
   def get(params, url) do
     case HTTPoison.get(url, [], [{:params, params}]) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+      {:ok, %HTTPoison.Response{status_code: code, body: body}} when code < 400 ->
         parse_json(body)
 
       {:ok, %HTTPoison.Response{status_code: code}} ->
@@ -22,13 +25,41 @@ defmodule Skaro.HttpClient do
     end
   end
 
+  def idempotent_post(url, body, headers) do
+    post_with_retries(url, body, headers, @retries)
+  end
+
   def parse_json(body) do
     case Jason.decode(body) do
       {:ok, json} ->
         {:ok, json}
 
       {:error, %Jason.DecodeError{}} ->
-        {:error, "Invalid json from Giantbomb: #{body}"}
+        {:error, "Invalid json: #{body}"}
+    end
+  end
+
+  defp post_with_retries(url, body, headers, retries) do
+    case HTTPoison.post(url, body, headers) do
+      {:ok, %HTTPoison.Response{status_code: code, body: body}} when code < 400 ->
+        parse_json(body)
+
+      {:ok, %HTTPoison.Response{status_code: code}} ->
+        {
+          :error,
+          """
+          HTTP status code: #{code}.
+          Accessed url: [#{url}].
+          Request body was: #{body}
+          """
+        }
+
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        if retries > 0 do
+          post_with_retries(url, body, headers, retries - 1)
+        else
+          {:error, reason}
+        end
     end
   end
 end

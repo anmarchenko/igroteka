@@ -21,7 +21,7 @@ defmodule Skaro.GiantbombTest do
 
       assert {
                :error,
-               "Invalid json from Giantbomb: nope, this is not json, just plain text"
+               "Invalid json: nope, this is not json, just plain text"
              } == Giantbomb.search("game query")
     end
 
