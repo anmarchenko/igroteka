@@ -4,15 +4,9 @@ defmodule Skaro.IGDB.Parsers.Games do
   """
   alias Skaro.Core.Game
 
-  def parse_many({:error, reason}), do: {:error, reason}
-  def parse_many({:ok, json}), do: {:ok, Enum.map(json, &parse_minimal/1)}
+  def parse_basic(json) when is_list(json), do: {:ok, Enum.map(json, &parse_basic/1)}
 
-  def parse_one({:error, reason}), do: {:error, reason}
-  def parse_one({:ok, json}), do: {:ok, parse_full(json)}
-
-  def parse_minimal(data) do
-    game = data["game"]
-
+  def parse_basic(game) do
     %Game{
       external_id: game["id"],
       name: game["name"],
@@ -21,10 +15,5 @@ defmodule Skaro.IGDB.Parsers.Games do
       rating: game["aggregated_rating"],
       ratings_count: game["aggregated_rating_count"]
     }
-  end
-
-  def parse_full(game) do
-    game
-    |> parse_minimal()
   end
 end

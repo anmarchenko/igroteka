@@ -8,12 +8,20 @@ defmodule Skaro.IGDB do
 
   alias Skaro.HttpClient
   alias Skaro.IGDB.Parsers.Games, as: GamesParser
+  alias Skaro.Parser
 
   def search(term) do
-    search_url()
-    |> HttpClient.idempotent_post(search_query(term), headers())
-    |> check_error_state()
-    |> GamesParser.parse_many()
+    with body when is_binary(body) <-
+           HttpClient.idempotent_post(search_url(), search_query(term), headers()),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_internal_error(json) do
+      json
+      |> Enum.map(& &1["game"])
+      |> GamesParser.parse_basic()
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
   end
 
   def find_one(_id) do
@@ -25,14 +33,12 @@ defmodule Skaro.IGDB do
     # |> GamesParser.parse_one()
   end
 
-  defp check_error_state({:error, reason}), do: {:error, reason}
-
-  defp check_error_state({:ok, [%{"title" => error_title, "status" => status}]}) do
+  defp check_internal_error([%{"title" => error_title, "status" => status}]) do
     {:error, "Code #{status}, reason: #{error_title}"}
   end
 
-  defp check_error_state({:ok, json}) do
-    {:ok, json}
+  defp check_internal_error(_) do
+    :ok
   end
 
   defp search_url(), do: "#{@api_url}/search"

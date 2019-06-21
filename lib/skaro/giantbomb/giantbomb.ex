@@ -11,31 +11,44 @@ defmodule Skaro.Giantbomb do
 
   alias Skaro.Giantbomb.GamesParser
   alias Skaro.HttpClient
+  alias Skaro.Parser
 
   def search(term) do
-    base_params()
-    |> Map.put("resources", "game")
-    |> Map.put("query", term)
-    |> Map.put("field_list", @minimal_game_fields)
-    |> HttpClient.get(search_url())
-    |> check_error_state()
-    |> GamesParser.parse_many()
+    search_params =
+      base_params()
+      |> Map.put("resources", "game")
+      |> Map.put("query", term)
+      |> Map.put("field_list", @minimal_game_fields)
+
+    with body when is_binary(body) <- HttpClient.get(search_params, search_url()),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_error_state(json) do
+      GamesParser.parse_many(json)
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
   end
 
   def find_one(id) do
-    base_params()
-    |> Map.put("field_list", @full_game_fields)
-    |> HttpClient.get(game_url(id))
-    |> check_error_state()
-    |> GamesParser.parse_one()
+    find_params =
+      base_params()
+      |> Map.put("field_list", @full_game_fields)
+
+    with body <- HttpClient.get(find_params, game_url(id)),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_error_state(json) do
+      GamesParser.parse_one(json)
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
   end
 
-  defp check_error_state({:error, reason}), do: {:error, reason}
-
-  defp check_error_state({:ok, json}) do
+  defp check_error_state(json) do
     case json["error"] do
       "OK" ->
-        {:ok, json}
+        :ok
 
       reason ->
         {:error, reason}
