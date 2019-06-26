@@ -4,8 +4,6 @@ defmodule Skaro.IGDB do
   """
   @behaviour Skaro.GamesRemote
 
-  @api_url "https://api-v3.igdb.com"
-
   alias Skaro.HttpClient
   alias Skaro.IGDB.Parsers.Games, as: GamesParser
   alias Skaro.Parser
@@ -41,7 +39,7 @@ defmodule Skaro.IGDB do
     :ok
   end
 
-  defp search_url(), do: "#{@api_url}/search"
+  defp search_url(), do: "#{api_url()}/search"
 
   defp headers() do
     [
@@ -49,6 +47,8 @@ defmodule Skaro.IGDB do
       {"user-key", Application.fetch_env!(:skaro, :igdb)[:api_key]}
     ]
   end
+
+  defp api_url(), do: Application.fetch_env!(:skaro, :igdb)[:base_url]
 
   defp search_query(term) do
     """

@@ -30,26 +30,26 @@ defmodule Skaro.HttpClient do
   end
 
   defp post_with_retries(url, body, headers, retries) do
-    case HTTPoison.post(url, body, headers) do
-      {:ok, %HTTPoison.Response{status_code: code, body: body}} when code < 400 ->
+    case url
+         |> HTTPoison.post(body, headers, timeout: 1_000, recv_timeout: 1_000)
+         |> retrieve_body() do
+      {:ok, body} ->
         body
 
-      {:ok, %HTTPoison.Response{status_code: code}} ->
-        {
-          :error,
-          """
-          HTTP status code: #{code}.
-          Accessed url: [#{url}].
-          Request body was: #{body}
-          """
-        }
-
-      {:error, %HTTPoison.Error{reason: reason}} ->
+      {:error, _} = error_tuple ->
         if retries > 0 do
           post_with_retries(url, body, headers, retries - 1)
         else
-          {:error, reason}
+          error_tuple
         end
     end
   end
+
+  defp retrieve_body({:error, %HTTPoison.Error{reason: reason}}), do: {:error, reason}
+
+  defp retrieve_body({:ok, %HTTPoison.Response{status_code: code, body: body}}) when code < 400,
+    do: {:ok, body}
+
+  defp retrieve_body({:ok, %HTTPoison.Response{status_code: code}}),
+    do: {:error, "HTTP status code: #{code}."}
 end

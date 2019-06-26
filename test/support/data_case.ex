@@ -30,19 +30,19 @@ defmodule Skaro.DataCase do
   setup tags do
     :ok = Sandbox.checkout(Skaro.Repo)
 
-    bypass = setup_bypass(tags[:bypass])
+    {bypass, igdb_api} = setup_bypass(tags[:bypass])
 
     unless tags[:async] do
       Sandbox.mode(Skaro.Repo, {:shared, self()})
     end
 
-    {:ok, bypass: bypass}
+    {:ok, bypass: bypass, igdb_api: igdb_api}
   end
 
-  defp setup_bypass(nil), do: nil
+  defp setup_bypass(nil), do: {nil, nil}
 
   defp setup_bypass(true) do
-    bypass = Bypass.open()
+    bypass = Bypass.open(port: 1234)
 
     Application.put_env(
       :skaro,
@@ -51,7 +51,16 @@ defmodule Skaro.DataCase do
       api_key: "giantbomb_api_key"
     )
 
-    bypass
+    igdb_api = Bypass.open(port: 1235)
+
+    Application.put_env(
+      :skaro,
+      :igdb,
+      base_url: "http://localhost:#{igdb_api.port}",
+      api_key: "igdb_api_key"
+    )
+
+    {bypass, igdb_api}
   end
 
   @doc """
