@@ -4,7 +4,7 @@ defmodule Skaro.IGDBTest do
 
   alias Plug.Conn
 
-  alias Skaro.Core.Game
+  alias Skaro.Core.{Game, Platform}
   alias Skaro.IGDB
 
   describe "search/1" do
@@ -74,7 +74,14 @@ defmodule Skaro.IGDBTest do
             "Warcraft 2 is a successor of the popular Warcraft real-time strategy game. The game contains many improvements over the previous version in graphics, sounds and playability.",
           release_date: DateTime.from_naive!(~N[1995-12-09 00:00:00], "Etc/UTC"),
           rating: 92.5,
-          ratings_count: 1
+          ratings_count: 1,
+          platforms: [
+            %Platform{external_id: 6, name: "PC (Microsoft Windows)"},
+            %Platform{external_id: 7, name: "PlayStation"},
+            %Platform{external_id: 13, name: "PC DOS"},
+            %Platform{external_id: 14, name: "Mac"},
+            %Platform{external_id: 32, name: "Sega Saturn"}
+          ]
         },
         %Game{
           external_id: 132,
@@ -83,7 +90,11 @@ defmodule Skaro.IGDBTest do
             "Warcraft 3: Reign of Chaos is an RTS made by Blizzard Entertainment. Take control of either the Humans, the Orcs, the Night Elves or the Undead, all with different unit types and heroes with unique abilities.",
           release_date: DateTime.from_naive!(~N[2002-07-03 00:00:00], "Etc/UTC"),
           rating: 93.0,
-          ratings_count: 4
+          ratings_count: 4,
+          platforms: [
+            %Platform{external_id: 6, name: "PC (Microsoft Windows)"},
+            %Platform{external_id: 14, name: "Mac"}
+          ]
         }
       ]
 

@@ -13,9 +13,12 @@ defmodule Skaro.IGDB do
            HttpClient.idempotent_post(search_url(), search_query(term), headers()),
          {:ok, json} <- Parser.parse_json(body),
          :ok <- check_internal_error(json) do
-      json
-      |> Enum.map(& &1["game"])
-      |> GamesParser.parse_basic()
+      games =
+        json
+        |> Enum.map(& &1["game"])
+        |> GamesParser.parse_basic()
+
+      {:ok, games}
     else
       {:error, _} = error_tuple ->
         error_tuple
