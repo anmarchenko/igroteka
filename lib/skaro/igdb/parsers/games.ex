@@ -4,7 +4,7 @@ defmodule Skaro.IGDB.Parsers.Games do
   """
   alias Skaro.Core.Game
 
-  alias Skaro.IGDB.Parsers.Platforms
+  alias Skaro.IGDB.Parsers.{Images, Platforms}
 
   def parse_basic(json) when is_list(json), do: Enum.map(json, &parse_basic/1)
 
@@ -16,7 +16,8 @@ defmodule Skaro.IGDB.Parsers.Games do
       short_description: game["summary"],
       rating: game["aggregated_rating"],
       ratings_count: game["aggregated_rating_count"],
-      platforms: Platforms.parse_basic(game["platforms"])
+      platforms: Platforms.parse_basic(game["platforms"]),
+      cover: Images.parse_cover(game["cover"])
     }
   end
 end

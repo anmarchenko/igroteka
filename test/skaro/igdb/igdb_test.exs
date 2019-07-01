@@ -4,7 +4,7 @@ defmodule Skaro.IGDBTest do
 
   alias Plug.Conn
 
-  alias Skaro.Core.{Game, Platform}
+  alias Skaro.Core.{Game, Image, Platform}
   alias Skaro.IGDB
 
   describe "search/1" do
@@ -81,7 +81,13 @@ defmodule Skaro.IGDBTest do
             %Platform{external_id: 13, name: "PC DOS"},
             %Platform{external_id: 14, name: "Mac"},
             %Platform{external_id: 32, name: "Sega Saturn"}
-          ]
+          ],
+          cover: %Image{
+            big_url:
+              "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/olpk2nfqu4susanmykqu.jpg",
+            thumb_url:
+              "https://images.igdb.com/igdb/image/upload/t_cover_small_2x/olpk2nfqu4susanmykqu.jpg"
+          }
         },
         %Game{
           external_id: 132,
@@ -94,7 +100,13 @@ defmodule Skaro.IGDBTest do
           platforms: [
             %Platform{external_id: 6, name: "PC (Microsoft Windows)"},
             %Platform{external_id: 14, name: "Mac"}
-          ]
+          ],
+          cover: %Image{
+            big_url:
+              "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/ad2vrrlzdsfy3s2fjtgv.jpg",
+            thumb_url:
+              "https://images.igdb.com/igdb/image/upload/t_cover_small_2x/ad2vrrlzdsfy3s2fjtgv.jpg"
+          }
         }
       ]
 
