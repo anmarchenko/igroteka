@@ -4,6 +4,13 @@ defmodule Skaro.IGDB.Parsers.Images do
   """
   alias Skaro.Core.Image
 
+  def parse_cover(nil) do
+    %Image{
+      thumb_url: "https://via.placeholder.com/100x120?text=No%20cover",
+      big_url: "https://via.placeholder.com/160x192?text=No%20cover"
+    }
+  end
+
   def parse_cover(json) do
     %Image{
       thumb_url: image_url(:cover, :small, json["image_id"]),

@@ -38,7 +38,7 @@ defmodule Skaro.IGDBTest do
                   {"id": 14, "name": "Mac"},
                   {"id": 32, "name": "Sega Saturn"}
                 ],
-                "summary": "Warcraft 2 is a successor of the popular Warcraft real-time strategy game. The game contains many improvements over the previous version in graphics, sounds and playability."
+                "summary": "Warcraft 2 is a successor of the popular Warcraft real-time strategy game. The game contains many improvements over the previous version in graphics, sounds and playability. The game contains many improvements over the previous version in graphics, sounds and playability. The game contains many improvements over the previous version in graphics, sounds and playability."
               },
               "id": 94347
             },
@@ -46,10 +46,6 @@ defmodule Skaro.IGDBTest do
               "game": {
                 "aggregated_rating": 93.0,
                 "aggregated_rating_count": 4,
-                "cover": {
-                  "id": 63923,
-                  "image_id": "ad2vrrlzdsfy3s2fjtgv"
-                },
                 "first_release_date": 1025654400,
                 "id": 132,
                 "name": "Warcraft III: Reign of Chaos",
@@ -71,7 +67,7 @@ defmodule Skaro.IGDBTest do
           external_id: 130,
           name: "Warcraft II: Tides of Darkness",
           short_description:
-            "Warcraft 2 is a successor of the popular Warcraft real-time strategy game. The game contains many improvements over the previous version in graphics, sounds and playability.",
+            "Warcraft 2 is a successor of the popular Warcraft real-time strategy game. The game contains many improvements over the previous version in graphics, sounds and playability. The game contains many improvements over the previous version in graphics, sounds and playability. The game contains many i...",
           release_date: DateTime.from_naive!(~N[1995-12-09 00:00:00], "Etc/UTC"),
           rating: 92.5,
           ratings_count: 1,
@@ -102,10 +98,8 @@ defmodule Skaro.IGDBTest do
             %Platform{external_id: 14, name: "Mac"}
           ],
           cover: %Image{
-            big_url:
-              "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/ad2vrrlzdsfy3s2fjtgv.jpg",
-            thumb_url:
-              "https://images.igdb.com/igdb/image/upload/t_cover_small_2x/ad2vrrlzdsfy3s2fjtgv.jpg"
+            big_url: "https://via.placeholder.com/160x192?text=No%20cover",
+            thumb_url: "https://via.placeholder.com/100x120?text=No%20cover"
           }
         }
       ]

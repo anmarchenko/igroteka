@@ -13,9 +13,7 @@ defmodule Skaro.Core do
   end
 
   def search(term) do
-    cached_result("games_index_term_#{term}_v0.1", fn ->
-      @remote.search(term)
-    end)
+    @remote.search(term)
   end
 
   defp cached_result(cache_key, api_call) do
