@@ -21,6 +21,9 @@ defmodule Skaro.IGDB.Parsers.Games do
     }
   end
 
+  def parse_full(json) when is_list(json), do: Enum.map(json, &parse_full/1)
+  def parse_full(game), do: parse_basic(game)
+
   defp shorten(nil), do: nil
   defp shorten(""), do: ""
 

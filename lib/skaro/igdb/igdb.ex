@@ -25,13 +25,21 @@ defmodule Skaro.IGDB do
     end
   end
 
-  def find_one(_id) do
-    %{}
-    # base_params()
-    # |> Map.put("field_list", @full_game_fields)
-    # |> HttpClient.get(game_url(id))
-    # |> check_error_state()
-    # |> GamesParser.parse_one()
+  def find_one(id) do
+    with body when is_binary(body) <-
+           HttpClient.idempotent_post(games_url(), game_by_id_query(id), headers()),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_internal_error(json) do
+      [game] =
+        json
+        |> IO.inspect()
+        |> GamesParser.parse_full()
+
+      {:ok, game}
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
   end
 
   defp check_internal_error([%{"title" => error_title, "status" => status}]) do
@@ -43,6 +51,7 @@ defmodule Skaro.IGDB do
   end
 
   defp search_url(), do: "#{api_url()}/search"
+  defp games_url(), do: "#{api_url()}/games"
 
   defp headers() do
     [
@@ -58,6 +67,13 @@ defmodule Skaro.IGDB do
     search "#{term}";
     where game != null & game.category=0 & game.first_release_date != null;
     fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.cover.image_id,game.platforms.id,game.platforms.name;
+    """
+  end
+
+  defp game_by_id_query(id) do
+    """
+    where id = #{id};
+    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,cover.image_id,platforms.*,franchises.*,involved_companies.*;
     """
   end
 end

@@ -3,3 +3,94 @@ curl https://api-v3.igdb.com/search -d 'search "shadows of the colossus"; where 
 
 # rating
 curl https://api-v3.igdb.com/games -d 'fields name,aggregated_rating,aggregated_rating_count; where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5; sort aggregated_rating desc; limit 50;' -H 'user-key: a914dbbf317210ceaf13610ba6a8b544' -H 'Accept: application/json'
+
+[
+  %{
+    "aggregated_rating" => 93.0,
+    "aggregated_rating_count" => 4,
+    "cover" => %{"id" => 63923, "image_id" => "ad2vrrlzdsfy3s2fjtgv"},
+    "first_release_date" => 1025654400,
+    "franchises" => [
+      %{
+        "created_at" => 1382140800,
+        "games" => [123, 129, 130, 131, 132, 133, 227, 228, 229, 1279, 1332,
+         11704, 19162, 21971, 21973, 21974, 21975, 21976, 21977, 25601, 27429,
+         52016, 75379, 75380, 76152, 96374, 105125, 111650, 111652, 111655],
+        "id" => 135,
+        "name" => "Warcraft",
+        "slug" => "warcraft",
+        "updated_at" => 1382140800,
+        "url" => "https://www.igdb.com/franchises/warcraft"
+      }
+    ],
+    "id" => 132,
+    "involved_companies" => [
+      %{
+        "company" => 51,
+        "created_at" => 1383782400,
+        "developer" => true,
+        "game" => 132,
+        "id" => 8012,
+        "porting" => false,
+        "publisher" => true,
+        "supporting" => false,
+        "updated_at" => 1383782400
+      },
+      %{
+        "company" => 24,
+        "created_at" => 1415404800,
+        "developer" => false,
+        "game" => 132,
+        "id" => 19472,
+        "porting" => false,
+        "publisher" => true,
+        "supporting" => false,
+        "updated_at" => 1415404800
+      },
+      %{
+        "company" => 37,
+        "created_at" => 1415404800,
+        "developer" => false,
+        "game" => 132,
+        "id" => 19473,
+        "porting" => false,
+        "publisher" => true,
+        "supporting" => false,
+        "updated_at" => 1415404800
+      }
+    ],
+    "name" => "Warcraft III: Reign of Chaos",
+    "platforms" => [
+      %{
+        "abbreviation" => "PC",
+        "alternative_name" => "mswin",
+        "category" => 4,
+        "created_at" => 1297555200,
+        "id" => 6,
+        "name" => "PC (Microsoft Windows)",
+        "platform_logo" => 203,
+        "slug" => "win",
+        "updated_at" => 1470009600,
+        "url" => "https://www.igdb.com/platforms/win",
+        "versions" => [1, 13, 14, 15, 124],
+        "websites" => [2]
+      },
+      %{
+        "abbreviation" => "Mac",
+        "alternative_name" => "Mac OS",
+        "category" => 4,
+        "created_at" => 1297641600,
+        "id" => 14,
+        "name" => "Mac",
+        "platform_logo" => 100,
+        "slug" => "mac",
+        "updated_at" => 1394236800,
+        "url" => "https://www.igdb.com/platforms/mac",
+        "versions" => [45, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150,
+         151],
+        "websites" => [5]
+      }
+    ],
+    "summary" => "Warcraft 3: Reign of Chaos is an RTS made by Blizzard Entertainment. Take control of either the Humans, the Orcs, the Night Elves or the Undead, all with different unit types and heroes with unique abilities.Play the story driven single player campaign, go online to play default- or custom maps against people around the world or create your own maps with the map creation tool."
+  }
+]
