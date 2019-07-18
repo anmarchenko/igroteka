@@ -72,6 +72,7 @@ defmodule Skaro.MixProject do
 
       # testing
       {:timex, "~> 3.1"},
+      {:tzdata, "~> 1.0.1"},
       {:ex_machina, "~> 2.2"},
       {:mox, "~> 0.4", only: :test},
       {:bypass, "~> 1.0", only: :test}

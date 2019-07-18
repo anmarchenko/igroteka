@@ -32,7 +32,6 @@ defmodule Skaro.IGDB do
          :ok <- check_internal_error(json) do
       [game] =
         json
-        |> IO.inspect()
         |> GamesParser.parse_full()
 
       {:ok, game}
@@ -73,7 +72,7 @@ defmodule Skaro.IGDB do
   defp game_by_id_query(id) do
     """
     where id = #{id};
-    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,cover.image_id,platforms.*,franchises.*,involved_companies.*;
+    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,url,category,status,storyline,cover.image_id,platforms.*,franchises.*,involved_companies.developer,involved_companies.publisher,involved_companies.company.*;
     """
   end
 end

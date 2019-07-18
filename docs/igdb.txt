@@ -4,10 +4,11 @@ curl https://api-v3.igdb.com/search -d 'search "shadows of the colossus"; where 
 # rating
 curl https://api-v3.igdb.com/games -d 'fields name,aggregated_rating,aggregated_rating_count; where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5; sort aggregated_rating desc; limit 50;' -H 'user-key: a914dbbf317210ceaf13610ba6a8b544' -H 'Accept: application/json'
 
-[
+[[
   %{
     "aggregated_rating" => 93.0,
     "aggregated_rating_count" => 4,
+    "category" => 0,
     "cover" => %{"id" => 63923, "image_id" => "ad2vrrlzdsfy3s2fjtgv"},
     "first_release_date" => 1025654400,
     "franchises" => [
@@ -26,37 +27,81 @@ curl https://api-v3.igdb.com/games -d 'fields name,aggregated_rating,aggregated_
     "id" => 132,
     "involved_companies" => [
       %{
-        "company" => 51,
-        "created_at" => 1383782400,
+        "company" => %{
+          "change_date_category" => 7,
+          "country" => 840,
+          "created_at" => 1300060800,
+          "description" => "By focusing on creating well-designed, highly enjoyable entertainment experiences, Blizzard Entertainment has maintained an unparalleled reputation for quality since its inception.",
+          "developed" => [120, 123, 129, 130, 132, 133, 227, 228, 229, 230, 239,
+           452, 453, 455, 456, 457, 458, 1253, 1279, 1332, 3157, 3182, 7313,
+           8173, 11355, 11593, 11704, 19162, 21971, 21973, 21974, 21975, 21976,
+           21977, ...],
+          "id" => 51,
+          "logo" => 29,
+          "name" => "Blizzard Entertainment",
+          "parent" => 179,
+          "published" => [120, 123, 125, 126, 129, 130, 131, 132, 133, 227, 228,
+           230, 239, 246, 456, 457, 458, 1279, 1332, 3157, 3182, 7313, 8173,
+           11355, 11593, 19162, 21971, 21973, 21974, ...],
+          "slug" => "blizzard-entertainment",
+          "start_date" => 765072000,
+          "start_date_category" => 3,
+          "updated_at" => 1562976000,
+          "url" => "https://www.igdb.com/companies/blizzard-entertainment",
+          "websites" => [690]
+        },
         "developer" => true,
-        "game" => 132,
         "id" => 8012,
-        "porting" => false,
-        "publisher" => true,
-        "supporting" => false,
-        "updated_at" => 1383782400
+        "publisher" => true
       },
       %{
-        "company" => 24,
-        "created_at" => 1415404800,
+        "company" => %{
+          "change_date" => 1230681600,
+          "change_date_category" => 2,
+          "country" => 840,
+          "created_at" => 1299283200,
+          "developed" => [29, 222, 1927, 2910, 2911, 7723, 8828, 36288],
+          "id" => 24,
+          "logo" => 43,
+          "name" => "Sierra Entertainment",
+          "published" => [29, 126, 132, 133, 222, 231, 232, 233, 246, 250, 255,
+           297, 302, 309, 311, 313, 314, 316, 317, 319, 456, 519, 729, 734, 735,
+           749, 750, 751, 792, ...],
+          "slug" => "sierra-entertainment",
+          "start_date" => 291686400,
+          "start_date_category" => 3,
+          "updated_at" => 1536796800,
+          "url" => "https://www.igdb.com/companies/sierra-entertainment"
+        },
         "developer" => false,
-        "game" => 132,
         "id" => 19472,
-        "porting" => false,
-        "publisher" => true,
-        "supporting" => false,
-        "updated_at" => 1415404800
+        "publisher" => true
       },
       %{
-        "company" => 37,
-        "created_at" => 1415404800,
+        "company" => %{
+          "change_date_category" => 7,
+          "country" => 392,
+          "created_at" => 1300060800,
+          "description" => "Capcom Co., Ltd. is a Japanese video game developer and publisher known for creating numerous multi-million selling game franchises, including Street Fighter, Mega Man, Resident Evil, Devil May Cry, Ace Attorney, Monster Hunter, Dead Rising, Breath of Fire, as well as games based on the Disney animated properties.",
+          "developed" => [112, 134, 135, 136, 243, 424, 496, 497, 847, 880, 884,
+           966, 967, 969, 973, 975, 976, 977, 978, 1032, 1035, 1041, 1082, 1280,
+           1288, 1348, 1357, 1402, 1426, 1427, 1428, 1429, ...],
+          "id" => 37,
+          "logo" => 59,
+          "name" => "Capcom",
+          "published" => [112, 132, 133, 134, 135, 136, 243, 424, 496, 497, 549,
+           551, 602, 847, 880, 884, 966, 967, 968, 969, 970, 971, 972, 973, 974,
+           975, 976, 977, ...],
+          "slug" => "capcom",
+          "start_date" => 315446400,
+          "start_date_category" => 2,
+          "updated_at" => 1563321600,
+          "url" => "https://www.igdb.com/companies/capcom",
+          "websites" => [703]
+        },
         "developer" => false,
-        "game" => 132,
         "id" => 19473,
-        "porting" => false,
-        "publisher" => true,
-        "supporting" => false,
-        "updated_at" => 1415404800
+        "publisher" => true
       }
     ],
     "name" => "Warcraft III: Reign of Chaos",
@@ -91,6 +136,7 @@ curl https://api-v3.igdb.com/games -d 'fields name,aggregated_rating,aggregated_
         "websites" => [5]
       }
     ],
-    "summary" => "Warcraft 3: Reign of Chaos is an RTS made by Blizzard Entertainment. Take control of either the Humans, the Orcs, the Night Elves or the Undead, all with different unit types and heroes with unique abilities.Play the story driven single player campaign, go online to play default- or custom maps against people around the world or create your own maps with the map creation tool."
+    "summary" => "Warcraft 3: Reign of Chaos is an RTS made by Blizzard Entertainment. Take control of either the Humans, the Orcs, the Night Elves or the Undead, all with different unit types and heroes with unique abilities.Play the story driven single player campaign, go online to play default- or custom maps against people around the world or create your own maps with the map creation tool.",
+    "url" => "https://www.igdb.com/games/warcraft-iii-reign-of-chaos"
   }
 ]

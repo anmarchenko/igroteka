@@ -4,10 +4,12 @@ defmodule Skaro.IGDB.Parsers.Platforms do
   """
   alias Skaro.Core.Platform
 
+  def parse_basic(nil), do: []
   def parse_basic(json) when is_list(json), do: Enum.map(json, &parse_basic/1)
 
   def parse_basic(platform) do
     %Platform{
+      id: platform["id"],
       external_id: platform["id"],
       name: platform["name"]
     }
