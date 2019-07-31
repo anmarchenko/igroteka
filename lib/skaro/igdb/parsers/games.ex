@@ -3,6 +3,7 @@ defmodule Skaro.IGDB.Parsers.Games do
   Parses IGDB json to Game struct
   """
   alias Skaro.Core.Game
+  alias Skaro.Parser
 
   alias Skaro.IGDB.Parsers.{Companies, Franchises, Images, Platforms}
 
@@ -25,18 +26,21 @@ defmodule Skaro.IGDB.Parsers.Games do
   def parse_full(json) when is_list(json), do: Enum.map(json, &parse_full/1)
 
   def parse_full(game) do
-    developers =
-      game["involved_companies"] |> Enum.filter(& &1["developer"]) |> Enum.map(& &1["company"])
+    companies = game["involved_companies"] || []
 
-    publishers =
-      game["involved_companies"] |> Enum.filter(& &1["publisher"]) |> Enum.map(& &1["company"])
+    developers =
+      companies
+      |> Enum.filter(& &1["developer"])
+      |> Enum.map(& &1["company"])
+
+    publishers = companies |> Enum.filter(& &1["publisher"]) |> Enum.map(& &1["company"])
 
     %Game{
       id: game["id"],
       external_id: game["id"],
       external_url: game["url"],
       name: game["name"],
-      release_date: DateTime.from_unix!(game["first_release_date"]),
+      release_date: Parser.parse_date(game["first_release_date"]),
       short_description: game["summary"],
       description: game["storyline"],
       rating: game["aggregated_rating"],

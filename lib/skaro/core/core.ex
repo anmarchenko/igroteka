@@ -7,29 +7,31 @@ defmodule Skaro.Core do
   @remote Application.get_env(:skaro, :games_remote)
 
   def get(id) do
-    @remote.find_one(id)
+    cached_result("games_show_#{id}_v1.0", fn ->
+      @remote.find_one(id)
+    end)
   end
 
   def search(term) do
-    # cached_result("games_index_term_#{term}_v0.1", fn ->
-    @remote.search(term)
-    # end)
+    cached_result("games_index_term_#{term}_v1.0", fn ->
+      @remote.search(term)
+    end)
   end
 
-  # defp cached_result(cache_key, api_call) do
-  #   case ConCache.get(:external_api_cache, cache_key) do
-  #     nil ->
-  #       case api_call.() do
-  #         {:ok, result} ->
-  #           ConCache.put(:external_api_cache, cache_key, result)
-  #           {:ok, result}
+  defp cached_result(cache_key, api_call) do
+    case ConCache.get(:external_api_cache, cache_key) do
+      nil ->
+        case api_call.() do
+          {:ok, result} ->
+            ConCache.put(:external_api_cache, cache_key, result)
+            {:ok, result}
 
-  #         {:error, reason} ->
-  #           {:error, reason}
-  #       end
+          {:error, reason} ->
+            {:error, reason}
+        end
 
-  #     result ->
-  #       {:ok, result}
-  #   end
-  # end
+      result ->
+        {:ok, result}
+    end
+  end
 end

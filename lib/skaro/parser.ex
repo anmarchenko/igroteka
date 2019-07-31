@@ -12,4 +12,7 @@ defmodule Skaro.Parser do
         {:error, "Invalid json: #{body}"}
     end
   end
+
+  def parse_date(nil), do: nil
+  def parse_date(num) when is_integer(num), do: DateTime.from_unix!(num)
 end

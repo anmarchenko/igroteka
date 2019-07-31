@@ -28,7 +28,7 @@ defmodule SkaroWeb.GameControllerTest do
       cached_value =
         ConCache.get(
           :external_api_cache,
-          "games_index_term_civilization_v0.1"
+          "games_index_term_civilization_v1.0"
         )
 
       assert nil == cached_value
@@ -62,7 +62,7 @@ defmodule SkaroWeb.GameControllerTest do
       cached_value =
         ConCache.get(
           :external_api_cache,
-          "games_index_term_xcom_v0.1"
+          "games_index_term_xcom_v1.0"
         )
 
       assert [game] == cached_value
@@ -90,7 +90,7 @@ defmodule SkaroWeb.GameControllerTest do
       cached_value =
         ConCache.get(
           :external_api_cache,
-          "games_show_453_v0.1"
+          "games_show_453_v1.0"
         )
 
       assert nil == cached_value
@@ -113,7 +113,7 @@ defmodule SkaroWeb.GameControllerTest do
       cached_value =
         ConCache.get(
           :external_api_cache,
-          "game_show_2355_v0.1"
+          "games_show_2355_v1.0"
         )
 
       assert game == cached_value

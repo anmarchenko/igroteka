@@ -29,13 +29,13 @@ defmodule Skaro.IGDB do
     with body when is_binary(body) <-
            HttpClient.idempotent_post(games_url(), game_by_id_query(id), headers()),
          {:ok, json} <- Parser.parse_json(body),
-         :ok <- check_internal_error(json) do
-      [game] =
-        json
-        |> GamesParser.parse_full()
-
+         :ok <- check_internal_error(json),
+         [game] <- GamesParser.parse_full(json) do
       {:ok, game}
     else
+      [] ->
+        {:error, :not_found}
+
       {:error, _} = error_tuple ->
         error_tuple
     end
