@@ -48,7 +48,7 @@ defmodule Skaro.MixProject do
 
       # auth
       {:bcrypt_elixir, "~> 2.0"},
-      {:guardian, "~> 1.0"},
+      {:guardian, "~> 2.0"},
 
       # utils
       {:scrivener_ecto, "~> 2.0"},
@@ -59,7 +59,7 @@ defmodule Skaro.MixProject do
       {:httpoison, "~> 1.4"},
 
       # caching
-      {:con_cache, "~> 0.13.0"},
+      {:con_cache, "~> 0.14.0"},
 
       # error handling
       {:sentry, "~> 7.0"},
