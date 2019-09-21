@@ -65,7 +65,7 @@ defmodule Skaro.IGDB do
     """
     search "#{term}";
     where game != null & game.category=0 & game.first_release_date != null;
-    fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.cover.image_id,game.platforms.id,game.platforms.name;
+    fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.url,game.cover.image_id,game.platforms.id,game.platforms.name;
     """
   end
 

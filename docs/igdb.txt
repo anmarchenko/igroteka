@@ -1,6 +1,8 @@
 # search
 curl https://api-v3.igdb.com/search -d 'search "shadows of the colossus"; where game != null & (game.version_parent = null | game.version_title = "Remake" | game.version_title = "Remaster" | game.version_title = "Deluxe") & game.category=0 & game.first_release_date != null; fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.cover.image_id,game.platforms.id,game.platforms.name;' -H 'user-key: 307b910d90b2aa2e9a60533a71e86bf6' -H 'Accept: application/json'
 
+curl https://api-v3.igdb.com/search -d 'search "pc"; where platform != null; fields platform.name,platform.id;' -H 'user-key: 307b910d90b2aa2e9a60533a71e86bf6' -H 'Accept: application/json'
+
 # rating
 curl https://api-v3.igdb.com/games -d 'fields name,aggregated_rating,aggregated_rating_count; where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5; sort aggregated_rating desc; limit 50;' -H 'user-key: a914dbbf317210ceaf13610ba6a8b544' -H 'Accept: application/json'
 

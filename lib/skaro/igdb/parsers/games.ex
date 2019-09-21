@@ -13,6 +13,7 @@ defmodule Skaro.IGDB.Parsers.Games do
     %Game{
       id: game["id"],
       external_id: game["id"],
+      external_url: game["url"],
       name: game["name"],
       release_date: DateTime.from_unix!(game["first_release_date"]),
       short_description: shorten(game["summary"]),
