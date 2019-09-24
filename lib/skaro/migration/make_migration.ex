@@ -5,19 +5,19 @@ defmodule Skaro.Migration.MakeMigration do
 
   alias Skaro.IGDB
 
-  # @platforms_mapping %{
-  #   "PC" => [
-  #     %{name: "PC (Microsoft Windows)", id: 6},
-  #     %{name: "PC DOS", id: 13}
-  #   ],
-  #   "Mac" => [%{name: "Mac", id: 14}],
-  #   "Nintendo Switch" => [%{name: "Nintendo Switch", id: 130}],
-  #   "PlayStation 4" => [%{name: "PlayStation 4", id: 48}],
-  #   "Android" => [%{name: "Android", id: 34}],
-  #   "Xbox 360" => [%{name: "Xbox 360", id: 12}],
-  #   "Nintendo Entertainment System" => [%{name: "Nintendo Entertainment System (NES)", id: 18}],
-  #   "iPhone" => [%{name: "iOS", id: 39}]
-  # }
+  @platforms_mapping %{
+    "PC" => [
+      %{name: "PC (Microsoft Windows)", id: 6},
+      %{name: "PC DOS", id: 13}
+    ],
+    "Mac" => [%{name: "Mac", id: 14}],
+    "Nintendo Switch" => [%{name: "Nintendo Switch", id: 130}],
+    "PlayStation 4" => [%{name: "PlayStation 4", id: 48}],
+    "Android" => [%{name: "Android", id: 34}],
+    "Xbox 360" => [%{name: "Xbox 360", id: 12}],
+    "Nintendo Entertainment System" => [%{name: "Nintendo Entertainment System (NES)", id: 18}],
+    "iPhone" => [%{name: "iOS", id: 39}]
+  }
 
   def run do
     res =
@@ -32,14 +32,18 @@ defmodule Skaro.Migration.MakeMigration do
         {:ok, game} = IGDB.find_one(igdb_id)
 
         platform =
-          Enum.find(game.platforms, fn pl ->
-            pl.name == owned_platform_name
+          Enum.find(@platforms_mapping[owned_platform_name], fn pl ->
+            Enum.find(game.platforms, fn gpl ->
+              pl.name == gpl.name
+            end) != nil
           end)
 
         {entry_id, game, platform}
       end)
       |> Enum.map(fn {entry_id, game, platform} ->
-        "{#{entry_id}, #{inspect(game)}, #{inspect(platform)}}"
+        "{#{entry_id}, #{inspect(SkaroWeb.GameView.render("show.json", %{game: game}))}, #{
+          inspect(SkaroWeb.PlatformView.render("platforms_short.json", %{platform: platform}))
+        }}"
       end)
       |> Enum.join(",\n")
 
