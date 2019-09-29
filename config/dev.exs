@@ -42,7 +42,7 @@ config :phoenix, :plug_init_mode, :runtime
 config :skaro, Skaro.Repo,
   username: "postgres",
   password: "",
-  database: "skaro_dev",
+  database: "skaro_production",
   hostname: "localhost",
   pool_size: 10
 

@@ -67,4 +67,17 @@ defmodule Skaro.Backlog.Entry do
     |> validate_required([:status])
     |> validate_inclusion(:status, @statuses)
   end
+
+  def migrate(%Entry{} = entry, attrs) do
+    entry
+    |> cast(attrs, [
+      :game_id,
+      :game_name,
+      :poster_thumb_url,
+      :game_release_date,
+      :owned_platform_id,
+      :owned_platform_name
+    ])
+    |> cast_assoc(:available_platforms)
+  end
 end

@@ -15,7 +15,10 @@ defmodule Skaro.Migration.MakeMigration do
     "PlayStation 4" => [%{name: "PlayStation 4", id: 48}],
     "Android" => [%{name: "Android", id: 34}],
     "Xbox 360" => [%{name: "Xbox 360", id: 12}],
-    "Nintendo Entertainment System" => [%{name: "Nintendo Entertainment System (NES)", id: 18}],
+    "Nintendo Entertainment System" => [
+      %{name: "Nintendo Entertainment System (NES)", id: 18},
+      %{name: "Family Computer Disk System"}
+    ],
     "iPhone" => [%{name: "iOS", id: 39}]
   }
 
@@ -37,6 +40,10 @@ defmodule Skaro.Migration.MakeMigration do
               pl.name == gpl.name
             end) != nil
           end)
+
+        if platform == nil do
+          raise "platform is nil for game #{game.name}"
+        end
 
         {entry_id, game, platform}
       end)

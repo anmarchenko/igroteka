@@ -6,7 +6,7 @@
 46,Dragon Age II,2011,PC,Dragon Age II,78,2011,https://www.igdb.com/games/dragon-age-ii
 390,Assassin's Creed Odyssey,2018,PlayStation 4,Assassin's Creed: Odyssey,103054,2018,https://www.igdb.com/games/assassins-creed-odyssey
 8,L.A. Noire,2011,Xbox 360,L.A. Noire,109,2011,https://www.igdb.com/games/l-a-noire
-6,Europa Universalis IV,2013,Mac,Europa Universalis IV,1904,2013,https://www.igdb.com/games/europa-universalis-iv
+6,Europa Universalis IV,2013,PC,Europa Universalis IV,1904,2013,https://www.igdb.com/games/europa-universalis-iv
 17,Metal Gear Solid V: The Phantom Pain,2015,PlayStation 4,Metal Gear Solid V: The Phantom Pain,1985,2015,https://www.igdb.com/games/metal-gear-solid-v-the-phantom-pain
 45,Dead Space 2,2011,PC,Dead Space 2,38,2011,https://www.igdb.com/games/dead-space-2
 18,Mass Effect 3,2012,PC,Mass Effect 3,75,2012,https://www.igdb.com/games/mass-effect-3
@@ -25,7 +25,7 @@
 502,Command & Conquer: Red Alert 2,2000,PC,Command & Conquer: Red Alert 2,245,2000,https://www.igdb.com/games/command-conquer-red-alert-2
 455,FTL: Faster Than Light,2012,Mac,FTL: Faster Than Light,3075,2012,https://www.igdb.com/games/ftl-faster-than-light
 465,Super Mario Bros.,1985,Nintendo Entertainment System,Super Mario Bros.,358,1985,https://www.igdb.com/games/super-mario-bros
-483,Fable,2004,PC,Fable,521,2004,https://www.igdb.com/games/fable
+483,Fable,2004,PC,Fable,694,2004,https://www.igdb.com/games/fable
 500,Heroes of Might and Magic III: The Restoration of Erathia,1998,PC,Heroes of Might and Magic III: The Restoration of Erathia,364,1999,https://www.igdb.com/games/heroes-of-might-and-magic-iii-the-restoration-of-erathia
 496,Heroes of Might and Magic II: The Succession Wars,1996,PC,Heroes of Might and Magic II: The Succession Wars,363,1996,https://www.igdb.com/games/heroes-of-might-and-magic-ii-the-succession-wars
 70,Final Fantasy VI,1994,PC,Final Fantasy VI,426,1994,https://www.igdb.com/games/final-fantasy-vi
@@ -55,7 +55,7 @@
 108,Train Fever,2014,PC,Train Fever,9447,2014,https://www.igdb.com/games/train-fever
 141,Mark of the Ninja,2012,PC,Mark of the Ninja,2129,2012,https://www.igdb.com/games/mark-of-the-ninja
 572,Imperator: Rome,2019,Mac,Imperator: Rome,102060,2019,https://www.igdb.com/games/imperator-rome
-583,Ōkami,2006,Nintendo Switch,Ōkami,1271,2013,https://www.igdb.com/games/okami
+583,Ōkami,2006,Nintendo Switch,Ōkami,20744,2013,https://www.igdb.com/games/okami
 504,Master of Orion II: Battle at Antares,1996,PC,Master of Orion II: Battle at Antares,68,1996,https://www.igdb.com/games/master-of-orion-ii-battle-at-antares
 591,Outer Wilds,,PC,Outer Wilds,11737,2019,https://www.igdb.com/games/outer-wilds
 457,Subnautica,2018,PC,Subnautica,9254,2018,https://www.igdb.com/games/subnautica
@@ -108,7 +108,7 @@
 509,Etherlords,2001,PC,Etherlords,11407,2003,https://www.igdb.com/games/etherlords-ii
 514,M.A.X.: Mechanized Assault and Exploration,1996,PC,M.A.X.: Mechanized Assault & Exploration,775,1996,https://www.igdb.com/games/m-a-x-mechanized-assault-exploration
 520,Fallout,1997,PC,Fallout,13,2001,https://www.igdb.com/games/fallout-tactics-brotherhood-of-steel
-600,Divinity: Original Sin II,,Nintendo Switch,Divinity: Original Sin II,11800,2017,https://www.igdb.com/games/divinity-original-sin-ii
+600,Divinity: Original Sin II,,PC,Divinity: Original Sin II,103337,2017,https://www.igdb.com/games/divinity-original-sin-ii
 510,Cossacks: European Wars,2002,PC,Cossacks: European Wars,242,2001,https://www.igdb.com/games/cossacks-european-wars
 183,Stellaris,2016,Mac,Stellaris,11582,2016,https://www.igdb.com/games/stellaris
 478,Myst,1993,PC,Myst V: End of Ages,236,2005,https://www.igdb.com/games/myst-v-end-of-ages
@@ -142,7 +142,7 @@
 118,NieR: Automata,2017,PlayStation 4,NieR: Automata,11208,2017,https://www.igdb.com/games/nier-automata
 260,Hearts of Iron IV,2016,Mac,Hearts of Iron IV,15894,2016,https://www.igdb.com/games/hearts-of-iron-iv
 454,SOMA,2015,PC,SOMA,9727,2015,https://www.igdb.com/games/soma--1
-7,The Last of Us,2013,PlayStation 4,The Last of Us,1009,2013,https://www.igdb.com/games/the-last-of-us
+7,The Last of Us,2013,PlayStation 4,The Last of Us,6036,2013,https://www.igdb.com/games/the-last-of-us
 127,inFamous: Second Son,2014,PlayStation 4,Infamous: Second Son,1941,2014,https://www.igdb.com/games/infamous-second-son
 517,Evil Islands: Curse of the Lost Soul,2001,PC,Evil Islands: Curse of the Lost Soul,13156,2000,https://www.igdb.com/games/evil-islands-curse-of-the-lost-soul
 244,Wolfenstein: The New Order,2014,PlayStation 4,Wolfenstein: The New Order,2031,2014,https://www.igdb.com/games/wolfenstein-the-new-order
@@ -178,11 +178,11 @@
 32,BioShock Infinite,2013,PC,Bioshock Infinite,538,2013,https://www.igdb.com/games/bioshock-infinite
 339,God of War,2018,PlayStation 4,God of War,19560,2018,https://www.igdb.com/games/god-wars-the-complete-legend
 501,The Elder Scrolls III: Morrowind,2002,PC,The Elder Scrolls III: Morrowind,56,2002,https://www.igdb.com/games/the-elder-scrolls-iii-morrowind
-394,Little Nightmares,2017,Nintendo Switch,Little Nightmares,9174,2017,https://www.igdb.com/games/little-nightmares-ii
+394,Little Nightmares,2017,PC,Little Nightmares,9174,2017,https://www.igdb.com/games/little-nightmares-ii
 331,Amnesia: The Dark Descent,2010,PC,Amnesia: The Dark Descent,111,2010,https://www.igdb.com/games/amnesia-the-dark-descent
 109,Crusader Kings II,2012,Mac,Crusader Kings II,2918,2012,https://www.igdb.com/games/crusader-kings-ii
 330,Amnesia: A Machine for Pigs,2013,PC,Amnesia: A Machine for Pigs,1882,2013,https://www.igdb.com/games/amnesia-a-machine-for-pigs
-4,Final Fantasy V,1992,Android,Final Fantasy V,419,1992,https://www.igdb.com/games/final-fantasy-v
+4,Final Fantasy V,1992,PC,Final Fantasy V,419,1992,https://www.igdb.com/games/final-fantasy-v
 42,Final Fantasy XIII-2,2011,Xbox 360,Final Fantasy XIII-2,384,2011,https://www.igdb.com/games/final-fantasy-xiii-2
 65,Bastion,2011,iPhone,Bastion,1983,2011,https://www.igdb.com/games/bastion
 469,Total War: Shogun 2,2011,PC,Total War: Shogun 2,432,2011,https://www.igdb.com/games/total-war-shogun-2
@@ -192,7 +192,7 @@
 493,Gothic II,2003,PC,Gothic II,2262,2002,https://www.igdb.com/games/gothic-ii
 498,Return to Castle Wolfenstein,2001,PC,Return to Castle Wolfenstein,281,2001,https://www.igdb.com/games/return-to-castle-wolfenstein
 507,Caesar III,1998,PC,Caesar III,6332,1998,https://www.igdb.com/games/caesar-iii
-563,Beholder,2016,Nintendo Switch,Beholder,24905,2016,https://www.igdb.com/games/eye-of-the-beholder-ii-the-legend-of-darkmoon
+563,Beholder,2016,Nintendo Switch,Beholder: Complete Edition,24905,2016,https://www.igdb.com/games/eye-of-the-beholder-ii-the-legend-of-darkmoon
 14,Uncharted 4: A Thief's End,2016,PlayStation 4,Uncharted 4: A Thief's End,7331,2016,https://www.igdb.com/games/uncharted-4-a-thief-s-end
 516,Need for Speed II,1997,PC,Need for Speed II,91,1997,https://www.igdb.com/games/need-for-speed-ii
 406,Mario Kart 8,2014,Nintendo Switch,Mario Kart 8,26764,2017,https://www.igdb.com/games/mario-kart-8
@@ -200,9 +200,9 @@
 9,Mass Effect 2,2010,PC,Mass Effect 2,74,2010,https://www.igdb.com/games/mass-effect-2
 550,Dune II: The Building of a Dynasty,1992,PC,Dune II: The Building of a Dynasty,86,1992,https://www.igdb.com/games/dune-ii-the-building-of-a-dynasty
 543,Doom II: Hell on Earth,1994,PC,Doom II: Hell on Earth,312,1994,https://www.igdb.com/games/doom-ii-hell-on-earth
-432,SteamWorld Heist,2015,Nintendo Switch,SteamWorld Heist,15167,2015,https://www.igdb.com/games/steamworld-heist
+432,SteamWorld Heist,2015,Nintendo Switch,SteamWorld Heist,77648,2015,https://www.igdb.com/games/steamworld-heist
 574,A Plague Tale: Innocence,2019,PlayStation 4,A Plague Tale: Innocence,27316,2019,https://www.igdb.com/games/a-plague-tale-innocence
-546,Syndicate Wars,1996,,Syndicate Wars,51,1996,https://www.igdb.com/games/syndicate-wars
+546,Syndicate Wars,1996,PC,Syndicate Wars,51,1996,https://www.igdb.com/games/syndicate-wars
 519,KKND: Krush Kill 'n Destroy Xtreme,1997,PC,24701,24701,,
 538,X-COM: UFO Defense,1993,PC,UFO: Enemy Unknown,24,1994,https://www.igdb.com/games/ufo-enemy-unknown--1
 560,Resident Evil 2,2019,PlayStation 4,Resident Evil 2,19686,2019,https://www.igdb.com/games/resident-evil-2--1
