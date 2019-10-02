@@ -17,7 +17,7 @@ defmodule Skaro.Migration.MakeMigration do
     "Xbox 360" => [%{name: "Xbox 360", id: 12}],
     "Nintendo Entertainment System" => [
       %{name: "Nintendo Entertainment System (NES)", id: 18},
-      %{name: "Family Computer Disk System"}
+      %{name: "Family Computer Disk System", id: 51}
     ],
     "iPhone" => [%{name: "iOS", id: 39}]
   }
@@ -45,9 +45,6 @@ defmodule Skaro.Migration.MakeMigration do
           raise "platform is nil for game #{game.name}"
         end
 
-        {entry_id, game, platform}
-      end)
-      |> Enum.map(fn {entry_id, game, platform} ->
         "{#{entry_id}, #{inspect(SkaroWeb.GameView.render("show.json", %{game: game}))}, #{
           inspect(SkaroWeb.PlatformView.render("platforms_short.json", %{platform: platform}))
         }}"
