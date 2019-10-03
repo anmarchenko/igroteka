@@ -86,6 +86,8 @@ defmodule Skaro.Factory do
       short_description: "Some long text",
       release_date: "1996-12-12 00:00:00",
       cover: build(:image),
+      rating: 85.2,
+      ratings_count: 10,
       platforms: [build(:platform)],
       developers: [build(:company)],
       publishers: [build(:company)],

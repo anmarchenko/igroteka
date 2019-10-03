@@ -48,6 +48,8 @@ defmodule SkaroWeb.GameView do
       name: game.name,
       short_description: game.short_description,
       release_date: game.release_date,
+      rating: game.rating,
+      ratings_count: game.ratings_count,
       poster: ImageView.render("show.json", image: game.cover),
       platforms: PlatformView.render("index.json", platforms: game.platforms)
     }
