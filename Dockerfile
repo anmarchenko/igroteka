@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir:1.8.1 as builder
+FROM bitwalker/alpine-elixir:1.9.1 as builder
 
 # Upgrade the apk-tools to the newest version and everything installed
 RUN apk add --no-cache --upgrade apk-tools@edge && apk upgrade --available
@@ -15,10 +15,10 @@ RUN mix do deps.get, deps.compile
 
 COPY . .
 
-RUN mix release --env=prod --verbose
+RUN mix distillery.release --env=prod --verbose
 RUN cp _build/prod/rel/*/releases/*/*.tar.gz _build/prod/rel/current_release.tar.gz
 
-FROM alpine:3.9
+FROM alpine:3.10.2
 
 ENV VERSION_DATE=2019-03-04
 ENV PORT 4000
