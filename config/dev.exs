@@ -14,9 +14,6 @@ config :skaro, SkaroWeb.Endpoint,
   check_origin: false,
   watchers: []
 
-# use IGDB in dev already
-config :skaro, :games_remote, Skaro.IGDB
-
 # Watch static and templates for browser reloading.
 config :skaro, SkaroWeb.Endpoint,
   live_reload: [
@@ -42,7 +39,7 @@ config :phoenix, :plug_init_mode, :runtime
 config :skaro, Skaro.Repo,
   username: "postgres",
   password: "",
-  database: "skaro_production",
+  database: "skaro_dev",
   hostname: "localhost",
   pool_size: 10
 
