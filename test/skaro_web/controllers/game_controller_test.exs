@@ -111,6 +111,7 @@ defmodule SkaroWeb.GameControllerTest do
       assert game_json["name"] == game.name
       assert game_json["rating"] == game.rating
       assert game_json["ratings_count"] == game.ratings_count
+      assert game_json["external_url"] == game.external_url
 
       cached_value =
         ConCache.get(

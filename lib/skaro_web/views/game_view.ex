@@ -24,6 +24,7 @@ defmodule SkaroWeb.GameView do
     game
     |> minimal_fields
     |> Map.merge(%{
+      external_url: game.external_url,
       developers:
         CompanyView.render(
           "index.json",

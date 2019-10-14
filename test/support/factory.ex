@@ -82,6 +82,7 @@ defmodule Skaro.Factory do
     %Game{
       id: id,
       external_id: to_string(id),
+      external_url: "https://igdb.com/games/#{id}",
       name: "Game #{id}",
       short_description: "Some long text",
       release_date: "1996-12-12 00:00:00",
