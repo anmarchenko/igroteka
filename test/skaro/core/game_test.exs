@@ -51,11 +51,13 @@ defmodule Skaro.Core.GameTest do
         external_links: [
           %{
             url: "http://server1",
-            category_id: "1"
+            external_category_id: "1",
+            category: "official"
           },
           %{
             url: "http://server2",
-            category_id: "2"
+            external_category_id: "2",
+            category: "wikia"
           }
         ]
       }

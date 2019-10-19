@@ -169,9 +169,7 @@
           "start_date_category": 3,
           "updated_at": 1562976000,
           "url": "https://www.igdb.com/companies/blizzard-entertainment",
-          "websites": [
-            690
-          ]
+          "websites": [690]
         },
         "developer": true,
         "publisher": true
@@ -184,16 +182,7 @@
           "change_date_category": 2,
           "country": 840,
           "created_at": 1299283200,
-          "developed": [
-            29,
-            222,
-            1927,
-            2910,
-            2911,
-            7723,
-            8828,
-            36288
-          ],
+          "developed": [29, 222, 1927, 2910, 2911, 7723, 8828, 36288],
           "logo": 43,
           "name": "Sierra Entertainment",
           "published": [
@@ -1149,9 +1138,7 @@
           "start_date_category": 2,
           "updated_at": 1564272000,
           "url": "https://www.igdb.com/companies/capcom",
-          "websites": [
-            703
-          ]
+          "websites": [703]
         },
         "developer": false,
         "publisher": true
@@ -1170,16 +1157,8 @@
         "slug": "win",
         "updated_at": 1470009600,
         "url": "https://www.igdb.com/platforms/win",
-        "versions": [
-          1,
-          13,
-          14,
-          15,
-          124
-        ],
-        "websites": [
-          2
-        ]
+        "versions": [1, 13, 14, 15, 124],
+        "websites": [2]
       },
       {
         "id": 14,
@@ -1192,26 +1171,48 @@
         "slug": "mac",
         "updated_at": 1394236800,
         "url": "https://www.igdb.com/platforms/mac",
-        "versions": [
-          45,
-          141,
-          142,
-          143,
-          144,
-          145,
-          146,
-          147,
-          148,
-          149,
-          150,
-          151
-        ],
-        "websites": [
-          5
-        ]
+        "versions": [45, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151],
+        "websites": [5]
       }
     ],
     "summary": "Warcraft 3: Reign of Chaos is an RTS made by Blizzard Entertainment. Take control of either the Humans, the Orcs, the Night Elves or the Undead, all with different unit types and heroes with unique abilities.Play the story driven single player campaign, go online to play default- or custom maps against people around the world or create your own maps with the map creation tool.",
-    "url": "https://www.igdb.com/games/warcraft-iii-reign-of-chaos"
+    "url": "https://www.igdb.com/games/warcraft-iii-reign-of-chaos",
+    "websites": [
+      {
+        "category": 1,
+        "game": 132,
+        "id": 13276,
+        "trusted": false,
+        "url": "http://us.blizzard.com/en-us/games/war3/"
+      },
+      {
+        "category": 2,
+        "game": 132,
+        "id": 13277,
+        "trusted": false,
+        "url": "http://wowwiki.wikia.com/wiki/Warcraft_III:_Reign_of_Chaos"
+      },
+      {
+        "category": 3,
+        "game": 132,
+        "id": 13278,
+        "trusted": true,
+        "url": "https://en.wikipedia.org/wiki/Warcraft_III:_Reign_of_Chaos"
+      },
+      {
+        "category": 4,
+        "game": 132,
+        "id": 78789,
+        "trusted": true,
+        "url": "https://www.facebook.com/WC3Europe"
+      },
+      {
+        "category": 14,
+        "game": 132,
+        "id": 78790,
+        "trusted": true,
+        "url": "https://www.reddit.com/r/WC3"
+      }
+    ]
   }
 ]
