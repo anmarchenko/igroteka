@@ -30,7 +30,8 @@ defmodule Skaro.Core.ExternalLink do
     "tumblr",
     "linkedin",
     "pinterest",
-    "soundcloud"
+    "soundcloud",
+    "general"
   ]
 
   schema "external_links" do

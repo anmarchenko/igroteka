@@ -4,7 +4,7 @@ defmodule Skaro.Factory do
 
   alias Skaro.Accounts.User
   alias Skaro.Backlog.{AvailablePlatform, Entry}
-  alias Skaro.Core.{Company, Franchise, Game, Genre, Image, Platform, Theme}
+  alias Skaro.Core.{Company, ExternalLink, Franchise, Game, Genre, Image, Platform, Theme}
 
   def user_factory do
     number = :rand.uniform(10_000)
@@ -76,6 +76,15 @@ defmodule Skaro.Factory do
     }
   end
 
+  def external_link_factory do
+    id = :rand.uniform(10_000)
+
+    %ExternalLink{
+      url: "https://wikipedia.org/game#{id}",
+      category: "wikipedia"
+    }
+  end
+
   def game_factory do
     id = :rand.uniform(10_000)
 
@@ -94,7 +103,8 @@ defmodule Skaro.Factory do
       publishers: [build(:company)],
       franchises: [build(:franchise)],
       genres: [build(:genre)],
-      themes: [build(:theme)]
+      themes: [build(:theme)],
+      external_links: [build(:external_link)]
     }
   end
 

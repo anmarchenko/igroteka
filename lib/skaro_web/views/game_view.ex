@@ -3,6 +3,7 @@ defmodule SkaroWeb.GameView do
 
   alias SkaroWeb.{
     CompanyView,
+    ExternalLinkView,
     FranchiseView,
     ImageView,
     PlatformView
@@ -39,6 +40,11 @@ defmodule SkaroWeb.GameView do
         FranchiseView.render(
           "index.json",
           franchises: game.franchises
+        ),
+      external_links:
+        ExternalLinkView.render(
+          "index.json",
+          external_links: game.external_links
         )
     })
   end

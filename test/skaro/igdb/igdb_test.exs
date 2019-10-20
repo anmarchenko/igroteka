@@ -4,7 +4,7 @@ defmodule Skaro.IGDBTest do
 
   alias Plug.Conn
 
-  alias Skaro.Core.{Game, Image, Platform}
+  alias Skaro.Core.{ExternalLink, Game, Image, Platform}
   alias Skaro.IGDB
 
   describe "search/1" do
@@ -159,6 +159,39 @@ defmodule Skaro.IGDBTest do
 
       assert {:ok, game} = IGDB.find_one(132)
       assert game.external_id == 132
+
+      assert [
+               %ExternalLink{
+                 category: "official",
+                 external_category_id: 1,
+                 external_id: 13_276,
+                 url: "http://us.blizzard.com/en-us/games/war3/"
+               },
+               %ExternalLink{
+                 category: "wikia",
+                 external_category_id: 2,
+                 external_id: 13_277,
+                 url: "http://wowwiki.wikia.com/wiki/Warcraft_III:_Reign_of_Chaos"
+               },
+               %ExternalLink{
+                 category: "wikipedia",
+                 external_category_id: 3,
+                 external_id: 13_278,
+                 url: "https://en.wikipedia.org/wiki/Warcraft_III:_Reign_of_Chaos"
+               },
+               %ExternalLink{
+                 category: "facebook",
+                 external_category_id: 4,
+                 external_id: 78_789,
+                 url: "https://www.facebook.com/WC3Europe"
+               },
+               %ExternalLink{
+                 category: "reddit",
+                 external_category_id: 14,
+                 external_id: 78_790,
+                 url: "https://www.reddit.com/r/WC3"
+               }
+             ] = game.external_links
     end
 
     @tag :bypass
