@@ -32,7 +32,7 @@ defmodule Skaro.Repo.Migrations.MigrateScores do
       8 ->
         3
 
-      x when x > 5 && x < 8 ->
+      x when x > 5 and x < 8 ->
         2
 
       _ ->
