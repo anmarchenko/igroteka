@@ -1,4 +1,7 @@
 defmodule Skaro.Repo.Migrations.MigrateScores do
+  @moduledoc """
+  The task to migrate game scores to 1-5 range
+  """
   use Ecto.Migration
 
   alias Skaro.Backlog.Entry

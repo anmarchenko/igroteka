@@ -68,7 +68,7 @@ defmodule Skaro.MixProject do
       {:distillery, "~> 2.0"},
 
       # lint
-      {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.3.0", only: [:dev, :test], runtime: false},
 
       # testing
       {:timex, "~> 3.1"},

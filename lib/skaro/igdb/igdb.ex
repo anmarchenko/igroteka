@@ -49,17 +49,17 @@ defmodule Skaro.IGDB do
     :ok
   end
 
-  defp search_url(), do: "#{api_url()}/search"
-  defp games_url(), do: "#{api_url()}/games"
+  defp search_url, do: "#{api_url()}/search"
+  defp games_url, do: "#{api_url()}/games"
 
-  defp headers() do
+  defp headers do
     [
       {"Accept", "application/json"},
       {"user-key", Application.fetch_env!(:skaro, :igdb)[:api_key]}
     ]
   end
 
-  defp api_url(), do: Application.fetch_env!(:skaro, :igdb)[:base_url]
+  defp api_url, do: Application.fetch_env!(:skaro, :igdb)[:base_url]
 
   defp search_query(term) do
     """
