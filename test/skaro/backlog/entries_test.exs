@@ -218,28 +218,6 @@ defmodule Skaro.EntriesTest do
       assert "wishlist" == backlog_entry.status
     end
 
-    test "it filters by available_platforms.platform_id", %{user: user} do
-      insert_list(1, :backlog_entry, user: user)
-
-      insert_list(
-        4,
-        :backlog_entry,
-        user: user,
-        available_platforms: [build(:available_platform, platform_id: 999_999)]
-      )
-
-      assert 5 == Repo.aggregate(Entry, :count, :id)
-      assert 6 == Repo.aggregate(AvailablePlatform, :count, :id)
-
-      backlog_entries =
-        Entries.list(user, %{
-          "available_platform_id" => 999_999,
-          "status" => "wishlist"
-        })
-
-      assert 4 == Enum.count(backlog_entries.entries)
-    end
-
     test "it filters by status", %{user: user} do
       insert_list(1, :backlog_entry, user: user)
       insert_list(2, :backlog_entry, user: user, status: "backlog")
@@ -329,27 +307,18 @@ defmodule Skaro.EntriesTest do
     end
   end
 
-  describe "Entries.list_available_platforms/2" do
-    test "it returns all platforms available for games in user backlog with given status",
-         %{user: user} do
-      insert_list(5, :backlog_entry)
-      insert_list(3, :backlog_entry, user: user)
-      insert_list(2, :backlog_entry, user: user, status: "backlog")
+  describe "Entries.list_years_filter/2" do
+    test "it returns distinct years values by user and status", %{user: user} do
+      insert(:backlog_entry, user: user, status: "beaten", game_release_date: ~D[2013-09-22])
+      insert(:backlog_entry, user: user, status: "beaten", game_release_date: ~D[2011-12-03])
+      insert(:backlog_entry, user: user, status: "beaten", game_release_date: nil)
+      insert(:backlog_entry, user: user, status: "beaten", game_release_date: ~D[2019-02-04])
+      insert(:backlog_entry, user: user, status: "beaten", game_release_date: ~D[2019-04-04])
+      insert(:backlog_entry, user: user, status: "beaten", game_release_date: ~D[2018-02-04])
+      insert(:backlog_entry, user: user, status: "playing", game_release_date: ~D[2017-09-30])
+      insert(:backlog_entry, status: "beaten", game_release_date: ~D[2016-06-21])
 
-      platforms = Entries.list_available_platforms(user, "backlog")
-      assert 4 == Enum.count(platforms)
-    end
-
-    test "it returns only unique platforms", %{user: user} do
-      insert_list(
-        3,
-        :backlog_entry,
-        user: user,
-        available_platforms: [build(:available_platform)]
-      )
-
-      platforms = Entries.list_available_platforms(user, "wishlist")
-      assert 1 == Enum.count(platforms)
+      assert [2019, 2018, 2013, 2011] = Entries.list_years_filter(user, "beaten")
     end
   end
 end

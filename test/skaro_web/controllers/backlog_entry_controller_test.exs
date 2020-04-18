@@ -49,6 +49,51 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       assert show_json["available_platforms"]
       assert show_json["expectation_rating"]
     end
+
+    @tag :login
+    test "returns backlog entries filtered by year", %{
+      conn: conn,
+      logged_user: user
+    } do
+      insert_list(2, :backlog_entry,
+        user: user,
+        status: "backlog",
+        game_release_date: ~D[2017-12-31]
+      )
+
+      insert(:backlog_entry, user: user, status: "backlog", game_release_date: ~D[2018-01-01])
+      insert(:backlog_entry, user: user, status: "backlog", game_release_date: ~D[2018-12-31])
+      insert(:backlog_entry, user: user, status: "backlog", game_release_date: ~D[2018-04-13])
+
+      insert_list(6, :backlog_entry,
+        user: user,
+        status: "backlog",
+        game_release_date: ~D[2019-01-01]
+      )
+
+      conn =
+        get(
+          conn,
+          Routes.backlog_entry_path(
+            @endpoint,
+            :index,
+            filters: %{"status" => "backlog", "release_year" => "2018"}
+          )
+        )
+
+      index_json = json_response(conn, 200)
+
+      assert 1 == index_json["meta"]["total_pages"]
+      assert 1 == index_json["meta"]["page"]
+      assert 3 == index_json["meta"]["total_count"]
+
+      assert 3 == Enum.count(index_json["data"])
+
+      show_json = List.first(index_json["data"])
+      assert show_json["id"]
+      assert show_json["game_id"]
+      assert show_json["game_name"]
+    end
   end
 
   describe "GET :show" do

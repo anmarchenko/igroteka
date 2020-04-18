@@ -8,20 +8,12 @@ defmodule SkaroWeb.AvailablePlatformController do
 
   plug(Guardian.Plug.EnsureAuthenticated)
 
-  def index(conn, %{"status" => status}) do
-    res =
-      conn
-      |> GuardianPlug.current_resource()
-      |> Entries.list_available_platforms(status)
-
-    render(conn, "index.json", available_platforms: res)
-  end
-
+  @spec owned(Plug.Conn.t(), map) :: Plug.Conn.t()
   def owned(conn, %{"status" => status}) do
     res =
       conn
       |> GuardianPlug.current_resource()
-      |> Entries.list_owned_platforms(status)
+      |> Entries.list_platforms_filter(status)
 
     render(conn, "index.json", available_platforms: res)
   end
