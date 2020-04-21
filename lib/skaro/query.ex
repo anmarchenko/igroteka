@@ -8,7 +8,9 @@ defmodule Skaro.Query do
     "inserted_at",
     "finished_at",
     "game_release_date",
-    "expectation_rating"
+    "expectation_rating",
+    "score",
+    "game_name"
   ]
 
   def order_by_param(query, nil), do: query
