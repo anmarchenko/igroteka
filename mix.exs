@@ -11,6 +11,7 @@ defmodule Skaro.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      releases: releases(),
       deps: deps()
     ]
   end
@@ -35,8 +36,8 @@ defmodule Skaro.MixProject do
   defp deps do
     [
       # phoenix and ecto
-      {:phoenix, "~> 1.4.0"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix, "~> 1.5.0"},
+      {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
@@ -44,7 +45,7 @@ defmodule Skaro.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.1"},
-      {:plug_cowboy, "~> 2.0"},
+      {:plug_cowboy, "~> 2.2"},
 
       # auth
       {:bcrypt_elixir, "~> 2.0"},
@@ -64,11 +65,8 @@ defmodule Skaro.MixProject do
       # error handling
       {:sentry, "~> 7.0"},
 
-      # release
-      {:distillery, "~> 2.0"},
-
       # lint
-      {:credo, "~> 1.3.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false},
 
       # testing
       {:timex, "~> 3.1"},
@@ -90,6 +88,14 @@ defmodule Skaro.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
+    ]
+  end
+
+  defp releases() do
+    [
+      skaro: [
+        include_executables_for: [:unix]
+      ]
     ]
   end
 end

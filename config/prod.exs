@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
@@ -10,8 +10,6 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :skaro, SkaroWeb.Endpoint,
-  http: [:inet6, port: "${PORT}"],
-  url: [host: "${HOST}", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
   root: "."
@@ -20,7 +18,6 @@ config :skaro, SkaroWeb.Endpoint,
 config :logger, level: :info
 
 config :sentry,
-  dsn: "${SENTRY_DSN}",
   environment_name: :prod,
   enable_source_code_context: true,
   root_source_code_path: File.cwd!(),
@@ -29,8 +26,5 @@ config :sentry,
   }
 
 config :skaro, Skaro.Repo,
-  username: "${POSTGRES_USER}",
-  password: "${POSTGRES_PASSWORD}",
   database: "skaro_production",
-  hostname: "${POSTGRES_HOST}",
   pool_size: 10

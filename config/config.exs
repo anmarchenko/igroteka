@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 config :skaro,
   ecto_repos: [Skaro.Repo]
@@ -14,8 +14,7 @@ config :skaro,
 config :skaro, SkaroWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "GUaNDJBx7OaJkXDhaloxaN2uqjbrembYanto5pxyKIx3c7XhHPIpniqCINeFbIsh",
-  render_errors: [view: SkaroWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Skaro.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: SkaroWeb.ErrorView, accepts: ~w(html json)]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -29,17 +28,14 @@ config :phoenix, :json_library, Jason
 config :skaro, Skaro.Guardian,
   issuer: "Skaro",
   verify_issuer: true,
-  secret_key: "${SECRET_KEY_BASE}",
   token_module: Guardian.Token.Jwt
 
 # Games API
 config :skaro, :games_remote, Skaro.IGDB
 
-config :skaro, :giantbomb,
-  api_key: "${GIANTBOMB_API_KEY}",
-  base_url: "https://www.giantbomb.com/api"
+config :skaro, :giantbomb, base_url: "https://www.giantbomb.com/api"
 
-config :skaro, :igdb, base_url: "https://api-v3.igdb.com", api_key: "${IGDB_API_KEY}"
+config :skaro, :igdb, base_url: "https://api-v3.igdb.com"
 
 # Errors reporting
 config :sentry,

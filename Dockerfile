@@ -15,18 +15,16 @@ RUN mix do deps.get, deps.compile
 
 COPY . .
 
-RUN mix distillery.release --env=prod --verbose
-RUN cp _build/prod/rel/*/releases/*/*.tar.gz _build/prod/rel/current_release.tar.gz
+RUN mix release
 
 FROM alpine:3.10.2
 
 ENV VERSION_DATE=2019-03-04
 ENV PORT 4000
-ENV REPLACE_OS_VARS true
 ENV HOME /opt/app
 ENV PATH ${HOME}/bin:${PATH}
 
-ARG BUILD_RELEASE=/opt/app/_build/prod/rel/current_release.tar.gz
+ARG BUILD_RELEASE=/opt/app/_build/prod/rel/skaro
 ARG BUILD_ENTRYPOINT=/opt/app/docker-entrypoint.sh
 
 RUN \
@@ -53,12 +51,10 @@ RUN \
 WORKDIR ${HOME}
 
 # Copy files from builder
-COPY --from=builder ${BUILD_RELEASE} current_release.tar.gz
+COPY --from=builder ${BUILD_RELEASE} ./
 COPY --from=builder ${BUILD_ENTRYPOINT} docker-entrypoint.sh
 # Extract files and fix permissions
-RUN tar -xzf ./current_release.tar.gz && \
-  rm ./current_release.tar.gz && \
-  chmod +x docker-entrypoint.sh && \
+RUN chmod +x docker-entrypoint.sh && \
   chown -R default .
 
 ONBUILD USER default
