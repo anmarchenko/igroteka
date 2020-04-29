@@ -21,7 +21,7 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       conn: conn,
       logged_user: user
     } do
-      insert_list(3, :backlog_entry, user: user, status: "backlog", expectation_rating: 5)
+      insert_list(3, :backlog_entry, user: user, status: "backlog", expectation_rating: 3)
       insert_list(2, :backlog_entry, user: user, status: "playing")
 
       conn =
@@ -99,13 +99,13 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
   describe "GET :show" do
     @tag :login
     test "renders given backlog_entry for current_user", %{conn: conn, logged_user: user} do
-      entry = insert(:backlog_entry, user: user, expectation_rating: 3)
+      entry = insert(:backlog_entry, user: user, expectation_rating: 1)
       conn = get(conn, Routes.backlog_entry_path(@endpoint, :show, entry.game_id))
       json = json_response(conn, 200)
       assert json["id"] == entry.id
       assert json["game_id"] == entry.game_id
       assert json["game_name"] == entry.game_name
-      assert json["expectation_rating"] === 3
+      assert json["expectation_rating"] === 1
     end
 
     @tag :login

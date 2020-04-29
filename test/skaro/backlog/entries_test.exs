@@ -24,7 +24,7 @@ defmodule Skaro.EntriesTest do
                    "game_release_date" => "1996-02-29",
                    "note" => "Steam: 50 eur",
                    "status" => "wishlist",
-                   "expectation_rating" => 4
+                   "expectation_rating" => 2
                  },
                  user,
                  [%{"platform_id" => 42, "platform_name" => "PC"}]
@@ -37,7 +37,7 @@ defmodule Skaro.EntriesTest do
       assert entry.poster_thumb_url == "http://example.com/image.png"
       assert entry.note == "Steam: 50 eur"
       assert entry.game_release_date == ~D[1996-02-29]
-      assert entry.expectation_rating === 4
+      assert entry.expectation_rating === 2
 
       assert Enum.count(entry.available_platforms) == 1
       platform = Enum.fetch!(entry.available_platforms, 0)
