@@ -65,6 +65,9 @@ defmodule Skaro.MixProject do
       # error handling
       {:sentry, "~> 7.0"},
 
+      # countries info
+      {:countries, "~> 1.6"},
+
       # lint
       {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false},
 

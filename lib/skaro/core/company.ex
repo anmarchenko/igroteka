@@ -10,6 +10,8 @@ defmodule Skaro.Core.Company do
 
   alias __MODULE__
 
+  alias Skaro.Core.Image
+
   schema "companies" do
     field(:name, :string)
     field(:external_id, :string)
@@ -20,6 +22,8 @@ defmodule Skaro.Core.Company do
     field(:twitter, :string)
     field(:country, :string)
     field(:start_date, :date)
+
+    belongs_to(:logo, Image)
 
     timestamps()
   end

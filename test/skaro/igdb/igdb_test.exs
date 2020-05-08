@@ -4,7 +4,7 @@ defmodule Skaro.IGDBTest do
 
   alias Plug.Conn
 
-  alias Skaro.Core.{ExternalLink, Game, Image, Platform}
+  alias Skaro.Core.{Company, ExternalLink, Game, Image, Platform}
   alias Skaro.IGDB
 
   describe "search/1" do
@@ -192,6 +192,68 @@ defmodule Skaro.IGDBTest do
                  url: "https://www.reddit.com/r/WC3"
                }
              ] = game.external_links
+
+      assert [
+               %Company{
+                 id: 51,
+                 external_id: 51,
+                 name: "Blizzard Entertainment",
+                 country: "US",
+                 external_url: "https://www.igdb.com/companies/blizzard-entertainment",
+                 logo: %Skaro.Core.Image{
+                   big_url:
+                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/l9xwk37ap6xzjp4imoyh.jpg",
+                   id: "l9xwk37ap6xzjp4imoyh",
+                   thumb_url:
+                     "https://images.igdb.com/igdb/image/upload/t_thumb/l9xwk37ap6xzjp4imoyh.jpg"
+                 }
+               }
+             ] = game.developers
+
+      assert [
+               %Company{
+                 id: 51,
+                 external_id: 51,
+                 name: "Blizzard Entertainment",
+                 country: "US",
+                 external_url: "https://www.igdb.com/companies/blizzard-entertainment",
+                 logo: %Skaro.Core.Image{
+                   big_url:
+                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/l9xwk37ap6xzjp4imoyh.jpg",
+                   id: "l9xwk37ap6xzjp4imoyh",
+                   thumb_url:
+                     "https://images.igdb.com/igdb/image/upload/t_thumb/l9xwk37ap6xzjp4imoyh.jpg"
+                 }
+               },
+               %Skaro.Core.Company{
+                 country: "US",
+                 external_id: 24,
+                 external_url: "https://www.igdb.com/companies/sierra-entertainment",
+                 id: 24,
+                 logo: %Skaro.Core.Image{
+                   big_url:
+                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/qabsh3mdevjsww3erojx.jpg",
+                   id: "qabsh3mdevjsww3erojx",
+                   thumb_url:
+                     "https://images.igdb.com/igdb/image/upload/t_thumb/qabsh3mdevjsww3erojx.jpg"
+                 },
+                 name: "Sierra Entertainment"
+               },
+               %Skaro.Core.Company{
+                 country: "JP",
+                 external_id: 37,
+                 external_url: "https://www.igdb.com/companies/capcom",
+                 id: 37,
+                 logo: %Skaro.Core.Image{
+                   big_url:
+                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/hcbqwbhbmrabsfk600zs.jpg",
+                   id: "hcbqwbhbmrabsfk600zs",
+                   thumb_url:
+                     "https://images.igdb.com/igdb/image/upload/t_thumb/hcbqwbhbmrabsfk600zs.jpg"
+                 },
+                 name: "Capcom"
+               }
+             ] = game.publishers
     end
 
     @tag :bypass

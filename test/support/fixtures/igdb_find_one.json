@@ -112,7 +112,15 @@
             111652,
             111655
           ],
-          "logo": 29,
+          "logo": {
+            "id": 29,
+            "alpha_channel": false,
+            "animated": false,
+            "height": 241,
+            "image_id": "l9xwk37ap6xzjp4imoyh",
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/l9xwk37ap6xzjp4imoyh.jpg",
+            "width": 402
+          },
           "name": "Blizzard Entertainment",
           "parent": 179,
           "published": [
@@ -183,7 +191,15 @@
           "country": 840,
           "created_at": 1299283200,
           "developed": [29, 222, 1927, 2910, 2911, 7723, 8828, 36288],
-          "logo": 43,
+          "logo": {
+            "id": 43,
+            "alpha_channel": true,
+            "animated": false,
+            "height": 133,
+            "image_id": "qabsh3mdevjsww3erojx",
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/qabsh3mdevjsww3erojx.jpg",
+            "width": 500
+          },
           "name": "Sierra Entertainment",
           "published": [
             29,
@@ -617,7 +633,15 @@
             116029,
             118273
           ],
-          "logo": 59,
+          "logo": {
+            "id": 59,
+            "alpha_channel": false,
+            "animated": false,
+            "height": 1024,
+            "image_id": "hcbqwbhbmrabsfk600zs",
+            "url": "//images.igdb.com/igdb/image/upload/t_thumb/hcbqwbhbmrabsfk600zs.jpg",
+            "width": 5592
+          },
           "name": "Capcom",
           "published": [
             112,

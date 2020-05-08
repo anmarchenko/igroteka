@@ -72,7 +72,7 @@ defmodule Skaro.IGDB do
   defp game_by_id_query(id) do
     """
     where id = #{id};
-    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,url,category,status,storyline,cover.image_id,platforms.*,franchises.*,involved_companies.developer,involved_companies.publisher,involved_companies.company.*,websites.*;
+    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,url,category,status,storyline,cover.image_id,platforms.*,franchises.*,involved_companies.developer,involved_companies.publisher,involved_companies.company.*,websites.*,involved_companies.company.logo.*;
     """
   end
 end
