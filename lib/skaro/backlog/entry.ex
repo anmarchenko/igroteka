@@ -22,6 +22,8 @@ defmodule Skaro.Backlog.Entry do
     field(:expectation_rating, :integer)
     field(:finished_at, :date)
 
+    field(:countries, {:array, :string})
+
     belongs_to(:user, Skaro.Accounts.User)
     has_many(:available_platforms, Skaro.Backlog.AvailablePlatform)
 
@@ -42,7 +44,8 @@ defmodule Skaro.Backlog.Entry do
       :status,
       :note,
       :expectation_rating,
-      :score
+      :score,
+      :countries
     ])
     |> cast_assoc(:available_platforms)
     |> validate_required([:game_id, :game_name, :user_id, :status])
@@ -76,7 +79,8 @@ defmodule Skaro.Backlog.Entry do
       :poster_thumb_url,
       :game_release_date,
       :owned_platform_id,
-      :owned_platform_name
+      :owned_platform_name,
+      :countries
     ])
     |> cast_assoc(:available_platforms)
   end

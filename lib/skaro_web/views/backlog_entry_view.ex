@@ -41,6 +41,7 @@ defmodule SkaroWeb.BacklogEntryView do
       score: backlog_entry.score,
       expectation_rating: backlog_entry.expectation_rating,
       finished_at: backlog_entry.finished_at,
+      countries: backlog_entry.countries,
       available_platforms:
         AvailablePlatformView.render(
           "index.json",

@@ -8,7 +8,7 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
   alias Skaro.Repo
 
   @platforms [%{platform_id: 42, platform_name: "PC"}]
-  @valid_attrs %{game_id: 1234, game_name: "game name", status: "wishlist"}
+  @valid_attrs %{game_id: 1234, game_name: "game name", status: "wishlist", countries: ["US CA"]}
   @invalid_attrs %{game_id: 1234, game_name: "game name", status: "wrong"}
 
   setup %{conn: conn} do
@@ -48,6 +48,7 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       assert show_json["game_name"]
       assert show_json["available_platforms"]
       assert show_json["expectation_rating"]
+      assert ["JP"] = show_json["countries"]
     end
 
     @tag :login
@@ -141,6 +142,7 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       assert 1 == Enum.count(entry.available_platforms)
       assert @valid_attrs.status == entry.status
       assert user.id == entry.user_id
+      assert ["US CA"] = entry.countries
     end
 
     @tag :login
