@@ -113,6 +113,10 @@ defmodule SkaroWeb.GameControllerTest do
       assert game_json["ratings_count"] == game.ratings_count
       assert game_json["external_url"] == game.external_url
 
+      {:ok, dev} = Enum.fetch(game_json["developers"], 0)
+      assert dev["country"] == "US"
+      assert dev["logo"]["id"] != nil
+
       cached_value =
         ConCache.get(
           :external_api_cache,

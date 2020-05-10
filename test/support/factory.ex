@@ -42,7 +42,10 @@ defmodule Skaro.Factory do
     %Company{
       id: id,
       external_id: to_string(id),
-      name: "Company #{id}"
+      name: "Company #{id}",
+      external_url: "https://company#{id}.com",
+      country: "US",
+      logo: build(:image)
     }
   end
 
