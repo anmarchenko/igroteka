@@ -54,5 +54,32 @@ defmodule Skaro.IGDB.Parsers.CompaniesTest do
                  "country" => 233
                })
     end
+
+    test "existing country with 2 digits code" do
+      assert %Company{
+               id: "1",
+               name: "Firma",
+               external_id: "1",
+               country: "BE"
+             } =
+               Companies.parse_basic(%{
+                 "id" => "1",
+                 "name" => "Firma",
+                 "country" => 56
+               })
+    end
+
+    test "no country with manual fix defined" do
+      assert %Company{
+               id: "1",
+               name: "Ubisoft Québec",
+               external_id: "1",
+               country: "CA"
+             } =
+               Companies.parse_basic(%{
+                 "id" => "1",
+                 "name" => "Ubisoft Québec"
+               })
+    end
   end
 end
