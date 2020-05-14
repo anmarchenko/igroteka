@@ -10,9 +10,10 @@ defmodule Skaro.IGDB.Parsers.Companies do
     "Ubisoft Québec" => "CA",
     "Lucas Pope" => "US",
     "Massive Entertainment" => "SE",
-    "Presto Studiosv" => "US",
+    "Presto Studios" => "US",
     "Westwood Pacific" => "US",
-    "Black Isle Studios" => "US"
+    "Black Isle Studios" => "US",
+    "Intelligent Systems" => "JP"
   }
 
   @spec parse_basic(nil | maybe_improper_list | map) :: [any] | Skaro.Core.Company.t()
