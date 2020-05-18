@@ -37,6 +37,16 @@ defmodule Skaro.IGDB.Parsers.Images do
     }
   end
 
+  def parse_screenshot(json) when is_list(json), do: Enum.map(json, &parse_screenshot/1)
+
+  def parse_screenshot(screenshot) do
+    %Image{
+      id: screenshot["image_id"],
+      thumb_url: image_url(:screenshot, :small, screenshot["image_id"]),
+      big_url: image_url(:screenshot, :big, screenshot["image_id"])
+    }
+  end
+
   defp image_url(:cover, :small, id),
     do: "https://images.igdb.com/igdb/image/upload/t_cover_small_2x/#{id}.jpg"
 
@@ -48,4 +58,10 @@ defmodule Skaro.IGDB.Parsers.Images do
 
   defp image_url(:logo, :big, id),
     do: "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/#{id}.jpg"
+
+  defp image_url(:screenshot, :small, id),
+    do: "https://images.igdb.com/igdb/image/upload/t_screenshot_med_2x/#{id}.jpg"
+
+  defp image_url(:screenshot, :big, id),
+    do: "https://images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/#{id}.jpg"
 end

@@ -7,6 +7,7 @@ defmodule SkaroWeb.GameController do
 
   plug(Guardian.Plug.EnsureAuthenticated)
 
+  @spec index(any, map) :: {:error, :external_api, any} | Plug.Conn.t()
   def index(conn, %{"term" => term}) do
     case Core.search(term) do
       {:ok, games} ->
@@ -17,6 +18,7 @@ defmodule SkaroWeb.GameController do
     end
   end
 
+  @spec show(any, map) :: {:error, :external_api, any} | Plug.Conn.t()
   def show(conn, %{"id" => id}) do
     case Core.get(id) do
       {:ok, game} ->

@@ -6,6 +6,7 @@ defmodule Skaro.IGDB do
 
   alias Skaro.HttpClient
   alias Skaro.IGDB.Parsers.Games, as: GamesParser
+  alias Skaro.IGDB.Parsers.Images, as: ImagesParser
   alias Skaro.Parser
 
   def search(term) do
@@ -41,6 +42,23 @@ defmodule Skaro.IGDB do
     end
   end
 
+  def get_screenshots(game_id) do
+    with body when is_binary(body) <-
+           HttpClient.idempotent_post(
+             screenshots_url(),
+             screenshots_by_game_id_query(game_id),
+             headers()
+           ),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_internal_error(json),
+         screenshots <- ImagesParser.parse_screenshot(json) do
+      {:ok, screenshots}
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
+  end
+
   defp check_internal_error([%{"title" => error_title, "status" => status}]) do
     {:error, "Code #{status}, reason: #{error_title}"}
   end
@@ -51,6 +69,7 @@ defmodule Skaro.IGDB do
 
   defp search_url, do: "#{api_url()}/search"
   defp games_url, do: "#{api_url()}/games"
+  defp screenshots_url, do: "#{api_url()}/screenshots"
 
   defp headers do
     [
@@ -73,6 +92,13 @@ defmodule Skaro.IGDB do
     """
     where id = #{id};
     fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,url,category,status,storyline,cover.image_id,platforms.*,franchises.*,involved_companies.developer,involved_companies.publisher,involved_companies.company.*,websites.*,involved_companies.company.logo.*;
+    """
+  end
+
+  defp screenshots_by_game_id_query(game_id) do
+    """
+    where game = #{game_id};
+    fields image_id;
     """
   end
 end

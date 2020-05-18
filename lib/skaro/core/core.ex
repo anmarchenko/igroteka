@@ -18,6 +18,12 @@ defmodule Skaro.Core do
     end)
   end
 
+  def get_screenshots(game_id) do
+    cached_result("screenshots_index_game_#{game_id}", fn ->
+      @remote.get_screenshots(game_id)
+    end)
+  end
+
   defp cached_result(cache_key, api_call) do
     case ConCache.get(:external_api_cache, cache_key) do
       nil ->

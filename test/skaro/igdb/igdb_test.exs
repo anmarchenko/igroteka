@@ -270,4 +270,36 @@ defmodule Skaro.IGDBTest do
       assert {:error, :not_found} == IGDB.find_one(-1)
     end
   end
+
+  describe "get_screenshots/1" do
+    @tag :bypass
+    test "ok response", %{igdb_api: igdb_api} do
+      Bypass.expect_once(
+        igdb_api,
+        "POST",
+        "/screenshots",
+        fn conn ->
+          conn = Conn.fetch_query_params(conn)
+
+          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert {:ok, "where game = 132;" <> _, conn} = Conn.read_body(conn)
+
+          Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_get_screenshots.json"))
+        end
+      )
+
+      assert {:ok, screenshots} = IGDB.get_screenshots(132)
+
+      assert [
+               %Image{
+                 big_url:
+                   "https://images.igdb.com/igdb/image/upload/t_screenshot_huge_2x/i1oynuvf858i7g9nw5vk.jpg",
+                 id: "i1oynuvf858i7g9nw5vk",
+                 thumb_url:
+                   "https://images.igdb.com/igdb/image/upload/t_screenshot_med_2x/i1oynuvf858i7g9nw5vk.jpg"
+               }
+               | _
+             ] = screenshots
+    end
+  end
 end
