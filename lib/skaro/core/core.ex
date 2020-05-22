@@ -24,6 +24,12 @@ defmodule Skaro.Core do
     end)
   end
 
+  def top_games() do
+    cached_result("games_index_top", fn ->
+      @remote.top_games()
+    end)
+  end
+
   defp cached_result(cache_key, api_call) do
     case ConCache.get(:external_api_cache, cache_key) do
       nil ->

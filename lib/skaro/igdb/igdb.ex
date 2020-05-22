@@ -59,6 +59,23 @@ defmodule Skaro.IGDB do
     end
   end
 
+  def top_games() do
+    with body when is_binary(body) <-
+           HttpClient.idempotent_post(
+             games_url(),
+             top_games_query(),
+             headers()
+           ),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_internal_error(json),
+         games <- GamesParser.parse_basic(json) do
+      {:ok, games}
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
+  end
+
   defp check_internal_error([%{"title" => error_title, "status" => status}]) do
     {:error, "Code #{status}, reason: #{error_title}"}
   end
@@ -85,6 +102,15 @@ defmodule Skaro.IGDB do
     search "#{term}";
     where game != null & game.first_release_date != null;
     fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.url,game.cover.image_id,game.platforms.id,game.platforms.name;
+    """
+  end
+
+  defp top_games_query() do
+    """
+    where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
+    sort aggregated_rating desc;
+    limit 100;
+    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,platforms.id,platforms.name;
     """
   end
 

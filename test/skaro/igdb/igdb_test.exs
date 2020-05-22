@@ -310,4 +310,30 @@ defmodule Skaro.IGDBTest do
              ] = screenshots
     end
   end
+
+  describe "top_games/0" do
+    @tag :bypass
+    test "ok response", %{igdb_api: igdb_api} do
+      Bypass.expect_once(
+        igdb_api,
+        "POST",
+        "/games",
+        fn conn ->
+          conn = Conn.fetch_query_params(conn)
+
+          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+
+          assert {:ok,
+                  "where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79" <>
+                    _, conn} = Conn.read_body(conn)
+
+          Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_top_games.json"))
+        end
+      )
+
+      assert {:ok, games} = IGDB.top_games()
+      assert 50 == Enum.count(games)
+      assert [%Game{name: "The Legend of Zelda: Breath of the Wild"} | _] = games
+    end
+  end
 end

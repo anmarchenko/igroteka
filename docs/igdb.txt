@@ -1,3 +1,5 @@
+https://api-docs.igdb.com/#examples
+
 # search
 curl https://api-v3.igdb.com/search -d 'search "shadows of the colossus"; where game != null & (game.version_parent = null | game.version_title = "Remake" | game.version_title = "Remaster" | game.version_title = "Deluxe") & game.category=0 & game.first_release_date != null; fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.cover.image_id,game.platforms.id,game.platforms.name;' -H 'user-key: 307b910d90b2aa2e9a60533a71e86bf6' -H 'Accept: application/json'
 

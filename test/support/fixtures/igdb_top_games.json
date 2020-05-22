@@ -1,0 +1,1420 @@
+[
+  {
+    "id": 7346,
+    "aggregated_rating": 97.5925925925926,
+    "aggregated_rating_count": 31,
+    "cover": {
+      "id": 87289,
+      "image_id": "co1vcp"
+    },
+    "first_release_date": 1488499200,
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "platforms": [
+      {
+        "id": 41,
+        "name": "Wii U"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Step into a world of discovery, exploration and adventure in The Legend of Zelda: Breath of the Wild, a boundary-breaking new game in the acclaimed series. Travel across fields, through forests and to mountain peaks as you discover what has become of the ruined kingdom of Hyrule in this stunning open-air adventure.",
+    "url": "https://www.igdb.com/games/the-legend-of-zelda-breath-of-the-wild"
+  },
+  {
+    "id": 19560,
+    "aggregated_rating": 96.9444444444444,
+    "aggregated_rating_count": 21,
+    "cover": {
+      "id": 85062,
+      "image_id": "co1tmu"
+    },
+    "first_release_date": 1524182400,
+    "name": "God of War",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "\"It is a new beginning for Kratos. Living as a man, outside the shadow of the gods, he seeks solitude in the unfamiliar lands of Norse mythology. With new purpose and his son at his side, Kratos must fight for survival as powerful forces threaten to disrupt the new life he has created...\"",
+    "url": "https://www.igdb.com/games/god-of-war--1"
+  },
+  {
+    "id": 26758,
+    "aggregated_rating": 96.7058823529412,
+    "aggregated_rating_count": 19,
+    "cover": {
+      "id": 76371,
+      "image_id": "co1mxf"
+    },
+    "first_release_date": 1509062400,
+    "name": "Super Mario Odyssey",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "The game has Mario leaving the Mushroom Kingdom to reach an unknown open world-like setting, like Super Mario 64 and Super Mario Sunshine.",
+    "url": "https://www.igdb.com/games/super-mario-odyssey"
+  },
+  {
+    "id": 492,
+    "aggregated_rating": 96.6666666666667,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 54925,
+      "image_id": "w806olyp4jyzem47i8fd"
+    },
+    "first_release_date": 1316476800,
+    "name": "Gears of War 3",
+    "platforms": [
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "Gears of War 3 is the spectacular conclusion to one of the most memorable and celebrated sagas in videogames. Gears of War 3 plunges players into a harrowing tale of hope, survival and brotherhood. In Gears of War 3, players fight on as Marcus Fenix, the grizzled war hero and leader of Delta Squad. Eighteen months after the fall of the last human city, the war against the Locust rages on. Meanwhile, deep beneath the surface, a fearsome new threat is infecting the planet from within. With survivors scattered and civilization in ruins, time is running out for Marcus and his comrades as they fight to save the human race.",
+    "url": "https://www.igdb.com/games/gears-of-war-3"
+  },
+  {
+    "id": 12517,
+    "aggregated_rating": 96.3846153846154,
+    "aggregated_rating_count": 16,
+    "cover": {
+      "id": 101064,
+      "image_id": "co25zc"
+    },
+    "first_release_date": 1442275200,
+    "name": "Undertale",
+    "platforms": [
+      {
+        "id": 3,
+        "name": "Linux"
+      },
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 46,
+        "name": "PlayStation Vita"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "A small child falls into the Underground, where monsters have long been banished by humans and are hunting every human that they find. The player controls the child as they try to make it back to the Surface through hostile environments, all the while engaging with a turn-based combat system with puzzle-solving and bullet hell elements, as well as other unconventional game mechanics.",
+    "url": "https://www.igdb.com/games/undertale"
+  },
+  {
+    "id": 7425,
+    "aggregated_rating": 96.2857142857143,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 8063,
+      "image_id": "jj4tws1yyigd5ndsbhsj"
+    },
+    "first_release_date": 441676800,
+    "name": "The Witness",
+    "platforms": [
+      {
+        "id": 13,
+        "name": "PC DOS"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 15,
+        "name": "Commodore C64/128"
+      },
+      {
+        "id": 16,
+        "name": "Amiga"
+      },
+      {
+        "id": 25,
+        "name": "Amstrad CPC"
+      },
+      {
+        "id": 63,
+        "name": "Atari ST/STE"
+      },
+      {
+        "id": 65,
+        "name": "Atari 8-bit"
+      },
+      {
+        "id": 75,
+        "name": "Apple II"
+      },
+      {
+        "id": 93,
+        "name": "Commodore 16"
+      },
+      {
+        "id": 94,
+        "name": "Commodore Plus/4"
+      },
+      {
+        "id": 126,
+        "name": "TRS-80"
+      },
+      {
+        "id": 151,
+        "name": "TRS-80 Color Computer"
+      },
+      {
+        "id": 154,
+        "name": "Amstrad PCW"
+      }
+    ],
+    "summary": "Dead: one gilt-edged society dame. And now it looks like some two-bit grifter is putting the screws to her multimillionaire old man. All in all, a pretty typical Angeleno clan for these days. But then the shakedown turns ugly, and you’re left with a stiff and a race against the clock to nail your suspect… if, that is, you don’t cash in your chips ahead of time.",
+    "url": "https://www.igdb.com/games/the-witness--1"
+  },
+  {
+    "id": 1078,
+    "aggregated_rating": 96.25,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 95673,
+      "image_id": "co21tl"
+    },
+    "first_release_date": 1274572800,
+    "name": "Super Mario Galaxy 2",
+    "platforms": [
+      {
+        "id": 5,
+        "name": "Wii"
+      },
+      {
+        "id": 41,
+        "name": "Wii U"
+      }
+    ],
+    "summary": "Super Mario Galaxy 2 is the sequel to Super Mario Galaxy and the fourth 3D platformer entry in the Mario franchise. The sequel retains many elements from its predecessor, such as the adventure being in outer space, the element of gravity, and recurring objects such as Launch Stars and Sling Stars. Returning items include the Bee Mushroom and the Fire Flower. However, the game introduces new elements as well, such as the utilization of Yoshi, new power-ups like the Cloud Flower, and the use of a guide within the game for beginner players.",
+    "url": "https://www.igdb.com/games/super-mario-galaxy-2"
+  },
+  {
+    "id": 1036,
+    "aggregated_rating": 96.25,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 86203,
+      "image_id": "co1uij"
+    },
+    "first_release_date": 1163894400,
+    "name": "The Legend of Zelda: Twilight Princess",
+    "platforms": [
+      {
+        "id": 21,
+        "name": "Nintendo GameCube"
+      }
+    ],
+    "summary": "Link, a young man raised as a wrangler in a small, rural village, is ordered by the mayor to attend the Hyrule Summit. He sets off, oblivious to the dark fate that has descended upon the kingdom. When he enters the Twilight Realm that has covered Hyrule, he transforms into a wolf and is captured. A mysterious figure named Midna helps him break free, and with the aid of her magic, they set off to free the land from the shadows. Link must explore the vast land of Hyrule and uncover the mystery behind its plunge into darkness. \n \nFor Nintendo\u0027s long-awaited Legend of Zelda: Twilight Princess, the designers have split the game into two versions -- one for GameCube, and one specially designed to make use of the Wii utilizing the powers of the Wii controller for all-new ways of exploring Hyrule.",
+    "url": "https://www.igdb.com/games/the-legend-of-zelda-twilight-princess"
+  },
+  {
+    "id": 472,
+    "aggregated_rating": 96.1111111111111,
+    "aggregated_rating_count": 12,
+    "cover": {
+      "id": 85100,
+      "image_id": "co1tnw"
+    },
+    "first_release_date": 1320969600,
+    "name": "The Elder Scrolls V: Skyrim",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "The next chapter in the highly anticipated Elder Scrolls saga arrives from the makers of the 2006 and 2008 Games of the Year, Bethesda Game Studios. Skyrim reimagines and revolutionizes the open-world fantasy epic, bringing to life a complete virtual world open for you to explore any way you choose.  \n \nPlay any type of character you can imagine, and do whatever you want; the legendary freedom of choice, storytelling, and adventure of The Elder Scrolls is realized like never before.  \n \nSkyrim’s new game engine brings to life a complete virtual world with rolling clouds, rugged mountains, bustling cities, lush fields, and ancient dungeons.  \n \nChoose from hundreds of weapons, spells, and abilities. The new character system allows you to play any way you want and define yourself through your actions.  \n \nBattle ancient dragons like you’ve never seen. As Dragonborn, learn their secrets and harness their power for yourself.",
+    "url": "https://www.igdb.com/games/the-elder-scrolls-v-skyrim"
+  },
+  {
+    "id": 3363,
+    "aggregated_rating": 96.0,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 95751,
+      "image_id": "co21vr"
+    },
+    "first_release_date": 1252886400,
+    "name": "Mario \u0026 Luigi: Bowser\u0027s Inside Story",
+    "platforms": [
+      {
+        "id": 20,
+        "name": "Nintendo DS"
+      }
+    ],
+    "summary": "Mario \u0026 Luigi: Bowser\u0027s Inside Story is the third game in the Mario \u0026 Luigi series of games. Players control Mario and Luigi simultaneously in the side-scrolling platform environment of Bowser\u0027s body, while also controlling the Koopa King himself in the top-down world of the Mushroom Kingdom. Similar to games like Earthbound, enemy encounters are seen as actual enemies that players can avoid or attempt to strike early. The actual battles are a combination of turn-based menu attacks, and timed reactions to enemies during battle. By watching the way an enemy reacts, you can anticipate their attack and avoid it or counterattack.",
+    "url": "https://www.igdb.com/games/mario-luigi-bowser-s-inside-story"
+  },
+  {
+    "id": 1058,
+    "aggregated_rating": 96.0,
+    "aggregated_rating_count": 12,
+    "cover": {
+      "id": 79903,
+      "image_id": "co1pnj"
+    },
+    "first_release_date": 1225065600,
+    "name": "LittleBigPlanet",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 38,
+        "name": "PlayStation Portable"
+      }
+    ],
+    "summary": "The core mechanics of the series revolve around its tagline \"Play, Create, Share\". \nThe Play component involves players taking control of Sackboy and navigating him through various levels. In the first two instalments of the series, gameplay consisted primarily of traditional platforming like jumping and avoiding obstacles to successfully navigate to the end of a level to win. Since LittleBigPlanet 2, gameplay has expanded to being a \"platform for games\" with the introduction of numerous mini-games and other genres into the game diversifying the game from being strictly a traditional platforming game. Most LittleBigPlanet games involve a player playing solo or co-operatively with friends to navigate through a level whilst collecting various \"prize bubbles\" along the way. These prize bubbles come in two types, small ones which constitute points and larger ones that contain new costumes, stickers or other type of collectibles that can be used to customise Sackboy or in level creation. There are also numerous co-operative parts of levels whereby certain prize bubbles can only be collected with the help of at least one player or more depending on the number of players stated in the level.",
+    "url": "https://www.igdb.com/games/littlebigplanet"
+  },
+  {
+    "id": 499,
+    "aggregated_rating": 96.0,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 100951,
+      "image_id": "co25w7"
+    },
+    "first_release_date": 1268697600,
+    "name": "God of War III",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Set in the realm of brutal Greek mythology, God of War III is a single-player game that allows players to take on the climatic role of the ex-Spartan warrior, Kratos, as he scales through the intimidating heights of Mt. Olympus and the dark depths of Hell to seek revenge on those who have betrayed him. Armed with double-chained blades, and an array of new weapons and magic for this iteration of the trilogy, Kratos must take on mythology\u0027s darkest creatures while solving intricate puzzles throughout his merciless quest to destroy Olympus. Utilizing a new game engine built from the ground up and state-of-the-art visual technologies, the development team behind God of War III has made standard-setting strides in giving players the realistic feel of actually being on the battlegrounds. With texture resolutions quadrupling since God of War II on PlayStation 2 computer entertainment system, God of War III, in its debut on the PS3 system, will feature fluid, life-like characters, as well as dynamic lighting effects, a robust weapon system, and world-changing scenarios that will truly bring unmistakable realism to Kratos\u0027 fateful quest. Players will have a chance to join battles on a grand scale that is four times larger than its predecessor.",
+    "url": "https://www.igdb.com/games/god-of-war-iii"
+  },
+  {
+    "id": 1020,
+    "aggregated_rating": 95.84,
+    "aggregated_rating_count": 34,
+    "cover": {
+      "id": 84845,
+      "image_id": "co1tgt"
+    },
+    "first_release_date": 1379376000,
+    "name": "Grand Theft Auto V",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "The biggest, most dynamic and most diverse open world ever created, Grand Theft Auto V blends storytelling and gameplay in new ways as players repeatedly jump in and out of the lives of the game’s three lead characters, playing all sides of the game’s interwoven story.",
+    "url": "https://www.igdb.com/games/grand-theft-auto-v"
+  },
+  {
+    "id": 1985,
+    "aggregated_rating": 95.7368421052632,
+    "aggregated_rating_count": 24,
+    "cover": {
+      "id": 87125,
+      "image_id": "co1v85"
+    },
+    "first_release_date": 1441065600,
+    "name": "Metal Gear Solid V: The Phantom Pain",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "The 5th installment of the Metal Gear Solid saga, Metal Gear Solid V: The Phantom Pain continues the story of Big Boss (aka Naked Snake, aka David), connecting the story lines from Metal Gear Solid: Peace Walker, Metal Gear Solid: Ground Zeroes, and the rest of the Metal Gear Universe.",
+    "url": "https://www.igdb.com/games/metal-gear-solid-v-the-phantom-pain"
+  },
+  {
+    "id": 74,
+    "aggregated_rating": 95.6,
+    "aggregated_rating_count": 14,
+    "cover": {
+      "id": 93684,
+      "image_id": "co20ac"
+    },
+    "first_release_date": 1264464000,
+    "name": "Mass Effect 2",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "Are you prepared to lose everything to save the galaxy? You\u0027ll need to be, Commander Shephard. It\u0027s time to bring together your greatest allies and recruit the galaxy\u0027s fighting elite to continue the resistance against the invading Reapers. So steel yourself, because this is an astronomical mission where sacrifices must be made. You\u0027ll face tougher choices and new, deadlier enemies. Arm yourself and prepare for an unforgettable intergalactic adventure. \n \nGame Features: \n \nShift the fight in your favour. Equip yourself with powerful new weapons almost instantly thanks to a new inventory system. Plus, an improved health regeneration system means you\u0027ll spend less time hunting for restorative items. \n \nMake every decision matter. Divisive crew members are just the tip of the iceberg, Commander, because you\u0027ll also be tasked with issues of intergalactic diplomacy. And time\u0027s a wastin\u0027 so don\u0027t be afraid to use new prompt-based actions that let you interrupt conversations, even if they could alter the fate of your crew...and the galaxy. \n \nForge new alliances, carefully. You\u0027ll fight alongside some of your most trustworthy crew members, but you\u0027ll also get the opportunity to recruit new talent. Just choose your new partners with care because the fate of the galaxy rests on your shoulders, Commander.",
+    "url": "https://www.igdb.com/games/mass-effect-2"
+  },
+  {
+    "id": 565,
+    "aggregated_rating": 95.375,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 85079,
+      "image_id": "co1tnb"
+    },
+    "first_release_date": 1246320000,
+    "name": "Uncharted 2: Among Thieves",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "In the sequel to Drake\u0027s Fortune, Nathan Drake comes across a map that showcases the location of Marco Polo\u0027s missing ships. It takes him on a journey to find the infamous Cintamani Stone, and uncover the truth behind it.",
+    "url": "https://www.igdb.com/games/uncharted-2-among-thieves"
+  },
+  {
+    "id": 9602,
+    "aggregated_rating": 94.8,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 94749,
+      "image_id": "co213x"
+    },
+    "first_release_date": 1416528000,
+    "name": "Super Smash Bros. for Wii U",
+    "platforms": [
+      {
+        "id": 41,
+        "name": "Wii U"
+      }
+    ],
+    "summary": "Super Smash Bros. for Wii U is the fourth console-based entry in the popular Super Smash Bros. series of fighting games. With an even larger roster of fighters than its predecessors and the introduction eight player battles, Smash for Wii U continues to add to the formula that gamers have loved since 1999.",
+    "url": "https://www.igdb.com/games/super-smash-bros-for-wii-u"
+  },
+  {
+    "id": 9643,
+    "aggregated_rating": 94.5714285714286,
+    "aggregated_rating_count": 9,
+    "cover": {
+      "id": 68826,
+      "image_id": "co1h3u"
+    },
+    "first_release_date": 1539820800,
+    "name": "Return of the Obra Dinn",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "In this 1-bit first-person mystery game, a merchant ship called the Obra Dinn has appeared at a London harbor, years after being declared lost at sea. As an insurance adjuster, the player must examine the ship for clues.",
+    "url": "https://www.igdb.com/games/return-of-the-obra-dinn"
+  },
+  {
+    "id": 559,
+    "aggregated_rating": 94.375,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 88891,
+      "image_id": "co1wl7"
+    },
+    "first_release_date": 1257811200,
+    "name": "Call of Duty: Modern Warfare 2",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "Call of Duty: Modern Warfare 2 is a first-person shooter video game developed by Infinity Ward and published by Activision for the Xbox 360 and PlayStation 3 video game consoles and the Microsoft Windows operating system. Officially announced on February 11, 2009, the game was released worldwide on November 10, 2009. It is the sixth installment of the Call of Duty series and the direct sequel to Call of Duty 4: Modern Warfare, continuing the same storyline, with Call of Duty: Modern Warfare 3 set to end the storyline.",
+    "url": "https://www.igdb.com/games/call-of-duty-modern-warfare-2"
+  },
+  {
+    "id": 59,
+    "aggregated_rating": 94.2,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 84680,
+      "image_id": "co1tc8"
+    },
+    "first_release_date": 1142812800,
+    "name": "The Elder Scrolls IV: Oblivion",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "After the mysterious and untimely death of the Emperor, desperate factions vie for control of Tamriel\u0027s throne. With the empire ready to crumble, the gates of Oblivion open and demons march upon the land, laying waste to everything in their path. To turn the tide of darkness the player must find the lost heir to the throne and unravel the sinister plot that threatens to destroy all of Tamriel.",
+    "url": "https://www.igdb.com/games/the-elder-scrolls-iv-oblivion"
+  },
+  {
+    "id": 25076,
+    "aggregated_rating": 94.0588235294118,
+    "aggregated_rating_count": 27,
+    "cover": {
+      "id": 80403,
+      "image_id": "co1q1f"
+    },
+    "first_release_date": 1540512000,
+    "name": "Red Dead Redemption 2",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 170,
+        "name": "Google Stadia"
+      }
+    ],
+    "summary": "Developed by the creators of Grand Theft Auto V and Red Dead Redemption, Red Dead Redemption 2 is an epic tale of life in America’s unforgiving heartland. The game\u0027s vast and atmospheric world will also provide the foundation for a brand new online multiplayer experience.",
+    "url": "https://www.igdb.com/games/red-dead-redemption-2"
+  },
+  {
+    "id": 21796,
+    "aggregated_rating": 94.0,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 88200,
+      "image_id": "co1w20"
+    },
+    "first_release_date": 1227571200,
+    "name": "Super Street Fighter II Turbo HD Remix",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "The Capcom arcade classic receives a whole new look with Super Street Fighter II Turbo HD Remix. Capcom maintains the integrity of the popular game by utilizing the original game code while upgrading the graphics with new artwork and high resolution 1080p images -- all of the art, from character animation to stage backgrounds, will be completely redrawn by Udon Entertainment, the company responsible for the official US Street Fighter series of comics. Super Street Fighter II Turbo HD Remix includes both online and offline competition for one to two players.",
+    "url": "https://www.igdb.com/games/super-street-fighter-ii-turbo-hd-remix"
+  },
+  {
+    "id": 733,
+    "aggregated_rating": 94.0,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 84847,
+      "image_id": "co1tgv"
+    },
+    "first_release_date": 1035676800,
+    "name": "Grand Theft Auto: Vice City",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 8,
+        "name": "PlayStation 2"
+      },
+      {
+        "id": 11,
+        "name": "Xbox"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 34,
+        "name": "Android"
+      },
+      {
+        "id": 39,
+        "name": "iOS"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "In the year 1986, Tommy Vercetti is heavily indebted to his mafia superiors after a drug deal gone awry, but his dreams of taking over Vice City (based on Miami) push him down a different path. Featuring a wide variety of vehicles and weapons, radio stations playing hit songs from the era and an intense atmosphere, GTA: Vice City is an open-world sandbox satire of \u002780\u0027s Miami.",
+    "url": "https://www.igdb.com/games/grand-theft-auto-vice-city"
+  },
+  {
+    "id": 2180,
+    "aggregated_rating": 93.9285714285714,
+    "aggregated_rating_count": 16,
+    "cover": {
+      "id": 95737,
+      "image_id": "co21vd"
+    },
+    "first_release_date": 1384992000,
+    "name": "Super Mario 3D World",
+    "platforms": [
+      {
+        "id": 41,
+        "name": "Wii U"
+      }
+    ],
+    "summary": "Super Mario 3D World is a 3D platformer action game for the Wii U, and a follow-up of the Nintendo 3DS installment Super Mario 3D Land. The game builds upon the previous installment, following a similar 3D level-design convention inspired from the 2D platformer titles where players must navigate through a linear-designed level within a time limit to reach a level\u0027s Goal Pole. One key aspect introduced in this title is the simultaneous multiplayer: while not the first game in the series to do so, it is the first 3D title in the Mario series to incorporate up to four players cooperating with each other to reach the goal. Players can select their character from a pool of playable characters prior to starting the game, and each of these characters have their own unique playstyle that gives them advantages and disadvantages over other characters. The game makes use of several Wii U exclusive features, such as tapping blocks with the touch screen on the GamePad and blowing into the mic to reveal hidden items and blow away enemies. Various new power-ups are introduced in this title, with the trademark suit being the Cat power-up, which enables characters to perform a melee attack, climb up walls, and leap while midair, as well as the game generally having a cat-based theme.",
+    "url": "https://www.igdb.com/games/super-mario-3d-world"
+  },
+  {
+    "id": 380,
+    "aggregated_rating": 93.875,
+    "aggregated_rating_count": 9,
+    "cover": {
+      "id": 87124,
+      "image_id": "co1v84"
+    },
+    "first_release_date": 1213228800,
+    "name": "Metal Gear Solid 4: Guns of the Patriots",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      }
+    ],
+    "summary": "Metal Gear Solid 4: Guns of the Patriots is a story-driven adventure game, with seasoned hero Solid Snake drafted for one final mission. Set across stages including the Middle East and South America, the now aged Snake has been asked to assassinate his old adversary, Liquid Ocelot. To do this, however, he must make his way through a series of battlefields, using his legendary stealth abilities and all-new OctoCamo suit to avoid detection and to reach his target. With series favorites such as Meryl Silverburgh, Raiden, Hal \u0027Otacon\u0027 Emmerich, Eva and Roy Campbell returning, and with all new gameplay features including a remote-controlled Metal Gear Mk. II and enhanced CQC (Close Quarters Combat) system, Metal Gear Solid 4 rounds out the Metal Gear saga with a fittingly cinematic and gripping final outing.",
+    "url": "https://www.igdb.com/games/metal-gear-solid-4-guns-of-the-patriots"
+  },
+  {
+    "id": 1352,
+    "aggregated_rating": 93.8571428571429,
+    "aggregated_rating_count": 15,
+    "cover": {
+      "id": 80666,
+      "image_id": "co1q8q"
+    },
+    "first_release_date": 1331596800,
+    "name": "Journey",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 39,
+        "name": "iOS"
+      },
+      {
+        "id": 45,
+        "name": "PlayStation Network"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "In Journey the player controls a robed figure in a vast desert, traveling towards a mountain in the distance. Other players on the same journey can be discovered, and two players can meet and assist each other, but they cannot communicate via speech or text and cannot see each other\u0027s names. The only form of communication between the two is a musical chime. This chime also transforms dull, stiff pieces of cloth found throughout the levels into vibrant red, affecting the game world and allowing the player to progress through the levels. The robed figure wears a trailing scarf, which when charged by approaching floating pieces of cloth, briefly allows the player to float through the air.\n\nThe developers sought to evoke in the player a sense of smallness and wonder, and to forge an emotional connection between them and the anonymous players they meet along the way. The music, composed by Austin Wintory, dynamically responds to the player\u0027s actions, building a single theme to represent the game\u0027s emotional arc throughout the story. Reviewers of the game praised the visual and auditory art as well as the sense of companionship created by playing with a stranger, calling it a moving and emotional experience. Journey won several \"game of the year\" awards and received several other awards and nominations, including a Best Score Soundtrack for Visual Media nomination for the 2013 Grammy Awards.",
+    "url": "https://www.igdb.com/games/journey"
+  },
+  {
+    "id": 2140,
+    "aggregated_rating": 93.75,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 80948,
+      "image_id": "co1qgk"
+    },
+    "first_release_date": 1295308800,
+    "name": "LittleBigPlanet 2",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      }
+    ],
+    "summary": "LittleBigPlanet 2 is a puzzle-platformer video game, centred around user-generated content",
+    "url": "https://www.igdb.com/games/littlebigplanet-2"
+  },
+  {
+    "id": 9927,
+    "aggregated_rating": 93.5714285714286,
+    "aggregated_rating_count": 23,
+    "cover": {
+      "id": 81906,
+      "image_id": "co1r76"
+    },
+    "first_release_date": 1473897600,
+    "name": "Persona 5",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Persona 5, a turn-based JRPG with visual novel elements, follows a high school student with a criminal record for a crime he didn\u0027t commit. Soon he meets several characters who share similar fates to him, and discovers a metaphysical realm which allows him and his friends to channel their pent-up frustrations into becoming a group of vigilantes reveling in aesthetics and rebellion while fighting corruption.",
+    "url": "https://www.igdb.com/games/persona-5"
+  },
+  {
+    "id": 116,
+    "aggregated_rating": 93.5,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 85067,
+      "image_id": "co1tmz"
+    },
+    "first_release_date": 1058227200,
+    "name": "Star Wars: Knights of the Old Republic",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 11,
+        "name": "Xbox"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 34,
+        "name": "Android"
+      },
+      {
+        "id": 39,
+        "name": "iOS"
+      }
+    ],
+    "summary": "Star Wars: Knights of the Old Republic is a role-playing video game developed by BioWare and published by LucasArts. The game\u0027s system is based on Wizards of the Coast\u0027s Star Wars Roleplaying Game, which is based on the d20 role-playing game system derived from the Third Edition Dungeons \u0026 Dragons (D\u0026D) rules. \n \nPlayers choose from three basic character classes at the beginning of the game, and later choose from three Jedi sub-classes. Beyond class, a character has \"skills\" stats, tiered \"feats\", and later on, tiered Force powers, similar to magic spells in fantasy games. Feats and Force powers are unlocked every few level-ups, while the player is given skill points to distribute among their skills every level. \n \nThe game is a part of the Star Wars Legends Universe.",
+    "url": "https://www.igdb.com/games/star-wars-knights-of-the-old-republic"
+  },
+  {
+    "id": 11155,
+    "aggregated_rating": 93.3333333333333,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 93973,
+      "image_id": "co20id"
+    },
+    "first_release_date": 1581638400,
+    "name": "Dreams",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Dreams is a game designed to unleash players’ creativity, turning the PS4 into the Creative console. \n \nIt’s both a playful sandbox game and an endless explorative journey where players can create and share their dreams, and then surf an endless dreamiverse of single assets, games, animation, music and everything in between. The thing that unites everything is the feeling of being in a dream.",
+    "url": "https://www.igdb.com/games/dreams"
+  },
+  {
+    "id": 7471,
+    "aggregated_rating": 93.3333333333333,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 7730,
+      "image_id": "lmw6mr97lt8zuqs30gwm"
+    },
+    "first_release_date": 1245715200,
+    "name": "Transformers: Revenge of the Fallen",
+    "platforms": [
+      {
+        "id": 5,
+        "name": "Wii"
+      },
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 8,
+        "name": "PlayStation 2"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 20,
+        "name": "Nintendo DS"
+      },
+      {
+        "id": 38,
+        "name": "PlayStation Portable"
+      }
+    ],
+    "summary": "Transformers: Revenge of the Fallen is a game based on the movie of the same name. Set a few years after the defeat of Megatron in the first game/movie, Transformers: Revenge of the Fallen reveals that the threat from the Decepticons has in fact, far from ended. Since the end of the first movie Decepticons have began popping up again all over Earth. They are in search of a mysterious object from space that will gift the balance of power. \n \nThe game is a linear third-person shooter that puts the player in control of many of the main characters from the movie, shifting between both Autobot and Decepticon factions. The storyline is told via cutscenes that also allow for the player to easily transition from one character to the other. Playable characters on the Autobot side include: Optimus Prime, Iron Hide, Jetfire, Bumblebee. The Decepticon side includes: Starscream, Sideways (a new character), and Megatron. \n \nThough the game doesn’t allow transform wherever the player wants to, transformation has been introduced as special attacks during robot mode, as fixed alternate game modes (driving Shanghai tunnels as Sideways, and fly through the skies of Russia as Starscream) and, in both robot and vehicle modes, as special moves that give the player alternate abilities. For example, transforming as Starscream while flying will enable him to fly backwards as a robot to take out enemies behind the protagonist. \n \nFor multiplayer, at any point during a single-player campaign a friend can join in as a \"Remote Weapon System\", which allows them to shoot enemies, erect a shield to defend and transfer energon between both players.",
+    "url": "https://www.igdb.com/games/transformers-revenge-of-the-fallen"
+  },
+  {
+    "id": 36926,
+    "aggregated_rating": 93.25,
+    "aggregated_rating_count": 24,
+    "cover": {
+      "id": 82685,
+      "image_id": "co1rst"
+    },
+    "first_release_date": 1516924800,
+    "name": "Monster Hunter: World",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "Monster Hunter: World sees players take on the role of a hunter that completes various quests to hunt and slay monsters within a lively living and breathing eco-system full of predators…. and prey. In the video you can see some of the creatures you can expect to come across within the New World, the newly discovered continent where Monster Hunter: World is set, including the Great Jagras which has the ability to swallow its prey whole and one of the Monster Hunter series favourites, Rathalos. \n \nPlayers are able to utilise survival tools such as the slinger and Scoutfly to aid them in their hunt. By using these skills to their advantage hunters can lure monsters into traps and even pit them against each other in an epic fierce battle. Can our hunter successfully survive the fight and slay the Anjanath? He’ll need to select his weapon choice carefully from 14 different weapon classes and think strategically about how to take the giant foe down. Don’t forget to pack the camouflaging ghillie suit!",
+    "url": "https://www.igdb.com/games/monster-hunter-world"
+  },
+  {
+    "id": 512,
+    "aggregated_rating": 93.25,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 85148,
+      "image_id": "co1tp8"
+    },
+    "first_release_date": 1319760000,
+    "name": "Uncharted 3: Drake\u0027s Deception",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "A search for the fabled \"Atlantis of the Sands\" propels fortune hunter Nathan Drake on a trek into the heart of the Arabian Desert. When the terrible secrets of this lost city are unearthed, Drake\u0027s quest descends into a desperate bid for survival that strains the limits of his endurance and forces him to confront his deepest fears.",
+    "url": "https://www.igdb.com/games/uncharted-3-drake-s-deception"
+  },
+  {
+    "id": 382,
+    "aggregated_rating": 93.25,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 79917,
+      "image_id": "co1pnx"
+    },
+    "first_release_date": 1272499200,
+    "name": "Metal Gear Solid: Peace Walker",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 38,
+        "name": "PlayStation Portable"
+      }
+    ],
+    "summary": "MGS: Peace Walker is an action-adventure stealth video game and is the third action-based Metal Gear title made specifically for the PSP, following Metal Gear Solid: Portable Ops and its stand-alone expansion Portable Ops Plus, and the first in the series released for a portable platform to be directed by series\u0027 creator Hideo Kojima. This is the first title in the series to alter the traditional tagline \"Tactical Espionage Action\" to \"Tactical Espionage Operations\", referring to the base building and mission mechanics of the game. \n \nSet in 1974 in Costa Rica, the game follows the exploits of returning protagonist Big Boss (previously known as Naked Snake in Snake Eater and Portable Ops, now known simply as Snake) as he runs the mercenary unit Militaires Sans Frontières (Soldiers Without Borders). \n \nPeace Walker consists of two primary playing modes: \"Mission\" and \"Mother Base\". \"Mission\" are the actual action sequences of the game, where the player must infiltrate an enemy territory, whereas \"Mother Base\" is a crew managing simulation mode similar to the \"Comrade System\" in Portable Ops. \n \nMissions \nPlayers get to choose which missions to play from the \"Mission Selector\" screen. There are two main types of Missions: Main Ops are the primary story-based missions in which goals are determined by the narrative and must be played in a strict order in order to proceed. Some Main Ops missions include illustrated cutscenes that involve bits of interactivity in order to proceed. Extra Ops are optional side-missions that involve much more elaborate goals ranging from simple target practices to obtaining secret documents. \n \nWhen the player completes a mission, his or her performance is evaluated afterward. A player\u0027s score is penalized with a lower rank and reduced heroism for excessive killing and frequently being discovered, whereas players who are stealthy and subdue enemy soldiers non-lethally will be awarded appropriately. Players can replay previously cleared missions for higher ranks. \n \nPlayers can go through missions as Snake or as an MSF soldier (male or female). Some missions will only be available to Snake, and likewise for MSF soldiers. \n \nThe game adopts certain mechanics from Metal Gear Solid 4, such as the ability to move while crouched, the over-the-shoulder shooting view, the CQC system, and the ability to search held-up soldiers. The truck from Portable Ops, where players can bring subdued enemies for recruitment, has been discarded in favor of the Fulton Recovery System, which players attach to subdued soldiers and prisoners. The Wi-Fi recruitment system from Portable Ops has been modified so that instead of tapping the Circle button to obtain a strong enough signal from an access point, the player will have to knockout soldiers using CQC to accept them. The cardboard box used to hide from enemy soldiers is now available in two-man versions called Love Boxes, which have different variants. The Surround Indicator in Portable Ops can also be used only when it is equipped in the item box and players will also develop and use an early version of the Soliton radar system from Metal Gear Solid. The game features the camouflage index system from Snake Eater, but the player does not have the ability to change camouflage uniforms during a mission as the point index will be entirely based on movement, position, and the size of the weapon equipped in the weapon box. The player can also use marking devices to call in artillery strikes or resupply drops. \n \nMovement is done on the analog stick; actions such as co-op actions use the directional-pad; melee actions, which include multiple throws into crowds of enemies, use the R button; and weapons use the L button with the R button. Players will be unable to move or shoot while lying down and while pinned on a wall. The player can set the control system according to that of Portable Ops, Guns of the Patriots, or Capcom\u0027s Monster Hunter. \n \nBefore starting a mission, the player can determine his or her character\u0027s item and weapon load-out, including the character\u0027s uniform. The player\u0027s carrying capacity is limited and any excessive items that the player obtains during a mission will be transferred over to Mother Base\u0027s inventory. There are four primary types of uniforms that can be worn by the player. \n \nJungle Fatigues — The default uniform for Snake and MSF Soldiers. A balance of stealth, defense, weapons, and inventory. Available in multiple camouflage patterns. \nNaked — A shirtless version of the Jungle Fatigues, players using Naked uniforms move fast at the cost of lower stealth, weaker defense, and fewer items. \nSneaking Suit — Resembles the sneaking suit worn by Snake in Snake Eater and Portable Ops, it allows players to move without generating foot noises and have higher camouflage compared to other suits while moving, but restricts them to five items and six secondary weapons. \nBattle Dress — A heavily armored suit that allows the player to carry a third primary weapon and absorb heavy firepower, but at the cost of a lower item carrying capacity, slower mobility and a lower camouflage index. A variant outfitted with a helmet is also available, which increases the defenses. \n \nMother Base \nThe Mother Base is an abandoned OTEC research platform in the Caribbean that serves as the MSF\u0027s headquarters. Aside from managing the combat, medical, intelligence, and technology research teams seen in MPO, the player can assign personnel to the mess hall crew to feed the troops and keep up their morale. Rebellious or injured personnel can be brought to the brig and sickbay, respectively. The player will also have a chance to capture military vehicles that appear in the game as minor boss opponents, such as armored personnel carriers, tanks, and attack helicopters. Up to 350 soldiers can be recruited; excess staff caught in a mission must be discharged and up to 50 vehicles can be captured over the course of the game. \n \nItems and weapons are not procured on-site, but rather they\u0027re developed by MSF\u0027s R\u0026D division based on blueprints obtained from missions. New items and weapons can only be developed when the player has sufficient GMP and certain MSF divisions have both reached the required level. Once development of an item has been completed, the R\u0026D staff will automatically mass-produce them for the entire army. \n \nOuter Ops is a new game mechanic where players can deploy their combat unit soldiers (with the exception of Snake and other unique characters) and captured vehicles on certain missions against computer opponents. Each assault force codenamed from Alpha to Hotel has eight slots for assigning vehicles or soldiers, who can gain combat bonuses such as additional hit points and Psyche points, and generate income for the team. Depending on the scale of the enemy\u0027s firepower, MSF soldiers who are defeated during the battle can either die or be brought to sickbay for treatment. Vehicles that show damage in one mission will still show damage unless they are taken off the front for repairs, while decommissioned vehicles will be stricken from the inventory. \n \nMultiplayer \nThe Comrade System from Portable Ops has been removed in favor of a cooperative play mode called \"Co-Ops\", which allows two players to play most sneaking missions and four players in boss missions. There are several actions that can take place when two players are next to each other. \u0027Snake-in\u0027 allows players to hold on to each other as one player leads the way, also allowing the players to fire on the move. Other co-operative actions include holding up closing doors, performing CPR on fallen comrades, sharing items, and acting as a spotter for other players whose vision is obscured. \n \nVersus Ops are multiplayer matches played over special versions of certain maps. The player has a choice of whether to organize individual or team deathmatches, base capture and quetzal capture missions. Only certain items or weapons unlocked in the single-player campaign can be used in the mode. Each match can gather up to six players with restrictions included, such as life and psyche points not regained and limited time for CPR revivals.",
+    "url": "https://www.igdb.com/games/metal-gear-solid-peace-walker"
+  },
+  {
+    "id": 538,
+    "aggregated_rating": 93.2142857142857,
+    "aggregated_rating_count": 16,
+    "cover": {
+      "id": 82603,
+      "image_id": "co1rqj"
+    },
+    "first_release_date": 1361836800,
+    "name": "Bioshock Infinite",
+    "platforms": [
+      {
+        "id": 3,
+        "name": "Linux"
+      },
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 36,
+        "name": "Xbox Live Arcade"
+      },
+      {
+        "id": 45,
+        "name": "PlayStation Network"
+      }
+    ],
+    "summary": "This first-person story-driven shooter and entry in the Bioshock franchise follows Booker DeWitt as he enters the floating independent (formerly US) city of Columbia in 1912 and attempts to retrieve a girl trapped in a tower by the city\u0027s self-proclaimed despot/prophet in order to erase his financial debt. Throughout the story, themes of violence, racism and fatalism are brought up.",
+    "url": "https://www.igdb.com/games/bioshock-infinite"
+  },
+  {
+    "id": 7331,
+    "aggregated_rating": 93.1666666666667,
+    "aggregated_rating_count": 25,
+    "cover": {
+      "id": 81917,
+      "image_id": "co1r7h"
+    },
+    "first_release_date": 1462838400,
+    "name": "Uncharted 4: A Thief\u0027s End",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Several years after his last adventure, retired fortune hunter, Nathan Drake, is forced back into the world of thieves. With the stakes much more personal, Drake embarks on a globe-trotting journey in pursuit of a historical conspiracy behind a fabled pirate treasure. His greatest adventure will test his physical limits, his resolve, and ultimately what he\u0027s willing to sacrifice to save the ones he loves.",
+    "url": "https://www.igdb.com/games/uncharted-4-a-thief-s-end"
+  },
+  {
+    "id": 732,
+    "aggregated_rating": 93.1428571428571,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 84848,
+      "image_id": "co1tgw"
+    },
+    "first_release_date": 1098748800,
+    "name": "Grand Theft Auto: San Andreas",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 8,
+        "name": "PlayStation 2"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 11,
+        "name": "Xbox"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 34,
+        "name": "Android"
+      },
+      {
+        "id": 36,
+        "name": "Xbox Live Arcade"
+      },
+      {
+        "id": 39,
+        "name": "iOS"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Returning after his mother\u0027s murder to the semi-fictional city of Los Santos (based on Los Angeles), Carl Johnson, a former gang banger, must take back the streets for his family and friends by gaining respect and once again gaining control over the city. However, a story filled with plots, lies and corruption will lead him to trudge the entire state of San Andreas (based on California and Nevada) to get revenge.",
+    "url": "https://www.igdb.com/games/grand-theft-auto-san-andreas"
+  },
+  {
+    "id": 620,
+    "aggregated_rating": 93.0,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 76632,
+      "image_id": "co1n4o"
+    },
+    "first_release_date": 1200960000,
+    "name": "Burnout Paradise",
+    "platforms": [
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "Evolve or die. For Paradise, we knew we had to change everything. \n \nBurnout was a killer arcade driving game, but for a new generation of hardware and connected player Burnout had to become something more ambitious. \n \nClosed tracks made way for an expansive, open city, and we seamlessly synced your friends into the action and let you loose on a heap of cool challenges that unsurprisingly rewarded you for driving like a lunatic. Hey, it’s us after all.",
+    "url": "https://www.igdb.com/games/burnout-paradise"
+  },
+  {
+    "id": 126098,
+    "aggregated_rating": 92.7777777777778,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 85179,
+      "image_id": "co1tq3"
+    },
+    "first_release_date": 1584921600,
+    "name": "Half-Life: Alyx",
+    "platforms": [
+      {
+        "id": 161,
+        "name": "Windows Mixed Reality"
+      },
+      {
+        "id": 162,
+        "name": "Oculus VR"
+      },
+      {
+        "id": 163,
+        "name": "SteamVR"
+      }
+    ],
+    "summary": "Half-Life: Alyx is Valve’s VR return to the Half-Life series. It’s the story of an impossible fight against a vicious alien race known as the Combine, set between the events of Half-Life and Half-Life 2. \n \nSet between the events of Half-Life and Half-Life 2, Alyx Vance and her father Eli mount an early resistance to the Combine\u0027s brutal occupation of Earth.",
+    "url": "https://www.igdb.com/games/half-life-alyx"
+  },
+  {
+    "id": 26845,
+    "aggregated_rating": 92.7777777777778,
+    "aggregated_rating_count": 14,
+    "cover": {
+      "id": 76781,
+      "image_id": "co1n8t"
+    },
+    "first_release_date": 1564099200,
+    "name": "Fire Emblem: Three Houses",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Here, order is maintained by the Church of Seiros, which hosts the prestigious Officer’s Academy within its headquarters. You are invited to teach one of its three mighty houses, each comprised of students brimming with personality and represented by a royal from one of three territories. As their professor, you must lead your students in their academic lives and in turn-based, tactical RPG battles wrought with strategic, new twists to overcome. Which house, and which path, will you choose?",
+    "url": "https://www.igdb.com/games/fire-emblem-three-houses"
+  },
+  {
+    "id": 9600,
+    "aggregated_rating": 92.75,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 85543,
+      "image_id": "co1u07"
+    },
+    "first_release_date": 1215648000,
+    "name": "Shin Megami Tensei: Persona 4",
+    "platforms": [
+      {
+        "id": 8,
+        "name": "PlayStation 2"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 45,
+        "name": "PlayStation Network"
+      }
+    ],
+    "summary": "Shin Megami Tensei: Persona 4 is the fourth main entry of the Persona series. Which is a spin off series of the Shin Megami Tensei series. Starting with Persona 3, the series became popular for its combination of traditional RPG mechanics, and social simulation gameplay. By day the player attends high school. By night the game becomes a dungeon crawling turn based RPG. In Persona 4 the player assumes the role of the player-named protagonist who has transferred to a new school in the fictional rural Japanese town of Inaba. The protagonist gains the ability to summon Personas, a power that allows the protagonist to fight Shadows, the enemies of the game. \n \nLike Persona 3, Persona 4 requires the player to manage their time wisely. As most actions in the game will result in time advancing. Passage of time is not based on how long the player takes to do their actions. Once the player has chosen what they will do, time will pass. When time passes it simply skips to the next part of the day. Each day is split into multiple parts: Early Morning, Morning, Lunch, Daytime, Afternoon, After School, and the Evening. Players can choose to spend time with friends, study, read books, fish, and many other side activities. Note that shopping does not cause time to pass. \n \nOn schooldays the player attends school, where there is usually a lecture about random factoids of real life that you will be quizzed on. Getting these questions right or wrong does not effect the main story, but raises the characters Knowledge social stat, which can be used to unlock dialogue options in some cutscenes, and get higher test scores. Other social stats, include: Understanding, Courage, Expression, and Diligence. Each of these stats have many various effects on the players side activities. Some social links require certain levels of social stats. Increasing your social stats can unlock more part time jobs for the player to earn more money. After school and on weekends the player chooses what to do with their free time, \n \nAt night, the player can traverse dungeons. Where they will fight many different types of Shadows. The combat is very similar to any traditional turn based Japanese RPG game. Persona 4 uses a combat system akin to the Shin Megami Tensei: Nocturne \"Press Turn\" system. In which the player can take advantage of the enemies weaknesses to gain extra turns. If the player attacks an enemy with an element that enemy is weak to, the player gains an extra turn to attack. However, repeating that attack on the same enemy will not give the character a second extra turn. \n \nThe game features a very complex but easy to use fusing system. The player selects multiple personas to fuse together to create a new persona that can sometimes carry over some of the base personas skills. Later into the game the player can unlock Special Fusions to create Peronas that are very powerful. \n \nSocial Links are one of the key mechanics in this game. Social Links are a measure of the friendship between the protagonist and the many characters of Persona 4. This feature gives your fused Personas bonus experience upon their creation, and allow you to learn new skills and abilities in battle. Social Links also open up romantic relationship options with a few of the games female characters. Social Links play out as the normal cutscenes in the game that provide more character development for the huge cast of characters. There are 24 Social Links in total, each one has a respective Arcana. All Personas have an assigned Arcana. Having a Persona of the same Arcana of a Social Link doubles the rate that you level that Social Link. \n \nPersona 4\u0027s plot is closely tied to the weather, thus the player can check the ingame weather forecast. Weather has various effects on the game, on rainy days if the player chooses to study they will gain more Knowledge points than normal. The most essential part of the weather forecast is recognizing when the town will become foggy, as this is an indication of when the player must finish the dungeon they are currently exploring. If the player fails to complete a dungeon before a foggy day the game rolls the calender back one week. The fog sets in after 2 or more rainy days.",
+    "url": "https://www.igdb.com/games/shin-megami-tensei-persona-4--1"
+  },
+  {
+    "id": 1300,
+    "aggregated_rating": 92.75,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 91361,
+      "image_id": "co1yht"
+    },
+    "first_release_date": 1141862400,
+    "name": "Tom Clancy\u0027s Ghost Recon Advanced Warfighter",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 11,
+        "name": "Xbox"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "The year is 2013 and you play as Captain Mitchell, commander of a Ghost Recon team, on a mission in Mexico City where rebels are attempting a coup, putting Mexico and the USA in danger. \n \nTo deal with the different situations you have to face, taking out AA-guns or defending injured personnel until the rescue team arrives, you do not only have access to top-notch weapons like the different versions of the MR-C, but also to futuristic equipment like a drone that flies over the battlefield to spot enemy units.",
+    "url": "https://www.igdb.com/games/tom-clancy-s-ghost-recon-advanced-warfighter"
+  },
+  {
+    "id": 551,
+    "aggregated_rating": 92.75,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 78897,
+      "image_id": "co1ovl"
+    },
+    "first_release_date": 1173744000,
+    "name": "God of War II",
+    "platforms": [
+      {
+        "id": 8,
+        "name": "PlayStation 2"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      }
+    ],
+    "summary": "Kratos is now the God of War, having defeated the Olympian god Ares. Shunned by the other gods and still haunted by nightmares from his past, Kratos decides to join an army of Spartans in an attack on the city of Rhodes. Kratos also ignores a warning from the goddess Athena that his lust for revenge is alienating the other gods.",
+    "url": "https://www.igdb.com/games/god-of-war-ii"
+  },
+  {
+    "id": 2692,
+    "aggregated_rating": 92.7142857142857,
+    "aggregated_rating_count": 9,
+    "cover": {
+      "id": 89037,
+      "image_id": "co1wp9"
+    },
+    "first_release_date": 1221350400,
+    "name": "Rock Band 2",
+    "platforms": [
+      {
+        "id": 5,
+        "name": "Wii"
+      },
+      {
+        "id": 8,
+        "name": "PlayStation 2"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      }
+    ],
+    "summary": "Rock Band 2 is the sequel to the 2007 musical simulation game Rock Band and offers similar gameplay. Directly competing with Guitar Hero: World Tour, the game allows different people to play together as in a band, with the same peripherals as the first game: lead guitar, bass guitar, microphone and a drum set. \n \nThe new drum and guitar controllers for this version, bundled or sold separately, have been revised and older controllers are also supported. The guitar controller, modelled after the Fender Stratocaster, has five additional fret buttons near the neck, for fast fingertapping sessions. There is also an effect switch to toggle between five different effects. Players use the instruments to match notes on the screen, divided in different portions for different instruments, along with the lyrics for the singer who need to match the pitch.",
+    "url": "https://www.igdb.com/games/rock-band-2"
+  },
+  {
+    "id": 534,
+    "aggregated_rating": 92.7142857142857,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 40603,
+      "image_id": "crc3jclnlyzp90gdhmuc"
+    },
+    "first_release_date": 1321574400,
+    "name": "The Legend of Zelda: Skyward Sword",
+    "platforms": [
+      {
+        "id": 5,
+        "name": "Wii"
+      },
+      {
+        "id": 41,
+        "name": "Wii U"
+      }
+    ],
+    "summary": "Skyward Sword is the sixteenth entry in the Legend of Zelda series. The game makes use of the Wii MotionPlus peripheral for sword fighting, with a revised Wii Remote pointing system used for targeting.",
+    "url": "https://www.igdb.com/games/the-legend-of-zelda-skyward-sword"
+  },
+  {
+    "id": 20,
+    "aggregated_rating": 92.625,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 82656,
+      "image_id": "co1rs0"
+    },
+    "first_release_date": 1187654400,
+    "name": "BioShock",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 39,
+        "name": "iOS"
+      }
+    ],
+    "summary": "Set in the Objectivist underwater dystopia of Rapture in the \u002760\u0027s, Bioshock is a first-person shooter with the premise of arming and genetically modifying yourself in order to survive against the city\u0027s resident great minds-turned-maddened anomalies and aid Atlas in his mission to overthrow the city\u0027s cruel ruler, Andrew Ryan.",
+    "url": "https://www.igdb.com/games/bioshock"
+  },
+  {
+    "id": 1399,
+    "aggregated_rating": 92.6,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 89188,
+      "image_id": "co1wtg"
+    },
+    "first_release_date": 1227744000,
+    "name": "Professor Layton and the Unwound Future",
+    "platforms": [
+      {
+        "id": 20,
+        "name": "Nintendo DS"
+      }
+    ],
+    "summary": "As with previous Professor Layton games, Unwound Future is an adventure game where the player solves puzzles offered by local citizens to progress the story forward, through dialogue and around 32 minutes of full motion video. The player moves about the game through still images of locations. The player can use the DS touchscreen to tap on non-player characters to start a dialog or to obtain a puzzle, and also can search anywhere on the background for hint coins, with some areas needing to be tapped several times to reveal a secret hint coin or puzzle. Puzzles are brainteasers of many varieties, including visual, math, and logic. There is no time limit to solve puzzles, and the player can get up to 3 hints at a cost of one hint coin each; a new feature in Unwound Future is a \"super hint\", costing 2 coins, that can only be bought after the other 3 hints have been revealed, but that nearly reveals the puzzle\u0027s solution. If the player is correct in solving the puzzle, they gain a number of \"Picarats\", a form of currency within the game. Guessing the incorrect answer will reduce the number of picarats the player can get on subsequent attempts. Players can visit certain areas in order to play undiscovered or unsolved puzzles that are left behind as the story progresses.",
+    "url": "https://www.igdb.com/games/professor-layton-and-the-unwound-future"
+  },
+  {
+    "id": 7342,
+    "aggregated_rating": 92.4871794871795,
+    "aggregated_rating_count": 41,
+    "cover": {
+      "id": 81935,
+      "image_id": "co1r7z"
+    },
+    "first_release_date": 1467158400,
+    "name": "INSIDE",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 39,
+        "name": "iOS"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "An atmospheric 2D side-scroller in which, hunted and alone, a boy finds himself drawn into the center of a dark project and struggles to preserve his identity.",
+    "url": "https://www.igdb.com/games/inside"
+  },
+  {
+    "id": 72,
+    "aggregated_rating": 92.4444444444444,
+    "aggregated_rating_count": 13,
+    "cover": {
+      "id": 82660,
+      "image_id": "co1rs4"
+    },
+    "first_release_date": 1303171200,
+    "name": "Portal 2",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      }
+    ],
+    "summary": "Sequel to the acclaimed Portal (2007), Portal 2 pits the protagonist of the original game, Chell, and her new robot friend, Wheatley, against more puzzles conceived by GLaDOS, an A.I. with the sole purpose of testing the Portal Gun\u0027s mechanics and taking revenge on Chell for the events of Portal. As a result of several interactions and revelations, Chell once again pushes to escape Aperture Science Labs.",
+    "url": "https://www.igdb.com/games/portal-2"
+  },
+  {
+    "id": 1968,
+    "aggregated_rating": 92.4285714285714,
+    "aggregated_rating_count": 18,
+    "cover": {
+      "id": 84979,
+      "image_id": "co1tkj"
+    },
+    "first_release_date": 1377820800,
+    "name": "Rayman Legends",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 9,
+        "name": "PlayStation 3"
+      },
+      {
+        "id": 12,
+        "name": "Xbox 360"
+      },
+      {
+        "id": 41,
+        "name": "Wii U"
+      },
+      {
+        "id": 46,
+        "name": "PlayStation Vita"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "The Glade of Dreams is in trouble once again! The nightmares multiplied and spread, creating new monsters even more terrifying than before!",
+    "url": "https://www.igdb.com/games/rayman-legends"
+  }
+]
