@@ -5,7 +5,7 @@ defmodule Skaro.IGDB.Parsers.Games do
   alias Skaro.Core.Game
   alias Skaro.Parser
 
-  alias Skaro.IGDB.Parsers.{Companies, ExternalLinks, Franchises, Images, Platforms}
+  alias Skaro.IGDB.Parsers.{Companies, ExternalLinks, Franchises, Images, Platforms, Videos}
 
   def parse_basic(json) when is_list(json), do: Enum.map(json, &parse_basic/1)
 
@@ -53,7 +53,8 @@ defmodule Skaro.IGDB.Parsers.Games do
       franchises: Franchises.parse_basic(game["franchises"]),
       developers: Companies.parse_basic(developers),
       publishers: Companies.parse_basic(publishers),
-      external_links: ExternalLinks.parse_basic(game["websites"])
+      external_links: ExternalLinks.parse_basic(game["websites"]),
+      videos: Videos.parse_basic(game["videos"])
     }
   end
 

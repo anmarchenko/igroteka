@@ -4,7 +4,7 @@ defmodule Skaro.Factory do
 
   alias Skaro.Accounts.User
   alias Skaro.Backlog.{AvailablePlatform, Entry}
-  alias Skaro.Core.{Company, ExternalLink, Franchise, Game, Genre, Image, Platform, Theme}
+  alias Skaro.Core.{Company, ExternalLink, Franchise, Game, Genre, Image, Platform, Theme, Video}
 
   def user_factory do
     number = :rand.uniform(10_000)
@@ -107,7 +107,8 @@ defmodule Skaro.Factory do
       franchises: [build(:franchise)],
       genres: [build(:genre)],
       themes: [build(:theme)],
-      external_links: [build(:external_link)]
+      external_links: [build(:external_link)],
+      videos: []
     }
   end
 
@@ -117,6 +118,16 @@ defmodule Skaro.Factory do
     %AvailablePlatform{
       platform_id: id,
       platform_name: "Platform #{id}"
+    }
+  end
+
+  def video_factory do
+    id = :rand.uniform(10_000)
+
+    %Video{
+      id: id,
+      name: "video #{id}",
+      video_id: id
     }
   end
 

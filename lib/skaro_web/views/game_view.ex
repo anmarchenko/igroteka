@@ -6,7 +6,8 @@ defmodule SkaroWeb.GameView do
     ExternalLinkView,
     FranchiseView,
     ImageView,
-    PlatformView
+    PlatformView,
+    VideoView
   }
 
   def render("index.json", %{games: games}) do
@@ -45,7 +46,8 @@ defmodule SkaroWeb.GameView do
         ExternalLinkView.render(
           "index.json",
           external_links: game.external_links
-        )
+        ),
+      videos: VideoView.render("index.json", videos: game.videos)
     })
   end
 

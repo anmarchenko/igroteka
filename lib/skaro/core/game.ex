@@ -17,7 +17,8 @@ defmodule Skaro.Core.Game do
     Genre,
     Image,
     Platform,
-    Theme
+    Theme,
+    Video
   }
 
   schema "games" do
@@ -44,6 +45,7 @@ defmodule Skaro.Core.Game do
     belongs_to(:cover, Image)
 
     has_many(:external_links, ExternalLink)
+    has_many(:videos, Video)
 
     many_to_many(:platforms, Platform,
       join_through: "games_platforms",

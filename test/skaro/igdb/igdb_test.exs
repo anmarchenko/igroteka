@@ -4,7 +4,7 @@ defmodule Skaro.IGDBTest do
 
   alias Plug.Conn
 
-  alias Skaro.Core.{Company, ExternalLink, Game, Image, Platform}
+  alias Skaro.Core.{Company, ExternalLink, Game, Image, Platform, Video}
   alias Skaro.IGDB
 
   describe "search/1" do
@@ -254,6 +254,14 @@ defmodule Skaro.IGDBTest do
                  name: "Capcom"
                }
              ] = game.publishers
+
+      assert [
+               %Video{
+                 id: 127,
+                 name: "Trailer",
+                 video_id: "CgunkfhmFaw"
+               }
+             ] = game.videos
     end
 
     @tag :bypass
