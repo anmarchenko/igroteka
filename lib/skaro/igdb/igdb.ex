@@ -107,7 +107,7 @@ defmodule Skaro.IGDB do
 
   defp top_games_query() do
     """
-    where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
+    where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79 & name != "The Witness";
     sort aggregated_rating desc;
     limit 100;
     fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,platforms.id,platforms.name;
