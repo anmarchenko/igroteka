@@ -59,11 +59,11 @@ defmodule Skaro.IGDB do
     end
   end
 
-  def top_games() do
+  def top_games(filters) do
     with body when is_binary(body) <-
            HttpClient.idempotent_post(
              games_url(),
-             top_games_query(),
+             top_games_query(filters),
              headers()
            ),
          {:ok, json} <- Parser.parse_json(body),
@@ -105,9 +105,9 @@ defmodule Skaro.IGDB do
     """
   end
 
-  defp top_games_query() do
+  defp top_games_query(filters) do
     """
-    where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79 & name != "The Witness";
+    #{top_games_filters(filters)};
     sort aggregated_rating desc;
     limit 100;
     fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,platforms.id,platforms.name;
@@ -127,4 +127,28 @@ defmodule Skaro.IGDB do
     fields image_id;
     """
   end
+
+  defp top_games_filters(filters) do
+    ("where version_parent = null & category=0 & first_release_date != null " <>
+       "& aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79" <>
+       "& name != \"The Witness\"")
+    |> filter_if_present(:platform, filters)
+    |> filter_if_present(:year, filters)
+  end
+
+  defp filter_if_present(filter, :platform, %{"platform" => platform}) when platform != nil do
+    filter <> " & platforms = #{platform}"
+  end
+
+  defp filter_if_present(filter, :year, %{"year" => year}) when year != nil do
+    {:ok, start, 0} = DateTime.from_iso8601("#{year}-01-01T00:00:00Z")
+    {:ok, fin, 0} = DateTime.from_iso8601("#{year + 1}-01-01T00:00:00Z")
+
+    filter <>
+      " & first_release_date >= #{DateTime.to_unix(start)} & first_release_date < #{
+        DateTime.to_unix(fin)
+      }"
+  end
+
+  defp filter_if_present(filter, _, _), do: filter
 end

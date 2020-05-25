@@ -24,9 +24,9 @@ defmodule Skaro.Core do
     end)
   end
 
-  def top_games() do
-    cached_result("games_index_top", fn ->
-      @remote.top_games()
+  def top_games(filters) do
+    cached_result("games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}", fn ->
+      @remote.top_games(filters)
     end)
   end
 

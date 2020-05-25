@@ -18,8 +18,8 @@ defmodule SkaroWeb.GameController do
     end
   end
 
-  def index(conn, _) do
-    case Core.top_games() do
+  def index(conn, params) do
+    case Core.top_games(params) do
       {:ok, games} ->
         render(conn, "index.json", games: games)
 

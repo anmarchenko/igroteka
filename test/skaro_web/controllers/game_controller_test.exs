@@ -71,7 +71,7 @@ defmodule SkaroWeb.GameControllerTest do
     @tag :login
     test "requesting top games", %{conn: conn, game: game} do
       Skaro.GamesRemoteMock
-      |> expect(:top_games, fn ->
+      |> expect(:top_games, fn _ ->
         {:ok, [game]}
       end)
 
@@ -86,7 +86,32 @@ defmodule SkaroWeb.GameControllerTest do
       cached_value =
         ConCache.get(
           :external_api_cache,
-          "games_index_top"
+          "games_index_top_year__platform_"
+        )
+
+      assert [game] == cached_value
+    end
+
+    @tag :login
+    test "requesting top games with filter", %{conn: conn, game: game} do
+      Skaro.GamesRemoteMock
+      |> expect(:top_games, fn filters ->
+        assert "2017" == filters["year"]
+        assert "42" == filters["platform"]
+        {:ok, [game]}
+      end)
+
+      conn = get(conn, Routes.game_path(@endpoint, :index, year: 2017, platform: 42))
+
+      json = json_response(conn, 200)
+      game_json = Enum.fetch!(json, 0)
+
+      assert game_json["id"] == game.id
+
+      cached_value =
+        ConCache.get(
+          :external_api_cache,
+          "games_index_top_year_2017_platform_42"
         )
 
       assert [game] == cached_value
