@@ -349,7 +349,7 @@ defmodule Skaro.IGDBTest do
 
           assert {:ok,
                   "where version_parent = null & category=0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79& name != \"The Witness\"" <>
-                    " & platforms = 42;" <>
+                    " & platforms = (42);" <>
                     _, conn} = Conn.read_body(conn)
 
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_top_games.json"))

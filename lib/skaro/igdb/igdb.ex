@@ -137,10 +137,16 @@ defmodule Skaro.IGDB do
   end
 
   defp filter_if_present(filter, :platform, %{"platform" => platform}) when platform != nil do
-    filter <> " & platforms = #{platform}"
+    filter <> " & platforms = (#{platform})"
   end
 
-  defp filter_if_present(filter, :year, %{"year" => year}) when year != nil do
+  defp filter_if_present(filter, :year, %{"year" => year}) when year != nil and is_binary(year) do
+    {year, _} = Integer.parse(year)
+    filter_if_present(filter, :year, %{"year" => year})
+  end
+
+  defp filter_if_present(filter, :year, %{"year" => year})
+       when year != nil and is_integer(year) do
     {:ok, start, 0} = DateTime.from_iso8601("#{year}-01-01T00:00:00Z")
     {:ok, fin, 0} = DateTime.from_iso8601("#{year + 1}-01-01T00:00:00Z")
 
