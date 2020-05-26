@@ -1,0 +1,752 @@
+[
+  {
+    "id": 107262,
+    "aggregated_rating": 82.1,
+    "aggregated_rating_count": 12,
+    "cover": {
+      "id": 94232,
+      "image_id": "co20pk"
+    },
+    "first_release_date": 1588204800,
+    "name": "Streets of Rage 4",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Publisher Dotemu (Wonder Boy, Windjammers 1/2) and developers Lizardcube (Wonder Boy) and Guard Crush Games today revealed Streets of Rage 4, an all-new continuation of SEGA’s iconic arcade brawler series known for its radical fights, jammin’ ‘90s beats and dashing sparring gloves and bandanas.",
+    "url": "https://www.igdb.com/games/streets-of-rage-4"
+  },
+  {
+    "id": 103291,
+    "aggregated_rating": 84.75,
+    "aggregated_rating_count": 10,
+    "cover": {
+      "id": 86816,
+      "image_id": "co1uzk"
+    },
+    "first_release_date": 1588032000,
+    "name": "Gears Tactics",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "Gears Tactics is an upcoming Gears of War turn-based strategy game. The game is going to launch on PC first, before making its way to the consoles. \n \nThe game takes place twelve years before the original Gears of War, centered around a new squad. The squad can be customized.",
+    "url": "https://www.igdb.com/games/gears-tactics"
+  },
+  {
+    "id": 11169,
+    "aggregated_rating": 88.2222222222222,
+    "aggregated_rating_count": 12,
+    "cover": {
+      "id": 81567,
+      "image_id": "co1qxr"
+    },
+    "first_release_date": 1586476800,
+    "name": "Final Fantasy VII Remake",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "A spectacular re-imagining of one of the most visionary games ever, Final Fantasy VII Remake rebuilds and expands the legendary RPG for today. The first game in this project will be set in the eclectic city of Midgar and presents a fully standalone gaming experience.",
+    "url": "https://www.igdb.com/games/final-fantasy-vii-remake"
+  },
+  {
+    "id": 115115,
+    "aggregated_rating": 80.8,
+    "aggregated_rating_count": 14,
+    "cover": {
+      "id": 96667,
+      "image_id": "co22l7"
+    },
+    "first_release_date": 1585872000,
+    "name": "Resident Evil 3",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "Jill Valentine is one of the last remaining people in Raccoon City to witness the atrocities Umbrella performed. To stop her, Umbrella unleashes their ultimate secret weapon: Nemesis! Also includes Resident Evil Resistance, a new 1 vs 4 online multiplayer game set in the Resident Evil universe.",
+    "url": "https://www.igdb.com/games/resident-evil-3"
+  },
+  {
+    "id": 126098,
+    "aggregated_rating": 92.7777777777778,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 85179,
+      "image_id": "co1tq3"
+    },
+    "first_release_date": 1584921600,
+    "name": "Half-Life: Alyx",
+    "platforms": [
+      {
+        "id": 161,
+        "name": "Windows Mixed Reality"
+      },
+      {
+        "id": 162,
+        "name": "Oculus VR"
+      },
+      {
+        "id": 163,
+        "name": "SteamVR"
+      }
+    ],
+    "summary": "Half-Life: Alyx is Valve’s VR return to the Half-Life series. It’s the story of an impossible fight against a vicious alien race known as the Combine, set between the events of Half-Life and Half-Life 2. \n \nSet between the events of Half-Life and Half-Life 2, Alyx Vance and her father Eli mount an early resistance to the Combine\u0027s brutal occupation of Earth.",
+    "url": "https://www.igdb.com/games/half-life-alyx"
+  },
+  {
+    "id": 109462,
+    "aggregated_rating": 90.1818181818182,
+    "aggregated_rating_count": 14,
+    "cover": {
+      "id": 88635,
+      "image_id": "co1we3"
+    },
+    "first_release_date": 1584662400,
+    "name": "Animal Crossing: New Horizons",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Escape to a deserted island and create your own paradise as you explore, create, and customize in the Animal Crossing: New Horizons game. Your island getaway has a wealth of natural resources that can be used to craft everything from tools to creature comforts. You can hunt down insects at the crack of dawn, decorate your paradise throughout the day, or enjoy sunset on the beach while fishing in the ocean. The time of day and season match real life, so each day on your island is a chance to check in and find new surprises all year round.",
+    "url": "https://www.igdb.com/games/animal-crossing-new-horizons"
+  },
+  {
+    "id": 103298,
+    "aggregated_rating": 88.8888888888889,
+    "aggregated_rating_count": 12,
+    "cover": {
+      "id": 75007,
+      "image_id": "co1lvj"
+    },
+    "first_release_date": 1584662400,
+    "name": "Doom Eternal",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      },
+      {
+        "id": 203,
+        "name": "Stadia"
+      }
+    ],
+    "summary": "Developed by id Software, DOOM Eternal is the direct sequel to DOOM (2016). Experience the ultimate combination of speed and power with the next leap in push-forward, first-person combat. \n \nAs the DOOM Slayer, return to take your vengeance against the forces of Hell. Set to an all-new pulse pounding soundtrack composed by Mick Gordon, fight across dimensions as you slay new and classic demons with powerful new weapons and abilities.",
+    "url": "https://www.igdb.com/games/doom-eternal"
+  },
+  {
+    "id": 125013,
+    "aggregated_rating": 86.6,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 94821,
+      "image_id": "co215x"
+    },
+    "first_release_date": 1584403200,
+    "name": "MLB The Show 20",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "MLB The Show 20 is an upcoming baseball video game by SIE San Diego Studio and published by Sony Interactive Entertainment, based on Major League Baseball (MLB). It is the fifteenth entry of the MLB: The Show franchise, and it will be released on March 17, 2020, for PlayStation 4. Chicago Cubs infielder Javier Báez is featured as the cover star.",
+    "url": "https://www.igdb.com/games/mlb-the-show-20"
+  },
+  {
+    "id": 103330,
+    "aggregated_rating": 85.7142857142857,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 83563,
+      "image_id": "co1sh7"
+    },
+    "first_release_date": 1584057600,
+    "name": "Nioh 2",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Master the lethal arts of the samurai as a mysterious half-human, half-supernatural Yokai warrior, in this challenging action RPG sequel. \nExplore violent Sengoku-era Japan and the deadly Dark Realm, both plagued with grotesque, merciless demons. \n \nUnsheathe your deadly weapons and cut down all enemies in your path using a revamped combat system and the ability to transform into a full Yokai to unleash devastating paranormal powers.",
+    "url": "https://www.igdb.com/games/nioh-2"
+  },
+  {
+    "id": 37001,
+    "aggregated_rating": 91.0,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 81936,
+      "image_id": "co1r80"
+    },
+    "first_release_date": 1583884800,
+    "name": "Ori and the Will of the Wisps",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "From the creators of the multi award winning Ori and the Blind Forest, comes the highly anticipated sequel: Ori and the Will of the Wisps.",
+    "url": "https://www.igdb.com/games/ori-and-the-will-of-the-wisps"
+  },
+  {
+    "id": 106822,
+    "aggregated_rating": 82.6,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 70212,
+      "image_id": "co1i6c"
+    },
+    "first_release_date": 1582848000,
+    "name": "Bloodroots",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Betrayed by his partners and left for dead, Mr. Wolf is hell-bent on enacting his revenge - alone, and vastly outnumbered. Thankfully for Mr. Wolf, in Bloodroots the world is your weapon. In this relentless action game, you\u0027ll choreograph spectacular, ultra-violent combos by making use of everything around you, from hatchets, to ladders, to...carrots? It\u0027s improvise or die, as Mr. Wolf fights his way to the center of the mystery: why was he betrayed?",
+    "url": "https://www.igdb.com/games/bloodroots"
+  },
+  {
+    "id": 11155,
+    "aggregated_rating": 93.3333333333333,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 93973,
+      "image_id": "co20id"
+    },
+    "first_release_date": 1581638400,
+    "name": "Dreams",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Dreams is a game designed to unleash players’ creativity, turning the PS4 into the Creative console. \n \nIt’s both a playful sandbox game and an endless explorative journey where players can create and share their dreams, and then surf an endless dreamiverse of single assets, games, animation, music and everything in between. The thing that unites everything is the feeling of being in a dream.",
+    "url": "https://www.igdb.com/games/dreams"
+  },
+  {
+    "id": 113108,
+    "aggregated_rating": 80.9,
+    "aggregated_rating_count": 14,
+    "cover": {
+      "id": 79791,
+      "image_id": "co1pkf"
+    },
+    "first_release_date": 1580169600,
+    "name": "Journey to the Savage Planet",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Onward To Adventure \nIn this colorful, co-op adventure game you play as the newest recruit to Kindred Aerospace. Dropped onto an uncharted planet with little equipment, you must determine if this planet is fit for human habitation but perhaps you are not the first to set foot here…",
+    "url": "https://www.igdb.com/games/journey-to-the-savage-planet"
+  },
+  {
+    "id": 122231,
+    "aggregated_rating": 88.1666666666667,
+    "aggregated_rating_count": 9,
+    "cover": {
+      "id": 81834,
+      "image_id": "co1r56"
+    },
+    "first_release_date": 1579219200,
+    "name": "Tokyo Mirage Sessions #FE Encore",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "The worlds of the Fire Emblem series and Atlus games have crossed paths again and the result is coming to the Nintendo Switch™ system. An interdimensional evil has invaded modern-day Tokyo, resulting in this fantastical barrage of music, style, and yes, danger. So, fight back! Battle through dungeons to pump up your strategy and creatively decimate your foes…before all hope fades to black. \n \nYou and the rising stars you call friends will need to call on your own creative power—manifested as iconic Fire Emblem characters—to wage a secret war on rogue spirits that feed on creativity. Each encounter will immerse you in deep, turn-based battles that blend the combat of the Fire Emblem and Shin Megami Tensei series into one brutal harmony. Fuse items to craft weaponry; then play to your strengths and crush your foes. Around every corner you’ll find fun nods to multiple fandoms, including Fire Emblem references, dungeons themed to the entertainment industry, and stunning musical performances.",
+    "url": "https://www.igdb.com/games/tokyo-mirage-sessions-number-fe-encore"
+  },
+  {
+    "id": 122563,
+    "aggregated_rating": 85.6666666666667,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 83061,
+      "image_id": "co1s39"
+    },
+    "first_release_date": 1575331200,
+    "name": "Arise: A Simple Story",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      }
+    ],
+    "summary": "Set out on an emotional journey through the bittersweet lives of two people where memories come alive and time bends to your will. Lose yourself in moments of happiness and overcome every hardship as you relive your life’s story. A story of joy and sorrow. A simple story.",
+    "url": "https://www.igdb.com/games/arise-a-simple-story"
+  },
+  {
+    "id": 74701,
+    "aggregated_rating": 82.4166666666667,
+    "aggregated_rating_count": 17,
+    "cover": {
+      "id": 82062,
+      "image_id": "co1rbi"
+    },
+    "first_release_date": 1573776000,
+    "name": "Star Wars Jedi: Fallen Order",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 203,
+        "name": "Stadia"
+      }
+    ],
+    "summary": "A galaxy-spanning adventure awaits in Star Wars Jedi: Fallen Order™, a new third-person action-adventure title from Respawn Entertainment. This narratively driven, single-player game puts you in the role of a Jedi Padawan who narrowly escaped the purge of Order 66 following the events of Episode 3: Revenge of the Sith. On a quest to rebuild the Jedi Order, you must pick up the pieces of your shattered past to complete your training, develop new powerful Force abilities and master the art of the iconic lightsaber - all while staying one step ahead of the Empire and its deadly Inquisitors. \n \nWhile mastering your abilities, players will engage in cinematically charged lightsaber and Force combat designed to deliver the kind of intense Star Wars lightsaber battles as seen in the films. Players will need to approach enemies strategically, sizing up strengths and weaknesses while cleverly utilizing your Jedi training to overcome your opponents and solve the mysteries that lay in your path. \n \nStar Wars fans will recognize iconic locations, weapons, gear and enemies while also meeting a roster of fresh characters, locations, creatures, droids and adversaries new to Star Wars. As part of this authentic Star Wars story, fans will delve into a galaxy recently seized by the Empire. As a Jedi hero-turned-fugitive, players will need to fight for survival while exploring the mysteries of a long-extinct civilization all in an effort to rebuild the remnants of the Jedi Order as the Empire seeks to erase the Jedi completely.",
+    "url": "https://www.igdb.com/games/star-wars-jedi-fallen-order"
+  },
+  {
+    "id": 37382,
+    "aggregated_rating": 82.3636363636364,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 92738,
+      "image_id": "co1zk2"
+    },
+    "first_release_date": 1573776000,
+    "name": "Pokémon Sword",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Unsheathe your sword and take up your shield! \n \nThe world of Pokémon expands to include the Galar region in Pokémon Sword and Pokémon Shield!",
+    "url": "https://www.igdb.com/games/pokemon-sword"
+  },
+  {
+    "id": 19564,
+    "aggregated_rating": 83.3333333333333,
+    "aggregated_rating_count": 14,
+    "cover": {
+      "id": 84188,
+      "image_id": "co1syk"
+    },
+    "first_release_date": 1573171200,
+    "name": "Death Stranding",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Sam Bridges must brave a world utterly transformed by the Death Stranding. Carrying the disconnected remnants of our future in his hands, he embarks on a journey to reconnect the shattered world one step at a time.",
+    "url": "https://www.igdb.com/games/death-stranding"
+  },
+  {
+    "id": 114283,
+    "aggregated_rating": 93.7142857142857,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 77124,
+      "image_id": "co1nic"
+    },
+    "first_release_date": 1572480000,
+    "name": "Persona 5 Royal",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "An enhanced version of Persona 5 with some new characters and a third semester added to the game. Released Internationally in 2020.",
+    "url": "https://www.igdb.com/games/persona-5-royal"
+  },
+  {
+    "id": 109455,
+    "aggregated_rating": 88.7857142857143,
+    "aggregated_rating_count": 17,
+    "cover": {
+      "id": 96273,
+      "image_id": "co22a9"
+    },
+    "first_release_date": 1572480000,
+    "name": "Luigi\u0027s Mansion 3",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Luigi embarks on a dream vacation with Mario and friends upon receiving an invitation to a luxurious hotel. However, his dream quickly becomes a nightmare when King Boo reveals everything had been a ploy to capture Mario and friends. With the assistance of Professor E. Gadd once again, the reluctant and cowardly hero Luigi traverses up and down treacherous floors of the now-ominous hotel on a quest to save them.",
+    "url": "https://www.igdb.com/games/luigis-mansion-3"
+  },
+  {
+    "id": 113114,
+    "aggregated_rating": 88.7692307692308,
+    "aggregated_rating_count": 17,
+    "cover": {
+      "id": 83213,
+      "image_id": "co1s7h"
+    },
+    "first_release_date": 1571961600,
+    "name": "The Outer Worlds",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "In The Outer Worlds, you awake from hibernation on a colonist ship that was lost in transit to Halcyon, the furthest colony from Earth located at the edge of the galaxy, only to find yourself in the midst of a deep conspiracy threatening to destroy it. As you explore the furthest reaches of space and encounter various factions, all vying for power, the character you decide to become will determine how this player-driven story unfolds. In the corporate equation for the colony, you are the unplanned variable.",
+    "url": "https://www.igdb.com/games/the-outer-worlds"
+  },
+  {
+    "id": 122338,
+    "aggregated_rating": 84.4,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 81840,
+      "image_id": "co1r5c"
+    },
+    "first_release_date": 1571356800,
+    "name": "Ring Fit Adventure",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "In this fitness-focused title, you\u0027ll be moving the ring and a leg strap -- both of which house a Switch Joy-Con -- to move your character through a fantasy world. \n \nAt certain intervals, you\u0027ll be thrown into battles. These so-called \"fit battles\" play out like a traditional turn-based RPG. All of your attacks are triggered by completing a specific pose or stretch, with four attack types that target different parts of your body \n \nThe world will be broken up into courses that, upon completion, reward you with experience points. Levelling up will increase your character\u0027s base stats and slowly unlock new skills that can be utilised in battle.",
+    "url": "https://www.igdb.com/games/ring-fit-adventure"
+  },
+  {
+    "id": 26472,
+    "aggregated_rating": 89.125,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 83503,
+      "image_id": "co1sfj"
+    },
+    "first_release_date": 1571097600,
+    "name": "Disco Elysium",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      }
+    ],
+    "summary": "A CRPG in which, waking up in a hotel room a total amnesiac with highly opinionated voices in his head, a middle-aged detective on a murder case inadvertently ends up playing a part in the political dispute between a local labour union and a larger international body, all while struggling to piece together his past, diagnose the nature of the reality around him and come to terms with said reality.",
+    "url": "https://www.igdb.com/games/disco-elysium"
+  },
+  {
+    "id": 103342,
+    "aggregated_rating": 84.0,
+    "aggregated_rating_count": 6,
+    "cover": {
+      "id": 72116,
+      "image_id": "co1jn8"
+    },
+    "first_release_date": 1570752000,
+    "name": "Killer Queen Black",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "\"Killer Queen Black is an intense multiplayer action/strategy platformer for up to eight players. \nFly solo, or team up with three of your friends as you race to complete one of three possible victory conditions. \n \nKiller Queen Black, a new take on the arcade esport Killer Queen, has been rebuilt from the ground up and optimized for console. The gameplay is immediately recognizable and familiar, yet it introduces exciting new twists and online play for the home audience. Killer Queen Black is the follow up to Killer Queen that fans have been begging for. \n \n- Online Multiplayer \n- Four game modes: Quick Match, Ranked, Custom, and Arena \n- Five distinct weapons: Sword, Morning Star, Laser, Lance, and Stinger\"",
+    "url": "https://www.igdb.com/games/killer-queen-black"
+  },
+  {
+    "id": 75238,
+    "aggregated_rating": 81.8571428571429,
+    "aggregated_rating_count": 8,
+    "cover": {
+      "id": 82443,
+      "image_id": "co1rm3"
+    },
+    "first_release_date": 1570579200,
+    "name": "Concrete Genie",
+    "platforms": [
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 165,
+        "name": "PlayStation VR"
+      }
+    ],
+    "summary": "Concrete Genie is a game about Ash, a young boy who is bullied but discovers a magical paint that might save his home town.",
+    "url": "https://www.igdb.com/games/concrete-genie"
+  },
+  {
+    "id": 119259,
+    "aggregated_rating": 86.1111111111111,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 87801,
+      "image_id": "co1vqx"
+    },
+    "first_release_date": 1570492800,
+    "name": "Yooka-Laylee and the Impossible Lair",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Yooka and Laylee are back for a brand new adventure! Get ready for the ultimate challenge - the Impossible Lair! \n \nCapital B has created a Hivemind device and used it to enslave the toughest bees in the Royal Stingdom - the Royal Beettalion Guard! \n \nLiberate them from chapters filled with only the tastiest 2D platforming trimmings, and take on a 3D overworld that contains a wealth of puzzles, secrets and some familiar faces!",
+    "url": "https://www.igdb.com/games/yooka-laylee-and-the-impossible-lair"
+  },
+  {
+    "id": 13555,
+    "aggregated_rating": 80.0,
+    "aggregated_rating_count": 13,
+    "cover": {
+      "id": 70234,
+      "image_id": "co1i6y"
+    },
+    "first_release_date": 1570492800,
+    "name": "Indivisible",
+    "platforms": [
+      {
+        "id": 3,
+        "name": "Linux"
+      },
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Indivisible is a side-scrolling RPG in the vein of Valkyrie Profile, spanning a huge fantasy world inspired by our own world’s various cultures and mythologies. \n \nPlayers will navigate beautiful environments using a variety of different traversal abilities, and engage monsters in fast-paced combat.",
+    "url": "https://www.igdb.com/games/indivisible"
+  },
+  {
+    "id": 119390,
+    "aggregated_rating": 89.4,
+    "aggregated_rating_count": 7,
+    "cover": {
+      "id": 80627,
+      "image_id": "co1q7n"
+    },
+    "first_release_date": 1568937600,
+    "name": "Ni no Kuni: Wrath of the White Witch Remastered",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      }
+    ],
+    "summary": "Ni no Kuni: Wrath of the White Witch Remastered on PlayStation 4 and PC features brilliant new visual enhancements, letting PlayStation 4 players enjoy the game at 1080p resolution and with a super-smooth frame rate of 60 frames per second (fps). PlayStation 4 Pro users can also opt for true 4K resolution at 30 fps, or 1440p at 60fps. \n \nThe game retains its original dynamic fight system, combining real-time action and turn-based tactical elements, as well as the dozens of locations and hundreds of creatures that comprise the vast universe of Ni no Kuni. \n \nOriginally developed by LEVEL-5, Ni no Kuni: Wrath of the White Witch’s story unfolds through animation storyboarded and created by the legendary Studio Ghibli, with music composed by award-winning musician Joe Hisaishi. Ni no Kuni: Wrath of the White Witch tells the charming yet tragic story of Oliver, a young boy who embarks on a journey to another world in the hope of bringing back his mother following a tragic incident. With a copy of the Wizard’s Companion in hand and his pal Drippy by his side, Oliver must traverse exotic lands to tame familiars, take on malevolent foes, and overcome the countless challenges that stand between him and his mother’s salvation.",
+    "url": "https://www.igdb.com/games/ni-no-kuni-wrath-of-the-white-witch-remastered"
+  },
+  {
+    "id": 115284,
+    "aggregated_rating": 88.4545454545455,
+    "aggregated_rating_count": 12,
+    "cover": {
+      "id": 81482,
+      "image_id": "co1qve"
+    },
+    "first_release_date": 1568937600,
+    "name": "The Legend of Zelda: Link\u0027s Awakening",
+    "platforms": [
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "Link has washed ashore on a mysterious island with strange and colorful inhabitants. To escape the island, Link must collect magical instruments across the land and awaken the Wind Fish. Explore a reimagined Koholint Island that’s been faithfully rebuilt in a brand-new art style that will entice fans and newcomers alike. Battle enemies as you conquer numerous dungeons and uncover the hidden secrets of the island. Encounter Super Mario enemies like Goombas, Piranha Plants, and more, and interact with unique locals who help Link on his adventure. As you clear dungeons throughout the main story, earn dungeon rooms (Chambers), then arrange them into custom layouts in the all-new Chamber Dungeon. Place your dungeon entrance, Nightmare room, and everything in between as you try to fulfill objectives and play through a new dungeon. Tap compatible amiibo figures to earn more Chambers and and additional Chambers throughout the game in updated mini-games, such as the river rapids, trendy game, and fishing.",
+    "url": "https://www.igdb.com/games/the-legend-of-zelda-links-awakening--1"
+  },
+  {
+    "id": 72813,
+    "aggregated_rating": 82.2222222222222,
+    "aggregated_rating_count": 11,
+    "cover": {
+      "id": 87780,
+      "image_id": "co1vqc"
+    },
+    "first_release_date": 1568937600,
+    "name": "Untitled Goose Game",
+    "platforms": [
+      {
+        "id": 6,
+        "name": "PC (Microsoft Windows)"
+      },
+      {
+        "id": 14,
+        "name": "Mac"
+      },
+      {
+        "id": 48,
+        "name": "PlayStation 4"
+      },
+      {
+        "id": 49,
+        "name": "Xbox One"
+      },
+      {
+        "id": 130,
+        "name": "Nintendo Switch"
+      }
+    ],
+    "summary": "It\u0027s a lovely morning in the village and you are a horrible goose. \n \nUntitled Goose Game is a slapstick-stealth-sandbox, where you are a goose let loose on an unsuspecting village. Make your way around town, from peoples\u0027 back gardens to the high street shops to the village green, setting up pranks, stealing hats, honking a lot, and generally ruining everyone’s day.",
+    "url": "https://www.igdb.com/games/untitled-goose-game"
+  }
+]

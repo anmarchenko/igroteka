@@ -116,6 +116,30 @@ defmodule SkaroWeb.GameControllerTest do
 
       assert [game] == cached_value
     end
+
+    @tag :login
+    test "requesting new games", %{conn: conn, game: game} do
+      Skaro.GamesRemoteMock
+      |> expect(:new_games, fn ->
+        {:ok, [game]}
+      end)
+
+      conn = get(conn, Routes.game_path(@endpoint, :index, new: 1))
+
+      json = json_response(conn, 200)
+      game_json = Enum.fetch!(json, 0)
+
+      assert game_json["id"] == game.id
+      assert game_json["name"] == game.name
+
+      cached_value =
+        ConCache.get(
+          :external_api_cache,
+          "games_index_new"
+        )
+
+      assert [game] == cached_value
+    end
   end
 
   describe "GET :show" do

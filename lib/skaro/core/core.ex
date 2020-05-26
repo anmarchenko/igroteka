@@ -30,6 +30,12 @@ defmodule Skaro.Core do
     end)
   end
 
+  def new_games() do
+    cached_result("games_index_new", fn ->
+      @remote.new_games()
+    end)
+  end
+
   defp cached_result(cache_key, api_call) do
     case ConCache.get(:external_api_cache, cache_key) do
       nil ->

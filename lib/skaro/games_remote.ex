@@ -7,6 +7,7 @@ defmodule Skaro.GamesRemote do
   @callback find_one(String.t() | Integer.t()) ::
               {:ok, Skaro.Core.Game.t()} | {:error, String.t()}
   @callback top_games(Map.t()) :: {:ok, list(Skaro.Core.Game.t())} | {:error, String.t()}
+  @callback new_games() :: {:ok, list(Skaro.Core.Game.t())} | {:error, String.t()}
   @callback get_screenshots(String.t() | Integer.t()) ::
               {:ok, list(Skaro.Core.Image.t())} | {:error, String.t()}
 end
