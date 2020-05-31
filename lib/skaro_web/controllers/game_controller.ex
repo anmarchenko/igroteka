@@ -9,43 +9,37 @@ defmodule SkaroWeb.GameController do
 
   @spec index(any, map) :: {:error, :external_api, any} | Plug.Conn.t()
   def index(conn, %{"term" => term}) do
-    case Core.search(term) do
-      {:ok, games} ->
-        render(conn, "index.json", games: games)
-
-      {:error, reason} ->
-        {:error, :external_api, reason}
-    end
+    term
+    |> Core.search()
+    |> respond(conn)
   end
 
   def index(conn, %{"new" => _}) do
-    case Core.new_games() do
-      {:ok, games} ->
-        render(conn, "index.json", games: games)
-
-      {:error, reason} ->
-        {:error, :external_api, reason}
-    end
+    respond(Core.new_games(), conn)
   end
 
   def index(conn, params) do
-    case Core.top_games(params) do
-      {:ok, games} ->
-        render(conn, "index.json", games: games)
-
-      {:error, reason} ->
-        {:error, :external_api, reason}
-    end
+    params
+    |> Core.top_games()
+    |> respond(conn)
   end
 
   @spec show(any, map) :: {:error, :external_api, any} | Plug.Conn.t()
   def show(conn, %{"id" => id}) do
-    case Core.get(id) do
-      {:ok, game} ->
-        render(conn, "show.json", game: game)
+    id
+    |> Core.get()
+    |> respond(conn)
+  end
 
-      {:error, reason} ->
-        {:error, :external_api, reason}
-    end
+  defp respond({:ok, games}, conn) when is_list(games) do
+    render(conn, "index.json", games: games)
+  end
+
+  defp respond({:ok, game}, conn) do
+    render(conn, "show.json", game: game)
+  end
+
+  defp respond({:error, reason}, _) do
+    {:error, :external_api, reason}
   end
 end

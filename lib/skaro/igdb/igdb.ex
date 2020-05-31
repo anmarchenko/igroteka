@@ -9,11 +9,9 @@ defmodule Skaro.IGDB do
   alias Skaro.IGDB.Parsers.Images, as: ImagesParser
   alias Skaro.Parser
 
+  @spec search(binary()) :: {:error, binary()} | {:ok, [Skaro.Core.Game.t()]}
   def search(term) do
-    with body when is_binary(body) <-
-           HttpClient.idempotent_post(search_url(), search_query(term), headers()),
-         {:ok, json} <- Parser.parse_json(body),
-         :ok <- check_internal_error(json) do
+    with {:ok, json} <- fetch_data(search_url(), search_query(term)) do
       games =
         json
         |> Enum.map(& &1["game"])
@@ -27,10 +25,7 @@ defmodule Skaro.IGDB do
   end
 
   def find_one(id) do
-    with body when is_binary(body) <-
-           HttpClient.idempotent_post(games_url(), game_by_id_query(id), headers()),
-         {:ok, json} <- Parser.parse_json(body),
-         :ok <- check_internal_error(json),
+    with {:ok, json} <- fetch_data(games_url(), game_by_id_query(id)),
          [game] <- GamesParser.parse_full(json) do
       {:ok, game}
     else
@@ -43,14 +38,11 @@ defmodule Skaro.IGDB do
   end
 
   def get_screenshots(game_id) do
-    with body when is_binary(body) <-
-           HttpClient.idempotent_post(
+    with {:ok, json} <-
+           fetch_data(
              screenshots_url(),
-             screenshots_by_game_id_query(game_id),
-             headers()
+             screenshots_by_game_id_query(game_id)
            ),
-         {:ok, json} <- Parser.parse_json(body),
-         :ok <- check_internal_error(json),
          screenshots <- ImagesParser.parse_screenshot(json) do
       {:ok, screenshots}
     else
@@ -60,14 +52,7 @@ defmodule Skaro.IGDB do
   end
 
   def top_games(filters) do
-    with body when is_binary(body) <-
-           HttpClient.idempotent_post(
-             games_url(),
-             top_games_query(filters),
-             headers()
-           ),
-         {:ok, json} <- Parser.parse_json(body),
-         :ok <- check_internal_error(json),
+    with {:ok, json} <- fetch_data(games_url(), top_games_query(filters)),
          games <- GamesParser.parse_basic(json) do
       {:ok, games}
     else
@@ -77,16 +62,21 @@ defmodule Skaro.IGDB do
   end
 
   def new_games do
-    with body when is_binary(body) <-
-           HttpClient.idempotent_post(
-             games_url(),
-             new_games_query(),
-             headers()
-           ),
-         {:ok, json} <- Parser.parse_json(body),
-         :ok <- check_internal_error(json),
+    with {:ok, json} <- fetch_data(games_url(), new_games_query()),
          games <- GamesParser.parse_basic(json) do
       {:ok, games}
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
+  end
+
+  defp fetch_data(url, query) do
+    with body when is_binary(body) <-
+           HttpClient.idempotent_post(url, query, headers()),
+         {:ok, json} <- Parser.parse_json(body),
+         :ok <- check_internal_error(json) do
+      {:ok, json}
     else
       {:error, _} = error_tuple ->
         error_tuple
