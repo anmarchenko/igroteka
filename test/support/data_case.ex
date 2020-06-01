@@ -30,16 +30,16 @@ defmodule Skaro.DataCase do
   setup tags do
     :ok = Sandbox.checkout(Skaro.Repo)
 
-    {bypass, igdb_api} = setup_bypass(tags[:bypass])
+    {bypass, igdb_api, howlongtobeat} = setup_bypass(tags[:bypass])
 
     unless tags[:async] do
       Sandbox.mode(Skaro.Repo, {:shared, self()})
     end
 
-    {:ok, bypass: bypass, igdb_api: igdb_api}
+    {:ok, bypass: bypass, igdb_api: igdb_api, howlongtobeat: howlongtobeat}
   end
 
-  defp setup_bypass(nil), do: {nil, nil}
+  defp setup_bypass(nil), do: {nil, nil, nil}
 
   defp setup_bypass(true) do
     bypass = Bypass.open(port: 1234)
@@ -60,7 +60,15 @@ defmodule Skaro.DataCase do
       api_key: "igdb_api_key"
     )
 
-    {bypass, igdb_api}
+    howlongtobeat = Bypass.open(port: 1236)
+
+    Application.put_env(
+      :skaro,
+      :howlongtobeat,
+      base_url: "http://localhost:#{howlongtobeat.port}"
+    )
+
+    {bypass, igdb_api, howlongtobeat}
   end
 
   @doc """

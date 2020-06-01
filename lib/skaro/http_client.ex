@@ -6,7 +6,7 @@ defmodule Skaro.HttpClient do
   @retries 5
 
   def get(url, params \\ %{}) do
-    get_with_retries(url, params, 5)
+    get_with_retries(url, params, @retries)
   end
 
   def idempotent_post(url, body, headers) do
@@ -36,7 +36,7 @@ defmodule Skaro.HttpClient do
 
       {:ok, %HTTPoison.Response{status_code: code}} ->
         if retries > 0 do
-          get_with_retries(params, url, retries)
+          get_with_retries(url, params, retries - 1)
         else
           {
             :error,
@@ -50,7 +50,7 @@ defmodule Skaro.HttpClient do
 
       {:error, %HTTPoison.Error{reason: reason}} ->
         if retries > 0 do
-          get_with_retries(params, url, retries)
+          get_with_retries(url, params, retries - 1)
         else
           {:error, reason}
         end

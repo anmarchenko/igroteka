@@ -32,10 +32,9 @@ config :skaro, Skaro.Guardian,
 
 # Games API
 config :skaro, :games_remote, Skaro.IGDB
-
 config :skaro, :giantbomb, base_url: "https://www.giantbomb.com/api"
-
 config :skaro, :igdb, base_url: "https://api-v3.igdb.com"
+config :skaro, :howlongtobeat, base_url: "https://howlongtobeat.com"
 
 # Errors reporting
 config :sentry,

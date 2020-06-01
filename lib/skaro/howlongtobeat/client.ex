@@ -18,7 +18,8 @@ defmodule Skaro.Howlongtobeat.Client do
                 {:t, "games"},
                 {:sorthead, "popular"},
                 {:sortd, "Normal Order"},
-                {:length_type, "main"}
+                {:length_type, "main"},
+                {:page, 1}
               ]},
              [
                {"Accept", "application/x-www-form-urlencoded"}
@@ -53,7 +54,7 @@ defmodule Skaro.Howlongtobeat.Client do
       if Enum.empty?(times) do
         {:error, "Times are not available"}
       else
-        {:ok, Enum.into(times, %{external_id: game_id, external_Url: game_url(game_id)})}
+        {:ok, Enum.into(times, %{external_id: game_id, external_url: game_url(game_id)})}
       end
     else
       {:error, _} = error_tuple ->
@@ -128,13 +129,15 @@ defmodule Skaro.Howlongtobeat.Client do
 
     case res do
       {num, _} ->
-        {key, Float.ceil(num * 60)}
+        {key, floor(num * 60)}
 
       :error ->
         nil
     end
   end
 
-  defp search_url, do: "https://howlongtobeat.com/search_results?page=1"
-  defp game_url(game_id), do: "https://howlongtobeat.com/game?id=#{game_id}"
+  defp search_url, do: "#{base_url()}/search_results"
+  defp game_url(game_id), do: "#{base_url()}/game?id=#{game_id}"
+
+  defp base_url, do: Application.fetch_env!(:skaro, :howlongtobeat)[:base_url]
 end

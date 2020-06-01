@@ -34,7 +34,7 @@ defmodule Skaro.GiantbombTest do
 
     @tag :bypass
     test "not authorized", %{bypass: bypass} do
-      Bypass.expect_once(
+      Bypass.expect(
         bypass,
         "GET",
         "/search/",
