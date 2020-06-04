@@ -396,7 +396,7 @@ defmodule Skaro.IGDBTest do
           assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
 
           assert {:ok,
-                  "where category = 0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;" <>
+                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;" <>
                     _, conn} = Conn.read_body(conn)
 
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_new_games.json"))

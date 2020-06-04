@@ -123,7 +123,7 @@ defmodule Skaro.IGDB do
 
   defp new_games_query() do
     """
-    where category = 0 & first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
+    where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
     sort first_release_date desc;
     limit 30;
     fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,platforms.id,platforms.name;

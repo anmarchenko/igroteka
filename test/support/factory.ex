@@ -4,7 +4,19 @@ defmodule Skaro.Factory do
 
   alias Skaro.Accounts.User
   alias Skaro.Backlog.{AvailablePlatform, Entry}
-  alias Skaro.Core.{Company, ExternalLink, Franchise, Game, Genre, Image, Platform, Theme, Video}
+
+  alias Skaro.Core.{
+    Company,
+    ExternalLink,
+    Franchise,
+    Game,
+    Genre,
+    Image,
+    Platform,
+    PlaythroughTime,
+    Theme,
+    Video
+  }
 
   def user_factory do
     number = :rand.uniform(10_000)
@@ -145,6 +157,21 @@ defmodule Skaro.Factory do
       countries: ["JP"],
       available_platforms: build_list(2, :available_platform),
       user: build(:user)
+    }
+  end
+
+  def playhtrough_time_factory do
+    id = :rand.uniform(100_000)
+    entry_id = :rand.uniform(100_000)
+
+    %PlaythroughTime{
+      game_id: id,
+      game_name: "Game #{id}",
+      external_id: to_string(entry_id),
+      external_url: "https://howlongtobeat.com/game?id=#{id}",
+      main: :rand.uniform(30) * 60,
+      main_extra: :rand.uniform(60) * 60,
+      completionist: :rand.uniform(100) * 60
     }
   end
 end

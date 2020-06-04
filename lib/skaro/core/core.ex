@@ -36,6 +36,9 @@ defmodule Skaro.Core do
     end)
   end
 
+  def fetch_playthrough_time(game) do
+  end
+
   defp cached_result(cache_key, api_call) do
     case ConCache.get(:external_api_cache, cache_key) do
       nil ->
