@@ -1,8 +1,8 @@
-defmodule Skaro.Core.PlaythroughTimeTest do
+defmodule Skaro.Playthrough.PlaythroughTimeTest do
   @moduledoc false
   use Skaro.DataCase
 
-  alias Skaro.Core.PlaythroughTime
+  alias Skaro.Playthrough.PlaythroughTime
 
   describe "changeset/1" do
     test "it validates changeset" do

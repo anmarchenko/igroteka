@@ -1,4 +1,4 @@
-defmodule Skaro.Core.PlaythroughTime do
+defmodule Skaro.Playthrough.PlaythroughTime do
   @moduledoc """
   PlaythroughTime data model
   """

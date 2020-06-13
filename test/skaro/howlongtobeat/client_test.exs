@@ -7,7 +7,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
   alias Skaro.Core.Game
   alias Skaro.Howlongtobeat.Client
 
-  describe "fetch/1" do
+  describe "find/1" do
     @tag :bypass
     test "happiest path", %{howlongtobeat: howlongtobeat} do
       Bypass.expect_once(
@@ -42,7 +42,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
                 completionist: 6780,
                 main: 2400,
                 main_extra: 3480
-              }} == Client.fetch(%Game{name: "Death Stranding", release_date: ~D[2019-11-08]})
+              }} == Client.find(%Game{name: "Death Stranding", release_date: ~D[2019-11-08]})
     end
 
     @tag :bypass
@@ -83,7 +83,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
                 completionist: 1530,
                 main: 690,
                 main_extra: 960
-              }} == Client.fetch(%Game{name: "Doom", release_date: ~D[1993-12-10]})
+              }} == Client.find(%Game{name: "Doom", release_date: ~D[1993-12-10]})
     end
 
     @tag :bypass
@@ -116,18 +116,18 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       )
 
       assert {:error, "Times are not available"} ==
-               Client.fetch(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
+               Client.find(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
     end
 
     test "invalid arguments" do
       assert {:error, "name is not given"} ==
-               Client.fetch(%Game{release_date: ~D[2015-12-10]})
+               Client.find(%Game{release_date: ~D[2015-12-10]})
 
       assert {:error, "release_date is not given"} ==
-               Client.fetch(%Game{name: "Overwatch"})
+               Client.find(%Game{name: "Overwatch"})
 
       assert {:error, "argument is invalid"} ==
-               Client.fetch(nil)
+               Client.find(nil)
     end
 
     @tag :bypass
@@ -135,7 +135,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.down(howlongtobeat)
 
       assert {:error, :econnrefused} ==
-               Client.fetch(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
+               Client.find(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
     end
 
     @tag :bypass
@@ -154,7 +154,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       )
 
       assert {:error, "Not found"} ==
-               Client.fetch(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
+               Client.find(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
     end
 
     @tag :bypass
@@ -173,7 +173,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       )
 
       assert {:error, "Not found"} ==
-               Client.fetch(%Game{name: "Doom", release_date: ~D[2019-12-10]})
+               Client.find(%Game{name: "Doom", release_date: ~D[2019-12-10]})
     end
 
     @tag :bypass
@@ -201,7 +201,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       )
 
       assert {:error, "Times are not available"} ==
-               Client.fetch(%Game{name: "Cyberpunk 2077", release_date: ~D[2020-09-17]})
+               Client.find(%Game{name: "Cyberpunk 2077", release_date: ~D[2020-09-17]})
     end
 
     @tag :bypass
@@ -220,7 +220,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       )
 
       assert {:error, "Not found"} ==
-               Client.fetch(%Game{name: "No such game", release_date: ~D[2020-09-17]})
+               Client.find(%Game{name: "No such game", release_date: ~D[2020-09-17]})
     end
   end
 end

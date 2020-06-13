@@ -13,10 +13,11 @@ defmodule Skaro.Factory do
     Genre,
     Image,
     Platform,
-    PlaythroughTime,
     Theme,
     Video
   }
+
+  alias Skaro.Playthrough.PlaythroughTime
 
   def user_factory do
     number = :rand.uniform(10_000)
@@ -160,7 +161,7 @@ defmodule Skaro.Factory do
     }
   end
 
-  def playhtrough_time_factory do
+  def playthrough_time_factory do
     id = :rand.uniform(100_000)
     entry_id = :rand.uniform(100_000)
 

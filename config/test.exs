@@ -26,3 +26,4 @@ config :skaro, :giantbomb, api_key: "giantbomb_api_key"
 config :skaro, :igdb, api_key: "igdb_api_key"
 
 config :skaro, :games_remote, Skaro.GamesRemoteMock
+config :skaro, :playthrough_remote, Skaro.PlaythroughRemoteMock

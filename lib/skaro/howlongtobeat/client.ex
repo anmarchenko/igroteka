@@ -5,10 +5,10 @@ defmodule Skaro.Howlongtobeat.Client do
 
   alias Skaro.HttpClient
 
-  def fetch(%{name: nil}), do: {:error, "name is not given"}
-  def fetch(%{release_date: nil}), do: {:error, "release_date is not given"}
+  def find(%{name: nil}), do: {:error, "name is not given"}
+  def find(%{release_date: nil}), do: {:error, "release_date is not given"}
 
-  def fetch(%{name: name, release_date: release_date}) do
+  def find(%{name: name, release_date: release_date}) do
     with body when is_binary(body) <-
            HttpClient.idempotent_post(
              search_url(),
@@ -35,13 +35,13 @@ defmodule Skaro.Howlongtobeat.Client do
     end
   end
 
-  def fetch(_), do: {:error, "argument is invalid"}
+  def find(_), do: {:error, "argument is invalid"}
 
-  defp fetch_game_info(nil) do
+  def get_by_id(nil) do
     {:error, "extracted game id is null"}
   end
 
-  defp fetch_game_info(game_id) do
+  def get_by_id(game_id) do
     with body when is_binary(body) <-
            HttpClient.get(game_url(game_id)),
          {:ok, document} <- Floki.parse_document(body) do
@@ -66,7 +66,7 @@ defmodule Skaro.Howlongtobeat.Client do
     attrs
     |> get_href()
     |> extract_game_id()
-    |> fetch_game_info()
+    |> get_by_id()
   end
 
   defp find_game(games = [{_, _, _} | _], release_date) do
