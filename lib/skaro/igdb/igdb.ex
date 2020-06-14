@@ -145,8 +145,8 @@ defmodule Skaro.IGDB do
   end
 
   defp top_games_filters(filters) do
-    ("where version_parent = null & category=0 & first_release_date != null " <>
-       "& aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79" <>
+    ("where first_release_date != null " <>
+       "& aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79" <>
        "& name != \"The Witness\"")
     |> filter_if_present(:platform, filters)
     |> filter_if_present(:year, filters)
