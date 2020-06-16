@@ -89,9 +89,14 @@ defmodule Skaro.Howlongtobeat.Client do
   end
 
   defp extract_hltb_year(text) do
-    [_, year_s] = Regex.run(~r/\((\d+)\)/, text)
-    {year, _} = Integer.parse(year_s)
-    year
+    case Regex.run(~r/\((\d+)\)/, text) do
+      [_, year_s] ->
+        {year, _} = Integer.parse(year_s)
+        year
+
+      _ ->
+        nil
+    end
   end
 
   defp get_href([{"href", href} | _]), do: href
