@@ -66,4 +66,57 @@ defmodule Skaro.PlaythroughTest do
                Playthrough.find(%Game{id: 101, name: "Warcraft", release_date: ~D[1995-01-01]})
     end
   end
+
+  describe "category_badge/1" do
+    test "wrong data" do
+      assert %{} == Playthrough.category_badge(%PlaythroughTime{main: "12"})
+      assert %{} == Playthrough.category_badge(%PlaythroughTime{main: nil})
+      assert %{} == Playthrough.category_badge(%PlaythroughTime{})
+    end
+
+    test "very short game" do
+      assert %{badge: "very-short", badge_label: "Very short"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 0})
+
+      assert %{badge: "very-short", badge_label: "Very short"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 360})
+    end
+
+    test "short game" do
+      assert %{badge: "short", badge_label: "Short"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 361})
+
+      assert %{badge: "short", badge_label: "Short"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 720})
+    end
+
+    test "fair length game" do
+      assert %{badge: "fair", badge_label: "Fair length"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 721})
+
+      assert %{badge: "fair", badge_label: "Fair length"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 1080})
+    end
+
+    test "average length game" do
+      assert %{badge: "average", badge_label: "Average length"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 1081})
+
+      assert %{badge: "average", badge_label: "Average length"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 2160})
+    end
+
+    test "long game" do
+      assert %{badge: "long", badge_label: "Long"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 2161})
+
+      assert %{badge: "long", badge_label: "Long"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 4320})
+    end
+
+    test "very long game" do
+      assert %{badge: "very-long", badge_label: "Very long"} ==
+               Playthrough.category_badge(%PlaythroughTime{main: 4321})
+    end
+  end
 end

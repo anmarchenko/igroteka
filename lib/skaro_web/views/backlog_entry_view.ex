@@ -1,23 +1,17 @@
 defmodule SkaroWeb.BacklogEntryView do
   use SkaroWeb, :view
 
-  alias SkaroWeb.AvailablePlatformView
+  alias SkaroWeb.{AvailablePlatformView, PlaythroughTimeView}
 
   def render("index.json", %{paginated_entries: backlog_entries}) do
     %{
       page: backlog_entries.page_number,
       total_pages: backlog_entries.total_pages,
-      entries:
-        render_many(
-          backlog_entries,
-          SkaroWeb.BacklogEntryView,
-          "show.json"
-        ),
       data:
         render_many(
           backlog_entries,
           SkaroWeb.BacklogEntryView,
-          "show.json"
+          "show_index.json"
         ),
       meta: %{
         page: backlog_entries.page_number,
@@ -48,5 +42,13 @@ defmodule SkaroWeb.BacklogEntryView do
           available_platforms: backlog_entry.available_platforms
         )
     }
+  end
+
+  def render("show_index.json", %{backlog_entry: backlog_entry}) do
+    render("show.json", %{backlog_entry: backlog_entry})
+    |> Map.merge(%{
+      playthrough_time:
+        PlaythroughTimeView.render("show.json", playthrough_time: backlog_entry.playthrough_time)
+    })
   end
 end

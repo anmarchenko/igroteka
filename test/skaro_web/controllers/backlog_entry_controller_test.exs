@@ -21,7 +21,17 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       conn: conn,
       logged_user: user
     } do
-      insert_list(3, :backlog_entry, user: user, status: "backlog", expectation_rating: 3)
+      insert_list(2, :backlog_entry, user: user, status: "backlog", expectation_rating: 3)
+
+      insert(:backlog_entry,
+        user: user,
+        status: "backlog",
+        expectation_rating: 3,
+        game_id: 123_456
+      )
+
+      insert(:playthrough_time, game_id: 123_456, main: 1234)
+
       insert_list(2, :backlog_entry, user: user, status: "playing")
 
       conn =
@@ -49,6 +59,15 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       assert show_json["available_platforms"]
       assert show_json["expectation_rating"]
       assert ["JP"] = show_json["countries"]
+
+      show_json_entry_with_playthrough =
+        Enum.find(index_json["data"], &(&1["game_id"] == 123_456))
+
+      assert show_json_entry_with_playthrough["playthrough_time"]["main"] == 1234
+      assert show_json_entry_with_playthrough["playthrough_time"]["badge"] == "average"
+
+      assert show_json_entry_with_playthrough["playthrough_time"]["badge_label"] ==
+               "Average length"
     end
 
     @tag :login

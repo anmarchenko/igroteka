@@ -17,7 +17,7 @@ defmodule Skaro.Backlog.Entries do
   end
 
   @spec list(atom | %{id: any}, keyword | map, any) :: Scrivener.Page.t()
-  def list(user, params, preloads \\ [:available_platforms]) do
+  def list(user, params, preloads \\ [:available_platforms, :playthrough_time]) do
     Entry
     |> filter_if_present(:user_id, user.id)
     |> filter_if_present(:status, params["status"])

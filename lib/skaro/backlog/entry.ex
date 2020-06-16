@@ -27,6 +27,11 @@ defmodule Skaro.Backlog.Entry do
     belongs_to(:user, Skaro.Accounts.User)
     has_many(:available_platforms, Skaro.Backlog.AvailablePlatform)
 
+    has_one(:playthrough_time, Skaro.Playthrough.PlaythroughTime,
+      foreign_key: :game_id,
+      references: :game_id
+    )
+
     timestamps()
   end
 

@@ -216,6 +216,18 @@ defmodule Skaro.EntriesTest do
       backlog_entry = List.first(backlog_entries.entries)
       assert backlog_entry.available_platforms
       assert "wishlist" == backlog_entry.status
+      assert nil == backlog_entry.playthrough_time
+    end
+
+    test "it preloads playthrough_time", %{user: user} do
+      insert(:backlog_entry, user: user, game_id: 42)
+      ptime = insert(:playthrough_time, game_id: 42)
+
+      backlog_entries = Entries.list(user, %{"page_size" => "20"})
+      assert 1 == Enum.count(backlog_entries.entries)
+
+      backlog_entry = List.first(backlog_entries.entries)
+      assert ptime == backlog_entry.playthrough_time
     end
 
     test "it filters by status", %{user: user} do

@@ -18,6 +18,33 @@ defmodule Skaro.Playthrough do
     end
   end
 
+  # <= 6 hours
+  def category_badge(%{main: main}) when main <= 360,
+    do: %{badge: "very-short", badge_label: "Very short"}
+
+  # <= 12 hours
+  def category_badge(%{main: main}) when is_integer(main) and main <= 720,
+    do: %{badge: "short", badge_label: "Short"}
+
+  # <= 18 hours
+  def category_badge(%{main: main}) when is_integer(main) and main <= 1080,
+    do: %{badge: "fair", badge_label: "Fair length"}
+
+  # <= 36 hours
+  def category_badge(%{main: main}) when is_integer(main) and main <= 2160,
+    do: %{badge: "average", badge_label: "Average length"}
+
+  # <= 72 hours
+  def category_badge(%{main: main}) when is_integer(main) and main <= 4320,
+    do: %{badge: "long", badge_label: "Long"}
+
+  # > 72 hours
+  def category_badge(%{main: main}) when is_integer(main) and main > 4320,
+    do: %{badge: "very-long", badge_label: "Very long"}
+
+  def category_badge(_),
+    do: %{}
+
   defp load_playthrough_time(game) do
     with {:ok, attrs} <- @remote.find(game),
          {:ok, time} <- create_playthrough_time(attrs, game) do
