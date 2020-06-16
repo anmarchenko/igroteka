@@ -8,6 +8,8 @@ defmodule Skaro.Repo.Migrations.LoadPlaythroughTimes do
   alias Skaro.Playthrough
 
   def up do
+    remove(unique_index(:playthrough_times, [:external_id]))
+
     Application.ensure_all_started(:hackney)
 
     Entry
