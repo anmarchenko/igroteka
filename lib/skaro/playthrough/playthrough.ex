@@ -2,13 +2,14 @@ defmodule Skaro.Playthrough do
   @moduledoc """
   Playthrough times for games (how long it takes to finish)
   """
-  alias Skaro.Core.Game
   alias Skaro.Playthrough.PlaythroughTime
   alias Skaro.Repo
 
   @remote Application.get_env(:skaro, :playthrough_remote)
 
-  def find(%Game{} = game) do
+  @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
+          {:ok, PlaythroughTime.t()} | {:error, any}
+  def find(%{id: _, name: _, release_date: _} = game) do
     case Repo.get_by(PlaythroughTime, game_id: game.id) do
       nil ->
         load_playthrough_time(game)

@@ -48,5 +48,6 @@ defmodule SkaroWeb.Router do
     resources("/backlog_entries", BacklogEntryController)
     resources("/backlog_filters", BacklogFilterController, only: [:index])
     resources("/screenshots", ScreenshotController, only: [:index])
+    resources("/playthrough_times", PlaythroughTimeController, only: [:show])
   end
 end
