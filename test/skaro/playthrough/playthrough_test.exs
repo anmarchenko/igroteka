@@ -178,7 +178,7 @@ defmodule Skaro.PlaythroughTest do
     test "loads data from external api and updates db record" do
       Skaro.PlaythroughRemoteMock
       |> expect(:get_by_id, fn game_id ->
-        assert game_id == 404
+        assert game_id == "42"
 
         {:ok,
          %{

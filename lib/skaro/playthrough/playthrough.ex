@@ -35,7 +35,7 @@ defmodule Skaro.Playthrough do
   end
 
   def reload_playthrough_time(time) do
-    with {:ok, attrs} <- @remote.get_by_id(time.game_id),
+    with {:ok, attrs} <- @remote.get_by_id(time.external_id),
          {:ok, updated} <- update_playthrough_time(time, attrs) do
       {:ok, updated}
     end
