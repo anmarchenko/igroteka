@@ -37,4 +37,14 @@ defmodule Skaro.Playthrough.PlaythroughTime do
     ])
     |> validate_required([:game_id, :external_id])
   end
+
+  def changeset_update(%PlaythroughTime{} = ptime, attrs) do
+    ptime
+    |> cast(attrs, [
+      :main,
+      :main_extra,
+      :completionist
+    ])
+    |> validate_required([:main])
+  end
 end

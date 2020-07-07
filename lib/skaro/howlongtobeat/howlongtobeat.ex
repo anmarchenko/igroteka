@@ -10,4 +10,8 @@ defmodule Skaro.Howlongtobeat do
   def find(game) do
     Client.find(game)
   end
+
+  def get_by_id(game_id) do
+    Client.get_by_id(game_id)
+  end
 end

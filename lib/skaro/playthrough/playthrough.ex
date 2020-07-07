@@ -19,6 +19,28 @@ defmodule Skaro.Playthrough do
     end
   end
 
+  def maybe_update(playthrough_time, game_release_date) do
+    if needs_update?(playthrough_time, game_release_date) do
+      Task.async(fn -> reload_playthrough_time(playthrough_time) end)
+    end
+  end
+
+  def needs_update?(time, game_release_date) do
+    today = Date.utc_today()
+
+    update_interval = today |> Date.diff(game_release_date) |> get_update_interval()
+    since_last_update = Date.diff(today, time.updated_at)
+
+    since_last_update >= update_interval
+  end
+
+  def reload_playthrough_time(time) do
+    with {:ok, attrs} <- @remote.get_by_id(time.game_id),
+         {:ok, updated} <- update_playthrough_time(time, attrs) do
+      {:ok, updated}
+    end
+  end
+
   # <= 6 hours
   def category_badge(%{main: main}) when main <= 360,
     do: %{badge: "very-short", badge_label: "Very short"}
@@ -58,4 +80,19 @@ defmodule Skaro.Playthrough do
     |> PlaythroughTime.changeset(attrs)
     |> Repo.insert()
   end
+
+  defp update_playthrough_time(time, attrs) do
+    time
+    |> PlaythroughTime.changeset_update(attrs)
+    |> Repo.update()
+  end
+
+  # released last week - update every day
+  defp get_update_interval(days_since_release) when days_since_release < 8, do: 1
+  # released last month - update every week
+  defp get_update_interval(days_since_release) when days_since_release < 30, do: 7
+  # released last 3 months - update every month
+  defp get_update_interval(days_since_release) when days_since_release < 90, do: 30
+  # otherwise update every 6 months
+  defp get_update_interval(_), do: 180
 end

@@ -4,4 +4,5 @@ defmodule Skaro.PlaythroughTimeRemote do
   """
 
   @callback find(Map.t()) :: {:ok, Map.t()} | {:error, String.t()}
+  @callback get_by_id(Integer.t()) :: {:ok, Map.t()} | {:error, String.t()}
 end

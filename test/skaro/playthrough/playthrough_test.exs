@@ -119,4 +119,93 @@ defmodule Skaro.PlaythroughTest do
                Playthrough.category_badge(%PlaythroughTime{main: 4321})
     end
   end
+
+  describe "needs_update?/2" do
+    test "every day if game was released within a week" do
+      today = NaiveDateTime.utc_now()
+
+      time =
+        insert(:playthrough_time, %{
+          inserted_at: NaiveDateTime.add(today, -86_401),
+          updated_at: NaiveDateTime.add(today, -86_401)
+        })
+
+      assert Playthrough.needs_update?(time, today)
+      assert Playthrough.needs_update?(time, Date.add(today, -7))
+      refute Playthrough.needs_update?(time, Date.add(today, -8))
+    end
+
+    test "every week if game was released within a month" do
+      today = NaiveDateTime.utc_now()
+
+      time =
+        insert(:playthrough_time, %{
+          inserted_at: NaiveDateTime.add(today, -604_801),
+          updated_at: NaiveDateTime.add(today, -604_801)
+        })
+
+      assert Playthrough.needs_update?(time, Date.add(today, -29))
+      refute Playthrough.needs_update?(time, Date.add(today, -30))
+    end
+
+    test "every month if game was released within 3 months" do
+      today = NaiveDateTime.utc_now()
+
+      time =
+        insert(:playthrough_time, %{
+          inserted_at: NaiveDateTime.add(today, -2_592_001),
+          updated_at: NaiveDateTime.add(today, -2_592_001)
+        })
+
+      assert Playthrough.needs_update?(time, Date.add(today, -89))
+      refute Playthrough.needs_update?(time, Date.add(today, -90))
+    end
+
+    test "every 6 months for older games" do
+      today = NaiveDateTime.utc_now()
+
+      time =
+        insert(:playthrough_time, %{
+          inserted_at: NaiveDateTime.add(today, -15_552_001),
+          updated_at: NaiveDateTime.add(today, -15_552_001)
+        })
+
+      assert Playthrough.needs_update?(time, Date.add(today, -181))
+    end
+  end
+
+  describe "reload_playthrough_time/1" do
+    test "loads data from external api and updates db record" do
+      Skaro.PlaythroughRemoteMock
+      |> expect(:get_by_id, fn game_id ->
+        assert game_id == 404
+
+        {:ok,
+         %{
+           external_id: "oops",
+           external_url: "http://website/42",
+           main: 10,
+           main_extra: 20,
+           completionist: 30
+         }}
+      end)
+
+      time =
+        insert(:playthrough_time,
+          external_id: "42",
+          game_id: 404,
+          main: 60,
+          main_extra: 120,
+          completionist: 180
+        )
+
+      assert {:ok, updated} = Playthrough.reload_playthrough_time(time)
+
+      assert updated.id == time.id
+      assert updated.external_id == "42"
+      assert updated.main == 10
+      assert updated.main_extra == 20
+      assert updated.completionist == 30
+    end
+  end
 end

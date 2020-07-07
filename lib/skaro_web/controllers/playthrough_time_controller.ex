@@ -12,6 +12,8 @@ defmodule SkaroWeb.PlaythroughTimeController do
          {game_id_parsed, _} <- Integer.parse(game_id),
          {:ok, time} <-
            Playthrough.find(%{id: game_id_parsed, name: game_name, release_date: date_parsed}) do
+      Playthrough.maybe_update(time, date_parsed)
+
       render(conn, "show.json", playthrough_time: time)
     else
       {:error, :invalid_format} ->
