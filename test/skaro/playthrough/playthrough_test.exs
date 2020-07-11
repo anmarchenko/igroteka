@@ -208,4 +208,31 @@ defmodule Skaro.PlaythroughTest do
       assert updated.completionist == 30
     end
   end
+
+  describe "load_by_id/1" do
+    test "loads data from external api and saves db record" do
+      Skaro.PlaythroughRemoteMock
+      |> expect(:get_by_id, fn external_id ->
+        assert external_id == "42"
+
+        {:ok,
+         %{
+           external_id: "42",
+           external_url: "http://website/42",
+           main: 10,
+           main_extra: 20,
+           completionist: 30
+         }}
+      end)
+
+      assert {:ok, time} = Playthrough.load_by_id("42", %{id: 42, name: "Diablo"})
+
+      assert time.external_id == "42"
+      assert time.main == 10
+      assert time.main_extra == 20
+      assert time.completionist == 30
+      assert time.game_id == 42
+      assert time.game_name == "Diablo"
+    end
+  end
 end

@@ -25,6 +25,20 @@ defmodule Skaro.Playthrough do
     end
   end
 
+  # Skaro.Playthrough.load_by_id("57503", %{id: 103054, name: "Assassin's Creed: Odyssey"})
+  # Skaro.Playthrough.load_by_id("65940", %{id: 109532, name: "Assassin's Creed III Remastered"})
+  # Skaro.Playthrough.load_by_id("4123", %{id: 8682, name: "Grim Fandango Remastered"})
+  # Skaro.Playthrough.load_by_id("6725", %{id: 20744, name: "Ōkami HD"})
+  # Skaro.Playthrough.load_by_id("6020", %{id: 373, name: "Might & Magic: Heroes VI"})
+  # Skaro.Playthrough.load_by_id("2333", %{id: 37, name: "Dead Space"})
+  #
+  def load_by_id(external_id, %{id: _, name: _} = game) do
+    with {:ok, attrs} <- @remote.get_by_id(external_id),
+         {:ok, time} <- create_playthrough_time(attrs, game) do
+      {:ok, time}
+    end
+  end
+
   def needs_update?(time, game_release_date) do
     today = Date.utc_today()
 
