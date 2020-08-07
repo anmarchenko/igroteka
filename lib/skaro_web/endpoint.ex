@@ -1,4 +1,5 @@
 defmodule SkaroWeb.Endpoint do
+  use Sentry.PlugCapture
   use Phoenix.Endpoint, otp_app: :skaro
 
   socket "/socket", SkaroWeb.UserSocket,
@@ -30,6 +31,8 @@ defmodule SkaroWeb.Endpoint do
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
+
+  plug Sentry.PlugContext
 
   plug(
     CORSPlug,

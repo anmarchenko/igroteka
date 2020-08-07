@@ -25,13 +25,6 @@ defmodule Skaro.Playthrough do
     end
   end
 
-  # Skaro.Playthrough.load_by_id("57503", %{id: 103054, name: "Assassin's Creed: Odyssey"})
-  # Skaro.Playthrough.load_by_id("65940", %{id: 109532, name: "Assassin's Creed III Remastered"})
-  # Skaro.Playthrough.load_by_id("4123", %{id: 8682, name: "Grim Fandango Remastered"})
-  # Skaro.Playthrough.load_by_id("6725", %{id: 20744, name: "Ōkami HD"})
-  # Skaro.Playthrough.load_by_id("6020", %{id: 373, name: "Might & Magic: Heroes VI"})
-  # Skaro.Playthrough.load_by_id("2333", %{id: 37, name: "Dead Space"})
-  #
   def load_by_id(external_id, %{id: _, name: _} = game) do
     with {:ok, attrs} <- @remote.get_by_id(external_id),
          {:ok, time} <- create_playthrough_time(attrs, game) do
@@ -101,12 +94,8 @@ defmodule Skaro.Playthrough do
     |> Repo.update()
   end
 
-  # released last week - update every day
-  defp get_update_interval(days_since_release) when days_since_release < 8, do: 1
-  # released last month - update every week
-  defp get_update_interval(days_since_release) when days_since_release < 30, do: 7
-  # released last 3 months - update every month
-  defp get_update_interval(days_since_release) when days_since_release < 90, do: 30
-  # otherwise update every 6 months
-  defp get_update_interval(_), do: 180
+  # released in the last 3 months - update every day
+  defp get_update_interval(days_since_release) when days_since_release < 90, do: 1
+  # otherwise update every week
+  defp get_update_interval(_), do: 7
 end

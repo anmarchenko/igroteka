@@ -58,12 +58,13 @@ defmodule Skaro.MixProject do
 
       # http client
       {:httpoison, "~> 1.4"},
+      {:hackney, "~> 1.16"},
 
       # caching
       {:con_cache, "~> 0.14.0"},
 
       # error handling
-      {:sentry, "~> 7.0"},
+      {:sentry, "~> 8.0"},
 
       # countries info
       {:countries, "~> 1.6"},

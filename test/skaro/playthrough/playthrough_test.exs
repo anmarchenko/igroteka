@@ -121,7 +121,7 @@ defmodule Skaro.PlaythroughTest do
   end
 
   describe "needs_update?/2" do
-    test "every day if game was released within a week" do
+    test "every day if game was released within 3 months" do
       today = NaiveDateTime.utc_now()
 
       time =
@@ -131,11 +131,11 @@ defmodule Skaro.PlaythroughTest do
         })
 
       assert Playthrough.needs_update?(time, today)
-      assert Playthrough.needs_update?(time, Date.add(today, -7))
-      refute Playthrough.needs_update?(time, Date.add(today, -8))
+      assert Playthrough.needs_update?(time, Date.add(today, -89))
+      refute Playthrough.needs_update?(time, Date.add(today, -90))
     end
 
-    test "every week if game was released within a month" do
+    test "every week for older games" do
       today = NaiveDateTime.utc_now()
 
       time =
@@ -144,33 +144,7 @@ defmodule Skaro.PlaythroughTest do
           updated_at: NaiveDateTime.add(today, -604_801)
         })
 
-      assert Playthrough.needs_update?(time, Date.add(today, -29))
-      refute Playthrough.needs_update?(time, Date.add(today, -30))
-    end
-
-    test "every month if game was released within 3 months" do
-      today = NaiveDateTime.utc_now()
-
-      time =
-        insert(:playthrough_time, %{
-          inserted_at: NaiveDateTime.add(today, -2_592_001),
-          updated_at: NaiveDateTime.add(today, -2_592_001)
-        })
-
-      assert Playthrough.needs_update?(time, Date.add(today, -89))
-      refute Playthrough.needs_update?(time, Date.add(today, -90))
-    end
-
-    test "every 6 months for older games" do
-      today = NaiveDateTime.utc_now()
-
-      time =
-        insert(:playthrough_time, %{
-          inserted_at: NaiveDateTime.add(today, -15_552_001),
-          updated_at: NaiveDateTime.add(today, -15_552_001)
-        })
-
-      assert Playthrough.needs_update?(time, Date.add(today, -181))
+      assert Playthrough.needs_update?(time, Date.add(today, -90))
     end
   end
 

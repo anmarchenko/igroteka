@@ -4,8 +4,6 @@ defmodule Skaro.Accounts.Sessions do
   """
   @auth_failed {:error, :auth_failed}
 
-  alias Bcrypt
-
   alias Skaro.Accounts.User
   alias Skaro.Guardian
   alias Skaro.Repo

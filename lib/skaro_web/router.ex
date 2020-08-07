@@ -1,7 +1,5 @@
 defmodule SkaroWeb.Router do
   use SkaroWeb, :router
-  use Plug.ErrorHandler
-  use Sentry.Plug
 
   pipeline :browser do
     plug :accepts, ["html"]
