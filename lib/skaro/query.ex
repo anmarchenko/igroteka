@@ -17,6 +17,15 @@ defmodule Skaro.Query do
   def order_by_param(query, "asc:" <> param), do: order_by_param(query, param, :asc)
   def order_by_param(query, "desc:" <> param), do: order_by_param(query, param, :desc)
 
+  def order_by_param(query, "playthrough", direction) do
+    direction_nulls_last = nulls_last(direction)
+
+    from(p in query,
+      join: t in assoc(p, :playthrough_time),
+      order_by: [{^direction_nulls_last, t.main}]
+    )
+  end
+
   def order_by_param(query, "finished_at", direction) do
     direction_nulls_last = nulls_last(direction)
     from(p in query, order_by: [{^direction_nulls_last, :finished_at}])

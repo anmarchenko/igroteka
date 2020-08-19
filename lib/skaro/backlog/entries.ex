@@ -23,9 +23,9 @@ defmodule Skaro.Backlog.Entries do
     |> filter_if_present(:status, params["status"])
     |> filter_if_present(:owned_platform_id, params["owned_platform_id"])
     |> filter_by_year(:game_release_date, params["release_year"])
+    |> preload_assoc(preloads)
     |> order_by_param(params["sort"])
     |> order_by_param("desc:game_release_date")
-    |> preload_assoc(preloads)
     |> Repo.paginate(params)
   end
 
