@@ -5,6 +5,7 @@ defmodule Skaro.EntriesTest do
   import Skaro.Factory
 
   alias Skaro.Backlog.{AvailablePlatform, Entries, Entry}
+  alias Skaro.Core.{Company, Image}
   alias Skaro.Repo
 
   setup do
@@ -361,6 +362,47 @@ defmodule Skaro.EntriesTest do
       insert(:backlog_entry, status: "beaten", game_release_date: ~D[2016-06-21])
 
       assert [2019, 2018, 2013, 2011] = Entries.list_years_filter(user, "beaten")
+    end
+  end
+
+  describe "Entries.update_entries_for_game/1" do
+    test "updates entries older than one day" do
+      today = NaiveDateTime.utc_now()
+      yesterday = NaiveDateTime.add(today, -86_401)
+
+      %{id: entry1_id} = insert(:backlog_entry, game_name: "Civ", game_id: 42)
+
+      %{id: entry2_id} =
+        insert(:backlog_entry, game_name: "Civ", game_id: 42, updated_at: yesterday)
+
+      %{id: entry3_id} =
+        insert(:backlog_entry, game_name: "Civilisation", game_id: 42, updated_at: yesterday)
+
+      Entries.update_entries_for_game(%{
+        id: 42,
+        name: "Civilization",
+        release_date: ~D[1996-02-28],
+        developers: [
+          %Company{name: "Microprose", country: "US"},
+          %Company{name: "Microprose", country: "US"},
+          %Company{name: "Firm", country: "CA"}
+        ],
+        cover: %Image{
+          thumb_url: "https://posters.com/civ"
+        }
+      })
+
+      entry1 = Repo.get!(Entry, entry1_id)
+      assert entry1.game_name == "Civ"
+
+      entry2 = Repo.get!(Entry, entry2_id)
+      assert entry2.game_name == "Civilization"
+      assert entry2.countries == ["US", "CA"]
+      assert entry2.poster_thumb_url == "https://posters.com/civ"
+      assert entry2.game_release_date == ~D[1996-02-28]
+
+      entry3 = Repo.get!(Entry, entry3_id)
+      assert entry3.game_name == "Civilization"
     end
   end
 end

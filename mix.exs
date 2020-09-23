@@ -75,8 +75,10 @@ defmodule Skaro.MixProject do
       # lint
       {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false},
 
-      # testing
+      # time
       {:timex, "~> 3.1"},
+
+      # testing
       {:tzdata, "~> 1.0.1"},
       {:ex_machina, "~> 2.2"},
       {:mox, "~> 0.4", only: :test},

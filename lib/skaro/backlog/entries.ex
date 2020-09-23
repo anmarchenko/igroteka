@@ -67,6 +67,29 @@ defmodule Skaro.Backlog.Entries do
     |> Repo.update()
   end
 
+  def update_entries_for_game(%{
+        id: game_id,
+        name: game_name,
+        release_date: game_release_data,
+        developers: developers,
+        cover: %{thumb_url: poster_thumb_url}
+      }) do
+    {:ok, now} = DateTime.now("Etc/UTC")
+    yesterday = Timex.shift(now, days: -1)
+
+    query = from(e in Entry, where: e.game_id == ^game_id and e.updated_at < ^yesterday)
+
+    Repo.update_all(query,
+      set: [
+        game_name: game_name,
+        poster_thumb_url: poster_thumb_url,
+        game_release_date: game_release_data,
+        countries: countries(developers),
+        updated_at: now
+      ]
+    )
+  end
+
   def delete(entry), do: Repo.delete!(entry)
 
   defp map_to_platforms(entries) do
@@ -103,16 +126,25 @@ defmodule Skaro.Backlog.Entries do
     )
   end
 
-  def filter_by_year(query, _, nil), do: query
+  defp filter_by_year(query, _, nil), do: query
 
-  def filter_by_year(query, param, year) when is_binary(year) do
+  defp filter_by_year(query, param, year) when is_binary(year) do
     {year, _} = Integer.parse(year)
     filter_by_year(query, param, year)
   end
 
-  def filter_by_year(query, param, year) when is_integer(year) do
+  defp filter_by_year(query, param, year) when is_integer(year) do
     {:ok, start_date} = Date.new(year, 1, 1)
     {:ok, end_date} = Date.new(year, 12, 31)
     from(p in query, where: field(p, ^param) >= ^start_date and field(p, ^param) <= ^end_date)
+  end
+
+  defp countries(nil), do: []
+  defp countries([]), do: []
+
+  defp countries(companies) do
+    companies
+    |> Enum.map(& &1.country)
+    |> Enum.uniq()
   end
 end

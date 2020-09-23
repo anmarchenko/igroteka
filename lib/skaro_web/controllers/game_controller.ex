@@ -2,6 +2,7 @@ defmodule SkaroWeb.GameController do
   use SkaroWeb, :controller
 
   alias Skaro.Core
+  alias Skaro.Backlog.Entries
 
   action_fallback(SkaroWeb.FallbackController)
 
@@ -28,7 +29,17 @@ defmodule SkaroWeb.GameController do
   def show(conn, %{"id" => id}) do
     id
     |> Core.get()
+    |> schedule_backlog_updates()
     |> respond(conn)
+  end
+
+  defp schedule_backlog_updates({:ok, game}) do
+    Task.async(fn -> Entries.update_entries_for_game(game) end)
+    {:ok, game}
+  end
+
+  defp schedule_backlog_updates({:error, _} = error_tuple) do
+    error_tuple
   end
 
   defp respond({:ok, games}, conn) when is_list(games) do
