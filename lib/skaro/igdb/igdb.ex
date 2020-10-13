@@ -7,6 +7,7 @@ defmodule Skaro.IGDB do
   alias Skaro.HttpClient
   alias Skaro.IGDB.Parsers.Games, as: GamesParser
   alias Skaro.IGDB.Parsers.Images, as: ImagesParser
+  alias Skaro.IGDB.Token
   alias Skaro.Parser
 
   @spec search(binary()) :: {:error, binary()} | {:ok, [Skaro.Core.Game.t()]}
@@ -98,11 +99,18 @@ defmodule Skaro.IGDB do
   defp headers do
     [
       {"Accept", "application/json"},
-      {"user-key", Application.fetch_env!(:skaro, :igdb)[:api_key]}
+      {"Authorization", "Bearer #{token()}"},
+      {"Client-ID", client_id()}
     ]
   end
 
   defp api_url, do: Application.fetch_env!(:skaro, :igdb)[:base_url]
+  defp client_id, do: Application.fetch_env!(:skaro, :igdb)[:client_id]
+
+  defp token do
+    {:ok, token} = Token.fetch()
+    token
+  end
 
   defp search_query(term) do
     """

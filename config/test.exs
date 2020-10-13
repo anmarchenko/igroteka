@@ -22,8 +22,5 @@ config :skaro, Skaro.Repo,
 config :skaro, Skaro.Guardian,
   secret_key: "svWE1TQ9lYke32lLUdE5jnV+EqI7nObwZ/rFYLH+s6BFRKU/prg559ADuLaohNx9_test"
 
-config :skaro, :giantbomb, api_key: "giantbomb_api_key"
-config :skaro, :igdb, api_key: "igdb_api_key"
-
 config :skaro, :games_remote, Skaro.GamesRemoteMock
 config :skaro, :playthrough_remote, Skaro.PlaythroughRemoteMock

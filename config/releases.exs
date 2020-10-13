@@ -16,4 +16,6 @@ config :skaro, Skaro.Repo,
 
 config :skaro, :giantbomb, api_key: System.fetch_env!("GIANTBOMB_API_KEY")
 
-config :skaro, :igdb, api_key: System.fetch_env!("IGDB_API_KEY")
+config :skaro, :igdb,
+  client_id: System.fetch_env!("IGDB_CLIENT_ID"),
+  client_secret: System.fetch_env!("IGDB_CLIENT_SECRET")

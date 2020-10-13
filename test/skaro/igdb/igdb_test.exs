@@ -15,7 +15,8 @@ defmodule Skaro.IGDBTest do
         "POST",
         "/search",
         fn conn ->
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
           assert {:ok, "search \"warcraft\";" <> _, conn} = Conn.read_body(conn)
 
           Conn.resp(conn, 200, """
@@ -150,7 +151,8 @@ defmodule Skaro.IGDBTest do
         fn conn ->
           conn = Conn.fetch_query_params(conn)
 
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
           assert {:ok, "where id = 132;" <> _, conn} = Conn.read_body(conn)
 
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_find_one.json"))
@@ -289,7 +291,8 @@ defmodule Skaro.IGDBTest do
         fn conn ->
           conn = Conn.fetch_query_params(conn)
 
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
           assert {:ok, "where game = 132;" <> _, conn} = Conn.read_body(conn)
 
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_get_screenshots.json"))
@@ -321,7 +324,8 @@ defmodule Skaro.IGDBTest do
         fn conn ->
           conn = Conn.fetch_query_params(conn)
 
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
                   "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79" <>
@@ -345,7 +349,8 @@ defmodule Skaro.IGDBTest do
         fn conn ->
           conn = Conn.fetch_query_params(conn)
 
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
                   "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79& name != \"The Witness\"" <>
@@ -368,7 +373,8 @@ defmodule Skaro.IGDBTest do
         fn conn ->
           conn = Conn.fetch_query_params(conn)
 
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
                   "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79& name != \"The Witness\"" <>
@@ -393,7 +399,8 @@ defmodule Skaro.IGDBTest do
         fn conn ->
           conn = Conn.fetch_query_params(conn)
 
-          assert ["igdb_api_key"] = Conn.get_req_header(conn, "user-key")
+          assert ["Bearer igdb_api_token"] = Conn.get_req_header(conn, "authorization")
+          assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
                   "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;" <>

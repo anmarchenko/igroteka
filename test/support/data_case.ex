@@ -36,6 +36,8 @@ defmodule Skaro.DataCase do
       Sandbox.mode(Skaro.Repo, {:shared, self()})
     end
 
+    ConCache.put(:external_api_cache, "igdb_api_token", "igdb_api_token")
+
     {:ok, bypass: bypass, igdb_api: igdb_api, howlongtobeat: howlongtobeat}
   end
 
@@ -57,7 +59,9 @@ defmodule Skaro.DataCase do
       :skaro,
       :igdb,
       base_url: "http://localhost:#{igdb_api.port}",
-      api_key: "igdb_api_key"
+      oauth_url: "http://localhost:#{igdb_api.port}",
+      client_id: "igdb_client_id",
+      client_secret: "igdb_client_secret"
     )
 
     howlongtobeat = Bypass.open(port: 1236)
