@@ -81,7 +81,7 @@ defmodule Skaro.MixProject do
       # testing
       {:tzdata, "~> 1.0.1"},
       {:ex_machina, "~> 2.2"},
-      {:mox, "~> 0.4", only: :test},
+      {:mox, "~> 1.0", only: :test},
       {:bypass, "~> 1.0", only: :test}
     ]
   end

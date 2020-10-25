@@ -9,3 +9,4 @@ erl_crash.dump
 *.ez
 priv/static
 config/dev_secrets.exs
+.elixir_ls

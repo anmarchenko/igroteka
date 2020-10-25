@@ -59,7 +59,7 @@ defmodule Skaro.DataCase do
       :skaro,
       :igdb,
       base_url: "http://localhost:#{igdb_api.port}",
-      oauth_url: "http://localhost:#{igdb_api.port}",
+      oauth_url: "http://localhost:#{igdb_api.port}/oauth",
       client_id: "igdb_client_id",
       client_secret: "igdb_client_secret"
     )
