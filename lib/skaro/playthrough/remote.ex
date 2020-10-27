@@ -1,4 +1,4 @@
-defmodule Skaro.PlaythroughTimeRemote do
+defmodule Skaro.Playthrough.Remote do
   @moduledoc """
   Behaviour that defines API to access remote info about games' length (HowLongToBeat)
   """

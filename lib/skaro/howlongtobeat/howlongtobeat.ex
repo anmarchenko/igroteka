@@ -3,7 +3,7 @@ defmodule Skaro.Howlongtobeat do
   Entrypoint for HowLongToBeat functionality - finding and
   saving in the database times to beat for games
   """
-  @behaviour Skaro.PlaythroughTimeRemote
+  @behaviour Skaro.Playthrough.Remote
 
   alias Skaro.Howlongtobeat.Client
 

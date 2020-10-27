@@ -1,0 +1,123 @@
+{
+  "reviewSummary": { "completed": false },
+  "bannerScreenshot": {
+    "fullRes": "//c.opencritic.com/images/games/1572/banner.jpg"
+  },
+  "Rating": {
+    "value": "M",
+    "imageSrc": "http://www.esrb.org/images/ratingsymbol_m.png"
+  },
+  "newsSearchEnabled": true,
+  "type": "BASE",
+  "Skus": [
+    "HB_doom",
+    "ES_379720",
+    "GMG_doom",
+    "GMG_doom-digital-deluxe-edition",
+    "GP_2971-1",
+    "GP_2971-2",
+    "FN_doom",
+    "FN_doom-switch",
+    "V_doom",
+    "NZ_aed82c47-925e-48e4-8e59-5dbe9db99346"
+  ],
+  "percentRecommended": 91.72932330827066,
+  "numReviews": 138,
+  "numTopCriticReviews": 104,
+  "numUserReviews": 0,
+  "medianScore": 90,
+  "averageScore": 85.921875,
+  "topCriticScore": 85.13461538461539,
+  "percentile": 94,
+  "tier": "Mighty",
+  "hasLootBoxes": false,
+  "isMajorTitle": true,
+  "name": "Doom",
+  "description": "Developed by id Software, the studio that pioneered the first-person shooter genre and created multiplayer Deathmatch, DOOM returns as a brutally fun and challenging modern-day shooter experience. Relentless demons, impossibly destructive guns, and fast, fluid movement provide the foundation for intense, first-person combat – whether you’re obliterating demon hordes through the depths of Hell in the single-player campaign, or competing against your friends in numerous multiplayer modes. Expand your gameplay experience using DOOM SnapMap game editor to easily create, play, and share your content with the world. ",
+  "screenshots": [
+    {
+      "fullRes": "//c.opencritic.com/images/games/1572/vuplJUAUXDcY8qKpKtyKCfOvk8z78H4N.jpg",
+      "thumbnail": "//c.opencritic.com/images/games/1572/vuplJUAUXDcY8qKpKtyKCfOvk8z78H4N_th.jpg"
+    },
+    {
+      "fullRes": "//c.opencritic.com/images/games/1572/g312yP2wcInoJ6TXj9lZ2GpMS6VEnA8x.jpg",
+      "thumbnail": "//c.opencritic.com/images/games/1572/g312yP2wcInoJ6TXj9lZ2GpMS6VEnA8x_th.jpg"
+    },
+    {
+      "fullRes": "//c.opencritic.com/images/games/1572/m87T7GjG56fvBKUSOwLRBrP6c5lQVzZf.jpg",
+      "thumbnail": "//c.opencritic.com/images/games/1572/m87T7GjG56fvBKUSOwLRBrP6c5lQVzZf_th.jpg"
+    }
+  ],
+  "trailers": [
+    {
+      "title": "DOOM - E3 2015 Gameplay Trailer",
+      "videoId": "NteAPGprDJk",
+      "channelId": "UCvZHe-SP3xC7DdOk4Ri8QBw",
+      "description": "Pre-order DOOM today! http://doom.com/en-us/preorder\n\nPinky, the Double-Barrel Shotgun, incredibly fast multiplayer, SnapMap, , and id Tech 6! Watch the first gameplay trailer for the new DOOM from id Software arriving in Spring 2016.\n\nFor more DOOM videos, check our our YouTube playlist\nhttps://www.youtube.com/playlist?list=PLB60F5590E713F60F\n\nFor news and updates on DOOM, visit these sites.\nOfficial Website – DOOM.com\nTwitter – Twitter.com/DOOM\nFacebook – Facebook.com/DOOM\nInstagram – Instagram.com/DOOM_Game\n\nESRB RATING PENDING: May contain content inappropriate for children. Visit www.esrb.org for rating information.",
+      "externalUrl": "https://www.youtube.com/watch?v=NteAPGprDJk",
+      "channelTitle": "Bethesda Softworks",
+      "publishedDate": "2015-06-15T00:00:00.000Z"
+    }
+  ],
+  "twitchName": "Doom",
+  "embargoDate": null,
+  "steamId": "379720",
+  "Companies": [
+    { "name": "Bethesda Softworks", "type": "PUBLISHER" },
+    { "name": "id Software", "type": "DEVELOPER" }
+  ],
+  "Platforms": [
+    {
+      "id": 6,
+      "name": "PlayStation 4",
+      "shortName": "PS4",
+      "imageSrc": "https://c.opencritic.com/images/platforms/ps4.png",
+      "releaseDate": "2016-05-13T00:00:00.000Z",
+      "displayRelease": null
+    },
+    {
+      "id": 7,
+      "name": "Xbox One",
+      "shortName": "XB1",
+      "imageSrc": "https://c.opencritic.com/images/platforms/xb1.png",
+      "releaseDate": "2016-05-13T00:00:00.000Z",
+      "displayRelease": null
+    },
+    {
+      "id": 27,
+      "name": "PC",
+      "shortName": "PC",
+      "imageSrc": "https://c.opencritic.com/images/platforms/pc.png",
+      "releaseDate": "2016-05-13T00:00:00.000Z",
+      "displayRelease": null
+    }
+  ],
+  "Genres": [
+    { "id": 27, "name": "Action" },
+    { "id": 79, "name": "First-Person Shooter" }
+  ],
+  "Affiliates": [
+    {
+      "externalUrl": "https://us.gamesplanet.com/game/stuff--2971-1?ref=opencritic",
+      "name": "GamesPlanet"
+    },
+    {
+      "externalUrl": "http://www.anrdoezrs.net/links/8050398/type/dlg/https://www.greenmangaming.com/games/doom-digital-deluxe-edition",
+      "name": "Green Man Gaming"
+    },
+    {
+      "externalUrl": "http://www.anrdoezrs.net/links/8050398/type/dlg/https://www.fanatical.com/en/game/doom-switch",
+      "name": "Fanatical"
+    },
+    {
+      "externalUrl": "https://lt45.net/c/?si=12328&li=1541858&wi=343735&ws=&dl=en%2Fdoom",
+      "name": "Voidu"
+    }
+  ],
+  "id": 1572,
+  "firstReleaseDate": "2016-05-13T00:00:00.000Z",
+  "createdAt": "2019-09-21T18:55:31.120Z",
+  "updatedAt": "2020-09-21T20:02:14.687Z",
+  "firstReviewDate": "2016-05-12T04:00:00.000Z",
+  "latestReviewDate": "2018-04-17T04:00:00.000Z"
+}
