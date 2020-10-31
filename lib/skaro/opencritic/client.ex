@@ -4,6 +4,7 @@ defmodule Skaro.Opencritic.Client do
   """
 
   alias Skaro.{HttpClient, Parser}
+  alias Skaro.Opencritic.Mapper
 
   def find(%{name: nil}), do: {:error, "name is not given"}
 
@@ -28,14 +29,19 @@ defmodule Skaro.Opencritic.Client do
     with body when is_binary(body) <- HttpClient.get(game_url(game_id)),
          {:ok, %{"numTopCriticReviews" => num} = game_json} when num > 0 <-
            Parser.parse_json(body) do
-      %{
-        percent_recommended: game_json["percentRecommended"],
-        top_critic_score: game_json["topCriticScore"],
-        num_top_critic_reviews: game_json["numTopCriticReviews"],
-        tier: game_json["tier"],
-        name: game_json["name"],
-        opencritic_id: game_json["id"]
-      }
+      [
+        %{
+          percent_recommended: game_json["percentRecommended"],
+          score: game_json["topCriticScore"],
+          num_reviews: game_json["numTopCriticReviews"],
+          tier: game_json["tier"],
+          name: game_json["name"],
+          opencritic_id: game_json["id"]
+        },
+        Mapper.review_summary(game_json["reviewSummary"]),
+        get_cover_reviews(game_id)
+      ]
+      |> Enum.reduce(&Map.merge/2)
     else
       {:error, _} = error_tuple ->
         error_tuple
@@ -45,8 +51,21 @@ defmodule Skaro.Opencritic.Client do
     end
   end
 
+  def get_cover_reviews(game_id) do
+    with body when is_binary(body) <- HttpClient.get(cover_url(game_id)),
+         {:ok, reviews} <- Parser.parse_json(body) do
+      %{
+        reviews: Mapper.reviews(reviews)
+      }
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
+  end
+
   defp search_url(), do: "#{base_url()}/game/search"
   defp game_url(game_id), do: "#{base_url()}/game/#{game_id}"
+  defp cover_url(game_id), do: "#{base_url()}/review/game/#{game_id}/landing"
 
   defp base_url, do: Application.fetch_env!(:skaro, :opencritic)[:base_url]
 end
