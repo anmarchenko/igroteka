@@ -1,6 +1,6 @@
 defmodule Skaro.Opencritic.Client do
   @moduledoc """
-  Opencritic client retrieves and parses information from https://opencritic.com
+  Opencritic client retrieves and parses information from https://opencritic.com/api
   """
 
   alias Skaro.{HttpClient, Parser}
@@ -29,19 +29,19 @@ defmodule Skaro.Opencritic.Client do
     with body when is_binary(body) <- HttpClient.get(game_url(game_id)),
          {:ok, %{"numTopCriticReviews" => num} = game_json} when num > 0 <-
            Parser.parse_json(body) do
-      [
-        %{
-          percent_recommended: game_json["percentRecommended"],
-          score: game_json["topCriticScore"],
-          num_reviews: game_json["numTopCriticReviews"],
-          tier: game_json["tier"],
-          name: game_json["name"],
-          opencritic_id: game_json["id"]
-        },
-        Mapper.review_summary(game_json["reviewSummary"]),
-        get_cover_reviews(game_id)
-      ]
-      |> Enum.reduce(&Map.merge/2)
+      {:ok,
+       [
+         %{
+           external_id: Kernel.inspect(game_json["id"]),
+           tier: game_json["tier"],
+           percent_recommended: game_json["percentRecommended"],
+           score: game_json["topCriticScore"],
+           num_reviews: game_json["numTopCriticReviews"]
+         },
+         Mapper.review_summary(game_json["reviewSummary"]),
+         get_cover_reviews(game_id)
+       ]
+       |> Enum.reduce(&Map.merge/2)}
     else
       {:error, _} = error_tuple ->
         error_tuple

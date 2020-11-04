@@ -73,7 +73,7 @@ defmodule Skaro.MixProject do
       {:floki, "~> 0.26"},
 
       # lint
-      {:credo, "~> 1.4.0", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
 
       # time
       {:timex, "~> 3.1"},

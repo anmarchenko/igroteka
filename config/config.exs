@@ -33,6 +33,7 @@ config :skaro, Skaro.Guardian,
 # API
 config :skaro, :games_remote, Skaro.IGDB
 config :skaro, :playthrough_remote, Skaro.Howlongtobeat
+config :skaro, :reviews_remote, Skaro.Opencritic
 
 config :skaro, :giantbomb, base_url: "https://www.giantbomb.com/api"
 

@@ -24,3 +24,4 @@ config :skaro, Skaro.Guardian,
 
 config :skaro, :games_remote, Skaro.GamesRemoteMock
 config :skaro, :playthrough_remote, Skaro.PlaythroughRemoteMock
+config :skaro, :reviews_remote, Skaro.ReviewsRemoteMock
