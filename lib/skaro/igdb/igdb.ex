@@ -12,14 +12,15 @@ defmodule Skaro.IGDB do
 
   @spec search(binary()) :: {:error, binary()} | {:ok, [Skaro.Core.Game.t()]}
   def search(term) do
-    with {:ok, json} <- fetch_data(search_url(), search_query(term)) do
-      games =
-        json
-        |> Enum.map(& &1["game"])
-        |> GamesParser.parse_basic()
+    case fetch_data(search_url(), search_query(term)) do
+      {:ok, json} ->
+        games =
+          json
+          |> Enum.map(& &1["game"])
+          |> GamesParser.parse_basic()
 
-      {:ok, games}
-    else
+        {:ok, games}
+
       {:error, _} = error_tuple ->
         error_tuple
     end
@@ -129,7 +130,7 @@ defmodule Skaro.IGDB do
     """
   end
 
-  defp new_games_query() do
+  defp new_games_query do
     """
     where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
     sort first_release_date desc;

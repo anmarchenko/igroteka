@@ -4,35 +4,33 @@ defmodule Skaro.Core do
   All functions are implemented in backend.
   """
 
-  @games_remote Application.get_env(:skaro, :games_remote)
-
   def get(id) do
     cached_result("games_show_#{id}_v1.0", fn ->
-      @games_remote.find_one(id)
+      games_remote().find_one(id)
     end)
   end
 
   def search(term) do
     cached_result("games_index_term_#{term}_v1.0", fn ->
-      @games_remote.search(term)
+      games_remote().search(term)
     end)
   end
 
   def get_screenshots(game_id) do
     cached_result("screenshots_index_game_#{game_id}", fn ->
-      @games_remote.get_screenshots(game_id)
+      games_remote().get_screenshots(game_id)
     end)
   end
 
   def top_games(filters) do
     cached_result("games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}", fn ->
-      @games_remote.top_games(filters)
+      games_remote().top_games(filters)
     end)
   end
 
-  def new_games() do
+  def new_games do
     cached_result("games_index_new", fn ->
-      @games_remote.new_games()
+      games_remote().new_games()
     end)
   end
 
@@ -52,4 +50,6 @@ defmodule Skaro.Core do
         {:ok, result}
     end
   end
+
+  defp games_remote, do: Application.get_env(:skaro, :games_remote)
 end

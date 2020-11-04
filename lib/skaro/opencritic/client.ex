@@ -63,7 +63,7 @@ defmodule Skaro.Opencritic.Client do
     end
   end
 
-  defp search_url(), do: "#{base_url()}/game/search"
+  defp search_url, do: "#{base_url()}/game/search"
   defp game_url(game_id), do: "#{base_url()}/game/#{game_id}"
   defp cover_url(game_id), do: "#{base_url()}/review/game/#{game_id}/landing"
 

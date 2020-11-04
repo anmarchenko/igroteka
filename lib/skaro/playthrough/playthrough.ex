@@ -5,8 +5,6 @@ defmodule Skaro.Playthrough do
   alias Skaro.Playthrough.PlaythroughTime
   alias Skaro.Repo
 
-  @remote Application.get_env(:skaro, :playthrough_remote)
-
   @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
           {:ok, PlaythroughTime.t()} | {:error, any}
   def find(%{id: _, name: _, release_date: _} = game) do
@@ -26,7 +24,7 @@ defmodule Skaro.Playthrough do
   end
 
   def load_by_id(external_id, %{id: _, name: _} = game) do
-    with {:ok, attrs} <- @remote.get_by_id(external_id),
+    with {:ok, attrs} <- remote().get_by_id(external_id),
          {:ok, time} <- create_playthrough_time(attrs, game) do
       {:ok, time}
     end
@@ -42,7 +40,7 @@ defmodule Skaro.Playthrough do
   end
 
   def reload_playthrough_time(time) do
-    with {:ok, attrs} <- @remote.get_by_id(time.external_id),
+    with {:ok, attrs} <- remote().get_by_id(time.external_id),
          {:ok, updated} <- update_playthrough_time(time, attrs) do
       {:ok, updated}
     end
@@ -76,7 +74,7 @@ defmodule Skaro.Playthrough do
     do: %{}
 
   defp load_playthrough_time(game) do
-    with {:ok, attrs} <- @remote.find(game),
+    with {:ok, attrs} <- remote().find(game),
          {:ok, time} <- create_playthrough_time(attrs, game) do
       {:ok, time}
     end
@@ -98,4 +96,6 @@ defmodule Skaro.Playthrough do
   defp get_update_interval(days_since_release) when days_since_release < 90, do: 1
   # otherwise update every week
   defp get_update_interval(_), do: 7
+
+  defp remote, do: Application.get_env(:skaro, :playthrough_remote)
 end

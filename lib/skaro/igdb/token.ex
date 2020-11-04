@@ -7,7 +7,7 @@ defmodule Skaro.IGDB.Token do
 
   @cache_key "igdb_api_token"
 
-  def fetch() do
+  def fetch do
     case ConCache.get(:external_api_cache, @cache_key) do
       nil ->
         fetch_token_from_remote()
@@ -17,7 +17,7 @@ defmodule Skaro.IGDB.Token do
     end
   end
 
-  defp fetch_token_from_remote() do
+  defp fetch_token_from_remote do
     with body when is_binary(body) <-
            HttpClient.idempotent_post(
              oauth_url(),

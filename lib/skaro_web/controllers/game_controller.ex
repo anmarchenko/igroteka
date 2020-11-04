@@ -1,8 +1,8 @@
 defmodule SkaroWeb.GameController do
   use SkaroWeb, :controller
 
-  alias Skaro.Core
   alias Skaro.Backlog.Entries
+  alias Skaro.Core
 
   action_fallback(SkaroWeb.FallbackController)
 

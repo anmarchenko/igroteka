@@ -69,7 +69,7 @@ defmodule Skaro.Howlongtobeat.Client do
     |> get_by_id()
   end
 
-  defp find_game(games = [{_, _, _} | _], release_date) do
+  defp find_game([{_, _, _} | _] = games, release_date) do
     case Enum.filter(games, fn {_, _, [text]} ->
            extract_hltb_year(text) == release_date.year
          end) do
