@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir:1.11.1 as builder
+FROM bitwalker/alpine-elixir:1.11.0 as builder
 
 # Upgrade the apk-tools to the newest version and everything installed
 RUN apk add --no-cache --upgrade apk-tools@main && apk upgrade --available
