@@ -18,6 +18,7 @@ defmodule Skaro.Factory do
   }
 
   alias Skaro.Playthrough.PlaythroughTime
+  alias Skaro.Reviews.Rating
 
   def user_factory do
     number = :rand.uniform(10_000)
@@ -173,6 +174,52 @@ defmodule Skaro.Factory do
       main: :rand.uniform(30) * 60,
       main_extra: :rand.uniform(60) * 60,
       completionist: :rand.uniform(100) * 60
+    }
+  end
+
+  def rating_factory do
+    id = :rand.uniform(100_000)
+    entry_id = :rand.uniform(100_000)
+
+    %Rating{
+      game_id: id,
+      game_name: "Game #{id}",
+      external_id: to_string(entry_id),
+      percent_recommended: :rand.uniform(100) / 100.0,
+      score: :rand.uniform(100) / 100.0,
+      num_reviews: :rand.uniform(200),
+      tier: "Strong",
+      summary: "this is game #{id}",
+      reviews: [
+        %{
+          external_url: "http://www.ign.com/articles/watch-dogs-legion-review?watch",
+          name: "IGN",
+          score: 80,
+          snippet: "Watch Dogs: Legion's bold use of roguelike mechanics in an open-world action"
+        },
+        %{
+          external_url:
+            "https://www.eurogamer.net/articles/2020-11-03-watch-dogs-legion-review-a-bleak-and-buggy-retread-of-ubisofts-formula",
+          name: "Eurogamer",
+          score: 75,
+          snippet:
+            "Legion's near-future London is almost too close for comfort, though the game it hosts is a characterless slog."
+        }
+      ],
+      points: [
+        %{
+          description:
+            "The squad formed throughout the game provide a fun twist on the typical Open World formula",
+          state: "pro",
+          title: "Play As Anyone"
+        },
+        %{
+          description:
+            "Many critics noted that missions begin to feel too same-y as you get deeper into the game",
+          state: "con",
+          title: "Repetitive Missions"
+        }
+      ]
     }
   end
 end
