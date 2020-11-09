@@ -31,6 +31,7 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
       )
 
       insert(:playthrough_time, game_id: 123_456, main: 1234)
+      insert(:rating, game_id: 123_456, tier: "Weak")
 
       insert_list(2, :backlog_entry, user: user, status: "playing")
 
@@ -68,6 +69,8 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
 
       assert show_json_entry_with_playthrough["playthrough_time"]["badge_label"] ==
                "Average length"
+
+      assert show_json_entry_with_playthrough["rating"]["tier"] == "Weak"
     end
 
     @tag :login

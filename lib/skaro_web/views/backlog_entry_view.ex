@@ -1,7 +1,7 @@
 defmodule SkaroWeb.BacklogEntryView do
   use SkaroWeb, :view
 
-  alias SkaroWeb.{AvailablePlatformView, PlaythroughTimeView}
+  alias SkaroWeb.{AvailablePlatformView, PlaythroughTimeView, ReviewView}
 
   def render("index.json", %{paginated_entries: backlog_entries}) do
     %{
@@ -49,6 +49,9 @@ defmodule SkaroWeb.BacklogEntryView do
     |> Map.merge(%{
       playthrough_time:
         PlaythroughTimeView.render("show.json", playthrough_time: backlog_entry.playthrough_time)
+    })
+    |> Map.merge(%{
+      rating: ReviewView.render("show.json", rating: backlog_entry.rating)
     })
   end
 end

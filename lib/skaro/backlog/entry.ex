@@ -32,6 +32,11 @@ defmodule Skaro.Backlog.Entry do
       references: :game_id
     )
 
+    has_one(:rating, Skaro.Reviews.Rating,
+      foreign_key: :game_id,
+      references: :game_id
+    )
+
     timestamps()
   end
 
