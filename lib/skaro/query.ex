@@ -26,6 +26,15 @@ defmodule Skaro.Query do
     )
   end
 
+  def order_by_param(query, "rating", direction) do
+    direction_nulls_last = nulls_last(direction)
+
+    from(p in query,
+      join: r in assoc(p, :rating),
+      order_by: [{^direction_nulls_last, r.score}]
+    )
+  end
+
   def order_by_param(query, "finished_at", direction) do
     direction_nulls_last = nulls_last(direction)
     from(p in query, order_by: [{^direction_nulls_last, :finished_at}])

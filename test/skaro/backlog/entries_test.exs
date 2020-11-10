@@ -325,6 +325,36 @@ defmodule Skaro.EntriesTest do
                })
     end
 
+    test "it orders by rating", %{user: user} do
+      insert(:backlog_entry,
+        user: user,
+        note: "1",
+        rating: insert(:rating, score: 70)
+      )
+
+      insert(:backlog_entry,
+        user: user,
+        note: "2",
+        rating: insert(:rating, score: 60)
+      )
+
+      insert(:backlog_entry,
+        user: user,
+        note: "3",
+        rating: insert(:rating, score: 80)
+      )
+
+      assert %{entries: [%Entry{note: "2"}, %Entry{note: "1"}, %Entry{note: "3"}]} =
+               Entries.list(user, %{
+                 "sort" => "asc:rating"
+               })
+
+      assert %{entries: [%Entry{note: "3"}, %Entry{note: "1"}, %Entry{note: "2"}]} =
+               Entries.list(user, %{
+                 "sort" => "desc:rating"
+               })
+    end
+
     test "it orders by finishing date and nulls are always last", %{user: user} do
       insert(:backlog_entry, user: user, finished_at: nil, note: "1")
       insert(:backlog_entry, user: user, finished_at: ~D[2018-01-01], note: "2")
