@@ -14,9 +14,6 @@ build:
   stage: build
   script:
     - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-    - 'which curl || ( apk update && apk add curl )'
-    - curl -L https://github.com/gohugoio/hugo/releases/download/v0.79.1/hugo_0.79.1_Linux-64bit.tar.gz | tar -xz && mv hugo /usr/local/bin/hugo
-    - hugo
     - docker pull $CI_REGISTRY_IMAGE:latest || true
     - docker build --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
