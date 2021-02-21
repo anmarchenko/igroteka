@@ -14,8 +14,6 @@ config :skaro, Skaro.Repo,
   password: System.fetch_env!("POSTGRES_PASSWORD"),
   hostname: System.fetch_env!("POSTGRES_HOST")
 
-config :skaro, :giantbomb, api_key: System.fetch_env!("GIANTBOMB_API_KEY")
-
 config :skaro, :igdb,
   client_id: System.fetch_env!("IGDB_CLIENT_ID"),
   client_secret: System.fetch_env!("IGDB_CLIENT_SECRET")

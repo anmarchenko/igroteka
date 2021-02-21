@@ -15,6 +15,8 @@ defmodule Skaro.Application do
       Repo,
       # Start the endpoint when the application starts
       Endpoint,
+      # pubsub
+      {Phoenix.PubSub, [name: Skaro.PubSub, adapter: Phoenix.PubSub.PG2]},
       {ConCache,
        [
          name: :external_api_cache,

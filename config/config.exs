@@ -14,7 +14,8 @@ config :skaro,
 config :skaro, SkaroWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "GUaNDJBx7OaJkXDhaloxaN2uqjbrembYanto5pxyKIx3c7XhHPIpniqCINeFbIsh",
-  render_errors: [view: SkaroWeb.ErrorView, accepts: ~w(html json)]
+  render_errors: [view: SkaroWeb.ErrorView, accepts: ~w(html json)],
+  pubsub_server: Skaro.PubSub
 
 # Configures Elixir's Logger
 config :logger, :console,
