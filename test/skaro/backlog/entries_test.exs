@@ -23,7 +23,6 @@ defmodule Skaro.EntriesTest do
                    "game_name" => "XCom 2",
                    "poster_thumb_url" => "http://example.com/image.png",
                    "game_release_date" => "1996-02-29",
-                   "note" => "Steam: 50 eur",
                    "status" => "wishlist",
                    "expectation_rating" => 2
                  },
@@ -36,7 +35,6 @@ defmodule Skaro.EntriesTest do
       assert entry.game_name == "XCom 2"
       assert entry.status == "wishlist"
       assert entry.poster_thumb_url == "http://example.com/image.png"
-      assert entry.note == "Steam: 50 eur"
       assert entry.game_release_date == ~D[1996-02-29]
       assert entry.expectation_rating === 2
 
@@ -61,7 +59,6 @@ defmodule Skaro.EntriesTest do
                  %{
                    "game_id" => 1234,
                    "game_name" => "XCom 2",
-                   "note" => "Steam: 50 eur",
                    "status" => "backlog"
                  },
                  user,
@@ -77,7 +74,6 @@ defmodule Skaro.EntriesTest do
                Entries.add(
                  %{
                    "game_name" => "XCom 2",
-                   "note" => "Steam: 50 eur",
                    "status" => "wishlist"
                  },
                  user
@@ -95,7 +91,6 @@ defmodule Skaro.EntriesTest do
                  %{
                    "game_id" => 1234,
                    "game_name" => "XCom 2",
-                   "note" => "Steam: 50 eur",
                    "status" => "custom status"
                  },
                  user
@@ -117,7 +112,6 @@ defmodule Skaro.EntriesTest do
                  %{
                    "game_id" => 1234,
                    "game_name" => "XCom 2",
-                   "note" => "Steam: 50 eur",
                    "status" => "backlog"
                  },
                  user
@@ -134,7 +128,6 @@ defmodule Skaro.EntriesTest do
       assert {:ok, updated_entry} =
                Entries.update(entry, %{
                  "status" => "beaten",
-                 "note" => "Just finished this game!!!!",
                  "score" => 5,
                  "owned_platform_id" => 42,
                  "owned_platform_name" => "PlayStation 4",
@@ -144,7 +137,6 @@ defmodule Skaro.EntriesTest do
 
       assert updated_entry.game_name == entry.game_name
       assert "beaten" == updated_entry.status
-      assert "Just finished this game!!!!" == updated_entry.note
       assert 5 == updated_entry.score
       assert 42 == updated_entry.owned_platform_id
       assert "PlayStation 4" == updated_entry.owned_platform_name
@@ -158,7 +150,6 @@ defmodule Skaro.EntriesTest do
       assert {:error, changeset} =
                Entries.update(entry, %{
                  "status" => "beaten!",
-                 "note" => "Just finished this game!!!!",
                  "score" => 5,
                  "owned_platform_id" => 42,
                  "owned_platform_name" => "PlayStation 4",
@@ -177,7 +168,6 @@ defmodule Skaro.EntriesTest do
       assert {:error, changeset} =
                Entries.update(entry, %{
                  "status" => "beaten",
-                 "note" => "Just finished this game!!!!",
                  "score" => 5,
                  "owned_platform_id" => 42,
                  "owned_platform_name" => "PlayStation 4",
@@ -298,28 +288,28 @@ defmodule Skaro.EntriesTest do
     test "it orders by playthrough_time", %{user: user} do
       insert(:backlog_entry,
         user: user,
-        note: "1",
+        game_id: 1,
         playthrough_time: insert(:playthrough_time, main: 4)
       )
 
       insert(:backlog_entry,
         user: user,
-        note: "2",
+        game_id: 2,
         playthrough_time: insert(:playthrough_time, main: 3)
       )
 
       insert(:backlog_entry,
         user: user,
-        note: "3",
+        game_id: 3,
         playthrough_time: insert(:playthrough_time, main: 5)
       )
 
-      assert %{entries: [%Entry{note: "2"}, %Entry{note: "1"}, %Entry{note: "3"}]} =
+      assert %{entries: [%Entry{game_id: 2}, %Entry{game_id: 1}, %Entry{game_id: 3}]} =
                Entries.list(user, %{
                  "sort" => "asc:playthrough"
                })
 
-      assert %{entries: [%Entry{note: "3"}, %Entry{note: "1"}, %Entry{note: "2"}]} =
+      assert %{entries: [%Entry{game_id: 3}, %Entry{game_id: 1}, %Entry{game_id: 2}]} =
                Entries.list(user, %{
                  "sort" => "desc:playthrough"
                })
@@ -328,44 +318,44 @@ defmodule Skaro.EntriesTest do
     test "it orders by rating", %{user: user} do
       insert(:backlog_entry,
         user: user,
-        note: "1",
+        game_id: 1,
         rating: insert(:rating, score: 70)
       )
 
       insert(:backlog_entry,
         user: user,
-        note: "2",
+        game_id: 2,
         rating: insert(:rating, score: 60)
       )
 
       insert(:backlog_entry,
         user: user,
-        note: "3",
+        game_id: 3,
         rating: insert(:rating, score: 80)
       )
 
-      assert %{entries: [%Entry{note: "2"}, %Entry{note: "1"}, %Entry{note: "3"}]} =
+      assert %{entries: [%Entry{game_id: 2}, %Entry{game_id: 1}, %Entry{game_id: 3}]} =
                Entries.list(user, %{
                  "sort" => "asc:rating"
                })
 
-      assert %{entries: [%Entry{note: "3"}, %Entry{note: "1"}, %Entry{note: "2"}]} =
+      assert %{entries: [%Entry{game_id: 3}, %Entry{game_id: 1}, %Entry{game_id: 2}]} =
                Entries.list(user, %{
                  "sort" => "desc:rating"
                })
     end
 
     test "it orders by finishing date and nulls are always last", %{user: user} do
-      insert(:backlog_entry, user: user, finished_at: nil, note: "1")
-      insert(:backlog_entry, user: user, finished_at: ~D[2018-01-01], note: "2")
-      insert(:backlog_entry, user: user, finished_at: ~D[2018-02-01], note: "3")
+      insert(:backlog_entry, user: user, finished_at: nil, game_id: 1)
+      insert(:backlog_entry, user: user, finished_at: ~D[2018-01-01], game_id: 2)
+      insert(:backlog_entry, user: user, finished_at: ~D[2018-02-01], game_id: 3)
 
-      %{entries: [%Entry{note: "2"}, %Entry{note: "3"}, %Entry{note: "1"}]} =
+      %{entries: [%Entry{game_id: 2}, %Entry{game_id: 3}, %Entry{game_id: 1}]} =
         Entries.list(user, %{
           "sort" => "asc:finished_at"
         })
 
-      %{entries: [%Entry{note: "3"}, %Entry{note: "2"}, %Entry{note: "1"}]} =
+      %{entries: [%Entry{game_id: 3}, %Entry{game_id: 2}, %Entry{game_id: 1}]} =
         Entries.list(user, %{
           "sort" => "desc:finished_at"
         })

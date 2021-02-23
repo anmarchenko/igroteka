@@ -155,7 +155,6 @@ defmodule Skaro.Factory do
       finished_at: ~D[2018-10-02],
       poster_thumb_url: "http://posters/#{id}/poster",
       status: "wishlist",
-      note: "Generic note",
       countries: ["JP"],
       available_platforms: build_list(2, :available_platform),
       user: build(:user)

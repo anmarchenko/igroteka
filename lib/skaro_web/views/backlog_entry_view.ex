@@ -29,7 +29,6 @@ defmodule SkaroWeb.BacklogEntryView do
       game_release_date: backlog_entry.game_release_date,
       poster_thumb_url: backlog_entry.poster_thumb_url,
       status: backlog_entry.status,
-      note: backlog_entry.note,
       owned_platform_id: backlog_entry.owned_platform_id,
       owned_platform_name: backlog_entry.owned_platform_name,
       score: backlog_entry.score,

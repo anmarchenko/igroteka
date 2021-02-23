@@ -15,7 +15,6 @@ defmodule Skaro.Backlog.Entry do
     field(:poster_thumb_url, :string)
 
     field(:status, :string)
-    field(:note, :string)
     field(:owned_platform_id, :integer)
     field(:owned_platform_name, :string)
     field(:score, :integer)
@@ -52,7 +51,6 @@ defmodule Skaro.Backlog.Entry do
       :game_release_date,
       :user_id,
       :status,
-      :note,
       :expectation_rating,
       :score,
       :countries
@@ -74,7 +72,6 @@ defmodule Skaro.Backlog.Entry do
       :owned_platform_id,
       :owned_platform_name,
       :finished_at,
-      :note,
       :expectation_rating
     ])
     |> validate_required([:status])

@@ -219,14 +219,13 @@ defmodule SkaroWeb.BacklogEntryControllerTest do
         put(
           conn,
           Routes.backlog_entry_path(@endpoint, :update, entry.game_id),
-          backlog_entry: %{"status" => "backlog", "note" => "just bought on PS4"}
+          backlog_entry: %{"status" => "backlog"}
         )
 
       assert json_response(conn, 200)["id"]
       updated_entry = Repo.get!(Entry, entry.id)
 
       assert "backlog" == updated_entry.status
-      assert "just bought on PS4" == updated_entry.note
     end
 
     @tag :login
