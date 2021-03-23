@@ -10,6 +10,8 @@ defmodule Skaro.IGDB.Parsers.Games do
   def parse_basic(json) when is_list(json), do: Enum.map(json, &parse_basic/1)
 
   def parse_basic(game) do
+    {developers, publishers} = companies(game["involved_companies"])
+
     %Game{
       id: game["id"],
       external_id: game["id"],
@@ -20,6 +22,8 @@ defmodule Skaro.IGDB.Parsers.Games do
       rating: game["aggregated_rating"],
       ratings_count: game["aggregated_rating_count"],
       platforms: Platforms.parse_basic(game["platforms"]),
+      developers: Companies.parse_basic(developers),
+      publishers: Companies.parse_basic(publishers),
       cover: Images.parse_cover(game["cover"])
     }
   end
@@ -27,14 +31,7 @@ defmodule Skaro.IGDB.Parsers.Games do
   def parse_full(json) when is_list(json), do: Enum.map(json, &parse_full/1)
 
   def parse_full(game) do
-    companies = game["involved_companies"] || []
-
-    developers =
-      companies
-      |> Enum.filter(& &1["developer"])
-      |> Enum.map(& &1["company"])
-
-    publishers = companies |> Enum.filter(& &1["publisher"]) |> Enum.map(& &1["company"])
+    {developers, publishers} = companies(game["involved_companies"])
 
     %Game{
       id: game["id"],
@@ -68,5 +65,18 @@ defmodule Skaro.IGDB.Parsers.Games do
     else
       val
     end
+  end
+
+  defp companies(nil), do: {[], []}
+
+  defp companies(items) do
+    developers =
+      items
+      |> Enum.filter(& &1["developer"])
+      |> Enum.map(& &1["company"])
+
+    publishers = items |> Enum.filter(& &1["publisher"]) |> Enum.map(& &1["company"])
+
+    {developers, publishers}
   end
 end

@@ -188,7 +188,6 @@ defmodule SkaroWeb.GameControllerTest do
 
       {:ok, dev} = Enum.fetch(game_json["developers"], 0)
       assert dev["country"] == "US"
-      assert dev["logo"]["id"] != nil
 
       cached_value =
         ConCache.get(

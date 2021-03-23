@@ -29,7 +29,7 @@ defmodule Skaro.IGDB.Parsers.Images do
     }
   end
 
-  def parse_logo(json) do
+  def parse_logo(%{} = json) do
     %Image{
       id: json["image_id"],
       thumb_url: image_url(:logo, :small, json["image_id"]),

@@ -117,7 +117,7 @@ defmodule Skaro.IGDB do
     """
     search "#{term}";
     where game != null & game.first_release_date != null;
-    fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.url,game.cover.image_id,game.platforms.id,game.platforms.name;
+    fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.url,game.cover.image_id,game.involved_companies.developer,game.involved_companies.publisher,game.involved_companies.company.*;
     """
   end
 
@@ -126,7 +126,7 @@ defmodule Skaro.IGDB do
     #{top_games_filters(filters)};
     sort aggregated_rating desc;
     limit 100;
-    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,platforms.id,platforms.name;
+    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,involved_companies.developer,involved_companies.publisher,involved_companies.company.*;
     """
   end
 
@@ -135,7 +135,7 @@ defmodule Skaro.IGDB do
     where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
     sort first_release_date desc;
     limit 30;
-    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,platforms.id,platforms.name;
+    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,involved_companies.developer,involved_companies.publisher,involved_companies.company.*;
     """
   end
 

@@ -2,7 +2,7 @@ defmodule Skaro.IGDB.Parsers.CompaniesTest do
   @moduledoc false
   use Skaro.DataCase
 
-  alias Skaro.Core.{Company, Image}
+  alias Skaro.Core.Company
   alias Skaro.IGDB.Parsers.Companies
 
   describe "parse_basic/1" do
@@ -11,12 +11,7 @@ defmodule Skaro.IGDB.Parsers.CompaniesTest do
                id: "1",
                name: "Firma",
                external_id: "1",
-               external_url: "https://firma.de",
-               logo: %Image{
-                 big_url: "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/image1.jpg",
-                 id: "image1",
-                 thumb_url: "https://images.igdb.com/igdb/image/upload/t_thumb/image1.jpg"
-               }
+               external_url: "https://firma.de"
              } =
                Companies.parse_basic(%{
                  "id" => "1",

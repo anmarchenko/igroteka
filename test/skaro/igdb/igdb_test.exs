@@ -73,6 +73,8 @@ defmodule Skaro.IGDBTest do
           release_date: DateTime.from_naive!(~N[1995-12-09 00:00:00], "Etc/UTC"),
           rating: 92.5,
           ratings_count: 1,
+          developers: [],
+          publishers: [],
           platforms: [
             %Platform{id: 6, external_id: 6, name: "PC (Microsoft Windows)"},
             %Platform{id: 7, external_id: 7, name: "PlayStation"},
@@ -97,6 +99,8 @@ defmodule Skaro.IGDBTest do
           release_date: DateTime.from_naive!(~N[2002-07-03 00:00:00], "Etc/UTC"),
           rating: 93.0,
           ratings_count: 4,
+          developers: [],
+          publishers: [],
           platforms: [
             %Platform{id: 6, external_id: 6, name: "PC (Microsoft Windows)"},
             %Platform{id: 14, external_id: 14, name: "Mac"}
@@ -201,14 +205,7 @@ defmodule Skaro.IGDBTest do
                  external_id: 51,
                  name: "Blizzard Entertainment",
                  country: "US",
-                 external_url: "https://www.igdb.com/companies/blizzard-entertainment",
-                 logo: %Skaro.Core.Image{
-                   big_url:
-                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/l9xwk37ap6xzjp4imoyh.jpg",
-                   id: "l9xwk37ap6xzjp4imoyh",
-                   thumb_url:
-                     "https://images.igdb.com/igdb/image/upload/t_thumb/l9xwk37ap6xzjp4imoyh.jpg"
-                 }
+                 external_url: "https://www.igdb.com/companies/blizzard-entertainment"
                }
              ] = game.developers
 
@@ -218,27 +215,13 @@ defmodule Skaro.IGDBTest do
                  external_id: 51,
                  name: "Blizzard Entertainment",
                  country: "US",
-                 external_url: "https://www.igdb.com/companies/blizzard-entertainment",
-                 logo: %Skaro.Core.Image{
-                   big_url:
-                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/l9xwk37ap6xzjp4imoyh.jpg",
-                   id: "l9xwk37ap6xzjp4imoyh",
-                   thumb_url:
-                     "https://images.igdb.com/igdb/image/upload/t_thumb/l9xwk37ap6xzjp4imoyh.jpg"
-                 }
+                 external_url: "https://www.igdb.com/companies/blizzard-entertainment"
                },
                %Skaro.Core.Company{
                  country: "US",
                  external_id: 24,
                  external_url: "https://www.igdb.com/companies/sierra-entertainment",
                  id: 24,
-                 logo: %Skaro.Core.Image{
-                   big_url:
-                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/qabsh3mdevjsww3erojx.jpg",
-                   id: "qabsh3mdevjsww3erojx",
-                   thumb_url:
-                     "https://images.igdb.com/igdb/image/upload/t_thumb/qabsh3mdevjsww3erojx.jpg"
-                 },
                  name: "Sierra Entertainment"
                },
                %Skaro.Core.Company{
@@ -246,13 +229,6 @@ defmodule Skaro.IGDBTest do
                  external_id: 37,
                  external_url: "https://www.igdb.com/companies/capcom",
                  id: 37,
-                 logo: %Skaro.Core.Image{
-                   big_url:
-                     "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/hcbqwbhbmrabsfk600zs.jpg",
-                   id: "hcbqwbhbmrabsfk600zs",
-                   thumb_url:
-                     "https://images.igdb.com/igdb/image/upload/t_thumb/hcbqwbhbmrabsfk600zs.jpg"
-                 },
                  name: "Capcom"
                }
              ] = game.publishers

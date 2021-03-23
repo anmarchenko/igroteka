@@ -3,7 +3,6 @@ defmodule Skaro.IGDB.Parsers.Companies do
   Parses IGDB json to Company struct
   """
   alias Skaro.Core.Company
-  alias Skaro.IGDB.Parsers.Images
 
   @manual_fixes %{
     "Nival Interactive" => "RU",
@@ -26,8 +25,7 @@ defmodule Skaro.IGDB.Parsers.Companies do
       external_id: company["id"],
       external_url: company["url"],
       name: company["name"],
-      country: num_to_alpha2(company["country"], company["name"]),
-      logo: Images.parse_logo(company["logo"])
+      country: num_to_alpha2(company["country"], company["name"])
     }
   end
 

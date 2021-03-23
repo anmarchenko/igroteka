@@ -27,16 +27,6 @@ defmodule SkaroWeb.GameView do
     |> minimal_fields
     |> Map.merge(%{
       external_url: game.external_url,
-      developers:
-        CompanyView.render(
-          "index.json",
-          companies: game.developers
-        ),
-      publishers:
-        CompanyView.render(
-          "index.json",
-          companies: game.publishers
-        ),
       franchises:
         FranchiseView.render(
           "index.json",
@@ -60,7 +50,17 @@ defmodule SkaroWeb.GameView do
       rating: game.rating,
       ratings_count: game.ratings_count,
       poster: ImageView.render("show.json", image: game.cover),
-      platforms: PlatformView.render("index.json", platforms: game.platforms)
+      platforms: PlatformView.render("index.json", platforms: game.platforms),
+      developers:
+        CompanyView.render(
+          "index.json",
+          companies: game.developers
+        ),
+      publishers:
+        CompanyView.render(
+          "index.json",
+          companies: game.publishers
+        )
     }
   end
 end
