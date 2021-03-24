@@ -61,7 +61,7 @@ defmodule Skaro.MixProject do
       {:hackney, "~> 1.16"},
 
       # caching
-      {:con_cache, "~> 0.14.0"},
+      {:con_cache, "~> 1.0.0"},
 
       # error handling
       {:sentry, "~> 8.0"},
