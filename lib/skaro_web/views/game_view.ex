@@ -5,8 +5,10 @@ defmodule SkaroWeb.GameView do
     CompanyView,
     ExternalLinkView,
     FranchiseView,
+    GenreView,
     ImageView,
     PlatformView,
+    ThemeView,
     VideoView
   }
 
@@ -37,6 +39,8 @@ defmodule SkaroWeb.GameView do
           "index.json",
           external_links: game.external_links
         ),
+      genres: GenreView.render("index.json", genres: game.genres),
+      themes: ThemeView.render("index.json", themes: game.themes),
       videos: VideoView.render("index.json", videos: game.videos)
     })
   end
