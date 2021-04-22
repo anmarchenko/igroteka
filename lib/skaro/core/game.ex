@@ -10,6 +10,10 @@ defmodule Skaro.Core.Game do
 
   alias __MODULE__
 
+  alias Skaro.Backlog.Entry
+  alias Skaro.Playthrough.PlaythroughTime
+  alias Skaro.Reviews.Rating
+
   alias Skaro.Core.{
     Company,
     ExternalLink,
@@ -43,8 +47,11 @@ defmodule Skaro.Core.Game do
     field(:ttb_completely, :integer)
 
     belongs_to(:cover, Image)
+    belongs_to(:playthrough_time, PlaythroughTime)
+    belongs_to(:critics_rating, Rating)
 
     has_many(:external_links, ExternalLink)
+    has_many(:backlog_entries, Entry)
     has_many(:videos, Video)
 
     many_to_many(:platforms, Platform,

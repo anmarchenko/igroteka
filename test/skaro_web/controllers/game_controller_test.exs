@@ -9,7 +9,8 @@ defmodule SkaroWeb.GameControllerTest do
 
   describe "GET :index" do
     setup do
-      {:ok, game: build(:game)}
+      game = build(:game)
+      {:ok, game: game}
     end
 
     @tag :login
@@ -35,7 +36,9 @@ defmodule SkaroWeb.GameControllerTest do
     end
 
     @tag :login
-    test "external api call succeeded", %{conn: conn, game: game} do
+    test "external api call succeeded", %{conn: conn, game: game, logged_user: user} do
+      insert(:backlog_entry, user: user, status: "played", game_id: game.id)
+
       Skaro.GamesRemoteMock
       |> expect(:search, fn term ->
         assert "xcom" = term
@@ -58,6 +61,9 @@ defmodule SkaroWeb.GameControllerTest do
 
       assert platform_json["id"] == platform.id
       assert platform_json["name"] == platform.name
+
+      entry_json = Enum.fetch!(game_json["backlog_entries"], 0)
+      assert entry_json["status"] == "played"
 
       cached_value =
         ConCache.get(

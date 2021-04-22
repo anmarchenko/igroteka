@@ -22,6 +22,12 @@ defmodule SkaroWeb.GameView do
 
   def render("game_short.json", %{game: game}) do
     minimal_fields(game)
+    |> Map.merge(%{
+      backlog_entries:
+        Enum.map(game.backlog_entries, fn entry ->
+          %{status: entry.status}
+        end)
+    })
   end
 
   def render("show.json", %{game: game}) do

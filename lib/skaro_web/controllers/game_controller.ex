@@ -3,6 +3,7 @@ defmodule SkaroWeb.GameController do
 
   alias Skaro.Backlog.Entries
   alias Skaro.Core
+  alias Skaro.Guardian.Plug, as: GuardianPlug
 
   action_fallback(SkaroWeb.FallbackController)
 
@@ -11,17 +12,20 @@ defmodule SkaroWeb.GameController do
   @spec index(any, map) :: {:error, :external_api, any} | Plug.Conn.t()
   def index(conn, %{"term" => term}) do
     term
-    |> Core.search()
+    |> Core.search(current_user_id(conn))
     |> respond(conn)
   end
 
   def index(conn, %{"new" => _}) do
-    respond(Core.new_games(), conn)
+    conn
+    |> current_user_id()
+    |> Core.new_games()
+    |> respond(conn)
   end
 
   def index(conn, params) do
     params
-    |> Core.top_games()
+    |> Core.top_games(current_user_id(conn))
     |> respond(conn)
   end
 
@@ -52,5 +56,9 @@ defmodule SkaroWeb.GameController do
 
   defp respond({:error, reason}, _) do
     {:error, :external_api, reason}
+  end
+
+  defp current_user_id(conn) do
+    GuardianPlug.current_resource(conn).id
   end
 end

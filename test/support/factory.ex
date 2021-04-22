@@ -122,7 +122,8 @@ defmodule Skaro.Factory do
       genres: [build(:genre)],
       themes: [build(:theme)],
       external_links: [build(:external_link)],
-      videos: []
+      videos: [],
+      backlog_entries: []
     }
   end
 

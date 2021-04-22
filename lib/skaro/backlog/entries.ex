@@ -16,6 +16,11 @@ defmodule Skaro.Backlog.Entries do
     |> Repo.preload(preloads)
   end
 
+  def by_games(game_ids, user_id) do
+    from(e in Entry, where: e.game_id in ^game_ids and e.user_id == ^user_id)
+    |> Repo.all()
+  end
+
   @spec list(atom | %{id: any}, keyword | map, any) :: Scrivener.Page.t()
   def list(user, params, preloads \\ [:available_platforms, :playthrough_time, :rating]) do
     Entry
