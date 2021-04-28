@@ -2,6 +2,7 @@ defmodule Skaro.Reviews do
   @moduledoc """
   Fetching and saving critics reviews and ratings info
   """
+  import Ecto.Query
 
   alias Skaro.Repo
   alias Skaro.Reviews.Rating
@@ -16,6 +17,11 @@ defmodule Skaro.Reviews do
       rating ->
         {:ok, rating}
     end
+  end
+
+  def by_games(game_ids) do
+    from(r in Rating, where: r.game_id in ^game_ids)
+    |> Repo.all()
   end
 
   def maybe_update(rating, game_release_date) do

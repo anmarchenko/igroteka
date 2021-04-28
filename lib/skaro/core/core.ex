@@ -5,6 +5,8 @@ defmodule Skaro.Core do
   """
 
   alias Skaro.Backlog.Entries
+  alias Skaro.Playthrough
+  alias Skaro.Reviews
 
   def get(id) do
     cached_result("games_show_#{id}_v1.0", fn ->
@@ -64,7 +66,14 @@ defmodule Skaro.Core do
       |> Entries.by_games(user_id)
       |> Enum.into(%{}, fn entry -> {entry.game_id, entry} end)
 
-    {:ok, games |> Enum.map(fn game -> game |> with_entry(entries_map) end)}
+    times_map = ids |> Playthrough.by_games() |> Enum.into(%{}, fn p -> {p.game_id, p} end)
+    reviews_map = ids |> Reviews.by_games() |> Enum.into(%{}, fn r -> {r.game_id, r} end)
+
+    {:ok,
+     games
+     |> Enum.map(fn game -> game |> with_entry(entries_map) end)
+     |> Enum.map(fn game -> game |> with_playthrough_time(times_map) end)
+     |> Enum.map(fn game -> game |> with_reviews(reviews_map) end)}
   end
 
   defp preload_games_associations(error, _), do: error
@@ -76,6 +85,22 @@ defmodule Skaro.Core do
       %{game | backlog_entries: [entries_map[game.id]]}
     else
       %{game | backlog_entries: []}
+    end
+  end
+
+  defp with_playthrough_time(game, times_map) do
+    if times_map[game.id] do
+      %{game | playthrough_time: times_map[game.id]}
+    else
+      %{game | playthrough_time: nil}
+    end
+  end
+
+  defp with_reviews(game, reviews_map) do
+    if reviews_map[game.id] do
+      %{game | critics_rating: reviews_map[game.id]}
+    else
+      %{game | critics_rating: nil}
     end
   end
 end

@@ -8,6 +8,8 @@ defmodule SkaroWeb.GameView do
     GenreView,
     ImageView,
     PlatformView,
+    PlaythroughTimeView,
+    ReviewView,
     ThemeView,
     VideoView
   }
@@ -26,7 +28,10 @@ defmodule SkaroWeb.GameView do
       backlog_entries:
         Enum.map(game.backlog_entries, fn entry ->
           %{status: entry.status}
-        end)
+        end),
+      playthrough_time:
+        PlaythroughTimeView.render("show.json", playthrough_time: game.playthrough_time),
+      critics_rating: ReviewView.render("show.json", rating: game.critics_rating)
     })
   end
 

@@ -2,6 +2,8 @@ defmodule Skaro.Playthrough do
   @moduledoc """
   Playthrough times for games (how long it takes to finish)
   """
+  import Ecto.Query
+
   alias Skaro.Playthrough.PlaythroughTime
   alias Skaro.Repo
 
@@ -15,6 +17,11 @@ defmodule Skaro.Playthrough do
       time ->
         {:ok, time}
     end
+  end
+
+  def by_games(game_ids) do
+    from(p in PlaythroughTime, where: p.game_id in ^game_ids)
+    |> Repo.all()
   end
 
   def maybe_update(playthrough_time, game_release_date) do
