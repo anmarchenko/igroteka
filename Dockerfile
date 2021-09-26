@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir:1.11.4 as builder
+FROM bitwalker/alpine-elixir:1.12.3 as builder
 
 # Upgrade the apk-tools to the newest version and everything installed
 RUN apk add --no-cache --upgrade apk-tools@main && apk upgrade --available
@@ -17,7 +17,7 @@ COPY . .
 
 RUN mix release
 
-FROM alpine:3.13.5
+FROM alpine:3.14.2
 
 ENV PORT 4000
 ENV HOME /opt/app
