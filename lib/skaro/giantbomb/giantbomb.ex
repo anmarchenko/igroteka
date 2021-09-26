@@ -48,6 +48,7 @@ defmodule Skaro.Giantbomb do
   # this is not implemented for Giantbomb
   def get_screenshots(_), do: {:ok, []}
   def top_games(_), do: {:ok, []}
+  def fetch_games(_), do: {:ok, []}
   def new_games, do: {:ok, []}
   def fetch_company(_), do: {:ok, nil}
 

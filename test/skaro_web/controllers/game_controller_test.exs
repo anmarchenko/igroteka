@@ -129,6 +129,56 @@ defmodule SkaroWeb.GameControllerTest do
     end
 
     @tag :login
+    test "requesting games developed by", %{conn: conn, game: game} do
+      Skaro.GamesRemoteMock
+      |> expect(:fetch_games, fn filters ->
+        assert "70" == filters["developer"]
+        assert "50" == filters["offset"]
+        {:ok, [game]}
+      end)
+
+      conn = get(conn, Routes.game_path(@endpoint, :index, developer: 70, offset: 50))
+
+      json = json_response(conn, 200)
+      game_json = Enum.fetch!(json, 0)
+
+      assert game_json["id"] == game.id
+
+      cached_value =
+        ConCache.get(
+          :external_api_cache,
+          "games_index_developer_70_publisher__offset_50"
+        )
+
+      assert [game] == cached_value
+    end
+
+    @tag :login
+    test "requesting games published by", %{conn: conn, game: game} do
+      Skaro.GamesRemoteMock
+      |> expect(:fetch_games, fn filters ->
+        assert "32" == filters["publisher"]
+        assert "0" == filters["offset"]
+        {:ok, [game]}
+      end)
+
+      conn = get(conn, Routes.game_path(@endpoint, :index, publisher: 32, offset: 0))
+
+      json = json_response(conn, 200)
+      game_json = Enum.fetch!(json, 0)
+
+      assert game_json["id"] == game.id
+
+      cached_value =
+        ConCache.get(
+          :external_api_cache,
+          "games_index_developer__publisher_32_offset_0"
+        )
+
+      assert [game] == cached_value
+    end
+
+    @tag :login
     test "requesting new games", %{conn: conn, game: game} do
       Skaro.GamesRemoteMock
       |> expect(:new_games, fn ->

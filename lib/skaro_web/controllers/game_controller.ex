@@ -23,6 +23,18 @@ defmodule SkaroWeb.GameController do
     |> respond(conn)
   end
 
+  def index(conn, %{"developer" => _} = params) do
+    params
+    |> Core.fetch_games(current_user_id(conn))
+    |> respond(conn)
+  end
+
+  def index(conn, %{"publisher" => _} = params) do
+    params
+    |> Core.fetch_games(current_user_id(conn))
+    |> respond(conn)
+  end
+
   def index(conn, params) do
     params
     |> Core.top_games(current_user_id(conn))

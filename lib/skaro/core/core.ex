@@ -40,6 +40,16 @@ defmodule Skaro.Core do
     |> preload_games_associations(user_id)
   end
 
+  def fetch_games(filters, user_id) do
+    cached_result(
+      "games_index_developer_#{filters["developer"]}_publisher_#{filters["publisher"]}_offset_#{filters["offset"]}",
+      fn ->
+        games_remote().fetch_games(filters)
+      end
+    )
+    |> preload_games_associations(user_id)
+  end
+
   def new_games(user_id) do
     cached_result("games_index_new", fn ->
       games_remote().new_games()

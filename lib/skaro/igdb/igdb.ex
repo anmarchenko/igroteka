@@ -27,6 +27,16 @@ defmodule Skaro.IGDB do
     end
   end
 
+  def fetch_games(filters) do
+    with {:ok, json} <- fetch_data(games_url(), games_query(filters)),
+         games <- GamesParser.parse_basic(json) do
+      {:ok, games}
+    else
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
+  end
+
   def find_one(id) do
     with {:ok, json} <- fetch_data(games_url(), game_by_id_query(id)),
          [game] <- GamesParser.parse_full(json) do
@@ -164,6 +174,18 @@ defmodule Skaro.IGDB do
     """
   end
 
+  defp games_query(filters) do
+    """
+    #{fetch_games_filters(filters)};
+    sort first_release_date desc;
+    limit 50; offset #{filters["offset"]};
+    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,
+    involved_companies.developer,involved_companies.publisher,
+    involved_companies.company.id,involved_companies.company.name,involved_companies.company.url,
+    involved_companies.company.country;
+    """
+  end
+
   defp game_by_id_query(id) do
     """
     where id = #{id};
@@ -187,6 +209,12 @@ defmodule Skaro.IGDB do
     where id = #{id};
     fields id,name,country,description,logo.*,start_date,url,websites.*;
     """
+  end
+
+  defp fetch_games_filters(filters) do
+    "where first_release_date != null "
+    |> filter_if_present(:developer, filters)
+    |> filter_if_present(:publisher, filters)
   end
 
   defp top_games_filters(filters) do
@@ -213,6 +241,14 @@ defmodule Skaro.IGDB do
 
     filter <>
       " & first_release_date >= #{DateTime.to_unix(start)} & first_release_date < #{DateTime.to_unix(fin)}"
+  end
+
+  defp filter_if_present(filter, :developer, %{"developer" => developer}) when developer != nil do
+    filter <> " & involved_companies.company = #{developer} & involved_companies.developer = true"
+  end
+
+  defp filter_if_present(filter, :publisher, %{"publisher" => publisher}) when publisher != nil do
+    filter <> " & involved_companies.company = #{publisher} & involved_companies.publisher = true"
   end
 
   defp filter_if_present(filter, _, _), do: filter
