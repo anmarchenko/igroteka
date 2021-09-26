@@ -5,6 +5,7 @@ defmodule Skaro.IGDB do
   @behaviour Skaro.GamesRemote
 
   alias Skaro.HttpClient
+  alias Skaro.IGDB.Parsers.Companies, as: CompaniesParser
   alias Skaro.IGDB.Parsers.Games, as: GamesParser
   alias Skaro.IGDB.Parsers.Images, as: ImagesParser
   alias Skaro.IGDB.Token
@@ -73,6 +74,19 @@ defmodule Skaro.IGDB do
     end
   end
 
+  def fetch_company(id) do
+    with {:ok, json} <- fetch_data(companies_url(), company_by_id_query(id)),
+         [company] <- CompaniesParser.parse_full(json) do
+      {:ok, company}
+    else
+      [] ->
+        {:error, :not_found}
+
+      {:error, _} = error_tuple ->
+        error_tuple
+    end
+  end
+
   defp fetch_data(url, query) do
     with body when is_binary(body) <-
            HttpClient.idempotent_post(url, query, headers()),
@@ -95,6 +109,7 @@ defmodule Skaro.IGDB do
 
   defp search_url, do: "#{api_url()}/search"
   defp games_url, do: "#{api_url()}/games"
+  defp companies_url, do: "#{api_url()}/companies"
   defp screenshots_url, do: "#{api_url()}/screenshots"
 
   defp headers do
@@ -117,7 +132,11 @@ defmodule Skaro.IGDB do
     """
     search "#{term}";
     where game != null & game.first_release_date != null;
-    fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,game.url,game.cover.image_id,game.involved_companies.developer,game.involved_companies.publisher,game.involved_companies.company.*;
+    fields game.aggregated_rating,game.aggregated_rating_count,game.first_release_date,game.name,game.summary,
+    game.url,game.cover.image_id,
+    game.involved_companies.developer,game.involved_companies.publisher,
+    game.involved_companies.company.id,game.involved_companies.company.name,game.involved_companies.company.url,
+    game.involved_companies.company.country;
     """
   end
 
@@ -126,7 +145,10 @@ defmodule Skaro.IGDB do
     #{top_games_filters(filters)};
     sort aggregated_rating desc;
     limit 100;
-    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,involved_companies.developer,involved_companies.publisher,involved_companies.company.*;
+    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,
+    involved_companies.developer,involved_companies.publisher,
+    involved_companies.company.id,involved_companies.company.name,involved_companies.company.url,
+    involved_companies.company.country;
     """
   end
 
@@ -135,14 +157,21 @@ defmodule Skaro.IGDB do
     where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79;
     sort first_release_date desc;
     limit 30;
-    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,involved_companies.developer,involved_companies.publisher,involved_companies.company.*;
+    fields name,aggregated_rating,aggregated_rating_count,first_release_date,summary,url,cover.image_id,
+    involved_companies.developer,involved_companies.publisher,
+    involved_companies.company.id,involved_companies.company.name,involved_companies.company.url,
+    involved_companies.company.country;
     """
   end
 
   defp game_by_id_query(id) do
     """
     where id = #{id};
-    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,url,category,status,storyline,cover.image_id,platforms.*,franchises.*,involved_companies.developer,involved_companies.publisher,involved_companies.company.*,websites.*,involved_companies.company.logo.*,videos.video_id,videos.name,themes.*,genres.*;
+    fields aggregated_rating,aggregated_rating_count,first_release_date,name,summary,url,category,status,
+    storyline,cover.image_id,platforms.*,franchises.*,websites.*,videos.video_id,videos.name,themes.*,genres.*,
+    involved_companies.developer,involved_companies.publisher,
+    involved_companies.company.id,involved_companies.company.name,involved_companies.company.url,
+    involved_companies.company.country,involved_companies.company.logo.*;
     """
   end
 
@@ -150,6 +179,13 @@ defmodule Skaro.IGDB do
     """
     where game = #{game_id};
     fields image_id;
+    """
+  end
+
+  defp company_by_id_query(id) do
+    """
+    where id = #{id};
+    fields id,name,country,description,logo.*,start_date,url,websites.*;
     """
   end
 
@@ -176,9 +212,7 @@ defmodule Skaro.IGDB do
     {:ok, fin, 0} = DateTime.from_iso8601("#{year + 1}-01-01T00:00:00Z")
 
     filter <>
-      " & first_release_date >= #{DateTime.to_unix(start)} & first_release_date < #{
-        DateTime.to_unix(fin)
-      }"
+      " & first_release_date >= #{DateTime.to_unix(start)} & first_release_date < #{DateTime.to_unix(fin)}"
   end
 
   defp filter_if_present(filter, _, _), do: filter

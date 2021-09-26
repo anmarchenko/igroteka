@@ -14,6 +14,12 @@ defmodule Skaro.Core do
     end)
   end
 
+  def get_company(id) do
+    cached_result("companies_show_#{id}_v1.0", fn ->
+      games_remote().fetch_company(id)
+    end)
+  end
+
   def search(term, user_id) do
     cached_result("games_index_term_#{term}_v1.0", fn ->
       games_remote().search(term)

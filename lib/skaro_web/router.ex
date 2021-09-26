@@ -18,7 +18,7 @@ defmodule SkaroWeb.Router do
       error_handler: SkaroWeb.AuthErrorHandler
     )
 
-    plug(Guardian.Plug.VerifyHeader, realm: :none)
+    plug(Guardian.Plug.VerifyHeader, scheme: :none)
     plug(Guardian.Plug.LoadResource, allow_blank: true)
   end
 
@@ -48,5 +48,6 @@ defmodule SkaroWeb.Router do
     resources("/screenshots", ScreenshotController, only: [:index])
     resources("/playthrough_times", PlaythroughTimeController, only: [:show])
     resources("/reviews", ReviewController, only: [:show])
+    resources("/companies", CompanyController, only: [:show])
   end
 end

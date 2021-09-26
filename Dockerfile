@@ -1,4 +1,4 @@
-FROM bitwalker/alpine-elixir:1.11.0 as builder
+FROM bitwalker/alpine-elixir:1.11.4 as builder
 
 # Upgrade the apk-tools to the newest version and everything installed
 RUN apk add --no-cache --upgrade apk-tools@main && apk upgrade --available
@@ -17,9 +17,8 @@ COPY . .
 
 RUN mix release
 
-FROM alpine:3.12.0
+FROM alpine:3.13.5
 
-ENV VERSION_DATE=2019-03-04
 ENV PORT 4000
 ENV HOME /opt/app
 ENV PATH ${HOME}/bin:${PATH}
@@ -38,7 +37,7 @@ RUN \
   echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
   # Upgrade Alpine and base packages
   apk --no-cache --update --available upgrade && \
-  # Distillery requires bash Install bash and Erlang/OTP deps
+  # Distillery requires bash - install bash and Erlang/OTP deps
   apk add --no-cache --update pcre@edge && \
   apk add --no-cache --update \
   bash \

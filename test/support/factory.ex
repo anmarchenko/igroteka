@@ -59,7 +59,9 @@ defmodule Skaro.Factory do
       name: "Company #{id}",
       external_url: "https://company#{id}.com",
       country: "US",
-      logo: build(:image)
+      logo: build(:image),
+      website: "https://company#{id}.official.com",
+      description: "description of commpany #{id}"
     }
   end
 

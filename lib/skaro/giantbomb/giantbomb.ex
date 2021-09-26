@@ -49,6 +49,7 @@ defmodule Skaro.Giantbomb do
   def get_screenshots(_), do: {:ok, []}
   def top_games(_), do: {:ok, []}
   def new_games, do: {:ok, []}
+  def fetch_company(_), do: {:ok, nil}
 
   defp check_error_state(json) do
     case json["error"] do

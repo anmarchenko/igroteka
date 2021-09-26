@@ -19,7 +19,6 @@ defmodule Skaro.Core.Company do
     field(:website, :string)
 
     field(:description, :string)
-    field(:twitter, :string)
     field(:country, :string)
     field(:start_date, :date)
 
@@ -36,7 +35,6 @@ defmodule Skaro.Core.Company do
       :external_id,
       :external_url,
       :description,
-      :twitter,
       :country,
       :start_date
     ])
