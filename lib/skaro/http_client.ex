@@ -15,7 +15,7 @@ defmodule Skaro.HttpClient do
 
   defp post_with_retries(url, body, headers, retries) do
     case url
-         |> HTTPoison.post(body, headers, timeout: 1_000, recv_timeout: 1_000)
+         |> HTTPoison.post(body, headers, timeout: 2_000, recv_timeout: 2_000)
          |> retrieve_body() do
       {:ok, body} ->
         body

@@ -54,10 +54,10 @@ defmodule Skaro.IGDB.Parsers.Images do
     do: "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/#{id}.jpg"
 
   defp image_url(:logo, :small, id),
-    do: "https://images.igdb.com/igdb/image/upload/t_thumb/#{id}.jpg"
+    do: "https://images.igdb.com/igdb/image/upload/t_thumb/#{id}.png"
 
   defp image_url(:logo, :big, id),
-    do: "https://images.igdb.com/igdb/image/upload/t_logo_med_2x/#{id}.jpg"
+    do: "https://images.igdb.com/igdb/image/upload/t_logo_med/#{id}.png"
 
   defp image_url(:screenshot, :small, id),
     do: "https://images.igdb.com/igdb/image/upload/t_screenshot_med_2x/#{id}.jpg"
