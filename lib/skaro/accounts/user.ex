@@ -16,6 +16,8 @@ defmodule Skaro.Accounts.User do
     field(:password, :string, virtual: true)
     field(:old_password, :string, virtual: true)
 
+    field(:stats, :map)
+
     timestamps()
   end
 
@@ -45,6 +47,11 @@ defmodule Skaro.Accounts.User do
     |> validate_current_password(struct.encrypted_password)
     |> validate_confirmation(:password, message: "does not match confirmation")
     |> generate_encrypted_password()
+  end
+
+  def update_stats(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:stats])
   end
 
   defp generate_encrypted_password(current_changeset) do
