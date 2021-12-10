@@ -125,32 +125,4 @@ defmodule Skaro.UsersTest do
       refute Bcrypt.verify_pass("strong_password", updated_user.encrypted_password)
     end
   end
-
-  describe "Users.update_stats/2" do
-    test "it updates user" do
-      stats = %{
-        "games" => 223,
-        "oldest_game" => "12.09.1986",
-        "newest_game" => "20.09.2021",
-        "by_release_year" => %{
-          "2021" => %{
-            "5" => %{
-              "count" => 12,
-              "data" => [
-                %{"game_name" => "Warcraft"},
-                %{"game_name" => "Diablo"}
-              ]
-            }
-          }
-        }
-      }
-
-      user = insert(:user)
-
-      assert {:ok, updated_user} = Users.update_stats(user, stats)
-
-      assert user.id == updated_user.id
-      assert stats == updated_user.stats
-    end
-  end
 end

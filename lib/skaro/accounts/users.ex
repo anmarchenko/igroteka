@@ -28,10 +28,4 @@ defmodule Skaro.Accounts.Users do
     |> User.update_password(user_params)
     |> Repo.update()
   end
-
-  def update_stats(user, stats_map) do
-    user
-    |> User.update_stats(%{stats: stats_map})
-    |> Repo.update()
-  end
 end

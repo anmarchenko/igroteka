@@ -8,5 +8,5 @@ tmp
 erl_crash.dump
 *.ez
 priv/static
-config/dev_secrets.exs
+config/dev.secret.exs
 .elixir_ls
