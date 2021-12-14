@@ -40,7 +40,6 @@ defmodule Skaro.MixProject do
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_view, "~> 0.16.4"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:plug_cowboy, "~> 2.2"},
       {:gettext, "~> 0.11"},
