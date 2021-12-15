@@ -1,68 +1,65 @@
-FROM bitwalker/alpine-elixir:1.12.3 as builder
+ARG BUILDER_IMAGE="hexpm/elixir:1.13.1-erlang-24.2-debian-bullseye-20210902-slim"
+ARG RUNNER_IMAGE="debian:bullseye-20210902-slim"
 
-# Upgrade the apk-tools to the newest version and everything installed
-RUN apk add --no-cache --upgrade apk-tools@main && apk upgrade --available
-# Add packages to compile NIFs
-RUN apk add --no-cache g++@main gcc@main make@main libgcc@main libc-dev@main
+FROM ${BUILDER_IMAGE} as builder
 
-WORKDIR /opt/app
+# install build dependencies
+RUN apt-get update -y && apt-get install -y build-essential git \
+  && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
-COPY ./config/* ./config/
+# prepare build dir
+WORKDIR /app
+
+# install hex + rebar
+RUN mix local.hex --force && \
+  mix local.rebar --force
+
+# set build ENV
+ENV MIX_ENV="prod"
+
+# install mix dependencies
 COPY mix.exs mix.lock ./
+RUN mix deps.get --only $MIX_ENV
+RUN mkdir config
 
-ENV MIX_ENV=prod
-RUN mix do deps.get, deps.compile
+# copy compile-time config files before we compile dependencies
+# to ensure any relevant config change will trigger the dependencies
+# to be re-compiled.
+COPY config/config.exs config/${MIX_ENV}.exs config/
+RUN mix deps.compile
 
-COPY . .
+COPY priv priv
+# Compile the release
+COPY lib lib
 
+RUN mix compile
+
+# Changes to config/runtime.exs don't require recompiling the code
+COPY config/runtime.exs config/
+
+COPY rel rel
 RUN mix release
 
-FROM alpine:3.14.2
+# start a new build stage so that the final image will only contain
+# the compiled release and other runtime necessities
+FROM ${RUNNER_IMAGE}
 
-ENV PORT 4000
-ENV HOME /opt/app
-ENV PATH ${HOME}/bin:${PATH}
+RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales \
+  && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
-ARG BUILD_RELEASE=/opt/app/_build/prod/rel/skaro
-ARG BUILD_ENTRYPOINT=/opt/app/docker-entrypoint.sh
+# Set the locale
+RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 
-RUN \
-  # Create default user and home directory, set owner to default
-  mkdir -p "${HOME}" && \
-  adduser -s /bin/sh -u 1001 -G root -h "${HOME}" -S -D default && \
-  chown -R 1001:0 "${HOME}" && \
-  # Add tagged repos as well as the edge repo so that we can selectively install edge packages
-  echo "@main http://dl-cdn.alpinelinux.org/alpine/v3.14/main" >> /etc/apk/repositories && \
-  echo "@community http://dl-cdn.alpinelinux.org/alpine/v3.42/community" >> /etc/apk/repositories && \
-  echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-  # Upgrade Alpine and base packages
-  apk --no-cache --update --available upgrade && \
-  # Distillery requires bash - install bash and Erlang/OTP deps
-  apk add --no-cache --update pcre@edge && \
-  apk add --no-cache --update \
-  bash \
-  ca-certificates \
-  openssl-dev \
-  ncurses-dev \
-  unixodbc-dev \
-  zlib-dev \
-  g++@main \
-  gcc@main \
-  libgcc@main \
-  libc-dev@main
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
-WORKDIR ${HOME}
+WORKDIR "/app"
+RUN chown nobody /app
 
-# Copy files from builder
-COPY --from=builder ${BUILD_RELEASE} ./
-COPY --from=builder ${BUILD_ENTRYPOINT} docker-entrypoint.sh
-# Extract files and fix permissions
-RUN chmod +x docker-entrypoint.sh && \
-  chown -R default .
+# Only copy the final release from the build stage
+COPY --from=builder --chown=nobody:root /app/_build/prod/rel/skaro ./
 
-ONBUILD USER default
+USER nobody
 
-EXPOSE ${PORT}
-
-ENTRYPOINT ["/opt/app/docker-entrypoint.sh"]
-CMD ["init"]
+CMD /app/bin/server

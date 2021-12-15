@@ -1,0 +1,1 @@
+call "%~dp0\skaro" eval Skaro.Release.migrate

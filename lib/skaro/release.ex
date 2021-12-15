@@ -1,10 +1,10 @@
 defmodule Skaro.Release do
   @moduledoc """
-  Release tasks to migrate/rollback db
+  Used for executing DB release tasks when run in production without Mix
+  installed.
   """
   @app :skaro
 
-  @spec migrate :: [any]
   def migrate do
     load_app()
 
@@ -13,7 +13,6 @@ defmodule Skaro.Release do
     end
   end
 
-  @spec rollback(atom, any) :: {:ok, any, any}
   def rollback(repo, version) do
     load_app()
     {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
