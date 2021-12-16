@@ -1,21 +1,33 @@
 import Config
 
 if config_env() == :prod do
-  config :skaro, Skaro.Guardian, secret_key: System.fetch_env!("SECRET_KEY_BASE")
+  secret_key_base = System.fetch_env!("SECRET_KEY_BASE")
+  app_name = System.fetch_env!("FLY_APP_NAME")
+
+  config :skaro, Skaro.Guardian, secret_key: secret_key_base
 
   config :skaro, SkaroWeb.Endpoint,
-    http: [:inet6, port: System.fetch_env!("PORT")],
-    url: [host: System.fetch_env!("HOST"), port: 80]
-
-  config :sentry,
-    dsn: System.fetch_env!("SENTRY_DSN")
+    server: true,
+    url: [host: "#{app_name}.fly.dev", port: 80],
+    http: [
+      # Enable IPv6 and bind on all interfaces.
+      # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
+      # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
+      # for details about using IPv6 vs IPv4 and loopback vs public addresses.
+      ip: {0, 0, 0, 0, 0, 0, 0, 0},
+      port: 4000
+    ],
+    secret_key_base: secret_key_base
 
   config :skaro, Skaro.Repo,
-    username: System.fetch_env!("POSTGRES_USER"),
-    password: System.fetch_env!("POSTGRES_PASSWORD"),
-    hostname: System.fetch_env!("POSTGRES_HOST")
+    url: System.fetch_env!("DATABASE_URL"),
+    socket_options: [:inet6],
+    pool_size: 10
 
   config :skaro, :igdb,
     client_id: System.fetch_env!("IGDB_CLIENT_ID"),
     client_secret: System.fetch_env!("IGDB_CLIENT_SECRET")
+
+  config :sentry,
+    dsn: System.fetch_env!("SENTRY_DSN")
 end

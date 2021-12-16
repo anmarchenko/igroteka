@@ -24,7 +24,3 @@ config :sentry,
   tags: %{
     env: "production"
   }
-
-config :skaro, Skaro.Repo,
-  database: "skaro_production",
-  pool_size: 10

@@ -4,23 +4,15 @@ app = "skaro"
 
 kill_signal = "SIGTERM"
 kill_timeout = 5
-processes = []
 
 [env]
 
 [deploy]
   release_command = "/app/bin/skaro eval Skaro.Release.migrate"
 
-[experimental]
-  allowed_public_ports = []
-  auto_rollback = true
-
 [[services]]
-  http_checks = []
-  internal_port = 8080
-  processes = ["app"]
+  internal_port = 4000
   protocol = "tcp"
-  script_checks = []
 
   [services.concurrency]
     hard_limit = 25
