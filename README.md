@@ -1,7 +1,20 @@
 # Skaro
 
-This is the backend for my gaming backlog app. It is being developed in Elixir and
-Phoenix Framework.
+This is the backend for my gaming backlog app. It is described in detail
+[here on my personal website](https://amarchenko.de/igroteka).
+
+## Tech stack
+
+- elixir
+- phoenix
+- postgresql
+- guardian (for authorization)
+- httpoison (making http calls to external APIs)
+- con_cache (ttl cache - all the external calls are heavily cached)
+- sentry (errors monitoring)
+- floki (HTML parser for parsing howlongtobeat website)
+- mox (testing library for behaviour based testing)
+- bypass (mock server for external APIs)
 
 ## Local development
 
