@@ -50,13 +50,13 @@ defmodule Skaro.MixProject do
       {:jason, "~> 1.1"},
 
       # auth
-      {:bcrypt_elixir, "~> 2.0"},
+      {:bcrypt_elixir, "~> 3.0"},
       {:guardian, "~> 2.0"},
 
       # utils
       {:scrivener_ecto, "~> 2.0"},
       {:secure_random, "~> 0.5"},
-      {:cors_plug, "~> 2.0"},
+      {:cors_plug, "~> 3.0"},
 
       # http client
       {:httpoison, "~> 1.4"},
