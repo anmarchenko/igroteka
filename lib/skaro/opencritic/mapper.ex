@@ -3,14 +3,19 @@ defmodule Skaro.Opencritic.Mapper do
   Provides transformations for opencritic data
   """
 
-  def review_summary(%{"completed" => true} = summary) do
+  def review_summary(nil) do
+    %{
+      summary: nil,
+      points: []
+    }
+  end
+
+  def review_summary(summary) do
     %{
       summary: summary["summary"],
       points: slots(summary, 1)
     }
   end
-
-  def review_summary(_), do: %{}
 
   def reviews(reviews_json) do
     reviews_json
@@ -32,7 +37,7 @@ defmodule Skaro.Opencritic.Mapper do
   defp slots(json, num) do
     slot = "slot#{num}"
 
-    if json[slot] do
+    if json[slot] && json[slot] != "" do
       [
         %{
           title: json[slot],

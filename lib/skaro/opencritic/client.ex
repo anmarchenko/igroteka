@@ -10,7 +10,11 @@ defmodule Skaro.Opencritic.Client do
 
   def find(%{name: name}) do
     with body when is_binary(body) <-
-           HttpClient.get(search_url(), %{criteria: name}),
+           HttpClient.get(search_url(), %{criteria: name}, [
+             {"Origin", "https://opencritic.com"},
+             {"Host", "api.opencritic.com"},
+             {"Referer", "https://opencritic.com"}
+           ]),
          {:ok, [%{"dist" => dist, "id" => game_id} | _]} when dist < 0.1 <-
            Parser.parse_json(body) do
       get_by_id(game_id)
