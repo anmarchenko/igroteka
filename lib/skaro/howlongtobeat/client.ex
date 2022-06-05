@@ -22,7 +22,11 @@ defmodule Skaro.Howlongtobeat.Client do
                 {:page, 1}
               ]},
              [
-               {"Accept", "application/x-www-form-urlencoded"}
+               {"Accept", "*/*"},
+               {"Content-Type", "application/x-www-form-urlencoded"},
+               {"Host", "howlongtobeat.com"},
+               {"Origin", "https://howlongtobeat.com"},
+               {"Referer", "https://howlongtobeat.com/"}
              ]
            ),
          {:ok, document} <- Floki.parse_document(body) do
