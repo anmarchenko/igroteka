@@ -43,7 +43,7 @@ config :skaro, :igdb,
   oauth_url: "https://id.twitch.tv/oauth2/token"
 
 config :skaro, :howlongtobeat, base_url: "https://howlongtobeat.com"
-config :skaro, :opencritic, base_url: "https://api.opencritic.com/api"
+config :skaro, :opencritic, base_url: "https://opencritic-api.p.rapidapi.com"
 
 # Errors reporting
 config :sentry,
