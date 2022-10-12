@@ -104,7 +104,7 @@ defmodule Skaro.Howlongtobeat.Client do
     {:error, "Not found"}
   end
 
-  defp extract_game_id(%{"game_id" => id}), do: id
+  defp extract_game_id(%{"game_id" => id}), do: Integer.to_string(id)
   defp extract_game_id(_), do: nil
 
   defp parse_time({_, _, [{"h4", _, [label]}, {"h5", _, [time]}]}) do

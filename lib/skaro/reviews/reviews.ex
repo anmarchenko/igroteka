@@ -7,7 +7,7 @@ defmodule Skaro.Reviews do
   alias Skaro.Repo
   alias Skaro.Reviews.Rating
 
-  @spec find(%{id: integer(), name: binary()}) ::
+  @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
           {:ok, Rating.t()} | {:error, any}
   def find(%{id: _, name: _} = game) do
     case Repo.get_by(Rating, game_id: game.id) do

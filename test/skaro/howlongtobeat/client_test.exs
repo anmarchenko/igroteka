@@ -35,7 +35,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
 
       assert {:ok,
               %{
-                external_id: 38_061,
+                external_id: "38061",
                 external_url: "http://localhost:#{howlongtobeat.port}/game/38061",
                 completionist: 6780,
                 main: 2430,
@@ -74,7 +74,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
 
       assert {:ok,
               %{
-                external_id: 2701,
+                external_id: "2701",
                 external_url: "http://localhost:#{howlongtobeat.port}/game/2701",
                 completionist: 1590,
                 main: 690,
