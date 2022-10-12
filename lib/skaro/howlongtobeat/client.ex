@@ -12,27 +12,39 @@ defmodule Skaro.Howlongtobeat.Client do
     with body when is_binary(body) <-
            HttpClient.idempotent_post(
              search_url(),
-             {:form,
-              [
-                {:queryString, name},
-                {:t, "games"},
-                {:sorthead, "popular"},
-                {:sortd, "Normal Order"},
-                {:length_type, "main"},
-                {:page, 1}
-              ]},
+             Jason.encode!(%{
+               "searchType" => "games",
+               "searchTerms" => String.split(name),
+               "searchPage" => 1,
+               "size" => 5,
+               "searchOptions" => %{
+                 "games" => %{
+                   "userId" => 0,
+                   "platform" => "",
+                   "sortCategory" => "popular",
+                   "rangeCategory" => "main",
+                   "rangeTime" => %{"min" => 0, "max" => 0},
+                   "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
+                   "modifier" => ""
+                 },
+                 "users" => %{"sortCategory" => "postcount"},
+                 "filter" => "",
+                 "sort" => 0,
+                 "randomizer" => 0
+               }
+             }),
              [
                {"Accept", "*/*"},
-               {"Content-Type", "application/x-www-form-urlencoded"},
+               {"Content-Type", "application/json"},
                {"Host", "howlongtobeat.com"},
                {"Origin", "https://howlongtobeat.com"},
                {"Referer", "https://howlongtobeat.com/"}
              ]
-           ),
-         {:ok, document} <- Floki.parse_document(body) do
-      document
-      |> Floki.find("a.text_green")
-      |> find_game(release_date)
+           ) do
+      body
+      |> Jason.decode!()
+      |> Map.get("data", [])
+      |> find_game(name, release_date)
     else
       {:error, _} = error_tuple ->
         error_tuple
@@ -51,7 +63,7 @@ defmodule Skaro.Howlongtobeat.Client do
          {:ok, document} <- Floki.parse_document(body) do
       times =
         document
-        |> Floki.find(".game_times li")
+        |> Floki.find(".GameStats_game_times__5LFEc li")
         |> Enum.map(&parse_time/1)
         |> Enum.filter(& &1)
 
@@ -66,56 +78,41 @@ defmodule Skaro.Howlongtobeat.Client do
     end
   end
 
-  defp find_game([{_, attrs, _}], _) do
-    attrs
-    |> get_href()
+  defp find_game([game], _, _) do
+    game
     |> extract_game_id()
     |> get_by_id()
   end
 
-  defp find_game([{_, _, _} | _] = games, release_date) do
-    case Enum.filter(games, fn {_, _, [text]} ->
-           extract_hltb_year(text) == release_date.year
+  defp find_game([_ | _] = games, name, release_date) do
+    case Enum.filter(games, fn game ->
+           String.downcase(game["game_name"]) == String.downcase(name) &&
+             game["release_world"] == release_date.year
          end) do
       [game] ->
-        find_game([game], release_date)
+        find_game([game], name, release_date)
 
       [game | _] ->
-        find_game([game], release_date)
+        find_game([game], name, release_date)
 
       [] ->
         {:error, "Not found"}
     end
   end
 
-  defp find_game(_, _) do
+  defp find_game(_, _, _) do
     {:error, "Not found"}
   end
 
-  defp extract_hltb_year(text) do
-    case Regex.run(~r/\((\d+)\)/, text) do
-      [_, year_s] ->
-        {year, _} = Integer.parse(year_s)
-        year
-
-      _ ->
-        nil
-    end
-  end
-
-  defp get_href([{"href", href} | _]), do: href
-  defp get_href([_ | rest]), do: get_href(rest)
-  defp get_href([]), do: nil
-
-  defp extract_game_id("game?id=" <> id), do: id
+  defp extract_game_id(%{"game_id" => id}), do: id
   defp extract_game_id(_), do: nil
 
-  defp parse_time({_, _, [{"h5", _, [label]}, {"div", _, [time]}]}) do
+  defp parse_time({_, _, [{"h4", _, [label]}, {"h5", _, [time]}]}) do
     case String.trim(label) do
       "Main Story" ->
         parse_time_value(:main, time)
 
-      "Main + Extras" ->
+      "Main + Sides" ->
         parse_time_value(:main_extra, time)
 
       "Completionist" ->
@@ -145,8 +142,8 @@ defmodule Skaro.Howlongtobeat.Client do
     end
   end
 
-  defp search_url, do: "#{base_url()}/search_results"
-  defp game_url(game_id), do: "#{base_url()}/game?id=#{game_id}"
+  defp search_url, do: "#{base_url()}/api/search"
+  defp game_url(game_id), do: "#{base_url()}/game/#{game_id}"
 
   defp base_url, do: Application.fetch_env!(:skaro, :howlongtobeat)[:base_url]
 end

@@ -13,35 +13,33 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           {:ok, body, conn} = Conn.read_body(conn)
 
-          assert "queryString=Death+Stranding&t=games&sorthead=popular&sortd=Normal+Order&length_type=main&page=1" ==
-                   body
+          json = Jason.decode!(body)
+          assert ["Death", "Stranding"] == json["searchTerms"]
 
-          Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_search.html"))
+          Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_search.json"))
         end
       )
 
       Bypass.expect_once(
         howlongtobeat,
         "GET",
-        "/game",
+        "/game/38061",
         fn conn ->
-          conn = Conn.fetch_query_params(conn)
-          assert "38061" == conn.params["id"]
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_38061.html"))
         end
       )
 
       assert {:ok,
               %{
-                external_id: "38061",
-                external_url: "http://localhost:#{howlongtobeat.port}/game?id=38061",
+                external_id: 38_061,
+                external_url: "http://localhost:#{howlongtobeat.port}/game/38061",
                 completionist: 6780,
-                main: 2400,
-                main_extra: 3480
+                main: 2430,
+                main_extra: 3570
               }} == Client.find(%Game{name: "Death Stranding", release_date: ~D[2019-11-08]})
     end
 
@@ -50,17 +48,17 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           {:ok, body, conn} = Conn.read_body(conn)
 
-          assert "queryString=Doom&t=games&sorthead=popular&sortd=Normal+Order&length_type=main&page=1" ==
-                   body
+          json = Jason.decode!(body)
+          assert ["Doom"] == json["searchTerms"]
 
           Conn.resp(
             conn,
             200,
-            File.read!("./test/support/fixtures/howlongtobeat_search_ambiguity.html")
+            File.read!("./test/support/fixtures/howlongtobeat_search_ambiguity.json")
           )
         end
       )
@@ -68,19 +66,17 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "GET",
-        "/game",
+        "/game/2701",
         fn conn ->
-          conn = Conn.fetch_query_params(conn)
-          assert "2701" == conn.params["id"]
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_2708.html"))
         end
       )
 
       assert {:ok,
               %{
-                external_id: "2701",
-                external_url: "http://localhost:#{howlongtobeat.port}/game?id=2701",
-                completionist: 1530,
+                external_id: 2701,
+                external_url: "http://localhost:#{howlongtobeat.port}/game/2701",
+                completionist: 1590,
                 main: 690,
                 main_extra: 960
               }} == Client.find(%Game{name: "Doom", release_date: ~D[1993-12-10]})
@@ -91,17 +87,17 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           {:ok, body, conn} = Conn.read_body(conn)
 
-          assert "queryString=Overwatch&t=games&sorthead=popular&sortd=Normal+Order&length_type=main&page=1" ==
-                   body
+          json = Jason.decode!(body)
+          assert ["Overwatch"] == json["searchTerms"]
 
           Conn.resp(
             conn,
             200,
-            File.read!("./test/support/fixtures/howlongtobeat_search.html")
+            File.read!("./test/support/fixtures/howlongtobeat_overwatch.json")
           )
         end
       )
@@ -109,14 +105,14 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "GET",
-        "/game",
+        "/game/31590",
         fn conn ->
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_31590.html"))
         end
       )
 
       assert {:error, "Times are not available"} ==
-               Client.find(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
+               Client.find(%Game{name: "Overwatch", release_date: ~D[2016-12-10]})
     end
 
     test "invalid arguments" do
@@ -143,12 +139,12 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           Conn.resp(
             conn,
             200,
-            File.read!("./test/support/fixtures/howlongtobeat_search_empty.html")
+            File.read!("./test/support/fixtures/howlongtobeat_search_empty.json")
           )
         end
       )
@@ -162,12 +158,12 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           Conn.resp(
             conn,
             200,
-            File.read!("./test/support/fixtures/howlongtobeat_search_ambiguity.html")
+            File.read!("./test/support/fixtures/howlongtobeat_search_ambiguity.json")
           )
         end
       )
@@ -181,12 +177,12 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           Conn.resp(
             conn,
             200,
-            File.read!("./test/support/fixtures/howlongtobeat_search.html")
+            File.read!("./test/support/fixtures/howlongtobeat_not_released.json")
           )
         end
       )
@@ -194,14 +190,17 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "GET",
-        "/game",
+        "/game/72589",
         fn conn ->
-          Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_2127.html"))
+          Conn.resp(conn, 200, File.read!("./test/support/fixtures/howlongtobeat_72589.html"))
         end
       )
 
       assert {:error, "Times are not available"} ==
-               Client.find(%Game{name: "Cyberpunk 2077", release_date: ~D[2020-09-17]})
+               Client.find(%Game{
+                 name: "The Legend of zelda: Tears of the Kingdom",
+                 release_date: ~D[2023-12-31]
+               })
     end
 
     @tag :bypass
@@ -209,12 +208,12 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/search_results",
+        "/api/search",
         fn conn ->
           Conn.resp(
             conn,
             200,
-            File.read!("./test/support/fixtures/howlongtobeat_search_empty.html")
+            File.read!("./test/support/fixtures/howlongtobeat_search_empty.json")
           )
         end
       )
