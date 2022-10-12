@@ -32,7 +32,7 @@ defmodule Skaro.Opencritic.Client do
       {:ok,
        [
          %{
-           external_id: game_json["id"],
+           external_id: Integer.to_string(game_json["id"]),
            tier: game_json["tier"],
            percent_recommended: game_json["percentRecommended"],
            score: game_json["topCriticScore"],
