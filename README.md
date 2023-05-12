@@ -1,7 +1,6 @@
 # Skaro
 
-This is the backend for my gaming backlog app. It is described in detail
-[here on my personal website](https://amarchenko.de/igroteka).
+This is the backend for my gaming backlog app.
 
 ## Tech stack
 
