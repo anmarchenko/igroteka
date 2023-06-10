@@ -8,7 +8,7 @@ defmodule Skaro.MixProject do
       elixir: "~> 1.5",
       elixirc_options: [warnings_as_errors: true],
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       releases: releases(),
@@ -36,11 +36,12 @@ defmodule Skaro.MixProject do
   defp deps do
     [
       # phoenix
-      {:phoenix, "~> 1.6.0"},
+      {:phoenix, "~> 1.7.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_view, "~> 2.0"},
       {:plug_cowboy, "~> 2.2"},
       {:gettext, "~> 0.11"},
 
@@ -59,7 +60,7 @@ defmodule Skaro.MixProject do
       {:cors_plug, "~> 3.0"},
 
       # http client
-      {:httpoison, "~> 1.4"},
+      {:httpoison, "~> 2.1"},
       {:hackney, "~> 1.16"},
 
       # caching

@@ -25,6 +25,7 @@ defmodule SkaroWeb.SessionController do
   def unauthenticated(conn, _) do
     conn
     |> put_status(:forbidden)
-    |> render(SkaroWeb.SessionView, "forbidden.json", error: "Not Authenticated")
+    |> put_view(SkaroWeb.SessionView)
+    |> render("forbidden.json", error: "Not Authenticated")
   end
 end
