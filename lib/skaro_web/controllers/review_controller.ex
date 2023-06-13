@@ -22,6 +22,9 @@ defmodule SkaroWeb.ReviewController do
       {:error, :invalid_date} ->
         {:error, :bad_request}
 
+      {:error, :future_release} ->
+        {:error, :bad_request}
+
       :error ->
         {:error, :bad_request}
 

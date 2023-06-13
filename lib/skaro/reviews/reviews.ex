@@ -54,7 +54,8 @@ defmodule Skaro.Reviews do
   end
 
   defp load_rating(game) do
-    with {:ok, attrs} <- remote().find(game),
+    with :ok <- check_release_date(game),
+         {:ok, attrs} <- remote().find(game),
          {:ok, rating} <- create_rating(attrs, game) do
       {:ok, rating}
     end
@@ -78,4 +79,14 @@ defmodule Skaro.Reviews do
   defp get_update_interval(_), do: 7
 
   defp remote, do: Application.get_env(:skaro, :reviews_remote)
+
+  defp check_release_date(%{release_date: release_date}) do
+    two_weeks_from_now = Timex.shift(Timex.today(), days: 14)
+
+    if Timex.before?(release_date, two_weeks_from_now) do
+      :ok
+    else
+      {:error, :future_release}
+    end
+  end
 end

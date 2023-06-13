@@ -81,7 +81,8 @@ defmodule Skaro.Playthrough do
     do: %{}
 
   defp load_playthrough_time(game) do
-    with {:ok, attrs} <- remote().find(game),
+    with :ok <- check_release_date(game),
+         {:ok, attrs} <- remote().find(game),
          {:ok, time} <- create_playthrough_time(attrs, game) do
       {:ok, time}
     end
@@ -105,4 +106,14 @@ defmodule Skaro.Playthrough do
   defp get_update_interval(_), do: 7
 
   defp remote, do: Application.get_env(:skaro, :playthrough_remote)
+
+  defp check_release_date(%{release_date: release_date}) do
+    tomorrow = Timex.shift(Timex.today(), days: 1)
+
+    if Timex.before?(release_date, tomorrow) do
+      :ok
+    else
+      {:error, :future_release}
+    end
+  end
 end

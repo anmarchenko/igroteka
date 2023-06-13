@@ -172,5 +172,21 @@ defmodule SkaroWeb.ReviewControllerTest do
                "errors" => %{"external_id" => ["can't be blank"]}
              } = json
     end
+
+    @tag :login
+    test "release date too far in future", %{
+      conn: conn
+    } do
+      conn =
+        get(
+          conn,
+          Routes.review_path(@endpoint, :show, 42,
+            name: "Warcraft",
+            release_date: Timex.format!(Timex.shift(Timex.today(), days: 14), "{YYYY}-{0M}-{D}")
+          )
+        )
+
+      assert response(conn, 400)
+    end
   end
 end

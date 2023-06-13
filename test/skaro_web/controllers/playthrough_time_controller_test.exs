@@ -129,6 +129,22 @@ defmodule SkaroWeb.PlaythroughTimeControllerTest do
     end
 
     @tag :login
+    test "date is in the future", %{
+      conn: conn
+    } do
+      conn =
+        get(
+          conn,
+          Routes.playthrough_time_path(@endpoint, :show, 42,
+            name: "Warcraft",
+            release_date: Timex.format!(Timex.shift(Timex.today(), days: 1), "{YYYY}-{0M}-{D}")
+          )
+        )
+
+      assert response(conn, 400)
+    end
+
+    @tag :login
     test "error database validation", %{
       conn: conn
     } do
