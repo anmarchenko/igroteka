@@ -66,24 +66,11 @@ TLDR: perform first deploy by running `fly launch` and subsequent deploys by run
 
 This repository uses [GitHub Actions](https://github.com/features/actions) to deploy from `master` branch. The [main.yml](https://github.com/altmer/igroteka/blob/master/.github/workflows/main.yml) file defines the single workflow (for now) - fly.io deployment.
 
-## API
-
-This app provides REST-like API for a frontend application.
-The following endpoints are provided:
-
-### [SessionController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/session_controller.ex)
-
-`POST /sessions` - creates session from email and password provided and return JWT token.
-
-### [UserController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/user_controller.ex)
-
-`GET /current_user` - returns user info based on authentication header
-
 ## Contexts
 
 Phoenix contexts are used to model different domains that exist in this app.
 
-### Accounts
+### [Accounts](https://github.com/altmer/igroteka/blob/master/lib/skaro/accounts)
 
 Authorization and user management.
 
@@ -92,3 +79,16 @@ Models:
 - [User](https://github.com/altmer/igroteka/blob/master/lib/skaro/accounts/user.ex)
 
 WIP
+
+## API
+
+This app provides REST-like API for a frontend application.
+The following endpoints are provided:
+
+### [SessionController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/session_controller.ex)
+
+`POST /sessions` - creates session from email and password provided in body; returns JWT token.
+
+### [UserController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/user_controller.ex)
+
+`GET /current_user` - returns user info based on authentication header
