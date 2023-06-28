@@ -71,7 +71,13 @@ This repository uses [GitHub Actions](https://github.com/features/actions) to de
 This app provides REST-like API for a frontend application.
 The following endpoints are provided:
 
-WIP
+### [SessionController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/session_controller.ex)
+
+`POST /sessions` - creates session from email and password provided and return JWT token.
+
+### [UserController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/user_controller.ex)
+
+`GET /current_user` - returns user info based on authentication header
 
 ## Contexts
 
