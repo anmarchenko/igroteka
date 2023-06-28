@@ -22,6 +22,9 @@ config :skaro, :igdb,
 
 config :skaro, :opencritic, api_key: "your_opencritic_rapidapi_key"
 
+config :skaro, Skaro.Repo,
+  username: "your_postgres_user",
+  password: "your_postgres_user_password",
 ```
 
 Run the following commands to setup dependencies and create the database:
@@ -55,9 +58,13 @@ mix credo --strict
 
 ## Deployment
 
-I run the app on [fly.io](https://fly.io). See the Fly.io documentation on running an Elixir application [here](https://fly.io/docs/elixir/getting-started/).
+I run the app on [fly.io](https://fly.io). See the Fly.io documentation on running an Elixir application [here](https://fly.io/docs/elixir/getting-started/). The release configuration is in the [fly.toml](https://github.com/altmer/igroteka/blob/master/fly.toml).
 
 TLDR: perform first deploy by running `fly launch` and subsequent deploys by running `fly deploy`.
+
+## CI
+
+This repository uses [GitHub Actions](https://github.com/features/actions) to deploy from `master` branch. The [main.yml](https://github.com/altmer/igroteka/blob/master/.github/workflows/main.yml) file defines the single workflow (for now) - fly.io deployment.
 
 ## API
 
