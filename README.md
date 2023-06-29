@@ -109,13 +109,17 @@ The following endpoints are provided:
 ### [UserController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/user_controller.ex)
 
 `GET /current_user` - returns user info based on authentication header
+
 `GET /users/{id}` - returns user info by ID
+
 `PUT /users/{id}` - updates user's info
+
 `PUT /users/{id}/update_password` - changes user's password
 
 ### [GameController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/game_controller.ex)
 
 `GET /games` - filters and returns a list of games from IGDB (possible filters are: by developer, by publisher, by search term, new games, top games overall, top games by year)
+
 `GET /games/{id}` - returns game's info from IGDB by game ID
 
 ### [BacklogEntryController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/backlog_entry_controller.ex)
@@ -123,9 +127,13 @@ The following endpoints are provided:
 This resource manages backlog entries aka games that are in your backlog.
 
 `GET /backlog_entries` - filters backlog entries for current user
+
 `GET /backlog_entries/{id}` - returns backlog entry
+
 `POST /backlog_entries` - adds the game to the backlog
+
 `PUT /backlog_entries/{id}` - updates backlog entry
+
 `DELETE /backlog_entries/{id}` - removes the game from the user's backlog
 
 ### [BacklogFilterController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/backlog_filter_controller.ex)
