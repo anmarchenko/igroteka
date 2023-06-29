@@ -8,7 +8,7 @@ config :skaro, SkaroWeb.Endpoint,
   secret_key_base: "2cZ4DdZKTfTogyYTouT7TT5cuhErXG5lES5EKqPmGxAujTRyPfpxKc9HoydtYKoL_test_key"
 
 # Print only warnings and errors during test
-config :logger, level: :warn
+config :logger, level: :warning
 
 # Configure your database
 config :skaro, Skaro.Repo,
