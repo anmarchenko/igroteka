@@ -58,37 +58,92 @@ mix credo --strict
 
 ## Deployment
 
-I run the app on [fly.io](https://fly.io). See the Fly.io documentation on running an Elixir application [here](https://fly.io/docs/elixir/getting-started/). The release configuration is in the [fly.toml](https://github.com/altmer/igroteka/blob/master/fly.toml).
+I run the app on [fly.io](https://fly.io). See the Fly.io documentation on running an Elixir application [here](https://fly.io/docs/elixir/getting-started/). The release configuration is in the [fly.toml](https://github.com/anmarchenko/igroteka/blob/master/fly.toml).
 
 TLDR: perform first deploy by running `fly launch` and subsequent deploys by running `fly deploy`.
 
 ## CI
 
-This repository uses [GitHub Actions](https://github.com/features/actions) to deploy from `master` branch. The [main.yml](https://github.com/altmer/igroteka/blob/master/.github/workflows/main.yml) file defines the single workflow (for now) - fly.io deployment.
+This repository uses [GitHub Actions](https://github.com/features/actions) to deploy from `master` branch. The [main.yml](https://github.com/anmarchenko/igroteka/blob/master/.github/workflows/main.yml) file defines the single workflow (for now) - fly.io deployment.
 
-## Contexts
+## How do we model gaming backlog
 
 Phoenix contexts are used to model different domains that exist in this app.
 
-### [Accounts](https://github.com/altmer/igroteka/blob/master/lib/skaro/accounts)
+### [Accounts](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro/accounts)
 
 Authorization and user management.
 
 Models:
 
-- [User](https://github.com/altmer/igroteka/blob/master/lib/skaro/accounts/user.ex)
+- [User](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro/accounts/user.ex)
 
-WIP
+Function modules:
+
+- Users
+- Sessions
+
+### Core
+
+### IGDB
+
+### Backlog
+
+### Playthrough
+
+### Howlongtobeat
+
+### Reviews
+
+### Opencritic
 
 ## API
 
 This app provides REST-like API for a frontend application.
 The following endpoints are provided:
 
-### [SessionController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/session_controller.ex)
+### [SessionController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/session_controller.ex)
 
 `POST /sessions` - creates session from email and password provided in body; returns JWT token.
 
-### [UserController](https://github.com/altmer/igroteka/blob/master/lib/skaro_web/controllers/user_controller.ex)
+### [UserController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/user_controller.ex)
 
 `GET /current_user` - returns user info based on authentication header
+`GET /users/{id}` - returns user info by ID
+`PUT /users/{id}` - updates user's info
+`PUT /users/{id}/update_password` - changes user's password
+
+### [GameController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/game_controller.ex)
+
+`GET /games` - filters and returns a list of games from IGDB (possible filters are: by developer, by publisher, by search term, new games, top games overall, top games by year)
+`GET /games/{id}` - returns game's info from IGDB by game ID
+
+### [BacklogEntryController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/backlog_entry_controller.ex)
+
+This resource manages backlog entries aka games that are in your backlog.
+
+`GET /backlog_entries` - filters backlog entries for current user
+`GET /backlog_entries/{id}` - returns backlog entry
+`POST /backlog_entries` - adds the game to the backlog
+`PUT /backlog_entries/{id}` - updates backlog entry
+`DELETE /backlog_entries/{id}` - removes the game from the user's backlog
+
+### [BacklogFilterController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/backlog_filter_controller.ex)
+
+`GET /backlog_filters` - returns filters view model for user's backlog (available release years and platforms for example)
+
+### [ScreenshotController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/screenshot_controller.ex)
+
+`GET /screenshots` - returns a list of screenshots for a given game
+
+### [PlaythroughTimeController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/playthrough_time_controller.ex)
+
+`GET /playthrough_times/{game_id}` - returns info on how long is the game to play
+
+### [ReviewController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/review_controller.ex)
+
+`GET /reviews/{game_id}` - returns critics rating and reviews for the game
+
+### [CompanyController](https://github.com/anmarchenko/igroteka/blob/master/lib/skaro_web/controllers/company_controller.ex)
+
+`GET /companies/{id}` - returns information about game development company (developer or publisher)

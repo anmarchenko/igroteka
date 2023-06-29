@@ -1,6 +1,6 @@
 defmodule Skaro.Giantbomb do
   @moduledoc """
-  Set of functions to access Giantbomb's games API.
+  DEPRECATED: Set of functions to access Giantbomb's games API.
   """
 
   @behaviour Skaro.GamesRemote
