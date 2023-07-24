@@ -63,7 +63,7 @@ defmodule Skaro.Howlongtobeat.Client do
          {:ok, document} <- Floki.parse_document(body) do
       times =
         document
-        |> Floki.find(".GameStats_game_times__5LFEc li")
+        |> Floki.find("div[class^=GameStats_game_times] li")
         |> Enum.map(&parse_time/1)
         |> Enum.filter(& &1)
 
