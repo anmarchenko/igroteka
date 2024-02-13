@@ -66,9 +66,6 @@ defmodule Skaro.MixProject do
       # caching
       {:con_cache, "~> 1.0.0"},
 
-      # error handling
-      {:sentry, "~> 8.0"},
-
       # countries info
       {:countries, "~> 1.6"},
 
