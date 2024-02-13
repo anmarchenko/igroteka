@@ -39,7 +39,7 @@ defmodule Skaro.MixProject do
       {:phoenix, "~> 1.7.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
-      {:phoenix_html, "~> 3.0"},
+      {:phoenix_html, "~> 4.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_view, "~> 2.0"},
       {:plug_cowboy, "~> 2.2"},
@@ -65,9 +65,6 @@ defmodule Skaro.MixProject do
 
       # caching
       {:con_cache, "~> 1.0.0"},
-
-      # error handling
-      {:sentry, "~> 8.0"},
 
       # countries info
       {:countries, "~> 1.6"},

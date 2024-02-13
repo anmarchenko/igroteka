@@ -17,8 +17,8 @@ defmodule Skaro.Backlog.Entries do
   end
 
   def by_games(game_ids, user_id) do
-    from(e in Entry, where: e.game_id in ^game_ids and e.user_id == ^user_id)
-    |> Repo.all()
+    query = from(e in Entry, where: e.game_id in ^game_ids and e.user_id == ^user_id)
+    Repo.all(query)
   end
 
   @spec list(atom | %{id: any}, keyword | map, any) :: Scrivener.Page.t()

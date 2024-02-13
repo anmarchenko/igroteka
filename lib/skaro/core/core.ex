@@ -21,10 +21,12 @@ defmodule Skaro.Core do
   end
 
   def search(term, user_id) do
-    cached_result("games_index_term_#{term}_v1.0", fn ->
-      games_remote().search(term)
-    end)
-    |> preload_games_associations(user_id)
+    res =
+      cached_result("games_index_term_#{term}_v1.0", fn ->
+        games_remote().search(term)
+      end)
+
+    preload_games_associations(res, user_id)
   end
 
   def get_screenshots(game_id) do
@@ -34,27 +36,36 @@ defmodule Skaro.Core do
   end
 
   def top_games(filters, user_id) do
-    cached_result("games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}", fn ->
-      games_remote().top_games(filters)
-    end)
-    |> preload_games_associations(user_id)
+    res =
+      cached_result(
+        "games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}",
+        fn ->
+          games_remote().top_games(filters)
+        end
+      )
+
+    preload_games_associations(res, user_id)
   end
 
   def fetch_games(filters, user_id) do
-    cached_result(
-      "games_index_developer_#{filters["developer"]}_publisher_#{filters["publisher"]}_offset_#{filters["offset"]}",
-      fn ->
-        games_remote().fetch_games(filters)
-      end
-    )
-    |> preload_games_associations(user_id)
+    res =
+      cached_result(
+        "games_index_developer_#{filters["developer"]}_publisher_#{filters["publisher"]}_offset_#{filters["offset"]}",
+        fn ->
+          games_remote().fetch_games(filters)
+        end
+      )
+
+    preload_games_associations(res, user_id)
   end
 
   def new_games(user_id) do
-    cached_result("games_index_new", fn ->
-      games_remote().new_games()
-    end)
-    |> preload_games_associations(user_id)
+    res =
+      cached_result("games_index_new", fn ->
+        games_remote().new_games()
+      end)
+
+    preload_games_associations(res, user_id)
   end
 
   defp cached_result(cache_key, api_call) do

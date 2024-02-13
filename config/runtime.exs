@@ -29,7 +29,4 @@ if config_env() == :prod do
     client_secret: System.fetch_env!("IGDB_CLIENT_SECRET")
 
   config :skaro, :opencritic, api_key: System.fetch_env!("OPENCRITIC_API_KEY")
-
-  config :sentry,
-    dsn: System.fetch_env!("SENTRY_DSN")
 end

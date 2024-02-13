@@ -20,8 +20,8 @@ defmodule Skaro.Playthrough do
   end
 
   def by_games(game_ids) do
-    from(p in PlaythroughTime, where: p.game_id in ^game_ids)
-    |> Repo.all()
+    query = from(p in PlaythroughTime, where: p.game_id in ^game_ids)
+    Repo.all(query)
   end
 
   def maybe_update(playthrough_time, game_release_date) do
@@ -31,9 +31,8 @@ defmodule Skaro.Playthrough do
   end
 
   def load_by_id(external_id, %{id: _, name: _} = game) do
-    with {:ok, attrs} <- remote().get_by_id(external_id),
-         {:ok, time} <- create_playthrough_time(attrs, game) do
-      {:ok, time}
+    with {:ok, attrs} <- remote().get_by_id(external_id) do
+      create_playthrough_time(attrs, game)
     end
   end
 
@@ -47,9 +46,8 @@ defmodule Skaro.Playthrough do
   end
 
   def reload_playthrough_time(time) do
-    with {:ok, attrs} <- remote().get_by_id(time.external_id),
-         {:ok, updated} <- update_playthrough_time(time, attrs) do
-      {:ok, updated}
+    with {:ok, attrs} <- remote().get_by_id(time.external_id) do
+      update_playthrough_time(time, attrs)
     end
   end
 
@@ -82,9 +80,8 @@ defmodule Skaro.Playthrough do
 
   defp load_playthrough_time(game) do
     with :ok <- check_release_date(game),
-         {:ok, attrs} <- remote().find(game),
-         {:ok, time} <- create_playthrough_time(attrs, game) do
-      {:ok, time}
+         {:ok, attrs} <- remote().find(game) do
+      create_playthrough_time(attrs, game)
     end
   end
 

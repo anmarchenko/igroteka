@@ -13,9 +13,10 @@ config :logger, level: :warning
 # Configure your database
 config :skaro, Skaro.Repo,
   username: "postgres",
-  password: "",
+  password: "postgres",
   database: "skaro_test",
-  hostname: "localhost",
+  hostname: System.get_env("POSTGRES_HOST", "localhost"),
+  port: System.get_env("POSTGRES_PORT", "6001"),
   pool: Ecto.Adapters.SQL.Sandbox
 
 # guardian secret key

@@ -20,8 +20,9 @@ defmodule Skaro.Reviews do
   end
 
   def by_games(game_ids) do
-    from(r in Rating, where: r.game_id in ^game_ids)
-    |> Repo.all()
+    query = from(r in Rating, where: r.game_id in ^game_ids)
+
+    Repo.all(query)
   end
 
   def maybe_update(rating, game_release_date) do
@@ -31,9 +32,8 @@ defmodule Skaro.Reviews do
   end
 
   def load_by_id(external_id, %{id: _, name: _} = game) do
-    with {:ok, attrs} <- remote().get_by_id(external_id),
-         {:ok, rating} <- create_rating(attrs, game) do
-      {:ok, rating}
+    with {:ok, attrs} <- remote().get_by_id(external_id) do
+      create_rating(attrs, game)
     end
   end
 
@@ -47,17 +47,15 @@ defmodule Skaro.Reviews do
   end
 
   def reload_rating(rating) do
-    with {:ok, attrs} <- remote().get_by_id(rating.external_id),
-         {:ok, updated} <- update_rating(rating, attrs) do
-      {:ok, updated}
+    with {:ok, attrs} <- remote().get_by_id(rating.external_id) do
+      update_rating(rating, attrs)
     end
   end
 
   defp load_rating(game) do
     with :ok <- check_release_date(game),
-         {:ok, attrs} <- remote().find(game),
-         {:ok, rating} <- create_rating(attrs, game) do
-      {:ok, rating}
+         {:ok, attrs} <- remote().find(game) do
+      create_rating(attrs, game)
     end
   end
 

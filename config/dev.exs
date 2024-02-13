@@ -38,9 +38,10 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :skaro, Skaro.Repo,
   username: "postgres",
-  password: "",
+  password: "postgres",
   database: "skaro_dev",
   hostname: "localhost",
+  port: 6001,
   pool_size: 10
 
 # guardian secret key

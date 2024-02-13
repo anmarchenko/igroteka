@@ -9,45 +9,48 @@ defmodule Skaro.Howlongtobeat.Client do
   def find(%{release_date: nil}), do: {:error, "release_date is not given"}
 
   def find(%{name: name, release_date: release_date}) do
-    with body when is_binary(body) <-
-           HttpClient.idempotent_post(
-             search_url(),
-             Jason.encode!(%{
-               "searchType" => "games",
-               "searchTerms" => String.split(name),
-               "searchPage" => 1,
-               "size" => 5,
-               "searchOptions" => %{
-                 "games" => %{
-                   "userId" => 0,
-                   "platform" => "",
-                   "sortCategory" => "popular",
-                   "rangeCategory" => "main",
-                   "rangeTime" => %{"min" => 0, "max" => 0},
-                   "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
-                   "modifier" => ""
-                 },
-                 "users" => %{"sortCategory" => "postcount"},
-                 "filter" => "",
-                 "sort" => 0,
-                 "randomizer" => 0
-               }
-             }),
-             [
-               {"Accept", "*/*"},
-               {"Content-Type", "application/json"},
-               {"Host", "howlongtobeat.com"},
-               {"Origin", "https://howlongtobeat.com"},
-               {"Referer", "https://howlongtobeat.com/"}
-             ]
-           ) do
-      body
-      |> Jason.decode!()
-      |> Map.get("data", [])
-      |> find_game(name, release_date)
-    else
+    res =
+      HttpClient.idempotent_post(
+        search_url(),
+        Jason.encode!(%{
+          "searchType" => "games",
+          "searchTerms" => String.split(name),
+          "searchPage" => 1,
+          "size" => 5,
+          "searchOptions" => %{
+            "games" => %{
+              "userId" => 0,
+              "platform" => "",
+              "sortCategory" => "popular",
+              "rangeCategory" => "main",
+              "rangeTime" => %{"min" => 0, "max" => 0},
+              "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
+              "modifier" => ""
+            },
+            "users" => %{"sortCategory" => "postcount"},
+            "filter" => "",
+            "sort" => 0,
+            "randomizer" => 0
+          }
+        }),
+        [
+          {"Accept", "*/*"},
+          {"Content-Type", "application/json"},
+          {"Host", "howlongtobeat.com"},
+          {"Origin", "https://howlongtobeat.com"},
+          {"Referer", "https://howlongtobeat.com/"}
+        ]
+      )
+
+    case res do
       {:error, _} = error_tuple ->
         error_tuple
+
+      body when is_binary(body) ->
+        body
+        |> Jason.decode!()
+        |> Map.get("data", [])
+        |> find_game(name, release_date)
     end
   end
 
