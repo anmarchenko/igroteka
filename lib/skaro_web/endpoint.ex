@@ -34,7 +34,7 @@ defmodule SkaroWeb.Endpoint do
   plug(
     CORSPlug,
     origin: [
-      "http://localhost:3000",
+      "http://localhost:5100",
       "https://igroteka.de"
     ]
   )
