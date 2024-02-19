@@ -39,7 +39,7 @@ jobs:
           flyctl proxy $PGPORT:5432 -a $FLY_DB_APP &
           sleep 3
           echo Dumping ...
-          PGPASSWORD=${PGPASSWORD} pg_dump -h $PGHOST -p $PGPORT -x -U $PGUSER -F c -b -v  -Z0 -f ${{ env.filename }} ${PGDATABASE}
+          PGPASSWORD=${POSTGRES_PASSWORD} pg_dump -h $POSTGRES_HOST -p $POSTGRES_PORT -x -U $POSTGRES_USER -F c -b -v  -Z0 -f ${{ env.filename }} ${POSTGRES_DB}
           gzip ${{ env.filename }}
           ls
 
