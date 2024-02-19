@@ -13,7 +13,7 @@ env:
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
   POSTGRES_DB: skaro
   POSTGRES_HOST: localhost
-  POSTGRES_PORT: 5432
+  POSTGRES_PORT: 5434
   BUCKET: app-db-backup
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Dump database, gzip, and upload to S3
         run: |
-          flyctl proxy $PGPORT:5432 -a $FLY_DB_APP &
+          flyctl proxy $POSTGRES_PORT:5432 -a $FLY_DB_APP &
           sleep 3
           echo Dumping ...
           PGPASSWORD=${POSTGRES_PASSWORD} pg_dump -h $POSTGRES_HOST -p $POSTGRES_PORT -x -U $POSTGRES_USER -F c -b -v  -Z0 -f ${{ env.filename }} ${POSTGRES_DB}
