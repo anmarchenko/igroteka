@@ -20,7 +20,7 @@ jobs:
   job-igroteka-backup-db:
     runs-on: ubuntu-latest
     steps:
-      - uses: s3-actions/s3cmd@v1.2.0
+      - uses: s3-actions/s3cmd@v1.5.0
         with:
           provider: cloudflare
           region: auto
