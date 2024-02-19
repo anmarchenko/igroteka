@@ -13,7 +13,7 @@ env:
   POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
   POSTGRES_DB: skaro
   POSTGRES_HOST: localhost
-  POSTGRES_PORT: 5434
+  POSTGRES_PORT: 5432
   BUCKET: app-db-backup
 
 jobs:
