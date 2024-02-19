@@ -1,0 +1,46 @@
+name: pipeline-igroteka-backup
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+
+  push:
+    branches: ['master']
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FLY_DB_APP: ${{ secrets.FLY_DB_APP_NAME }}
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  POSTGRES_DB: skaro
+  POSTGRES_HOST: localhost
+  POSTGRES_PORT: 5434
+  BUCKET: app-db-backup
+
+jobs:
+  job-igroteka-backup-db:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Set filename
+        run: echo "filename=db-$(date -u +"%Y-%m-%d-%H%M%S").sql" >> $GITHUB_ENV
+
+      - name: install pg_dump version 14
+        run: |
+          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo tee /etc/apt/trusted.gpg.d/pgdg.asc &>/dev/null
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client-14
+          psql --version
+
+      - name: Dump database, gzip, and upload to S3
+        run: |
+          flyctl proxy $PGPORT:5432 -a $FLY_DB_APP &
+          sleep 3
+          echo Dumping ...
+          PGPASSWORD=${PGPASSWORD} pg_dump -h $PGHOST -p $PGPORT -x -U $PGUSER -F c -b -v  -Z0 -f ${{ env.filename }} ${PGDATABASE}
+          gzip ${{ env.filename }}
+          ls
+
+# s3cmd put --acl-private ${{ env.filename }}.gz s3://$S3_BUCKET/${{ env.filename }}.gz
