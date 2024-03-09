@@ -50,4 +50,14 @@ defmodule SkaroWeb.Router do
     resources("/reviews", ReviewController, only: [:show])
     resources("/companies", CompanyController, only: [:show])
   end
+
+  # Enables LiveDashboard only for development
+  if Mix.env() in [:dev, :test] do
+    import Phoenix.LiveDashboard.Router
+
+    scope "/" do
+      pipe_through :browser
+      live_dashboard "/dashboard", metrics: SkaroWeb.Telemetry
+    end
+  end
 end

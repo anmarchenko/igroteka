@@ -78,6 +78,12 @@ defmodule Skaro.MixProject do
       # time
       {:timex, "~> 3.1"},
 
+      # observability
+      {:phoenix_live_dashboard, "~> 0.8"},
+      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_poller, "~> 1.0"},
+      {:telemetry_metrics_statsd, "~> 0.7"},
+
       # testing
       {:tzdata, "~> 1.1.0"},
       {:ex_machina, "~> 2.2"},

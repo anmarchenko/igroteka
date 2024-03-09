@@ -15,7 +15,8 @@ config :skaro, SkaroWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "GUaNDJBx7OaJkXDhaloxaN2uqjbrembYanto5pxyKIx3c7XhHPIpniqCINeFbIsh",
   render_errors: [view: SkaroWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: Skaro.PubSub
+  pubsub_server: Skaro.PubSub,
+  live_view: [signing_salt: "EN9gLKjW"]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -44,6 +45,11 @@ config :skaro, :igdb,
 
 config :skaro, :howlongtobeat, base_url: "https://howlongtobeat.com"
 config :skaro, :opencritic, base_url: "https://opencritic-api.p.rapidapi.com"
+
+# metrics collecting
+config :skaro, SkaroWeb.Telemetry,
+  report_metrics: false,
+  periodic_measurements_enabled: true
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
