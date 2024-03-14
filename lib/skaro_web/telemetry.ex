@@ -80,7 +80,10 @@ defmodule SkaroWeb.Telemetry do
       # number of times error occured when calling IGDB
       counter("skaro.igdb.error.count", tags: [:env, :service, :action]),
       # duration for IGDB API calls
-      distribution("skaro.igdb.call.stop.duration", tags: [:env, :service, :action])
+      distribution("skaro.igdb.call.stop.duration",
+        tags: [:env, :service, :action],
+        unit: {:native, :millisecond}
+      )
     ]
   end
 
