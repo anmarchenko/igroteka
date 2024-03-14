@@ -9,20 +9,38 @@ defmodule Skaro.Core do
   alias Skaro.Reviews
 
   def get(id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "get"})
+
     cached_result("games_show_#{id}_v1.0", fn ->
+      :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+        action: "get"
+      })
+
       games_remote().find_one(id)
     end)
   end
 
   def get_company(id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "get_company"})
+
     cached_result("companies_show_#{id}_v1.0", fn ->
+      :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+        action: "get_company"
+      })
+
       games_remote().fetch_company(id)
     end)
   end
 
   def search(term, user_id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "search"})
+
     res =
       cached_result("games_index_term_#{term}_v1.0", fn ->
+        :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+          action: "search"
+        })
+
         games_remote().search(term)
       end)
 
@@ -30,16 +48,28 @@ defmodule Skaro.Core do
   end
 
   def get_screenshots(game_id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "screenshots"})
+
     cached_result("screenshots_index_game_#{game_id}", fn ->
+      :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+        action: "screenshots"
+      })
+
       games_remote().get_screenshots(game_id)
     end)
   end
 
   def top_games(filters, user_id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "top_games"})
+
     res =
       cached_result(
         "games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}",
         fn ->
+          :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+            action: "top_games"
+          })
+
           games_remote().top_games(filters)
         end
       )
@@ -48,10 +78,16 @@ defmodule Skaro.Core do
   end
 
   def fetch_games(filters, user_id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "fetch_games_for_company"})
+
     res =
       cached_result(
         "games_index_developer_#{filters["developer"]}_publisher_#{filters["publisher"]}_offset_#{filters["offset"]}",
         fn ->
+          :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+            action: "fetch_games_for_company"
+          })
+
           games_remote().fetch_games(filters)
         end
       )
@@ -60,8 +96,14 @@ defmodule Skaro.Core do
   end
 
   def new_games(user_id) do
+    :telemetry.execute([:skaro, :games, :call], %{count: 1}, %{action: "new_games"})
+
     res =
       cached_result("games_index_new", fn ->
+        :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
+          action: "new_games"
+        })
+
         games_remote().new_games()
       end)
 
