@@ -32,6 +32,7 @@ defmodule SkaroWeb.Telemetry do
         unit: {:native, :millisecond},
         description: "The time spent processing a request"
       ),
+
       # Database Metrics
       distribution("skaro.repo.query.total_time",
         tags: [:env, :service],
@@ -67,7 +68,19 @@ defmodule SkaroWeb.Telemetry do
       ),
       summary("vm.total_run_queue_lengths.total", tags: [:env, :service]),
       summary("vm.total_run_queue_lengths.cpu", tags: [:env, :service]),
-      summary("vm.total_run_queue_lengths.io", tags: [:env, :service])
+      summary("vm.total_run_queue_lengths.io", tags: [:env, :service]),
+
+      # custom metrics
+
+      # Games/IGDB
+      # total number of calls to games module
+      counter("skaro.games.call.count", tags: [:env, :service, :action]),
+      # the number of calls to remote API
+      counter("skaro.games.call.cache_miss.count", tags: [:env, :service, :action]),
+      # number of times error occured when calling IGDB
+      counter("skaro.igdb.error.count", tags: [:env, :service, :action]),
+      # duration for IGDB API calls
+      distribution("skaro.igdb.call.stop.duration", tags: [:env, :service, :action])
     ]
   end
 
