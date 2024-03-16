@@ -3,6 +3,8 @@ defmodule Skaro.IGDB.Token do
   Fetching and caching OAuth token for IGDB API
   """
 
+  import Skaro.IGDB, only: [trace: 2, report_error: 1]
+
   alias Skaro.HttpClient
 
   @cache_key "igdb_api_token"
@@ -10,19 +12,9 @@ defmodule Skaro.IGDB.Token do
   def fetch do
     case ConCache.get(:external_api_cache, @cache_key) do
       nil ->
-        :telemetry.execute([:skaro, :games, :call, :cache_miss], %{count: 1}, %{
-          action: "fetch_token"
-        })
-
-        :telemetry.span(
-          [:skaro, :igdb, :call],
-          %{action: "fetch_token"},
-          fn ->
-            res = fetch_token_from_remote()
-
-            {res, %{}}
-          end
-        )
+        trace("fetch_token", fn ->
+          fetch_token_from_remote()
+        end)
 
       token ->
         {:ok, token}
@@ -50,12 +42,12 @@ defmodule Skaro.IGDB.Token do
       {:ok, token}
     else
       {:error, _} = error_tuple ->
-        :telemetry.execute([:skaro, :igdb, :error], %{count: 1}, %{action: "fetch_token"})
+        report_error("fetch_token")
 
         error_tuple
 
       {:ok, json} ->
-        :telemetry.execute([:skaro, :igdb, :error], %{count: 1}, %{action: "fetch_token"})
+        report_error("fetch_token")
 
         {:error, "Unknown oauth2 response: #{inspect(json)}"}
     end

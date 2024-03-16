@@ -10,30 +10,27 @@ defmodule Skaro.IGDB do
   alias Skaro.IGDB.Parsers.Images, as: ImagesParser
   alias Skaro.IGDB.Token
   alias Skaro.Parser
+  alias Skaro.Tracing
 
   @spec search(binary()) :: {:error, binary()} | {:ok, [Skaro.Core.Game.t()]}
   def search(term) do
-    :telemetry.span(
-      [:skaro, :igdb, :call],
-      %{action: "search"},
+    trace(
+      "search",
       fn ->
-        res =
-          case fetch_data(search_url(), search_query(term)) do
-            {:ok, json} ->
-              games =
-                json
-                |> Enum.map(& &1["game"])
-                |> GamesParser.parse_basic()
+        case fetch_data(search_url(), search_query(term)) do
+          {:ok, json} ->
+            games =
+              json
+              |> Enum.map(& &1["game"])
+              |> GamesParser.parse_basic()
 
-              {:ok, games}
+            {:ok, games}
 
-            {:error, _} = error_tuple ->
-              :telemetry.execute([:skaro, :igdb, :error], %{count: 1}, %{action: "search"})
+          {:error, _} = error_tuple ->
+            :telemetry.execute([:skaro, :igdb, :error], %{count: 1}, %{action: "search"})
 
-              error_tuple
-          end
-
-        {res, %{}}
+            error_tuple
+        end
       end
     )
   end
@@ -42,18 +39,15 @@ defmodule Skaro.IGDB do
     trace(
       "fetch_games",
       fn ->
-        res =
-          with {:ok, json} <- fetch_data(games_url(), games_query(filters)),
-               games <- GamesParser.parse_basic(json) do
-            {:ok, games}
-          else
-            {:error, _} = error_tuple ->
-              report_error("fetch_games")
+        with {:ok, json} <- fetch_data(games_url(), games_query(filters)),
+             games <- GamesParser.parse_basic(json) do
+          {:ok, games}
+        else
+          {:error, _} = error_tuple ->
+            report_error("fetch_games")
 
-              error_tuple
-          end
-
-        {res, %{}}
+            error_tuple
+        end
       end
     )
   end
@@ -62,20 +56,17 @@ defmodule Skaro.IGDB do
     trace(
       "find_one",
       fn ->
-        res =
-          with {:ok, json} <- fetch_data(games_url(), game_by_id_query(id)),
-               [game] <- GamesParser.parse_full(json) do
-            {:ok, game}
-          else
-            [] ->
-              {:error, :not_found}
+        with {:ok, json} <- fetch_data(games_url(), game_by_id_query(id)),
+             [game] <- GamesParser.parse_full(json) do
+          {:ok, game}
+        else
+          [] ->
+            {:error, :not_found}
 
-            {:error, _} = error_tuple ->
-              report_error("find_one")
-              error_tuple
-          end
-
-        {res, %{}}
+          {:error, _} = error_tuple ->
+            report_error("find_one")
+            error_tuple
+        end
       end
     )
   end
@@ -84,22 +75,19 @@ defmodule Skaro.IGDB do
     trace(
       "get_screenshots",
       fn ->
-        res =
-          with {:ok, json} <-
-                 fetch_data(
-                   screenshots_url(),
-                   screenshots_by_game_id_query(game_id)
-                 ),
-               screenshots <- ImagesParser.parse_screenshot(json) do
-            {:ok, screenshots}
-          else
-            {:error, _} = error_tuple ->
-              report_error("get_screenshots")
+        with {:ok, json} <-
+               fetch_data(
+                 screenshots_url(),
+                 screenshots_by_game_id_query(game_id)
+               ),
+             screenshots <- ImagesParser.parse_screenshot(json) do
+          {:ok, screenshots}
+        else
+          {:error, _} = error_tuple ->
+            report_error("get_screenshots")
 
-              error_tuple
-          end
-
-        {res, %{}}
+            error_tuple
+        end
       end
     )
   end
@@ -108,18 +96,15 @@ defmodule Skaro.IGDB do
     trace(
       "top_games",
       fn ->
-        res =
-          with {:ok, json} <- fetch_data(games_url(), top_games_query(filters)),
-               games <- GamesParser.parse_basic(json) do
-            {:ok, games}
-          else
-            {:error, _} = error_tuple ->
-              report_error("top_games")
+        with {:ok, json} <- fetch_data(games_url(), top_games_query(filters)),
+             games <- GamesParser.parse_basic(json) do
+          {:ok, games}
+        else
+          {:error, _} = error_tuple ->
+            report_error("top_games")
 
-              error_tuple
-          end
-
-        {res, %{}}
+            error_tuple
+        end
       end
     )
   end
@@ -128,18 +113,15 @@ defmodule Skaro.IGDB do
     trace(
       "new_games",
       fn ->
-        res =
-          with {:ok, json} <- fetch_data(games_url(), new_games_query()),
-               games <- GamesParser.parse_basic(json) do
-            {:ok, games}
-          else
-            {:error, _} = error_tuple ->
-              report_error("new_games")
+        with {:ok, json} <- fetch_data(games_url(), new_games_query()),
+             games <- GamesParser.parse_basic(json) do
+          {:ok, games}
+        else
+          {:error, _} = error_tuple ->
+            report_error("new_games")
 
-              error_tuple
-          end
-
-        {res, %{}}
+            error_tuple
+        end
       end
     )
   end
@@ -148,25 +130,32 @@ defmodule Skaro.IGDB do
     trace(
       "fetch_company",
       fn ->
-        res =
-          with {:ok, json} <- fetch_data(companies_url(), company_by_id_query(id)),
-               [company] <- CompaniesParser.parse_full(json) do
-            {:ok, company}
-          else
-            [] ->
-              report_error("fetch_company")
+        with {:ok, json} <- fetch_data(companies_url(), company_by_id_query(id)),
+             [company] <- CompaniesParser.parse_full(json) do
+          {:ok, company}
+        else
+          [] ->
+            report_error("fetch_company")
 
-              {:error, :not_found}
+            {:error, :not_found}
 
-            {:error, _} = error_tuple ->
-              report_error("fetch_company")
+          {:error, _} = error_tuple ->
+            report_error("fetch_company")
 
-              error_tuple
-          end
-
-        {res, %{}}
+            error_tuple
+        end
       end
     )
+  end
+
+  @event_error [:skaro, :igdb, :error]
+  def report_error(action) do
+    Tracing.send_count(@event_error, %{action: action})
+  end
+
+  @event_call [:skaro, :igdb, :call]
+  def trace(action, fun) do
+    Tracing.trace(@event_call, %{action: action}, fun)
   end
 
   defp fetch_data(url, query) do
@@ -324,16 +313,4 @@ defmodule Skaro.IGDB do
   end
 
   defp filter_if_present(filter, _, _), do: filter
-
-  defp trace(action, fun) do
-    :telemetry.span(
-      [:skaro, :igdb, :call],
-      %{action: action},
-      fun
-    )
-  end
-
-  defp report_error(action) do
-    :telemetry.execute([:skaro, :igdb, :error], %{count: 1}, %{action: action})
-  end
 end

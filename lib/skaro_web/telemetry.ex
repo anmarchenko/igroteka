@@ -76,7 +76,7 @@ defmodule SkaroWeb.Telemetry do
       # total number of calls to games module
       counter("skaro.games.call.count", tags: [:env, :service, :action]),
       # the number of calls to remote API
-      counter("skaro.games.call.cache_miss.count", tags: [:env, :service, :action]),
+      counter("skaro.games.cache_miss.count", tags: [:env, :service, :action]),
       # number of times error occured when calling IGDB
       counter("skaro.igdb.error.count", tags: [:env, :service, :action]),
       # duration for IGDB API calls
