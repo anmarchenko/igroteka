@@ -6,6 +6,9 @@ defmodule Skaro.Opencritic.Client do
   alias Skaro.{HttpClient, Parser}
   alias Skaro.Opencritic.Mapper
 
+  # @event_call [:skaro, :opencritic, :call]
+  # @event_error [:skaro, :opencritic, :error]
+
   def find(%{name: nil}), do: {:error, "name is not given"}
 
   def find(%{name: name}) do

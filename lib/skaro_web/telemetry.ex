@@ -83,7 +83,11 @@ defmodule SkaroWeb.Telemetry do
       distribution("skaro.igdb.call.stop.duration",
         tags: [:env, :service, :action],
         unit: {:native, :millisecond}
-      )
+      ),
+
+      # Playthrough/OpenCritic
+      # calls to Playthrough with respective results
+      counter("skaro.playthrough.call.count", tags: [:env, :service, :result])
     ]
   end
 
