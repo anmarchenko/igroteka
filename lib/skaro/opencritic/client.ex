@@ -5,23 +5,24 @@ defmodule Skaro.Opencritic.Client do
 
   alias Skaro.{HttpClient, Parser}
   alias Skaro.Opencritic.Mapper
+  alias Skaro.Tracing
 
-  # @event_call [:skaro, :opencritic, :call]
-  # @event_error [:skaro, :opencritic, :error]
+  @event_call [:skaro, :opencritic, :call]
+  @event_error [:skaro, :opencritic, :error]
 
   def find(%{name: nil}), do: {:error, "name is not given"}
 
   def find(%{name: name}) do
-    with body when is_binary(body) <-
-           HttpClient.get(search_url(), %{criteria: name}, headers()),
-         {:ok, [%{"dist" => dist, "id" => game_id} | _]} when dist < 0.1 <-
-           Parser.parse_json(body) do
-      get_by_id(game_id)
-    else
+    case search(name) do
+      {:ok, game_id} ->
+        get_by_id(game_id)
+
       {:error, _} = error_tuple ->
+        record_error(:other)
         error_tuple
 
       _ ->
+        record_error(:not_found)
         {:error, :not_found}
     end
   end
@@ -29,40 +30,68 @@ defmodule Skaro.Opencritic.Client do
   def find(_), do: {:error, "argument is invalid"}
 
   def get_by_id(game_id) do
-    with body when is_binary(body) <- HttpClient.get(game_url(game_id), %{}, headers()),
-         {:ok, %{"numTopCriticReviews" => num} = game_json} when num > 0 <-
-           Parser.parse_json(body) do
-      {:ok,
-       [
-         %{
-           external_id: Integer.to_string(game_json["id"]),
-           tier: game_json["tier"],
-           percent_recommended: game_json["percentRecommended"],
-           score: game_json["topCriticScore"],
-           num_reviews: game_json["numTopCriticReviews"]
-         },
-         get_cover_reviews(game_id)
-       ]
-       |> Enum.reduce(&Map.merge/2)}
-    else
-      {:error, _} = error_tuple ->
-        error_tuple
+    trace(
+      :get_by_id,
+      fn ->
+        with body when is_binary(body) <- HttpClient.get(game_url(game_id), %{}, headers()),
+             {:ok, %{"numTopCriticReviews" => num} = game_json} when num > 0 <-
+               Parser.parse_json(body) do
+          {:ok,
+           [
+             %{
+               external_id: Integer.to_string(game_json["id"]),
+               tier: game_json["tier"],
+               percent_recommended: game_json["percentRecommended"],
+               score: game_json["topCriticScore"],
+               num_reviews: game_json["numTopCriticReviews"]
+             },
+             get_cover_reviews(game_id)
+           ]
+           |> Enum.reduce(&Map.merge/2)}
+        else
+          {:error, _} = error_tuple ->
+            record_error(:other)
+            error_tuple
 
-      _ ->
-        {:error, :not_found}
-    end
+          _ ->
+            record_error(:not_found)
+            {:error, :not_found}
+        end
+      end
+    )
   end
 
   def get_cover_reviews(game_id) do
-    with body when is_binary(body) <- HttpClient.get(cover_url(game_id), %{}, headers()),
-         {:ok, reviews} <- Parser.parse_json(body) do
-      %{
-        reviews: Mapper.reviews(reviews)
-      }
-    else
-      {:error, _} = error_tuple ->
-        error_tuple
-    end
+    trace(
+      :get_cover_reviews,
+      fn ->
+        with body when is_binary(body) <- HttpClient.get(cover_url(game_id), %{}, headers()),
+             {:ok, reviews} <- Parser.parse_json(body) do
+          %{
+            reviews: Mapper.reviews(reviews)
+          }
+        else
+          {:error, _} = error_tuple ->
+            record_error(:other)
+
+            error_tuple
+        end
+      end
+    )
+  end
+
+  defp search(name) do
+    trace(
+      :search,
+      fn ->
+        with body when is_binary(body) <-
+               HttpClient.get(search_url(), %{criteria: name}, headers()),
+             {:ok, [%{"dist" => dist, "id" => game_id} | _]} when dist < 0.1 <-
+               Parser.parse_json(body) do
+          {:ok, game_id}
+        end
+      end
+    )
   end
 
   defp search_url, do: "#{base_url()}/game/search"
@@ -78,4 +107,12 @@ defmodule Skaro.Opencritic.Client do
   defp base_url, do: Application.fetch_env!(:skaro, :opencritic)[:base_url]
 
   defp api_key, do: Application.fetch_env!(:skaro, :opencritic)[:api_key]
+
+  defp trace(action, fun) do
+    Tracing.trace(@event_call, %{action: action}, fun)
+  end
+
+  defp record_error(reason) do
+    Tracing.send_count(@event_error, 1, %{reason: reason})
+  end
 end
