@@ -35,9 +35,10 @@ defmodule Skaro.Opencritic.Client do
       fn ->
         with body when is_binary(body) <- HttpClient.get(game_url(game_id), %{}, headers()),
              {:ok, %{"numTopCriticReviews" => num} = game_json} when num > 0 <-
-               Parser.parse_json(body) do
+               Parser.parse_json(body),
+             {:ok, cover_reviews} <- get_cover_reviews(game_id) do
           {:ok,
-           [
+           Map.merge(
              %{
                external_id: Integer.to_string(game_json["id"]),
                tier: game_json["tier"],
@@ -45,9 +46,8 @@ defmodule Skaro.Opencritic.Client do
                score: game_json["topCriticScore"],
                num_reviews: game_json["numTopCriticReviews"]
              },
-             get_cover_reviews(game_id)
-           ]
-           |> Enum.reduce(&Map.merge/2)}
+             cover_reviews
+           )}
         else
           {:error, _} = error_tuple ->
             record_error(:other)
@@ -67,9 +67,10 @@ defmodule Skaro.Opencritic.Client do
       fn ->
         with body when is_binary(body) <- HttpClient.get(cover_url(game_id), %{}, headers()),
              {:ok, reviews} <- Parser.parse_json(body) do
-          %{
-            reviews: Mapper.reviews(reviews)
-          }
+          {:ok,
+           %{
+             reviews: Mapper.reviews(reviews)
+           }}
         else
           {:error, _} = error_tuple ->
             record_error(:other)
@@ -89,6 +90,12 @@ defmodule Skaro.Opencritic.Client do
              {:ok, [%{"dist" => dist, "id" => game_id} | _]} when dist < 0.1 <-
                Parser.parse_json(body) do
           {:ok, game_id}
+        else
+          {:error, _} = error_tuple ->
+            error_tuple
+
+          _ ->
+            {:error, :not_found}
         end
       end
     )

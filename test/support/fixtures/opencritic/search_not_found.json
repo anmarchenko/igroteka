@@ -1,0 +1,52 @@
+[
+  {
+    "id": 10047,
+    "name": "Alan Wake",
+    "dist": 0.23076922
+  },
+  {
+    "id": 15022,
+    "name": "Alan Wake 2",
+    "dist": 0.3333333
+  },
+  {
+    "id": 12067,
+    "name": "Alan Wake Remastered",
+    "dist": 0.5833334
+  },
+  {
+    "id": 15352,
+    "name": "Quake II",
+    "dist": 0.7058823
+  },
+  {
+    "id": 1403,
+    "name": "A Golden Wake",
+    "dist": 0.71428573
+  },
+  {
+    "id": 15883,
+    "name": "Alphadia I & II",
+    "dist": 0.7619048
+  },
+  {
+    "id": 8521,
+    "name": "Warplan",
+    "dist": 0.7647059
+  },
+  {
+    "id": 3092,
+    "name": "Dragon's Wake",
+    "dist": 0.77272725
+  },
+  {
+    "id": 9345,
+    "name": "Make War",
+    "dist": 0.7777778
+  },
+  {
+    "id": 15926,
+    "name": "Make Way",
+    "dist": 0.7777778
+  }
+]

@@ -1,0 +1,1229 @@
+[
+  {
+    "_id": "5d866f6993765d6778740b40",
+    "magic": 5320,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-07-12T04:00:00.000Z",
+    "externalUrl": "http://www.forbes.com/sites/games/2015/07/12/the-witcher-3-wild-hunt-review-into-the-great-wide-open/",
+    "snippet": "All told, I give the game a Buy in my Buy/Hold/Sell ranking. For all its flaws—and I realize that I've listed many—it is one of the most sprawling, magnificent solo RPGs ever made. It does too little to fix its mechanical problems, and focuses too much on creating an open world, but the quality of its quest design, world-building, and wonderful (if too large) cast of characters makes it a game that no RPG fan should miss.\n\nIt may be a flawed masterpiece, but it's a masterpiece nonetheless.",
+    "language": "en-us",
+    "score": 90,
+    "npScore": 100,
+    "isQuoteManual": false,
+    "Authors": [
+      {
+        "_id": "5d866f6993765d6778740b41",
+        "id": 1158,
+        "name": "Erik Kain",
+        "image": true,
+        "imageSrc": {
+          "og": "critic/1158/o/hgV2ohtH.jpg",
+          "sm": "critic/1158/eYp2RDH6.jpg",
+          "lg": "critic/1158/OnhjUh6t.jpg"
+        }
+      }
+    ],
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 1,
+      "base": 10,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6993765d6778740b42",
+        "id": 27,
+        "name": "PC",
+        "shortName": "PC"
+      }
+    ],
+    "alias": "Erik Kain",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Forbes",
+      "isContributor": false,
+      "id": 290,
+      "imageSrc": {
+        "og": "outlet/290/o/wFV4sPVC.jpg",
+        "sm": "outlet/290/wOGqziyy.jpg",
+        "lg": "outlet/290/UeHhhlAS.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:53.518Z",
+    "updatedAt": "2022-08-11T16:47:28.090Z",
+    "__v": 0,
+    "blend_magic": 5320
+  },
+  {
+    "_id": "5d866f6b93765d6778740b8c",
+    "magic": 5310,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-27T04:00:00.000Z",
+    "externalUrl": "http://www.shacknews.com/article/89628/the-witcher-3-the-wild-hunt-review---drowners-specters-and-griffins-oh-my",
+    "snippet": "The Witcher 3: The Wild Hunt is a masterfully written rollercoaster, and though there is a lot to do in the game, I never felt overwhelmed by the Side Quests and optional tasks. CD Projekt Red has done a great job of bringing this saga to a close. The best part about all of this, however, is the fact that CD Projekt RED stayed true to its word. Every choice you make will determine how the story unfolds, and what the world becomes at the end of it all. ",
+    "language": "en-us",
+    "score": 90,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6b93765d6778740b8d",
+        "id": 279,
+        "name": "Josh Hawkins",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 25,
+      "name": "0 to 10, whole numbers",
+      "shortName": "x / 10",
+      "scoreDisplay": " / 10",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "base": 10,
+      "options": null,
+      "numDecimals": 0
+    },
+    "Platforms": [],
+    "alias": "Josh Hawkins",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Shacknews",
+      "isContributor": false,
+      "id": 62,
+      "imageSrc": {
+        "og": "outlet/62/o/WCwjxCaT.jpg",
+        "sm": "outlet/62/I2zLmgJ1.jpg",
+        "lg": "outlet/62/85pBR63o.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:55.099Z",
+    "updatedAt": "2022-08-11T16:47:22.285Z",
+    "__v": 0,
+    "blend_magic": 5310
+  },
+  {
+    "_id": "5fc83c06038871749d41767f",
+    "magic": 5300,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "Outlet": {
+      "name": "IGN Spain",
+      "isContributor": false,
+      "id": 471,
+      "imageSrc": {
+        "og": "outlet/471/o/F9gV0GYP.jpg",
+        "sm": "outlet/471/Q8vR4s2A.jpg",
+        "lg": "outlet/471/ux3ERcyX.jpg"
+      }
+    },
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "base": 10,
+      "options": null,
+      "isStars": false,
+      "numDecimals": 1
+    },
+    "externalUrl": "https://es.ign.com/the-witcher-3-ps4/93363/review/the-witcher-3-wild-hunt-analisis-para-ps4-one-y-pc",
+    "language": "es-es",
+    "Platforms": [],
+    "Authors": [
+      {
+        "_id": "5d9528df78e8ae58fca6b216",
+        "image": false,
+        "name": "Juan García",
+        "id": 3435
+      }
+    ],
+    "alias": "Juan García",
+    "publishedDate": "2015-05-12T00:00:00.000Z",
+    "title": "The Witcher 3: Wild Hunt. Análisis para PS4, One y PCCloseIGN LogoCommentsCommentsCommentsComments",
+    "score": 95,
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "snippet": "A unique experience that cannot be missed, becoming a must for lovers of role-playing and swashbuckling games. We will miss you, Geralt.",
+    "isQuoteManual": true,
+    "medianAtTimeOfReview": 76,
+    "npScore": 100,
+    "createdAt": "2020-12-03T01:14:46.185Z",
+    "updatedAt": "2022-08-11T16:47:44.746Z",
+    "__v": 0,
+    "blend_magic": 5300
+  },
+  {
+    "_id": "5d866f6b93765d6778740b8e",
+    "magic": 5300,
+    "isChosen": false,
+    "title": "The Witcher 3: Wild Hunt - Recensione - CHE STORIA! | IGN Italia",
+    "publishedDate": "2015-05-12T04:00:00.000Z",
+    "externalUrl": "http://it.ign.com/the-witcher-3-ps4/96761/review/the-witcher-3-wild-hunt-la-recensione",
+    "snippet": "The Witcher 3: Wild Hunt isn't perfect (yet?), but it's one of the best written RPG ever.",
+    "language": "it-it",
+    "score": 91,
+    "npScore": 100,
+    "isQuoteManual": false,
+    "Authors": [
+      {
+        "_id": "5d866f6b93765d6778740b8f",
+        "id": 3496,
+        "name": "Gianluca Loggia",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 1,
+      "base": 10,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6b93765d6778740b90",
+        "id": 6,
+        "name": "PlayStation 4",
+        "shortName": "PS4"
+      }
+    ],
+    "alias": "Gianluca Loggia",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "IGN Italy",
+      "isContributor": false,
+      "id": 477,
+      "imageSrc": {
+        "og": "outlet/477/o/eXzYTP2T.jpg",
+        "sm": "outlet/477/7hQ76mLw.jpg",
+        "lg": "outlet/477/DuiZuGTF.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:55.201Z",
+    "updatedAt": "2022-08-11T16:47:45.288Z",
+    "__v": 0,
+    "blend_magic": 5300
+  },
+  {
+    "_id": "639796175e485bf24d250861",
+    "Outlet": {
+      "imageSrc": {
+        "og": "outlet/116/o/W4GSvhRF.jpg",
+        "sm": "outlet/116/IBJdTR45.jpg",
+        "lg": "outlet/116/2nS8bEaP.jpg"
+      },
+      "name": "Attack of the Fanboy",
+      "isContributor": false,
+      "id": 116
+    },
+    "magic": 5155,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "ScoreFormat": {
+      "id": 19,
+      "name": "0 to 5 stars, incl half stars",
+      "scoreDisplay": " / 5 stars",
+      "shortName": "x.5 / 5 stars",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": true,
+      "numDecimals": 2,
+      "base": 20,
+      "options": null
+    },
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "externalUrl": "https://attackofthefanboy.com/reviews/the-witcher-3-wild-hunt-next-gen-update-review/",
+    "language": "en-us",
+    "Platforms": [
+      {
+        "_id": "63979809ec183032f6b27df0",
+        "id": 3,
+        "name": "PlayStation 5",
+        "shortName": "PS5"
+      }
+    ],
+    "Authors": [
+      {
+        "_id": "639796175e485bf24d250863",
+        "id": 9546,
+        "name": "Christian Bognar",
+        "image": false
+      }
+    ],
+    "alias": "Christian Bognar",
+    "publishedDate": "2022-12-12T00:00:00.000Z",
+    "snippet": "The upgraded edition takes what made the 2015 version so loved and throws it into the new generation with so much care that it feels like a different game while maintaining the backbone of the original. The improvements are executed flawlessly, and I can see myself pouring an additional 100 hours or more into this universe now that it can compare to other next-gen games.",
+    "title": "The Witcher 3: Wild Hunt Next-Gen Update Review",
+    "score": 100,
+    "isQuoteManual": true,
+    "medianAtTimeOfReview": 80,
+    "npScore": 100,
+    "createdAt": "2022-12-12T20:59:03.323Z",
+    "updatedAt": "2022-12-12T20:59:03.323Z",
+    "__v": 0,
+    "blend_magic": 5155
+  },
+  {
+    "_id": "639762325e485bf24d25035f",
+    "Outlet": {
+      "imageSrc": {
+        "og": "outlet/111/o/VH34Enai.jpg",
+        "sm": "outlet/111/8Kmhuwnj.jpg",
+        "lg": "outlet/111/7NlOHYt4.jpg"
+      },
+      "name": "God is a Geek",
+      "isContributor": false,
+      "id": 111
+    },
+    "magic": 5155,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "game": {
+      "name": "The Witcher 3: Wild Hunt",
+      "id": 463
+    },
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 1,
+      "base": 10,
+      "options": null
+    },
+    "medianAtTimeOfReview": 80,
+    "externalUrl": "https://www.godisageek.com/reviews/the-witcher-3-wild-hunt-ps5-review/",
+    "language": "en-us",
+    "Platforms": [
+      {
+        "_id": "63976499ec183032f6b27d89",
+        "id": 3,
+        "name": "PlayStation 5",
+        "shortName": "PS5"
+      }
+    ],
+    "Authors": [
+      {
+        "_id": "639762325e485bf24d250361",
+        "id": 582,
+        "name": "Chris White",
+        "image": true,
+        "imageSrc": {
+          "og": "critic/582/o/s6ymUw3N.jpg",
+          "sm": "critic/582/WsxIwEDR.jpg",
+          "lg": "critic/582/FQVhmFa3.jpg"
+        }
+      }
+    ],
+    "title": "The Witcher 3: Wild Hunt PS5 review | GodisaGeek.com",
+    "publishedDate": "2022-12-12T00:00:00.000Z",
+    "snippet": "The Witcher 3: Wild Hunt next-gen update makes a great game even better, improving practically every element of the much loved game.",
+    "score": 100,
+    "alias": "Chris White",
+    "npScore": 100,
+    "createdAt": "2022-12-12T17:17:38.157Z",
+    "updatedAt": "2022-12-12T17:17:38.157Z",
+    "__v": 0,
+    "blend_magic": 5155
+  },
+  {
+    "_id": "5d866f6d93765d6778740c3d",
+    "magic": 5155,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-23T04:00:00.000Z",
+    "externalUrl": "http://attackofthefanboy.com/reviews/witcher-3-wild-hunt-review/",
+    "snippet": "It's a sprawling, ambitious, beautiful representation of a dark fantasy world, and games like this don't come along often. By no means perfect, The Witcher 3: Wild Hunt still one of the year's biggest and best releases.",
+    "language": "en-us",
+    "score": 90,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6d93765d6778740c3e",
+        "id": 602,
+        "name": "Emily Speight",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 19,
+      "name": "0 to 5 stars, incl half stars",
+      "scoreDisplay": " / 5 stars",
+      "shortName": "x.5 / 5 stars",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": true,
+      "numDecimals": 1,
+      "base": 20,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6d93765d6778740c3f",
+        "id": 27,
+        "name": "PC",
+        "shortName": "PC"
+      }
+    ],
+    "alias": "Emily Speight",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Attack of the Fanboy",
+      "isContributor": false,
+      "id": 116,
+      "imageSrc": {
+        "og": "outlet/116/o/W4GSvhRF.jpg",
+        "sm": "outlet/116/IBJdTR45.jpg",
+        "lg": "outlet/116/2nS8bEaP.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:57.213Z",
+    "updatedAt": "2022-08-11T16:47:25.750Z",
+    "__v": 0,
+    "blend_magic": 5155
+  },
+  {
+    "_id": "5d866f6f93765d6778740cdf",
+    "magic": 5120,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-11T04:00:00.000Z",
+    "externalUrl": "http://www.videogamer.com/reviews/the_witcher_3_wild_hunt_review.html",
+    "snippet": "The Witcher 3 is vast, intriguing, and enthralling.",
+    "language": "en-us",
+    "score": 90,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6f93765d6778740ce0",
+        "id": 354,
+        "name": "Brett Phipps",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 25,
+      "name": "0 to 10, whole numbers",
+      "shortName": "x / 10",
+      "scoreDisplay": " / 10",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "base": 10,
+      "options": null,
+      "numDecimals": 0
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6f93765d6778740ce1",
+        "id": 6,
+        "name": "PlayStation 4",
+        "shortName": "PS4"
+      }
+    ],
+    "alias": "Brett Phipps",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "VideoGamer",
+      "isContributor": false,
+      "id": 71,
+      "imageSrc": {
+        "og": "outlet/71/o/Qm674Jws.jpg",
+        "sm": "outlet/71/8QkhPG3u.jpg",
+        "lg": "outlet/71/ThAVqU30.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:59.672Z",
+    "updatedAt": "2022-08-11T16:47:23.303Z",
+    "__v": 0,
+    "blend_magic": 5120
+  },
+  {
+    "_id": "5d866f6993765d6778740b58",
+    "magic": 5110,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-11T04:00:00.000Z",
+    "externalUrl": "http://venturebeat.com/2015/05/12/the-witcher-3-wild-hunt-is-a-bleakly-human-play-at-the-heart-of-a-dark-fantasy-review-in-progress/",
+    "snippet": "Playing The Witcher 3 with an eye for grand strategy can be both a densely engrossing and mechanically frustrating, overlong adventure. When played one move at a time, however, Wild Hunt is the supreme alchemical distillation of the role-playing experience. It's a bleakly human play at the heart of a dark fantasy.",
+    "language": "en-us",
+    "score": 88,
+    "npScore": 100,
+    "isQuoteManual": false,
+    "Authors": [
+      {
+        "_id": "5d866f6993765d6778740b59",
+        "id": 1062,
+        "name": "Gavin Greene",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 17,
+      "name": "0 to 100, whole numbers",
+      "shortName": "x / 100",
+      "scoreDisplay": " / 100",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 0,
+      "base": 1,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6993765d6778740b5a",
+        "id": 6,
+        "name": "PlayStation 4",
+        "shortName": "PS4"
+      }
+    ],
+    "alias": "Gavin Greene",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "GamesBeat",
+      "isContributor": false,
+      "id": 78,
+      "imageSrc": {
+        "og": "outlet/78/o/pWJ4u8Hy.jpg",
+        "sm": "outlet/78/5jLzgysy.jpg",
+        "lg": "outlet/78/FN6E0Ep3.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:53.816Z",
+    "updatedAt": "2022-08-11T16:47:23.532Z",
+    "__v": 0,
+    "blend_magic": 5110
+  },
+  {
+    "_id": "5d866f6d93765d6778740c4c",
+    "magic": 5100,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-19T04:00:00.000Z",
+    "externalUrl": "http://www.thejimquisition.com/the-witcher-3-wild-hunt-review/",
+    "snippet": "Had it not been mired by bizarre lapses in design and a plethora of disturbing problems, The Witcher 3: Wild Hunt would be almost bloody perfect. As it stands, CD Projekt Red has still put together something downright delicious. A truly great game that rises its head above its own hot water to proudly present a prosperous experience that only the most deliriously expectant could feel shortchanged by.",
+    "language": "en-us",
+    "score": 85,
+    "npScore": 100,
+    "isQuoteManual": false,
+    "Authors": [
+      {
+        "_id": "5d866f6d93765d6778740c4d",
+        "id": 594,
+        "name": "James Stephanie Sterling",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 1,
+      "base": 10,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6d93765d6778740c4e",
+        "id": 7,
+        "name": "Xbox One",
+        "shortName": "XB1"
+      }
+    ],
+    "alias": "Jim Sterling",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "The Jimquisition",
+      "isContributor": false,
+      "id": 113,
+      "imageSrc": {
+        "og": "outlet/113/o/QwnbsuBv.jpg",
+        "sm": "outlet/113/O1ylmHDw.jpg",
+        "lg": "outlet/113/WLKq1eVd.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:57.229Z",
+    "updatedAt": "2023-01-28T00:00:52.665Z",
+    "__v": 0,
+    "overrideRecommendation": false,
+    "blend_magic": 5100
+  },
+  {
+    "_id": "5d866f6b93765d6778740ba4",
+    "magic": 5100,
+    "isChosen": false,
+    "title": "The Witcher 3 review PC",
+    "publishedDate": "2015-05-29T04:00:00.000Z",
+    "externalUrl": "http://www.rockpapershotgun.com/2015/05/29/the-witcher-3-review-pc/",
+    "snippet": "It's a flawed masterpiece, but make no mistake, it absolutely is a masterpiece – one of the best RPGs ever created, and a true tribute to Sapkowski's stories.",
+    "language": "en-us",
+    "score": 0,
+    "npScore": null,
+    "isQuoteManual": false,
+    "Authors": [
+      {
+        "_id": "5d866f6b93765d6778740ba5",
+        "id": 142,
+        "name": "Richard Cobbett",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 30,
+      "name": "No Verdict",
+      "shortName": "No Verdict",
+      "scoreDisplay": " / 100",
+      "isNumeric": false,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": null,
+      "base": null,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6b93765d6778740ba6",
+        "id": 27,
+        "name": "PC",
+        "shortName": "PC"
+      }
+    ],
+    "alias": "Richard Cobbett",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Rock, Paper, Shotgun",
+      "isContributor": false,
+      "id": 270,
+      "imageSrc": {
+        "og": "outlet/270/o/nneeJW3o.jpg",
+        "sm": "outlet/270/4Rh1iXVc.jpg",
+        "lg": "outlet/270/ikXHtPh5.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:55.586Z",
+    "updatedAt": "2022-08-11T16:47:27.914Z",
+    "__v": 0,
+    "blend_magic": 5100
+  },
+  {
+    "_id": "63bf2a2607560b861277d73b",
+    "Outlet": {
+      "imageSrc": {
+        "og": "outlet/60/o/B75BHGIX.jpg",
+        "sm": "outlet/60/bXKRAkN0.jpg",
+        "lg": "outlet/60/UAYA8FiO.jpg"
+      },
+      "name": "Game Rant",
+      "isContributor": false,
+      "id": 60
+    },
+    "magic": 4580,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "ScoreFormat": {
+      "id": 19,
+      "name": "0 to 5 stars, incl half stars",
+      "scoreDisplay": " / 5 stars",
+      "shortName": "x.5 / 5 stars",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": true,
+      "numDecimals": 2,
+      "base": 20,
+      "options": null
+    },
+    "externalUrl": "https://gamerant.com/the-witcher-3-wild-hunt-ps5-xbox-series-review/",
+    "language": "en-us",
+    "Platforms": [
+      {
+        "_id": "63bf0b2ff201fe910b0292ca",
+        "id": 3,
+        "name": "PlayStation 5",
+        "shortName": "PS5"
+      }
+    ],
+    "Authors": [
+      {
+        "_id": "63bf2a2607560b861277d73d",
+        "id": 8262,
+        "name": "Adrian Morales",
+        "image": true,
+        "imageSrc": {
+          "og": "critic/8262/o/plTgbrnl.jpg",
+          "sm": "critic/8262/hJtLpOau.jpg",
+          "lg": "critic/8262/PjiAKDUg.jpg"
+        }
+      }
+    ],
+    "alias": "Adrian Morales",
+    "publishedDate": "2022-12-14T00:00:00.000Z",
+    "snippet": "The Witcher 3: Wild Hunt on next-gen consoles is the best way to discover or re-discover one of the most celebrated RPGs of the last decade.",
+    "score": 90,
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "title": "The Witcher 3: Wild Hunt Next-Gen Update Review",
+    "isQuoteManual": true,
+    "medianAtTimeOfReview": 80,
+    "npScore": 100,
+    "createdAt": "2023-01-11T21:29:10.961Z",
+    "updatedAt": "2023-01-11T21:29:10.961Z",
+    "__v": 0,
+    "blend_magic": 4580
+  },
+  {
+    "_id": "5d866f6d93765d6778740c4f",
+    "magic": 4580,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-07-08T04:00:00.000Z",
+    "externalUrl": "http://gamingtrend.com/reviews/something-ends-something-begins-the-witcher-3-wild-hunt-review/",
+    "snippet": "The Witcher 3: Wild Hunt ends Geralt's tale in spectacular fashion, finding ways to fill a giant world with thrilling combat, beautiful sights, and a bevy of compelling content. A strong conclusion to The Witcher trilogy, and a masterpiece that will keep you enthralled for weeks and months to come.",
+    "language": "en-us",
+    "score": 95,
+    "npScore": 100,
+    "isQuoteManual": false,
+    "Authors": [
+      {
+        "_id": "5d866f6d93765d6778740c50",
+        "id": 480,
+        "name": "Eric Van Allen",
+        "image": true,
+        "imageSrc": {
+          "og": "critic/480/o/r2JvJj4I.jpg",
+          "sm": "critic/480/yX2ALES7.jpg",
+          "lg": "critic/480/H5hX4FfY.jpg"
+        }
+      }
+    ],
+    "ScoreFormat": {
+      "id": 17,
+      "name": "0 to 100, whole numbers",
+      "shortName": "x / 100",
+      "scoreDisplay": " / 100",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 0,
+      "base": 1,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6d93765d6778740c53",
+        "id": 6,
+        "name": "PlayStation 4",
+        "shortName": "PS4"
+      },
+      {
+        "_id": "5d866f6d93765d6778740c52",
+        "id": 7,
+        "name": "Xbox One",
+        "shortName": "XB1"
+      },
+      {
+        "_id": "5d866f6d93765d6778740c51",
+        "id": 27,
+        "name": "PC",
+        "shortName": "PC"
+      }
+    ],
+    "alias": "Eric Van Allen",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "GamingTrend",
+      "isContributor": false,
+      "id": 102,
+      "imageSrc": {
+        "og": "outlet/102/o/LuVFLbAa.jpg",
+        "sm": "outlet/102/e1uz4mEb.jpg",
+        "lg": "outlet/102/NSysTCrg.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:57.232Z",
+    "updatedAt": "2022-08-11T16:47:24.880Z",
+    "__v": 0,
+    "blend_magic": 4580
+  },
+  {
+    "_id": "5d866f6b93765d6778740bcb",
+    "magic": 4580,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-29T04:00:00.000Z",
+    "externalUrl": "http://gamerant.com/witcher-3-wild-hunt-reviews/",
+    "snippet": "'The Witcher 3: Wild Hunt' is far from perfect, but despite its flaws, Geralt's final adventure is 2015's strongest candidate for Game of the Year so far.",
+    "language": "en-us",
+    "score": 90,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6b93765d6778740bcc",
+        "id": 264,
+        "name": "Christopher Gates",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 19,
+      "name": "0 to 5 stars, incl half stars",
+      "scoreDisplay": " / 5 stars",
+      "shortName": "x.5 / 5 stars",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": true,
+      "numDecimals": 1,
+      "base": 20,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6b93765d6778740bcd",
+        "id": 6,
+        "name": "PlayStation 4",
+        "shortName": "PS4"
+      }
+    ],
+    "alias": "Christopher Gates",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Game Rant",
+      "isContributor": false,
+      "id": 60,
+      "imageSrc": {
+        "og": "outlet/60/o/B75BHGIX.jpg",
+        "sm": "outlet/60/bXKRAkN0.jpg",
+        "lg": "outlet/60/UAYA8FiO.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:55.987Z",
+    "updatedAt": "2022-08-11T16:47:22.126Z",
+    "__v": 0,
+    "blend_magic": 4580
+  },
+  {
+    "_id": "5d866f6e93765d6778740c90",
+    "magic": 4400,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-12T04:00:00.000Z",
+    "externalUrl": "http://www.telegraph.co.uk/gaming/what-to-play/witcher-3-wild-hunt-review/",
+    "snippet": "The story of Wild Hunt is a personal one, set in a huge and unrelentingly beautiful world. And moving through it in that way makes you feel like a part of it, rather than an honoured guest, all eyes swung expectantly towards you.",
+    "language": "en-us",
+    "score": 100,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6e93765d6778740c91",
+        "id": 1370,
+        "name": "Phill Cameron",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 22,
+      "name": "0 to 5 stars, whole stars",
+      "shortName": "x / 5 stars",
+      "scoreDisplay": " / 5 stars",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": true,
+      "numDecimals": 0,
+      "base": 20,
+      "options": null
+    },
+    "Platforms": [
+      {
+        "_id": "5d866f6e93765d6778740c92",
+        "id": 6,
+        "name": "PlayStation 4",
+        "shortName": "PS4"
+      }
+    ],
+    "alias": "Phill Cameron",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Telegraph",
+      "isContributor": false,
+      "id": 28,
+      "imageSrc": {
+        "og": "outlet/28/o/5erGJ82F.jpg",
+        "sm": "outlet/28/AfahPOiI.jpg",
+        "lg": "outlet/28/ZSH0Aauk.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:58.486Z",
+    "updatedAt": "2022-08-11T16:47:20.587Z",
+    "__v": 0,
+    "blend_magic": 4400
+  },
+  {
+    "_id": "5d866f6b93765d6778740bd5",
+    "magic": 4400,
+    "isChosen": false,
+    "title": null,
+    "publishedDate": "2015-05-12T04:00:00.000Z",
+    "externalUrl": "http://www.theguardian.com/technology/2015/may/13/witcher-3-wild-hunt-review-xbox-ps4-pc",
+    "snippet": "This vast fantasy adventure combines sophisticated storytelling with an expansive and richly conceived world",
+    "language": "en-us",
+    "score": 100,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6b93765d6778740bd6",
+        "id": 115,
+        "name": "Simon Parkin",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 22,
+      "name": "0 to 5 stars, whole stars",
+      "shortName": "x / 5 stars",
+      "scoreDisplay": " / 5 stars",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": true,
+      "numDecimals": 0,
+      "base": 20,
+      "options": null
+    },
+    "Platforms": [],
+    "alias": "Simon Parkin",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "Guardian",
+      "isContributor": false,
+      "id": 27,
+      "imageSrc": {
+        "og": "outlet/27/o/j0VoIjew.jpg",
+        "sm": "outlet/27/FpTRnZr5.jpg",
+        "lg": "outlet/27/VC0PBUEf.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:56.001Z",
+    "updatedAt": "2022-08-11T16:47:20.262Z",
+    "__v": 0,
+    "blend_magic": 4400
+  },
+  {
+    "_id": "5d866f6b93765d6778740b9f",
+    "magic": 4400,
+    "isChosen": false,
+    "title": "The Witcher 3 Angry Review",
+    "publishedDate": "2015-06-05T00:00:00.000Z",
+    "externalUrl": "https://www.youtube.com/watch?v=H6QoEUqadW4",
+    "snippet": "",
+    "language": "en-us",
+    "score": 100,
+    "npScore": 100,
+    "isQuoteManual": null,
+    "Authors": [
+      {
+        "_id": "5d866f6b93765d6778740ba0",
+        "id": 987,
+        "name": "Joe Vargas",
+        "image": false
+      }
+    ],
+    "ScoreFormat": {
+      "id": 25,
+      "name": "0 to 10, whole numbers",
+      "shortName": "x / 10",
+      "scoreDisplay": " / 10",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "base": 10,
+      "options": null,
+      "numDecimals": 0
+    },
+    "Platforms": [],
+    "alias": "Joe Vargas",
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "Outlet": {
+      "name": "The Angry Joe Show",
+      "isContributor": false,
+      "id": 269,
+      "imageSrc": {
+        "og": "outlet/269/o/thTASv4D.jpg",
+        "sm": "outlet/269/p67VfYHq.jpg",
+        "lg": "outlet/269/pDIvAJCD.jpg"
+      }
+    },
+    "createdAt": "2019-09-21T18:43:55.572Z",
+    "updatedAt": "2022-08-11T16:47:27.914Z",
+    "__v": 0,
+    "isYoutube": true,
+    "lastRefreshDate": "2021-11-18T13:55:05.837Z",
+    "overrideRecommendation": false,
+    "youtubeVideoId": "H6QoEUqadW4",
+    "blend_magic": 4400
+  },
+  {
+    "_id": "639a0dd107560b861276f9be",
+    "Outlet": {
+      "imageSrc": {
+        "og": "outlet/94/o/NQIwHnEL.jpg",
+        "sm": "outlet/94/Pk9QnjqX.jpg",
+        "lg": "outlet/94/RsXqsNQb.jpg"
+      },
+      "name": "COGconnected",
+      "isContributor": false,
+      "id": 94
+    },
+    "magic": 4300,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "ScoreFormat": {
+      "id": 17,
+      "name": "0 to 100, whole numbers",
+      "shortName": "x / 100",
+      "scoreDisplay": " / 100",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 0,
+      "base": 1,
+      "options": null
+    },
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "externalUrl": "https://cogconnected.com/review/the-witcher-3-wild-hunt-next-gen-update-review/",
+    "language": "en-us",
+    "Platforms": [
+      {
+        "_id": "6399d078ec183032f6b27fae",
+        "id": 3,
+        "name": "PlayStation 5",
+        "shortName": "PS5"
+      }
+    ],
+    "Authors": [
+      {
+        "_id": "639a0dd107560b861276f9c0",
+        "id": 885,
+        "name": "Mark Steighner",
+        "image": false
+      }
+    ],
+    "alias": "Mark Steighner",
+    "publishedDate": "2022-12-13T00:00:00.000Z",
+    "score": 95,
+    "title": "The Witcher 3: Wild Hunt – Complete Edition Review – The Best Gets Better",
+    "snippet": "There is no question that the free update makes The Witcher 3 Wild Hunt a better game. It looks better, it controls better and the many, minor improvements add up to a significantly improved experience. The Netflix-based DLC is not a cheap tie-in but a well-made and completely integrated new chapter worth playing. Short of an actual remake, the update brings a seven-year-old game within spitting distance of the best current-gen title. The Witcher 3 Wild Hunt update breathes new, exciting life into a genuine classic.",
+    "isQuoteManual": true,
+    "medianAtTimeOfReview": 77,
+    "npScore": 100,
+    "createdAt": "2022-12-14T17:54:25.066Z",
+    "updatedAt": "2022-12-14T17:54:25.066Z",
+    "__v": 0,
+    "blend_magic": 4300
+  },
+  {
+    "_id": "63995dcb07560b861276ecd4",
+    "Outlet": {
+      "imageSrc": {
+        "og": "outlet/104/o/HjQPbfIf.jpg",
+        "sm": "outlet/104/aH0gVRtE.jpg",
+        "lg": "outlet/104/EsGmg7Ag.jpg"
+      },
+      "name": "Gaming Nexus",
+      "isContributor": false,
+      "id": 104
+    },
+    "magic": 4300,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 1,
+      "base": 10,
+      "options": null
+    },
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "externalUrl": "https://www.gamingnexus.com/Article/10757/The-Witcher-3-Wild-Hunt-Next-Gen/",
+    "language": "en-us",
+    "Platforms": [
+      {
+        "_id": "63995d20ec183032f6b27f52",
+        "id": 3,
+        "name": "PlayStation 5",
+        "shortName": "PS5"
+      }
+    ],
+    "Authors": [
+      {
+        "_id": "63995dcb07560b861276ecd6",
+        "id": 8117,
+        "name": "Elliot Hilderbrand",
+        "image": false
+      }
+    ],
+    "alias": "Elliot Hilderbrand",
+    "publishedDate": "2022-12-14T00:00:00.000Z",
+    "score": 90,
+    "snippet": "The core of The Witcher 3: Wild Hunt remains unchanged, thank god. It's the same game we all fell in love with before. Playing on a PlayStation 5 and being able to play around with the new controls, including the haptic and adaptive triggers made playing as Geralt all the better. The new quick casting system works wonders for me, and if it doesn't for you then you retain the old configuration. The framerate has been given a noticeable overhaul as well. I no longer chugged about when I ran while in a city full of objects. This is the perfect excuse to play The Witcher 3 again. The best part of the update is that it's completely free; you can't afford not to play again.",
+    "title": "The Witcher 3: Wild Hunt Next Gen Review - Gaming Nexus",
+    "isQuoteManual": true,
+    "medianAtTimeOfReview": 80,
+    "npScore": 100,
+    "createdAt": "2022-12-14T05:23:23.169Z",
+    "updatedAt": "2022-12-14T05:23:23.169Z",
+    "__v": 0,
+    "blend_magic": 4300
+  },
+  {
+    "_id": "63975fc65e485bf24d2502e6",
+    "Outlet": {
+      "name": "PlayStation Universe",
+      "isContributor": false,
+      "id": 39,
+      "imageSrc": {
+        "og": "outlet/39/o/moISxIBe.jpg",
+        "sm": "outlet/39/VoWfPAFh.jpg",
+        "lg": "outlet/39/ijcWv1Hs.jpg"
+      }
+    },
+    "magic": 4300,
+    "isChosen": false,
+    "overrideRecommendation": false,
+    "game": {
+      "id": 463,
+      "name": "The Witcher 3: Wild Hunt"
+    },
+    "ScoreFormat": {
+      "id": 18,
+      "name": "0 to 10 incl decimals",
+      "shortName": "x.x / 10.0",
+      "scoreDisplay": " / 10.0",
+      "isNumeric": true,
+      "isSelect": false,
+      "isStars": false,
+      "numDecimals": 1,
+      "base": 10,
+      "options": null
+    },
+    "medianAtTimeOfReview": 80,
+    "externalUrl": "https://www.psu.com/reviews/the-witcher-3-wild-hunt-complete-edition-ps5-review/",
+    "language": "en-us",
+    "Platforms": [
+      {
+        "_id": "6397622eec183032f6b27d6e",
+        "id": 3,
+        "name": "PlayStation 5",
+        "shortName": "PS5"
+      }
+    ],
+    "Authors": [
+      {
+        "_id": "639763e35e485bf24d2503e5",
+        "id": 846,
+        "name": "Timothy Nunes",
+        "image": true,
+        "imageSrc": {
+          "og": "critic/846/o/NJ0JArOV.jpg",
+          "sm": "critic/846/K8Y7ACTK.jpg",
+          "lg": "critic/846/I3QkuYvO.jpg"
+        }
+      }
+    ],
+    "title": "The Witcher 3: Wild Hunt Complete Edition Review (PS5) - Bringing A Classic To The Current Gen In Style - PlayStation Universe",
+    "publishedDate": "2022-12-12T00:00:00.000Z",
+    "snippet": "Not everything is perfect in this current-gen upgrade, but the additions, new choices, and improvements make this version of the game feel complete. Despite the oddities that come with the new camera option, the presentation across the board just feels superb. It even lets those who missed the expansions jump right into that content from the jump. Such a great update to a beloved game comes free with the PS4 version, leaving this as almost a requirement for everyone who even remotely has an interest in playing it again or experiencing The Witcher 3: Wild Hunt for the first time.",
+    "score": 90,
+    "alias": "Timothy Nunes",
+    "npScore": 100,
+    "createdAt": "2022-12-12T17:07:18.381Z",
+    "updatedAt": "2022-12-12T17:24:51.493Z",
+    "__v": 1,
+    "isQuoteManual": true,
+    "blend_magic": 4300
+  }
+]
