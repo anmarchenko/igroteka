@@ -17,13 +17,13 @@ defmodule Skaro.Opencritic.Client do
       {:ok, game_id} ->
         get_by_id(game_id)
 
+      {:error, :not_found} ->
+        record_error(:not_found)
+        {:error, :not_found}
+
       {:error, _} = error_tuple ->
         record_error(:other)
         error_tuple
-
-      _ ->
-        record_error(:not_found)
-        {:error, :not_found}
     end
   end
 
@@ -73,8 +73,6 @@ defmodule Skaro.Opencritic.Client do
            }}
         else
           {:error, _} = error_tuple ->
-            record_error(:other)
-
             error_tuple
         end
       end

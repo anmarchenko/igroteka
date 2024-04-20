@@ -9,6 +9,10 @@ defmodule SkaroWeb.ErrorView do
     %{error: "external call failed"}
   end
 
+  def render("not_found.json", _assigns) do
+    %{error: "not found"}
+  end
+
   def render("404.html", _assigns) do
     "Page not found"
   end

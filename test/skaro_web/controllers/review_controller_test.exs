@@ -130,6 +130,31 @@ defmodule SkaroWeb.ReviewControllerTest do
     end
 
     @tag :login
+    test "review not found", %{
+      conn: conn
+    } do
+      Skaro.ReviewsRemoteMock
+      |> expect(:find, fn _ ->
+        {:error, :not_found}
+      end)
+
+      conn =
+        get(
+          conn,
+          Routes.review_path(@endpoint, :show, 42,
+            name: "Warcraft",
+            release_date: "2001-12-11"
+          )
+        )
+
+      json = json_response(conn, 404)
+
+      assert %{
+               "error" => "not found"
+             } = json
+    end
+
+    @tag :login
     test "wrong date provided", %{
       conn: conn
     } do

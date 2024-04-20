@@ -25,6 +25,9 @@ defmodule SkaroWeb.PlaythroughTimeController do
       {:error, :future_release} ->
         {:error, :bad_request}
 
+      {:error, :not_found} ->
+        {:error, :not_found}
+
       :error ->
         {:error, :bad_request}
 

@@ -25,12 +25,19 @@ defmodule SkaroWeb.FallbackController do
   end
 
   def call(conn, {:error, :external_api, reason}) do
-    Logger.error("Call to external API failed. Reason was:\n#{reason}")
+    Logger.error("Call to external API failed. Reason was: [#{reason}]")
 
     conn
     |> put_status(:service_unavailable)
     |> put_view(SkaroWeb.ErrorView)
     |> render("external_error.json")
+  end
+
+  def call(conn, {:error, :not_found}) do
+    conn
+    |> put_status(:not_found)
+    |> put_view(SkaroWeb.ErrorView)
+    |> render("not_found.json")
   end
 
   def call(conn, {:error, :bad_request}), do: send_resp(conn, :bad_request, "")
