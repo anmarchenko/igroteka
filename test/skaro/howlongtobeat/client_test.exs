@@ -111,15 +111,15 @@ defmodule Skaro.Howlongtobeat.ClientTest do
         end
       )
 
-      assert {:error, "Times are not available"} ==
+      assert {:error, :times_not_available} ==
                Client.find(%Game{name: "Overwatch", release_date: ~D[2016-12-10]})
     end
 
     test "invalid arguments" do
-      assert {:error, "name is not given"} ==
+      assert {:error, :no_name} ==
                Client.find(%Game{release_date: ~D[2015-12-10]})
 
-      assert {:error, "release_date is not given"} ==
+      assert {:error, :no_date} ==
                Client.find(%Game{name: "Overwatch"})
 
       assert {:error, "argument is invalid"} ==
@@ -149,7 +149,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
         end
       )
 
-      assert {:error, "Not found"} ==
+      assert {:error, :not_found} ==
                Client.find(%Game{name: "Overwatch", release_date: ~D[2015-12-10]})
     end
 
@@ -168,7 +168,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
         end
       )
 
-      assert {:error, "Not found"} ==
+      assert {:error, :not_found} ==
                Client.find(%Game{name: "Doom", release_date: ~D[2019-12-10]})
     end
 
@@ -196,7 +196,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
         end
       )
 
-      assert {:error, "Times are not available"} ==
+      assert {:error, :times_not_available} ==
                Client.find(%Game{
                  name: "The Legend of zelda: Tears of the Kingdom",
                  release_date: ~D[2023-12-31]
@@ -218,7 +218,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
         end
       )
 
-      assert {:error, "Not found"} ==
+      assert {:error, :not_found} ==
                Client.find(%Game{name: "No such game", release_date: ~D[2020-09-17]})
     end
   end

@@ -21,7 +21,7 @@ defmodule SkaroWeb.ReviewView do
       tier: rating.tier,
       summary: rating.summary,
       reviews: rating.reviews,
-      points: rating.points,
+      points: rating.points
     }
   end
 end

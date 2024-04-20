@@ -25,6 +25,18 @@ defmodule SkaroWeb.PlaythroughTimeController do
       {:error, :future_release} ->
         {:error, :bad_request}
 
+      {:error, :no_name} ->
+        {:error, :bad_request}
+
+      {:error, :no_date} ->
+        {:error, :bad_request}
+
+      {:error, :times_not_available} ->
+        {:error, :not_found}
+
+      {:error, :game_id_not_found} ->
+        {:error, :not_found}
+
       {:error, :not_found} ->
         {:error, :not_found}
 

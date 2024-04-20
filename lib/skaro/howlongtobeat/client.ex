@@ -4,81 +4,106 @@ defmodule Skaro.Howlongtobeat.Client do
   """
 
   alias Skaro.HttpClient
+  alias Skaro.Tracing
 
-  def find(%{name: nil}), do: {:error, "name is not given"}
-  def find(%{release_date: nil}), do: {:error, "release_date is not given"}
+  @event_call [:skaro, :howlongtobeat, :call]
+  @event_error [:skaro, :howlongtobeat, :error]
+
+  def find(%{name: nil}) do
+    record_error(:no_name)
+    {:error, :no_name}
+  end
+
+  def find(%{release_date: nil}) do
+    record_error(:no_date)
+    {:error, :no_date}
+  end
 
   def find(%{name: name, release_date: release_date}) do
-    res =
-      HttpClient.idempotent_post(
-        search_url(),
-        Jason.encode!(%{
-          "searchType" => "games",
-          "searchTerms" => String.split(name),
-          "searchPage" => 1,
-          "size" => 5,
-          "searchOptions" => %{
-            "games" => %{
-              "userId" => 0,
-              "platform" => "",
-              "sortCategory" => "popular",
-              "rangeCategory" => "main",
-              "rangeTime" => %{"min" => 0, "max" => 0},
-              "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
-              "modifier" => ""
-            },
-            "users" => %{"sortCategory" => "postcount"},
-            "filter" => "",
-            "sort" => 0,
-            "randomizer" => 0
-          }
-        }),
-        [
-          {"Accept", "*/*"},
-          {"Content-Type", "application/json"},
-          {"Host", "howlongtobeat.com"},
-          {"Origin", "https://howlongtobeat.com"},
-          {"Referer", "https://howlongtobeat.com/"}
-        ]
-      )
+    trace(
+      :find,
+      fn ->
+        res =
+          HttpClient.idempotent_post(
+            search_url(),
+            Jason.encode!(%{
+              "searchType" => "games",
+              "searchTerms" => String.split(name),
+              "searchPage" => 1,
+              "size" => 5,
+              "searchOptions" => %{
+                "games" => %{
+                  "userId" => 0,
+                  "platform" => "",
+                  "sortCategory" => "popular",
+                  "rangeCategory" => "main",
+                  "rangeTime" => %{"min" => 0, "max" => 0},
+                  "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
+                  "modifier" => ""
+                },
+                "users" => %{"sortCategory" => "postcount"},
+                "filter" => "",
+                "sort" => 0,
+                "randomizer" => 0
+              }
+            }),
+            [
+              {"Accept", "*/*"},
+              {"Content-Type", "application/json"},
+              {"Host", "howlongtobeat.com"},
+              {"Origin", "https://howlongtobeat.com"},
+              {"Referer", "https://howlongtobeat.com/"}
+            ]
+          )
 
-    case res do
-      {:error, _} = error_tuple ->
-        error_tuple
+        case res do
+          {:error, _} = error_tuple ->
+            record_error(:other)
+            error_tuple
 
-      body when is_binary(body) ->
-        body
-        |> Jason.decode!()
-        |> Map.get("data", [])
-        |> find_game(name, release_date)
-    end
+          body when is_binary(body) ->
+            body
+            |> Jason.decode!()
+            |> Map.get("data", [])
+            |> find_game(name, release_date)
+        end
+      end
+    )
   end
 
   def find(_), do: {:error, "argument is invalid"}
 
   def get_by_id(nil) do
-    {:error, "extracted game id is null"}
+    record_error(:game_id_not_found)
+    {:error, :game_id_not_found}
   end
 
   def get_by_id(game_id) do
-    with body when is_binary(body) <-
-           HttpClient.get(game_url(game_id)),
-         {:ok, document} <- Floki.parse_document(body) do
-      times =
-        document
-        |> Floki.find("div[class^=GameStats_game_times] li")
-        |> Enum.map(&parse_time/1)
-        |> Enum.filter(& &1)
+    trace(
+      :get_by_id,
+      fn ->
+        with body when is_binary(body) <-
+               HttpClient.get(game_url(game_id)),
+             {:ok, document} <- Floki.parse_document(body) do
+          times =
+            document
+            |> Floki.find("div[class^=GameStats_game_times] li")
+            |> Enum.map(&parse_time/1)
+            |> Enum.filter(& &1)
 
-      if Enum.empty?(times) do
-        {:error, "Times are not available"}
-      else
-        {:ok, Enum.into(times, %{external_id: game_id, external_url: game_url(game_id)})}
+          if Enum.empty?(times) do
+            record_error(:times_not_available)
+            {:error, :times_not_available}
+          else
+            {:ok, Enum.into(times, %{external_id: game_id, external_url: game_url(game_id)})}
+          end
+        else
+          {:error, _} = error_tuple ->
+            record_error(:other)
+            error_tuple
+        end
       end
-    else
-      {:error, _} = error_tuple ->
-        error_tuple
-    end
+    )
   end
 
   defp find_game([game], _, _) do
@@ -99,12 +124,14 @@ defmodule Skaro.Howlongtobeat.Client do
         find_game([game], name, release_date)
 
       [] ->
-        {:error, "Not found"}
+        record_error(:not_found)
+        {:error, :not_found}
     end
   end
 
   defp find_game(_, _, _) do
-    {:error, "Not found"}
+    record_error(:not_found)
+    {:error, :not_found}
   end
 
   defp extract_game_id(%{"game_id" => id}), do: Integer.to_string(id)
@@ -141,6 +168,7 @@ defmodule Skaro.Howlongtobeat.Client do
         {key, floor(num * 60)}
 
       :error ->
+        record_error(:unknown_time_format)
         nil
     end
   end
@@ -149,4 +177,12 @@ defmodule Skaro.Howlongtobeat.Client do
   defp game_url(game_id), do: "#{base_url()}/game/#{game_id}"
 
   defp base_url, do: Application.fetch_env!(:skaro, :howlongtobeat)[:base_url]
+
+  defp trace(action, fun) do
+    Tracing.trace(@event_call, %{action: action}, fun)
+  end
+
+  defp record_error(reason) do
+    Tracing.send_count(@event_error, 1, %{reason: reason})
+  end
 end
