@@ -88,6 +88,11 @@ defmodule SkaroWeb.Telemetry do
       # Playthrough/Howlongtobeat
       # calls to Playthrough with respective results
       counter("skaro.playthrough.call.count", tags: [:env, :service, :result]),
+      counter("skaro.howlongtobeat.error.count", tags: [:env, :service, :reason]),
+      distribution("skaro.howlongtobeat.call.stop.duration",
+        tags: [:env, :service, :action],
+        unit: {:native, :millisecond}
+      ),
 
       # Reviews/OpenCritic
       counter("skaro.opencritic.error.count", tags: [:env, :service, :reason]),
