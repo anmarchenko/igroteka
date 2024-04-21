@@ -95,6 +95,7 @@ defmodule SkaroWeb.Telemetry do
       ),
 
       # Reviews/OpenCritic
+      counter("skaro.reviews.call.count", tags: [:env, :service, :result]),
       counter("skaro.opencritic.error.count", tags: [:env, :service, :reason]),
       distribution("skaro.opencritic.call.stop.duration",
         tags: [:env, :service, :action],

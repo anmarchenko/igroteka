@@ -87,7 +87,7 @@ defmodule Skaro.Playthrough do
   def category_badge(_),
     do: %{}
 
-  def record_event(result) do
+  defp record_event(result) do
     Tracing.send_count(@event, %{result: result})
   end
 

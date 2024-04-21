@@ -6,15 +6,20 @@ defmodule Skaro.Reviews do
 
   alias Skaro.Repo
   alias Skaro.Reviews.Rating
+  alias Skaro.Tracing
+
+  @event [:skaro, :reviews, :call]
 
   @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
           {:ok, Rating.t()} | {:error, any}
   def find(%{id: _, name: _} = game) do
     case Repo.get_by(Rating, game_id: game.id) do
       nil ->
+        record_event(:db_miss)
         load_rating(game)
 
       rating ->
+        record_event(:db_hit)
         {:ok, rating}
     end
   end
@@ -33,6 +38,8 @@ defmodule Skaro.Reviews do
 
   def load_by_id(external_id, %{id: _, name: _} = game) do
     with {:ok, attrs} <- remote().get_by_id(external_id) do
+      record_event(:load_by_id)
+
       create_rating(attrs, game)
     end
   end
@@ -48,6 +55,8 @@ defmodule Skaro.Reviews do
 
   def reload_rating(rating) do
     with {:ok, attrs} <- remote().get_by_id(rating.external_id) do
+      record_event(:reload_from_remote)
+
       update_rating(rating, attrs)
     end
   end
@@ -55,6 +64,8 @@ defmodule Skaro.Reviews do
   defp load_rating(game) do
     with :ok <- check_release_date(game),
          {:ok, attrs} <- remote().find(game) do
+      record_event(:load_from_remote)
+
       create_rating(attrs, game)
     end
   end
@@ -84,7 +95,12 @@ defmodule Skaro.Reviews do
     if Timex.before?(release_date, two_weeks_from_now) do
       :ok
     else
+      record_event(:skipped_future_release)
       {:error, :future_release}
     end
+  end
+
+  defp record_event(result) do
+    Tracing.send_count(@event, %{result: result})
   end
 end
