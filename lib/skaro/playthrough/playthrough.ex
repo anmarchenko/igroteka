@@ -15,6 +15,7 @@ defmodule Skaro.Playthrough do
   def find(%{id: _, name: _, release_date: _} = game) do
     case Repo.get_by(PlaythroughTime, game_id: game.id) do
       nil ->
+        record_event(:db_miss)
         load_playthrough_time(game)
 
       time ->
