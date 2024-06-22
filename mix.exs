@@ -64,7 +64,7 @@ defmodule Skaro.MixProject do
       {:hackney, "~> 1.16"},
 
       # caching
-      {:con_cache, "~> 1.0.0"},
+      {:con_cache, "~> 1.0"},
 
       # countries info
       {:countries, "~> 1.6"},
