@@ -7,12 +7,12 @@ defmodule Skaro.Opencritic do
 
   alias Skaro.Opencritic.Client
 
-  @spec find(%{name: String.t()}) :: {:ok, Map.t()} | {:error, String.t()}
+  @spec find(%{name: String.t()}) :: {:ok, map()} | {:error, String.t()}
   def find(game) do
     Client.find(game)
   end
 
-  @spec get_by_id(Integer.t()) :: {:ok, Map.t()} | {:error, String.t()}
+  @spec get_by_id(integer()) :: {:ok, map()} | {:error, String.t()}
   def get_by_id(game_id) do
     Client.get_by_id(game_id)
   end

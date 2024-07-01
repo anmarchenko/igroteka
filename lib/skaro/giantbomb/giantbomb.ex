@@ -9,6 +9,7 @@ defmodule Skaro.Giantbomb do
   @full_game_fields "deck,name,id,image,original_release_date,platforms," <>
                       "description,images,developers,publishers,franchises,genres,themes"
 
+  alias Skaro.Core.Company
   alias Skaro.Giantbomb.GamesParser
   alias Skaro.HttpClient
   alias Skaro.Parser
@@ -50,7 +51,7 @@ defmodule Skaro.Giantbomb do
   def top_games(_), do: {:ok, []}
   def fetch_games(_), do: {:ok, []}
   def new_games, do: {:ok, []}
-  def fetch_company(_), do: {:ok, nil}
+  def fetch_company(_), do: {:ok, %Company{}}
 
   defp check_error_state(json) do
     case json["error"] do
