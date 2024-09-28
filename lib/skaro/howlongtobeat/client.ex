@@ -63,7 +63,7 @@ defmodule Skaro.Howlongtobeat.Client do
 
         case res do
           {:error, _} = error_tuple ->
-            record_error(:other)
+            record_error(:search_failed)
             error_tuple
 
           body when is_binary(body) ->
@@ -104,7 +104,7 @@ defmodule Skaro.Howlongtobeat.Client do
           end
         else
           {:error, _} = error_tuple ->
-            record_error(:other)
+            record_error(:times_extraction_failed)
             error_tuple
         end
       end
@@ -129,13 +129,13 @@ defmodule Skaro.Howlongtobeat.Client do
         find_game([game], name, release_date)
 
       [] ->
-        record_error(:not_found)
+        record_error(:game_not_found)
         {:error, :not_found}
     end
   end
 
   defp find_game(_, _, _) do
-    record_error(:not_found)
+    record_error(:game_not_found)
     {:error, :not_found}
   end
 
