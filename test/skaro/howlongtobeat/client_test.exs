@@ -13,7 +13,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           {:ok, body, conn} = Conn.read_body(conn)
 
@@ -48,7 +48,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           {:ok, body, conn} = Conn.read_body(conn)
 
@@ -87,7 +87,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           {:ok, body, conn} = Conn.read_body(conn)
 
@@ -139,7 +139,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           Conn.resp(
             conn,
@@ -158,7 +158,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           Conn.resp(
             conn,
@@ -177,7 +177,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           Conn.resp(
             conn,
@@ -208,7 +208,7 @@ defmodule Skaro.Howlongtobeat.ClientTest do
       Bypass.expect_once(
         howlongtobeat,
         "POST",
-        "/api/search",
+        "/api/search/21fda17e4a1d49be",
         fn conn ->
           Conn.resp(
             conn,
