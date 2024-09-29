@@ -181,7 +181,7 @@ defmodule Skaro.Howlongtobeat.Client do
     end
   end
 
-  defp search_url, do: "#{base_url()}/api/search"
+  defp search_url, do: "#{base_url()}/api/search/21fda17e4a1d49be"
   defp game_url(game_id), do: "#{base_url()}/game/#{game_id}"
 
   defp base_url, do: Application.fetch_env!(:skaro, :howlongtobeat)[:base_url]
