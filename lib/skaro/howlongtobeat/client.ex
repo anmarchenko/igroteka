@@ -9,13 +9,16 @@ defmodule Skaro.Howlongtobeat.Client do
   @event_call [:skaro, :howlongtobeat, :call]
   @event_error [:skaro, :howlongtobeat, :error]
 
+  @action_search :search
+  @action_get_by_id :get_by_id
+
   def find(%{name: nil}) do
-    record_error(:no_name)
+    record_error(:no_name, @action_search)
     {:error, :no_name}
   end
 
   def find(%{release_date: nil}) do
-    record_error(:no_date)
+    record_error(:no_date, @action_search)
     {:error, :no_date}
   end
 
@@ -63,7 +66,7 @@ defmodule Skaro.Howlongtobeat.Client do
 
         case res do
           {:error, _} = error_tuple ->
-            record_error(:search_failed)
+            record_error(:search_failed, @action_search)
             error_tuple
 
           body when is_binary(body) ->
@@ -79,7 +82,7 @@ defmodule Skaro.Howlongtobeat.Client do
   def find(_), do: {:error, "argument is invalid"}
 
   def get_by_id(nil) do
-    record_error(:game_id_not_found)
+    record_error(:game_id_not_found, @action_get_by_id)
     {:error, :game_id_not_found}
   end
 
@@ -97,14 +100,14 @@ defmodule Skaro.Howlongtobeat.Client do
             |> Enum.filter(& &1)
 
           if Enum.empty?(times) do
-            record_error(:times_not_available)
+            record_error(:times_not_available, @action_get_by_id)
             {:error, :times_not_available}
           else
             {:ok, Enum.into(times, %{external_id: game_id, external_url: game_url(game_id)})}
           end
         else
           {:error, _} = error_tuple ->
-            record_error(:times_extraction_failed)
+            record_error(:times_extraction_failed, @action_get_by_id)
             error_tuple
         end
       end
@@ -129,13 +132,13 @@ defmodule Skaro.Howlongtobeat.Client do
         find_game([game], name, release_date)
 
       [] ->
-        record_error(:game_not_found)
+        record_error(:game_not_found, @action_search)
         {:error, :not_found}
     end
   end
 
   defp find_game(_, _, _) do
-    record_error(:game_not_found)
+    record_error(:game_not_found, @action_search)
     {:error, :not_found}
   end
 
@@ -173,7 +176,7 @@ defmodule Skaro.Howlongtobeat.Client do
         {key, floor(num * 60)}
 
       :error ->
-        record_error(:unknown_time_format)
+        record_error(:unknown_time_format, @action_get_by_id)
         nil
     end
   end
@@ -187,7 +190,7 @@ defmodule Skaro.Howlongtobeat.Client do
     Tracing.trace(@event_call, %{action: action}, fun)
   end
 
-  defp record_error(reason) do
-    Tracing.send_count(@event_error, 1, %{reason: reason})
+  defp record_error(reason, action) do
+    Tracing.send_count(@event_error, 1, %{reason: reason, action: action})
   end
 end
