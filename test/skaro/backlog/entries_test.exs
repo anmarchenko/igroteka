@@ -79,7 +79,7 @@ defmodule Skaro.EntriesTest do
                  user
                )
 
-      assert changeset.errors()[:game_id] == {
+      assert changeset.errors[:game_id] == {
                "can't be blank",
                [validation: :required]
              }
@@ -99,7 +99,7 @@ defmodule Skaro.EntriesTest do
       assert {
                "is invalid",
                [validation: :inclusion, enum: _]
-             } = changeset.errors()[:status]
+             } = changeset.errors[:status]
     end
 
     test "returns error if trying to insert twice the same game_id for user", %{
@@ -117,7 +117,7 @@ defmodule Skaro.EntriesTest do
                  user
                )
 
-      assert {"has already been taken", _} = changeset.errors()[:game_id]
+      assert {"has already been taken", _} = changeset.errors[:game_id]
     end
   end
 
@@ -159,7 +159,7 @@ defmodule Skaro.EntriesTest do
       assert {
                "is invalid",
                [validation: :inclusion, enum: _]
-             } = changeset.errors()[:status]
+             } = changeset.errors[:status]
     end
 
     test "returns changeset error if date is invalid" do
@@ -174,7 +174,7 @@ defmodule Skaro.EntriesTest do
                  "finished_at" => "fdfdfds"
                })
 
-      assert changeset.errors()[:finished_at] == {
+      assert changeset.errors[:finished_at] == {
                "is invalid",
                [type: :date, validation: :cast]
              }

@@ -47,7 +47,7 @@ defmodule Skaro.MixProject do
 
       # database
       {:postgrex, ">= 0.0.0"},
-      {:ecto_sql, "~> 3.0"},
+      {:ecto_sql, "~> 3.12"},
       {:jason, "~> 1.1"},
 
       # auth
@@ -55,7 +55,7 @@ defmodule Skaro.MixProject do
       {:guardian, "~> 2.0"},
 
       # utils
-      {:scrivener_ecto, "~> 2.0"},
+      {:scrivener_ecto, "~> 3.0"},
       {:secure_random, "~> 0.5"},
       {:cors_plug, "~> 3.0"},
 
