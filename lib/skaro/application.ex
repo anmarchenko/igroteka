@@ -28,6 +28,17 @@ defmodule Skaro.Application do
        ]}
     ]
 
+    # required for OTLP exporter to use IPv6 addresses
+    :httpc.set_option(:ipfamily, :inet6fb4)
+
+    :ok = :opentelemetry_cowboy.setup()
+    :ok = OpentelemetryPhoenix.setup()
+
+    :ok =
+      Skaro.Repo.config()
+      |> Keyword.fetch!(:telemetry_prefix)
+      |> OpentelemetryEcto.setup()
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Skaro.Supervisor]

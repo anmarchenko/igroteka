@@ -33,4 +33,10 @@ if config_env() == :prod do
   config :skaro, SkaroWeb.Telemetry,
     report_metrics: true,
     periodic_measurements_enabled: true
+
+  config :opentelemetry, :resource, service: %{name: "igroteka"}
+
+  config :opentelemetry_exporter,
+    otlp_protocol: :http_protobuf,
+    otlp_endpoint: "ddagent.internal"
 end
