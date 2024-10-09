@@ -115,7 +115,8 @@ defmodule Skaro.MixProject do
   defp releases() do
     [
       skaro: [
-        include_executables_for: [:unix]
+        include_executables_for: [:unix],
+        applications: [opentelemetry_exporter: :permanent, opentelemetry: :temporary]
       ]
     ]
   end

@@ -34,9 +34,9 @@ if config_env() == :prod do
     report_metrics: true,
     periodic_measurements_enabled: true
 
-  config :opentelemetry, :resource, service: %{name: "igroteka"}
-
   config :opentelemetry_exporter,
     otlp_protocol: :http_protobuf,
-    otlp_endpoint: "ddagent.internal"
+    otlp_endpoint: "http://ddagent.internal"
+
+  config :opentelemetry, :resource, service: %{name: "igroteka"}
 end
