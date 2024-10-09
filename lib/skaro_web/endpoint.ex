@@ -51,7 +51,8 @@ defmodule SkaroWeb.Endpoint do
     CORSPlug,
     origin: [
       "http://localhost:3000",
-      "https://igroteka.cc"
+      "https://igroteka.cc",
+      "https://igroteka-fe.fly.dev"
     ]
   )
 
