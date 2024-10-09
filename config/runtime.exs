@@ -36,7 +36,7 @@ if config_env() == :prod do
 
   config :opentelemetry_exporter,
     otlp_protocol: :http_protobuf,
-    otlp_endpoint: "http://ddagent.internal"
+    otlp_endpoint: "http://ddagent.internal:4318"
 
   config :opentelemetry, :resource, service: %{name: "igroteka"}
 end
