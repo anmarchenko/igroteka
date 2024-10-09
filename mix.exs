@@ -88,7 +88,6 @@ defmodule Skaro.MixProject do
       {:opentelemetry_api, "~> 1.0"},
       {:opentelemetry_ecto, "~> 1.0"},
       {:opentelemetry_phoenix, "~> 1.0"},
-      {:opentelemetry_cowboy, "~> 0.2"},
 
       # testing
       {:tzdata, "~> 1.1.0"},

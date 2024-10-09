@@ -31,7 +31,6 @@ defmodule Skaro.Application do
     # required for OTLP exporter to use IPv6 addresses
     :httpc.set_option(:ipfamily, :inet6fb4)
 
-    :ok = :opentelemetry_cowboy.setup()
     :ok = OpentelemetryPhoenix.setup()
 
     :ok =
