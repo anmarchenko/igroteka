@@ -30,7 +30,7 @@ defmodule Skaro.DataCase do
   setup tags do
     :ok = Sandbox.checkout(Skaro.Repo)
 
-    {bypass, igdb_api, howlongtobeat, opencritic} = setup_bypass(tags[:bypass])
+    {igdb_api, howlongtobeat, opencritic} = setup_bypass(tags[:bypass])
 
     unless tags[:async] do
       Sandbox.mode(Skaro.Repo, {:shared, self()})
@@ -38,22 +38,12 @@ defmodule Skaro.DataCase do
 
     ConCache.put(:external_api_cache, "igdb_api_token", "igdb_api_token")
 
-    {:ok,
-     bypass: bypass, igdb_api: igdb_api, howlongtobeat: howlongtobeat, opencritic: opencritic}
+    {:ok, igdb_api: igdb_api, howlongtobeat: howlongtobeat, opencritic: opencritic}
   end
 
-  defp setup_bypass(nil), do: {nil, nil, nil, nil}
+  defp setup_bypass(nil), do: {nil, nil, nil}
 
   defp setup_bypass(true) do
-    bypass = Bypass.open(port: 1234)
-
-    Application.put_env(
-      :skaro,
-      :giantbomb,
-      base_url: "http://localhost:#{bypass.port}",
-      api_key: "giantbomb_api_key"
-    )
-
     igdb_api = Bypass.open(port: 1235)
 
     Application.put_env(
@@ -82,7 +72,7 @@ defmodule Skaro.DataCase do
       api_key: "opencritic_api_key"
     )
 
-    {bypass, igdb_api, howlongtobeat, opencritic}
+    {igdb_api, howlongtobeat, opencritic}
   end
 
   @doc """

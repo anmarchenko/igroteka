@@ -48,8 +48,6 @@ config :skaro, Skaro.Repo,
 config :skaro, Skaro.Guardian,
   secret_key: "svWE1TQ9lYke32lLUdE5jnV+EqI7nObwZ/rFYLH+s6BFRKU/prg559ADuLaohNx9_dev"
 
-config :skaro, :giantbomb, api_key: "not_used_anymore"
-
 config :skaro, :igdb,
   client_id: System.fetch_env!("IGDB_CLIENT_ID"),
   client_secret: System.fetch_env!("IGDB_CLIENT_SECRET")

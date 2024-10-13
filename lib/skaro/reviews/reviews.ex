@@ -13,14 +13,18 @@ defmodule Skaro.Reviews do
   @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
           {:ok, Rating.t()} | {:error, any}
   def find(%{id: _, name: _} = game) do
-    case Repo.get_by(Rating, game_id: game.id) do
-      nil ->
-        record_event(:db_miss)
-        load_rating(game)
+    Tracer.with_span "reviews.find", kind: :client, attributes: %{game_name: game.name} do
+      case Repo.get_by(Rating, game_id: game.id) do
+        nil ->
+          Tracer.set_attribute(:result, :cache_miss)
 
-      rating ->
-        record_event(:db_hit)
-        {:ok, rating}
+          load_rating(game)
+
+        rating ->
+          Tracer.set_attribute(:result, :cache_hit)
+
+          {:ok, rating}
+      end
     end
   end
 

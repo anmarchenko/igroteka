@@ -37,8 +37,6 @@ config :skaro, :games_remote, Skaro.IGDB
 config :skaro, :playthrough_remote, Skaro.Howlongtobeat
 config :skaro, :reviews_remote, Skaro.Opencritic
 
-config :skaro, :giantbomb, base_url: "https://www.giantbomb.com/api"
-
 config :skaro, :igdb,
   base_url: "https://api.igdb.com/v4",
   oauth_url: "https://id.twitch.tv/oauth2/token"

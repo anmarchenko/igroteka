@@ -1,6 +1,6 @@
 defmodule Skaro.GamesRemote do
   @moduledoc """
-  Behaviour that defines API to access remote info about games (IGDB, Giantbomb, etc.)
+  Behaviour that defines API to access remote info about games (IGDB)
   """
 
   @callback search(String.t()) :: {:ok, list(Skaro.Core.Game.t())} | {:error, String.t()}

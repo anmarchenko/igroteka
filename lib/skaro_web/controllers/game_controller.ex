@@ -51,7 +51,14 @@ defmodule SkaroWeb.GameController do
 
   defp schedule_backlog_updates({:ok, game}) do
     # trace this async operation
-    Task.async(fn -> Entries.update_entries_for_game(game) end)
+    Task.async(fn ->
+      Tracer.with_span "game.update_entries_for_game.async",
+        kind: :client,
+        attributes: %{game_id: game.id} do
+        Entries.update_entries_for_game(game)
+      end
+    end)
+
     {:ok, game}
   end
 
