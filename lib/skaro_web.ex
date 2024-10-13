@@ -24,6 +24,8 @@ defmodule SkaroWeb do
       import Plug.Conn
       import SkaroWeb.Gettext
       alias SkaroWeb.Router.Helpers, as: Routes
+
+      require OpenTelemetry.Tracer, as: Tracer
     end
   end
 
