@@ -47,7 +47,7 @@ defmodule SkaroWeb.ReviewController do
 
       {:error, reason} ->
         Tracer.set_attribute(:result, :external_api_failure)
-        Tracer.set_status(OpenTelemetry.status(:error, "Opencrtic API failure: #{reason}"))
+        Tracer.set_status(OpenTelemetry.status(:error, "Opencritic API failure: #{reason}"))
 
         {:error, :external_api, reason}
     end

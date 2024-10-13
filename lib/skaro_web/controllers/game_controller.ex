@@ -50,6 +50,7 @@ defmodule SkaroWeb.GameController do
   end
 
   defp schedule_backlog_updates({:ok, game}) do
+    # trace this async operation
     Task.async(fn -> Entries.update_entries_for_game(game) end)
     {:ok, game}
   end
@@ -59,14 +60,23 @@ defmodule SkaroWeb.GameController do
   end
 
   defp respond({:ok, games}, conn) when is_list(games) do
+    Tracer.set_attribute(:result, :ok)
+    Tracer.set_status(OpenTelemetry.status(:ok, ""))
+
     render(conn, "index.json", games: games)
   end
 
   defp respond({:ok, game}, conn) do
+    Tracer.set_attribute(:result, :ok)
+    Tracer.set_status(OpenTelemetry.status(:ok, ""))
+
     render(conn, "show.json", game: game)
   end
 
   defp respond({:error, reason}, _) do
+    Tracer.set_attribute(:result, :external_api_failure)
+    Tracer.set_status(OpenTelemetry.status(:error, "IGDB API failure: #{reason}"))
+
     {:error, :external_api, reason}
   end
 
