@@ -48,7 +48,7 @@ defmodule SkaroWeb.PlaythroughTimeController do
         {:error, :not_found}
 
       {:error, :not_found} ->
-        Tracer.set_attribute(:result, :not_found)
+        Tracer.set_attribute(:result, :game_not_found)
         {:error, :not_found}
 
       :error ->
@@ -63,6 +63,7 @@ defmodule SkaroWeb.PlaythroughTimeController do
         {:error, changeset}
 
       {:error, reason} ->
+        Tracer.set_attribute(:result, :external_api_failure)
         Tracer.set_status(OpenTelemetry.status(:error, "Howlongtobeat API failure: #{reason}"))
         {:error, :external_api, reason}
     end
