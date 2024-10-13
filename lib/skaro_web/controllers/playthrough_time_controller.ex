@@ -40,15 +40,15 @@ defmodule SkaroWeb.PlaythroughTimeController do
         {:error, :bad_request}
 
       {:error, :times_not_available} ->
-        Tracer.set_attribute(:result, :times_not_available)
+        Tracer.set_attribute(:result, :times_not_available_in_external_source)
         {:error, :not_found}
 
       {:error, :game_id_not_found} ->
-        Tracer.set_attribute(:result, :game_id_not_found)
+        Tracer.set_attribute(:result, :game_id_not_found_in_external_api_response)
         {:error, :not_found}
 
       {:error, :not_found} ->
-        Tracer.set_attribute(:result, :game_not_found)
+        Tracer.set_attribute(:result, :game_not_found_in_external_api_response)
         {:error, :not_found}
 
       :error ->

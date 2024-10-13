@@ -6,21 +6,24 @@ defmodule Skaro.Playthrough do
 
   alias Skaro.Playthrough.PlaythroughTime
   alias Skaro.Repo
-  alias Skaro.Tracing
 
-  @event [:skaro, :playthrough, :call]
+  require OpenTelemetry.Tracer, as: Tracer
 
   @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
           {:ok, PlaythroughTime.t()} | {:error, any}
   def find(%{id: _, name: _, release_date: _} = game) do
-    case Repo.get_by(PlaythroughTime, game_id: game.id) do
-      nil ->
-        record_event(:db_miss)
-        load_playthrough_time(game)
+    Tracer.with_span "playthrough.find", kind: :client, attributes: %{game_name: game.name} do
+      case Repo.get_by(PlaythroughTime, game_id: game.id) do
+        nil ->
+          Tracer.set_attribute(:result, :cache_miss)
 
-      time ->
-        record_event(:db_hit)
-        {:ok, time}
+          load_playthrough_time(game)
+
+        time ->
+          Tracer.set_attribute(:result, :cache_hit)
+
+          {:ok, time}
+      end
     end
   end
 
@@ -36,10 +39,10 @@ defmodule Skaro.Playthrough do
   end
 
   def load_by_id(external_id, %{id: _, name: _} = game) do
-    with {:ok, attrs} <- remote().get_by_id(external_id) do
-      record_event(:load_by_id)
-
-      create_playthrough_time(attrs, game)
+    Tracer.with_span "playthrough.load_by_id", kind: :client, attributes: %{game_name: game.name} do
+      with {:ok, attrs} <- remote().get_by_id(external_id) do
+        create_playthrough_time(attrs, game)
+      end
     end
   end
 
@@ -53,10 +56,12 @@ defmodule Skaro.Playthrough do
   end
 
   def reload_playthrough_time(time) do
-    with {:ok, attrs} <- remote().get_by_id(time.external_id) do
-      record_event(:reload_from_remote)
-
-      update_playthrough_time(time, attrs)
+    Tracer.with_span "playthrough.reload_playthrough_time.async",
+      kind: :client,
+      attributes: %{external_id: time.external_id} do
+      with {:ok, attrs} <- remote().get_by_id(time.external_id) do
+        update_playthrough_time(time, attrs)
+      end
     end
   end
 
@@ -87,15 +92,9 @@ defmodule Skaro.Playthrough do
   def category_badge(_),
     do: %{}
 
-  defp record_event(result) do
-    Tracing.send_count(@event, %{result: result})
-  end
-
   defp load_playthrough_time(game) do
     with :ok <- check_release_date(game),
          {:ok, attrs} <- remote().find(game) do
-      record_event(:load_from_remote)
-
       create_playthrough_time(attrs, game)
     end
   end
@@ -125,8 +124,6 @@ defmodule Skaro.Playthrough do
     if Timex.before?(release_date, tomorrow) do
       :ok
     else
-      record_event(:skipped_future_release)
-
       {:error, :future_release}
     end
   end

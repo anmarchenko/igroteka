@@ -15,7 +15,7 @@ defmodule Skaro.HttpClient do
 
   defp post_with_retries(url, body, headers, retries) do
     case url
-         |> HTTPoison.post(body, headers, timeout: 2_000, recv_timeout: 2_000)
+         |> Telepoison.post(body, headers, timeout: 2_000, recv_timeout: 2_000)
          |> retrieve_body() do
       {:ok, body} ->
         body
@@ -30,7 +30,7 @@ defmodule Skaro.HttpClient do
   end
 
   defp get_with_retries(url, params, headers, retries) do
-    case HTTPoison.get(url, headers, [{:params, params}]) do
+    case Telepoison.get(url, headers, [{:params, params}]) do
       {:ok, %HTTPoison.Response{status_code: code, body: body}} when code < 400 ->
         body
 

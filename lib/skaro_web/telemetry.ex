@@ -5,8 +5,6 @@ defmodule SkaroWeb.Telemetry do
 
   require Logger
 
-  alias Plug.Conn.Status, as: PlugStatus
-
   def start_link(arg) do
     Supervisor.start_link(__MODULE__, arg, name: __MODULE__)
   end
@@ -25,14 +23,6 @@ defmodule SkaroWeb.Telemetry do
 
   def metrics do
     [
-      # Endpoint metrics
-      distribution("phoenix.endpoint.stop.duration",
-        tags: [:env, :service, :method, :http_code, :request_path],
-        tag_values: &http_request_tags/1,
-        unit: {:native, :millisecond},
-        description: "The time spent processing a request"
-      ),
-
       # Database Metrics
       distribution("skaro.repo.query.total_time",
         tags: [:env, :service],
@@ -70,7 +60,7 @@ defmodule SkaroWeb.Telemetry do
       summary("vm.total_run_queue_lengths.cpu", tags: [:env, :service]),
       summary("vm.total_run_queue_lengths.io", tags: [:env, :service]),
 
-      # custom metrics
+      # custom metrics - replace with APM tracing
 
       # Games/IGDB
       # total number of calls to games module
@@ -85,15 +75,6 @@ defmodule SkaroWeb.Telemetry do
         unit: {:native, :millisecond}
       ),
 
-      # Playthrough/Howlongtobeat
-      # calls to Playthrough with respective results
-      counter("skaro.playthrough.call.count", tags: [:env, :service, :result]),
-      counter("skaro.howlongtobeat.error.count", tags: [:env, :service, :reason, :action]),
-      distribution("skaro.howlongtobeat.call.stop.duration",
-        tags: [:env, :service, :action],
-        unit: {:native, :millisecond}
-      ),
-
       # Reviews/OpenCritic
       counter("skaro.reviews.call.count", tags: [:env, :service, :result]),
       counter("skaro.opencritic.error.count", tags: [:env, :service, :reason]),
@@ -102,18 +83,6 @@ defmodule SkaroWeb.Telemetry do
         unit: {:native, :millisecond}
       )
     ]
-  end
-
-  defp http_request_tags(%{conn: conn} = metadata) do
-    id_regex = ~r/\/\d+\/?/
-
-    request_path = String.replace(conn.request_path, id_regex, "/:id")
-    response_code = PlugStatus.code(conn.status)
-
-    metadata
-    |> Map.put(:method, conn.method)
-    |> Map.put(:http_code, response_code)
-    |> Map.put(:request_path, request_path)
   end
 
   defp periodic_measurements do
