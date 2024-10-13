@@ -36,7 +36,7 @@ defmodule Skaro.Application do
     :ok =
       Skaro.Repo.config()
       |> Keyword.fetch!(:telemetry_prefix)
-      |> OpentelemetryEcto.setup()
+      |> OpentelemetryEcto.setup(db_statement: :enabled)
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
