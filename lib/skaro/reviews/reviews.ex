@@ -6,9 +6,8 @@ defmodule Skaro.Reviews do
 
   alias Skaro.Repo
   alias Skaro.Reviews.Rating
-  alias Skaro.Tracing
 
-  @event [:skaro, :reviews, :call]
+  require OpenTelemetry.Tracer, as: Tracer
 
   @spec find(%{id: integer(), name: binary(), release_date: Date.t()}) ::
           {:ok, Rating.t()} | {:error, any}
@@ -41,10 +40,10 @@ defmodule Skaro.Reviews do
   end
 
   def load_by_id(external_id, %{id: _, name: _} = game) do
-    with {:ok, attrs} <- remote().get_by_id(external_id) do
-      record_event(:load_by_id)
-
-      create_rating(attrs, game)
+    Tracer.with_span "reviews.load_by_id", kind: :client, attributes: %{game_name: game.name} do
+      with {:ok, attrs} <- remote().get_by_id(external_id) do
+        create_rating(attrs, game)
+      end
     end
   end
 
@@ -58,18 +57,18 @@ defmodule Skaro.Reviews do
   end
 
   def reload_rating(rating) do
-    with {:ok, attrs} <- remote().get_by_id(rating.external_id) do
-      record_event(:reload_from_remote)
-
-      update_rating(rating, attrs)
+    Tracer.with_span "reviews.reload_rating.async",
+      kind: :client,
+      attributes: %{external_id: rating.external_id} do
+      with {:ok, attrs} <- remote().get_by_id(rating.external_id) do
+        update_rating(rating, attrs)
+      end
     end
   end
 
   defp load_rating(game) do
     with :ok <- check_release_date(game),
          {:ok, attrs} <- remote().find(game) do
-      record_event(:load_from_remote)
-
       create_rating(attrs, game)
     end
   end
@@ -99,12 +98,7 @@ defmodule Skaro.Reviews do
     if Timex.before?(release_date, two_weeks_from_now) do
       :ok
     else
-      record_event(:skipped_future_release)
       {:error, :future_release}
     end
-  end
-
-  defp record_event(result) do
-    Tracing.send_count(@event, %{result: result})
   end
 end
