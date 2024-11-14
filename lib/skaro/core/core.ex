@@ -7,104 +7,99 @@ defmodule Skaro.Core do
   alias Skaro.Backlog.Entries
   alias Skaro.Playthrough
   alias Skaro.Reviews
-  alias Skaro.Tracing
+
+  require OpenTelemetry.Tracer, as: Tracer
 
   def get(id) do
-    event_called("get")
+    Tracer.with_span "core.get",
+      kind: :client,
+      attributes: %{game_id: id} do
+      cached_result("games_show_#{id}_v1.0", fn ->
+        Tracer.set_attribute(:cache_miss, true)
 
-    cached_result("games_show_#{id}_v1.0", fn ->
-      event_cache_miss("get")
-
-      games_remote().find_one(id)
-    end)
+        games_remote().find_one(id)
+      end)
+    end
   end
 
   def get_company(id) do
-    event_called("get_company")
+    Tracer.with_span "core.get_company",
+      kind: :client,
+      attributes: %{company_id: id} do
+      cached_result("companies_show_#{id}_v1.0", fn ->
+        Tracer.set_attribute(:cache_miss, true)
 
-    cached_result("companies_show_#{id}_v1.0", fn ->
-      event_cache_miss("get_company")
-
-      games_remote().fetch_company(id)
-    end)
+        games_remote().fetch_company(id)
+      end)
+    end
   end
 
   def search(term, user_id) do
-    event_called("search")
+    Tracer.with_span "core.search", kind: :client do
+      res =
+        cached_result("games_index_term_#{term}_v1.0", fn ->
+          Tracer.set_attribute(:cache_miss, true)
 
-    res =
-      cached_result("games_index_term_#{term}_v1.0", fn ->
-        event_cache_miss("search")
+          games_remote().search(term)
+        end)
 
-        games_remote().search(term)
-      end)
-
-    preload_games_associations(res, user_id)
+      preload_games_associations(res, user_id)
+    end
   end
 
   def get_screenshots(game_id) do
-    event_called("get_screenshots")
+    Tracer.with_span "core.get_screenshots", kind: :client, attributes: %{game_id: game_id} do
+      cached_result("screenshots_index_game_#{game_id}", fn ->
+        Tracer.set_attribute(:cache_miss, true)
 
-    cached_result("screenshots_index_game_#{game_id}", fn ->
-      event_cache_miss("get_screenshots")
-
-      games_remote().get_screenshots(game_id)
-    end)
+        games_remote().get_screenshots(game_id)
+      end)
+    end
   end
 
   def top_games(filters, user_id) do
-    event_called("top_games")
+    Tracer.with_span "core.top_games", kind: :client do
+      res =
+        cached_result(
+          "games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}",
+          fn ->
+            Tracer.set_attribute(:cache_miss, true)
 
-    res =
-      cached_result(
-        "games_index_top_year_#{filters["year"]}_platform_#{filters["platform"]}",
-        fn ->
-          event_cache_miss("top_games")
+            games_remote().top_games(filters)
+          end
+        )
 
-          games_remote().top_games(filters)
-        end
-      )
-
-    preload_games_associations(res, user_id)
+      preload_games_associations(res, user_id)
+    end
   end
 
   def fetch_games(filters, user_id) do
-    event_called("fetch_games")
+    Tracer.with_span "core.fetch_games", kind: :client do
+      res =
+        cached_result(
+          "games_index_developer_#{filters["developer"]}_publisher_#{filters["publisher"]}_offset_#{filters["offset"]}",
+          fn ->
+            Tracer.set_attribute(:cache_miss, true)
 
-    res =
-      cached_result(
-        "games_index_developer_#{filters["developer"]}_publisher_#{filters["publisher"]}_offset_#{filters["offset"]}",
-        fn ->
-          event_cache_miss("fetch_games")
+            games_remote().fetch_games(filters)
+          end
+        )
 
-          games_remote().fetch_games(filters)
-        end
-      )
-
-    preload_games_associations(res, user_id)
+      preload_games_associations(res, user_id)
+    end
   end
 
   def new_games(user_id) do
-    event_called("new_games")
+    Tracer.with_span "core.new_games", kind: :client do
+      res =
+        cached_result("games_index_new", fn ->
+          Tracer.set_attribute(:cache_miss, true)
 
-    res =
-      cached_result("games_index_new", fn ->
-        event_cache_miss("new_games")
+          games_remote().new_games()
+        end)
 
-        games_remote().new_games()
-      end)
-
-    preload_games_associations(res, user_id)
-  end
-
-  @event_call [:skaro, :games, :call]
-  def event_called(action) do
-    Tracing.send_count(@event_call, %{action: action})
-  end
-
-  @event_cache_miss [:skaro, :games, :cache_miss]
-  def event_cache_miss(action) do
-    Tracing.send_count(@event_cache_miss, %{action: action})
+      preload_games_associations(res, user_id)
+    end
   end
 
   defp cached_result(cache_key, api_call) do

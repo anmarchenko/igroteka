@@ -58,30 +58,7 @@ defmodule SkaroWeb.Telemetry do
       ),
       summary("vm.total_run_queue_lengths.total", tags: [:env, :service]),
       summary("vm.total_run_queue_lengths.cpu", tags: [:env, :service]),
-      summary("vm.total_run_queue_lengths.io", tags: [:env, :service]),
-
-      # custom metrics - replace with APM tracing
-
-      # Games/IGDB
-      # total number of calls to games module
-      counter("skaro.games.call.count", tags: [:env, :service, :action]),
-      # the number of calls to remote API
-      counter("skaro.games.cache_miss.count", tags: [:env, :service, :action]),
-      # number of times error occured when calling IGDB
-      counter("skaro.igdb.error.count", tags: [:env, :service, :action]),
-      # duration for IGDB API calls
-      distribution("skaro.igdb.call.stop.duration",
-        tags: [:env, :service, :action],
-        unit: {:native, :millisecond}
-      ),
-
-      # Reviews/OpenCritic
-      counter("skaro.reviews.call.count", tags: [:env, :service, :result]),
-      counter("skaro.opencritic.error.count", tags: [:env, :service, :reason]),
-      distribution("skaro.opencritic.call.stop.duration",
-        tags: [:env, :service, :action],
-        unit: {:native, :millisecond}
-      )
+      summary("vm.total_run_queue_lengths.io", tags: [:env, :service])
     ]
   end
 

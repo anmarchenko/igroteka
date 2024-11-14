@@ -10,152 +10,137 @@ defmodule Skaro.IGDB do
   alias Skaro.IGDB.Parsers.Images, as: ImagesParser
   alias Skaro.IGDB.Token
   alias Skaro.Parser
-  alias Skaro.Tracing
+
+  require OpenTelemetry.Tracer, as: Tracer
 
   @spec search(binary()) :: {:error, binary()} | {:ok, [Skaro.Core.Game.t()]}
   def search(term) do
-    trace(
-      "search",
-      fn ->
-        case fetch_data(search_url(), search_query(term)) do
-          {:ok, json} ->
-            games =
-              json
-              |> Enum.map(& &1["game"])
-              |> GamesParser.parse_basic()
+    Tracer.with_span "igdb.search", kind: :client do
+      case fetch_data(search_url(), search_query(term)) do
+        {:ok, json} ->
+          games =
+            json
+            |> Enum.map(& &1["game"])
+            |> GamesParser.parse_basic()
 
-            {:ok, games}
+          Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-          {:error, _} = error_tuple ->
-            :telemetry.execute([:skaro, :igdb, :error], %{count: 1}, %{action: "search"})
+          {:ok, games}
 
-            error_tuple
-        end
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
+    end
   end
 
   def fetch_games(filters) do
-    trace(
-      "fetch_games",
-      fn ->
-        with {:ok, json} <- fetch_data(games_url(), games_query(filters)),
-             games <- GamesParser.parse_basic(json) do
-          {:ok, games}
-        else
-          {:error, _} = error_tuple ->
-            report_error("fetch_games")
+    Tracer.with_span "igdb.fetch_games", kind: :client do
+      with {:ok, json} <- fetch_data(games_url(), games_query(filters)),
+           games <- GamesParser.parse_basic(json) do
+        Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-            error_tuple
-        end
+        {:ok, games}
+      else
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
+    end
   end
 
   def find_one(id) do
-    trace(
-      "find_one",
-      fn ->
-        with {:ok, json} <- fetch_data(games_url(), game_by_id_query(id)),
-             [game] <- GamesParser.parse_full(json) do
-          {:ok, game}
-        else
-          [] ->
-            {:error, :not_found}
+    Tracer.with_span "igdb.find_one", kind: :client do
+      with {:ok, json} <- fetch_data(games_url(), game_by_id_query(id)),
+           [game] <- GamesParser.parse_full(json) do
+        Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-          {:error, _} = error_tuple ->
-            report_error("find_one")
-            error_tuple
-        end
+        {:ok, game}
+      else
+        [] ->
+          {:error, :not_found}
+
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
+    end
   end
 
   def get_screenshots(game_id) do
-    trace(
-      "get_screenshots",
-      fn ->
-        with {:ok, json} <-
-               fetch_data(
-                 screenshots_url(),
-                 screenshots_by_game_id_query(game_id)
-               ),
-             screenshots <- ImagesParser.parse_screenshot(json) do
-          {:ok, screenshots}
-        else
-          {:error, _} = error_tuple ->
-            report_error("get_screenshots")
+    Tracer.with_span "igdb.get_screenshots", kind: :client do
+      with {:ok, json} <-
+             fetch_data(
+               screenshots_url(),
+               screenshots_by_game_id_query(game_id)
+             ),
+           screenshots <- ImagesParser.parse_screenshot(json) do
+        Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-            error_tuple
-        end
+        {:ok, screenshots}
+      else
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
+    end
   end
 
   def top_games(filters) do
-    trace(
-      "top_games",
-      fn ->
-        with {:ok, json} <- fetch_data(games_url(), top_games_query(filters)),
-             games <- GamesParser.parse_basic(json) do
-          {:ok, games}
-        else
-          {:error, _} = error_tuple ->
-            report_error("top_games")
+    Tracer.with_span "igdb.top_games", kind: :client do
+      with {:ok, json} <- fetch_data(games_url(), top_games_query(filters)),
+           games <- GamesParser.parse_basic(json) do
+        Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-            error_tuple
-        end
+        {:ok, games}
+      else
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
+    end
   end
 
   def new_games do
-    trace(
-      "new_games",
-      fn ->
-        with {:ok, json} <- fetch_data(games_url(), new_games_query()),
-             games <- GamesParser.parse_basic(json) do
-          {:ok, games}
-        else
-          {:error, _} = error_tuple ->
-            report_error("new_games")
+    Tracer.with_span "igdb.new_games", kind: :client do
+      with {:ok, json} <- fetch_data(games_url(), new_games_query()),
+           games <- GamesParser.parse_basic(json) do
+        Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-            error_tuple
-        end
+        {:ok, games}
+      else
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
+    end
   end
 
   def fetch_company(id) do
-    trace(
-      "fetch_company",
-      fn ->
-        with {:ok, json} <- fetch_data(companies_url(), company_by_id_query(id)),
-             [company] <- CompaniesParser.parse_full(json) do
-          {:ok, company}
-        else
-          [] ->
-            report_error("fetch_company")
+    Tracer.with_span "igdb.fetch_company", kind: :client do
+      with {:ok, json} <- fetch_data(companies_url(), company_by_id_query(id)),
+           [company] <- CompaniesParser.parse_full(json) do
+        Tracer.set_status(OpenTelemetry.status(:ok, ""))
 
-            {:error, :not_found}
+        {:ok, company}
+      else
+        [] ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: not_found"))
 
-          {:error, _} = error_tuple ->
-            report_error("fetch_company")
+          {:error, :not_found}
 
-            error_tuple
-        end
+        {:error, reason} = error_tuple ->
+          Tracer.set_status(OpenTelemetry.status(:error, "IGDB API error: #{reason}"))
+
+          error_tuple
       end
-    )
-  end
-
-  @event_error [:skaro, :igdb, :error]
-  def report_error(action) do
-    Tracing.send_count(@event_error, %{action: action})
-  end
-
-  @event_call [:skaro, :igdb, :call]
-  def trace(action, fun) do
-    Tracing.trace(@event_call, %{action: action}, fun)
+    end
   end
 
   defp fetch_data(url, query) do

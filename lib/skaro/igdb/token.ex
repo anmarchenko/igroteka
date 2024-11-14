@@ -3,18 +3,18 @@ defmodule Skaro.IGDB.Token do
   Fetching and caching OAuth token for IGDB API
   """
 
-  import Skaro.IGDB, only: [trace: 2, report_error: 1]
-
   alias Skaro.HttpClient
+
+  require OpenTelemetry.Tracer, as: Tracer
 
   @cache_key "igdb_api_token"
 
   def fetch do
     case ConCache.get(:external_api_cache, @cache_key) do
       nil ->
-        trace("fetch_token", fn ->
+        Tracer.with_span "igdb.token.fetch", kind: :client do
           fetch_token_from_remote()
-        end)
+        end
 
       token ->
         {:ok, token}
@@ -39,15 +39,17 @@ defmodule Skaro.IGDB.Token do
         ttl: expires_in - 60
       })
 
+      Tracer.set_status(OpenTelemetry.status(:ok, ""))
+
       {:ok, token}
     else
-      {:error, _} = error_tuple ->
-        report_error("fetch_token")
+      {:error, reason} = error_tuple ->
+        Tracer.set_status(OpenTelemetry.status(:error, "Twitch API error: #{reason}"))
 
         error_tuple
 
       {:ok, json} ->
-        report_error("fetch_token")
+        Tracer.set_status(OpenTelemetry.status(:error, "Twitch API error: unknown response"))
 
         {:error, "Unknown oauth2 response: #{inspect(json)}"}
     end
