@@ -19,40 +19,13 @@ defmodule Skaro.Howlongtobeat.Client do
 
   def find(%{name: name, release_date: release_date}) do
     Tracer.with_span "howlongtobeat.client.find", kind: :client, attributes: %{game_name: name} do
-      res =
-        HttpClient.idempotent_post(
-          search_url(),
-          Jason.encode!(%{
-            "searchType" => "games",
-            "searchTerms" => String.split(name),
-            "searchPage" => 1,
-            "size" => 5,
-            "searchOptions" => %{
-              "games" => %{
-                "userId" => 0,
-                "platform" => "",
-                "sortCategory" => "popular",
-                "rangeCategory" => "main",
-                "rangeTime" => %{"min" => 0, "max" => 0},
-                "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
-                "modifier" => ""
-              },
-              "users" => %{"sortCategory" => "postcount"},
-              "filter" => "",
-              "sort" => 0,
-              "randomizer" => 0
-            }
-          }),
-          [
-            {"Accept", "*/*"},
-            {"Content-Type", "application/json"},
-            {"Host", "howlongtobeat.com"},
-            {"Origin", "https://howlongtobeat.com"},
-            {"Referer", "https://howlongtobeat.com/"}
-          ]
-        )
-
-      case res do
+      with {:ok, search_url} <- search_url(),
+           {:ok, body} <- search_games(search_url, name) do
+        body
+        |> Jason.decode!()
+        |> Map.get("data", [])
+        |> find_game(name, release_date)
+      else
         {:error, reason} = error_tuple ->
           Tracer.set_attribute(:result, :external_api_search_failure)
 
@@ -61,12 +34,6 @@ defmodule Skaro.Howlongtobeat.Client do
           )
 
           error_tuple
-
-        body when is_binary(body) ->
-          body
-          |> Jason.decode!()
-          |> Map.get("data", [])
-          |> find_game(name, release_date)
       end
     end
   end
@@ -121,6 +88,119 @@ defmodule Skaro.Howlongtobeat.Client do
 
           error_tuple
       end
+    end
+  end
+
+  defp search_games(search_url, name) do
+    case HttpClient.idempotent_post(
+           search_url,
+           Jason.encode!(%{
+             "searchType" => "games",
+             "searchTerms" => String.split(name),
+             "searchPage" => 1,
+             "size" => 5,
+             "searchOptions" => %{
+               "games" => %{
+                 "userId" => 0,
+                 "platform" => "",
+                 "sortCategory" => "popular",
+                 "rangeCategory" => "main",
+                 "rangeTime" => %{"min" => 0, "max" => 0},
+                 "gameplay" => %{"perspective" => "", "flow" => "", "genre" => ""},
+                 "modifier" => ""
+               },
+               "users" => %{"sortCategory" => "postcount"},
+               "filter" => "",
+               "sort" => 0,
+               "randomizer" => 0
+             }
+           }),
+           [
+             {"Accept", "*/*"},
+             {"Content-Type", "application/json"},
+             {"Host", "howlongtobeat.com"},
+             {"Origin", "https://howlongtobeat.com"},
+             {"Referer", "https://howlongtobeat.com/"}
+           ]
+         ) do
+      body when is_binary(body) ->
+        {:ok, body}
+
+      error_tuple ->
+        error_tuple
+    end
+  end
+
+  defp fetch_search_url_path do
+    Tracer.with_span "howlongtobeat.client.fetch_main_page", kind: :client do
+      with {:ok, body} <-
+             fetch_main_page(),
+           {:ok, path} <- extract_script_link(body),
+           {:ok, js_script} <- fetch_js_code(path),
+           {:ok, search_url_path} <- extract_search_path(js_script) do
+        {:ok, search_url_path}
+      else
+        {:error, reason} = error_tuple ->
+          Tracer.set_attribute(:result, :external_api_failure)
+
+          Tracer.set_status(
+            OpenTelemetry.status(:error, "Howlongtobeat fetching search URL failed: #{reason}")
+          )
+
+          error_tuple
+      end
+    end
+  end
+
+  defp fetch_main_page do
+    case HttpClient.get(base_url()) do
+      body when is_binary(body) ->
+        {:ok, body}
+
+      error_tuple ->
+        error_tuple
+    end
+  end
+
+  # extracts the link from <script> tag with file name like _app-XXXXXX.js
+  # use regexp to extract the link
+  defp extract_script_link(body) do
+    case Regex.scan(~r{script.+src\=\"([^\s]+\_app\-[^\s]+\.js)\"}, body) do
+      [[_, path]] ->
+        {:ok, path}
+
+      _ ->
+        {:error, :script_not_found}
+    end
+  end
+
+  defp fetch_js_code(path) do
+    case HttpClient.get("#{base_url()}#{path}") do
+      body when is_binary(body) ->
+        {:ok, body}
+
+      error_tuple ->
+        error_tuple
+    end
+  end
+
+  # from given js code we need to find code like that:
+  # fetch("/api/search/".concat("7b0f03b2").concat("54cc3099")
+  # from that we need to match and return "/api/search/7b0f03b254cc3099"
+  defp extract_search_path(js_code) do
+    case Regex.run(~r{fetch\(\"\/api\/search\/\"(?:\.concat\(\"\w+\"\))+}, js_code) do
+      [fetch] ->
+        search_path =
+          fetch
+          |> String.replace("\"", "", global: true)
+          |> String.replace("fetch(", "")
+          |> String.replace(".concat(", "", global: true)
+          |> String.replace(")", "", global: true)
+
+        {:ok, search_path}
+
+      _ ->
+        {:error, :search_url_not_parsable}
     end
   end
 
@@ -212,7 +292,28 @@ defmodule Skaro.Howlongtobeat.Client do
     end
   end
 
-  defp search_url, do: "#{base_url()}/api/search/21fda17e4a1d49be"
+  # fetches and caches the search URL path for 6 hours
+  defp search_url do
+    cache_key = "howlongtobeat.search_url"
+
+    case ConCache.get(:external_api_cache, cache_key) do
+      nil ->
+        case fetch_search_url_path() do
+          {:ok, search_url_path} ->
+            search_url = "#{base_url()}#{search_url_path}"
+            ConCache.put(:external_api_cache, cache_key, search_url)
+
+            {:ok, search_url}
+
+          error_tuple ->
+            error_tuple
+        end
+
+      result ->
+        {:ok, result}
+    end
+  end
+
   defp game_url(game_id), do: "#{base_url()}/game/#{game_id}"
 
   defp base_url, do: Application.fetch_env!(:skaro, :howlongtobeat)[:base_url]
