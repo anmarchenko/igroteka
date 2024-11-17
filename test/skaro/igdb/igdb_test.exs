@@ -304,7 +304,7 @@ defmodule Skaro.IGDBTest do
           assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
-                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79" <>
+                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79" <>
                     _, conn} = Conn.read_body(conn)
 
           Conn.resp(conn, 200, File.read!("./test/support/fixtures/igdb_top_games.json"))
@@ -329,7 +329,7 @@ defmodule Skaro.IGDBTest do
           assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
-                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79& name != \"The Witness\"" <>
+                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79& name != \"The Witness\"" <>
                     " & platforms = (42);" <>
                     _, conn} = Conn.read_body(conn)
 
@@ -353,7 +353,7 @@ defmodule Skaro.IGDBTest do
           assert ["igdb_client_id"] = Conn.get_req_header(conn, "client-id")
 
           assert {:ok,
-                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 9 & aggregated_rating > 79& name != \"The Witness\"" <>
+                  "where first_release_date != null & aggregated_rating != null & aggregated_rating_count > 5 & aggregated_rating > 79& name != \"The Witness\"" <>
                     " & first_release_date >= 1451606400 & first_release_date < 1483228800;" <>
                     _, conn} = Conn.read_body(conn)
 
